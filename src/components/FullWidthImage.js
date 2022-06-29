@@ -69,7 +69,7 @@ export default function FullWidthImage(props) {
             {/* Any content here will be centered in the component */}
             {title && (
               <h1
-                className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
+                className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen font-bold"
                 style={{
                   boxShadow:
                     "rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px",
