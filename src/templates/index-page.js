@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import Features from "../components/Features";
+import Carousel from "../components/Carousel";
 import FullWidthImage from "../components/FullWidthImage";
 
 // eslint-disable-next-line
@@ -43,6 +44,7 @@ export const IndexPageTemplate = ({
                       <p>{description}</p>
                     </div>
                   </div>
+                  <Carousel />
                   <Features gridItems={intro.blurbs} />
                 </div>
               </div>
