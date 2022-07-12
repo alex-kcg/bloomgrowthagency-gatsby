@@ -101,40 +101,43 @@ collections:
                   },
                 ],
             }
-
-settings:
-  file: "src/data/settings.yml"
-  fields:
-    - label: Header
-      name: header
-      widget: object
-      fields:
-        [
-          {
-            label: Logo,
-            name: Logo,
-            widget: object,
+  - name: "settings"
+    label: "Settings"
+    files:
+      - file: "src/data/settings.yml"
+        label: "Settings"
+        name: "settings"
+        fields:
+          - label: Header
+            name: header
+            widget: object
             fields:
               [
-                { label: Image, name: image, widget: image },
-                { label: Alt, name: alt, widget: string },
-              ],
-          },
-        ]
-    - label: Footer
-      name: footer
-      fields:
-        - label: Footer
-          name: footer
-          widget: object
-          fields:
-            - { label: "Signoff", name: "signoff", widget: "string" }
-            - { label: "Locations", label_singular: "Location", name: "locations", widget: "list", fields: [
-                { label: "Name", name: "name", widget: string }
-              ]}
-            - { label: "Social media links", label_singular: "Social media link", name: "socialMediaLinks", widget: "list", fields: [
-                { label: "Type", name: "type", widget: "select", options: [
-                  { label: "LinkedIn", value: "linkedin" }
-                ]},
-                { label: "URL", name: "url", widget: string }
-              ]}
+                {
+                  label: Logo,
+                  name: Logo,
+                  widget: object,
+                  fields:
+                    [
+                      { label: Image, name: image, widget: image },
+                      { label: Alt, name: alt, widget: string },
+                    ],
+                },
+              ]
+          - label: Footer
+            name: footer
+            fields:
+              - label: Footer
+                name: footer
+                widget: object
+                fields:
+                  - { label: "Signoff", name: "signoff", widget: "string" }
+                  - { label: "Locations", label_singular: "Location", name: "locations", widget: "list", fields: [
+                      { label: "Name", name: "name", widget: string }
+                    ]}
+                  - { label: "Social media links", label_singular: "Social media link", name: "socialMediaLinks", widget: "list", fields: [
+                      { label: "Type", name: "type", widget: "select", options: [
+                        { label: "LinkedIn", value: "linkedin" }
+                      ]},
+                      { label: "URL", name: "url", widget: string }
+                    ]}
