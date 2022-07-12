@@ -1,0 +1,13 @@
+header:
+  Logo:
+    image: /img/logotype.svg
+    alt: Bloom Growth
+footer:
+  signoff: New home coming in August...
+  locations:
+    - name: BOS
+    - name: SF
+    - name: NYC
+  socialMediaLinks:
+    - type: linkedin
+      url: https://www.linkedin.com/company/bloom-growth
