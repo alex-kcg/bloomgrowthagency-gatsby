@@ -1,71 +1,47 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, graphql } from "gatsby";
-import { getImage } from "gatsby-plugin-image";
+import { graphql } from "gatsby";
 import Layout from "../components/Layout";
-import Features from "../components/Features";
-import Carousel from "../components/Carousel";
-import FullWidthImage from "../components/FullWidthImage";
+import PartnerRow from "../components/PartnerRow";
 
 // eslint-disable-next-line
 export const IndexPageTemplate = ({
-  image,
   title,
-  heading,
-  subheading,
-  mainpitch,
   description,
-  intro,
+  heading,
+  button,
+  partnerRows,
 }) => {
-  const heroImage = getImage(image) || image;
-
   return (
     <div>
-      <FullWidthImage img={heroImage} title={title} subheading={subheading} />
-      <section className="section section--gradient">
-        <div className="container">
-          <div className="section">
-            <div className="columns">
-              <div className="column is-10 is-offset-1">
-                <div className="content">
-                  <div className="content">
-                    <div className="tile">
-                      <h1 className="title">{mainpitch.title}</h1>
-                    </div>
-                    <div className="tile">
-                      <h3 className="subtitle">{mainpitch.description}</h3>
-                    </div>
-                  </div>
-                  <div className="columns">
-                    <div className="column is-12">
-                      <h3 className="has-text-weight-semibold is-size-2">
-                        {heading}
-                      </h3>
-                      <p>{description}</p>
-                    </div>
-                  </div>
-                  <Carousel />
-                  <Features gridItems={intro.blurbs} />
-                </div>
-              </div>
-            </div>
-          </div>
+      <section>
+        <div className="text-center max-w-xs mx-auto mb-6 lg:max-w-3xl lg:mb-10">
+          <h1 className="font-serif tracking-tight text-4xl lg:text-5xl mb-6 lg:mb-10">{heading}</h1>
+          <a className="inline-block text-base py-4 px-12 rounded-full text-deep-sea bg-lime" href={button.url}>{button.text}</a>
         </div>
+        {partnerRows.map((row, index) => (
+          <PartnerRow key={index} partnerRow={row} />
+        ))}
       </section>
     </div>
   );
 };
 
 IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
-  heading: PropTypes.string,
-  subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
   description: PropTypes.string,
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array,
-  }),
+  heading: PropTypes.string,
+  button: PropTypes.object,
+  partnerRows: PropTypes.arrayOf(
+    PropTypes.shape({
+      direction: PropTypes.string,
+      partners: PropTypes.arrayOf(
+        PropTypes.shape({
+          text: PropTypes.string,
+        })
+      ),
+    }),
+  ),
 };
 
 const IndexPage = ({ data }) => {
@@ -74,13 +50,11 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <IndexPageTemplate
-        image={frontmatter.image}
         title={frontmatter.title}
-        heading={frontmatter.heading}
-        subheading={frontmatter.subheading}
-        mainpitch={frontmatter.mainpitch}
         description={frontmatter.description}
-        intro={frontmatter.intro}
+        heading={frontmatter.heading}
+        button={frontmatter.button}
+        partnerRows={frontmatter.partnerRows}
       />
     </Layout>
   );
@@ -101,29 +75,17 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
-        image {
-          childImageSharp {
-            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
-          }
-        }
-        heading
-        subheading
-        mainpitch {
-          title
-          description
-        }
         description
-        intro {
-          blurbs {
-            image {
-              childImageSharp {
-                gatsbyImageData(width: 240, quality: 64, layout: CONSTRAINED)
-              }
-            }
+        heading
+        button {
+          text
+          url
+        }
+        partnerRows {
+          direction
+          partners {
             text
           }
-          heading
-          description
         }
       }
     }

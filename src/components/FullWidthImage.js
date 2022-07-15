@@ -7,14 +7,13 @@ export default function FullWidthImage(props) {
     height = 400,
     img,
     title,
-    subheading,
+    heading,
     imgPosition = "top left",
   } = props;
 
   return (
     <React.Fragment>
       <div
-        className="margin-top-0"
         style={{
           display: "grid",
           alignItems: "center",
@@ -55,7 +54,7 @@ export default function FullWidthImage(props) {
             formats={["auto", "webp", "avif"]}
           />
         )}
-        {(title || subheading) && (
+        {(title || heading) && (
           <div
             style={{
               // By using the same grid area for both, they are stacked on top of each other
@@ -82,7 +81,7 @@ export default function FullWidthImage(props) {
                 {title}
               </h1>
             )}
-            {subheading && (
+            {heading && (
               <h3
                 className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
                 style={{
@@ -95,7 +94,7 @@ export default function FullWidthImage(props) {
                   marginTop: "0.5rem",
                 }}
               >
-                {subheading}
+                {heading}
               </h3>
             )}
           </div>
@@ -109,5 +108,5 @@ FullWidthImage.propTypes = {
   img: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
   height: PropTypes.number,
-  subheading: PropTypes.string,
+  heading: PropTypes.string,
 };

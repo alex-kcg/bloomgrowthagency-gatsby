@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-netlify-cms",
-  "description": "Example Gatsby, and Netlify CMS project",
-  "version": "1.1.3",
-  "author": "Austin Green",
+  "name": "bloomgrowthagency-gatsby",
+  "description": "Official website for Bloom Growth Agency, built on Gatsby and Netlify CMS",
+  "version": "1.0",
+  "author": "Kalos Creative Group",
   "dependencies": {
     "bulma": "^0.9.0",
     "gatsby": "^4.0.0",
