@@ -1,7 +1,7 @@
 {
   "name": "bloomgrowthagency-gatsby",
   "description": "Official website for Bloom Growth Agency, built on Gatsby and Netlify CMS",
-  "version": "1.0",
+  "version": "1.0.0",
   "author": "Kalos Creative Group",
   "dependencies": {
     "bulma": "^0.9.0",
