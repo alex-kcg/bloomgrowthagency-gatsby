@@ -12,7 +12,7 @@ const Navbar = class extends React.Component {
       >
         <div className="container mx-auto px-4 py-8 lg:py-16">
           <Link to="/" title="Logo">
-            <img src={settings.header.logo.image} alt={settings.header.logo.alt} className="block mx-auto" style={{ width: "118px" }} />
+            <img src={settings.header.logo.image} alt={settings.header.logo.alt} className="block mx-auto" style={{ width: "118px", height: "48px" }} />
           </Link>
         </div>
       </nav>
