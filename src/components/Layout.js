@@ -21,7 +21,7 @@ const TemplateWrapper = ({ children }) => {
         <meta property="og:image" content={`${withPrefix("/")}img/og-image.jpg`} />
       </Helmet>
       <Navbar />
-      <div className="flex-1">{children}</div>
+      <div className="flex-1 flex flex-col justify-center items-center overflow-hidden">{children}</div>
       <Footer />
     </div>
   );
