@@ -14,12 +14,12 @@ const Footer = class extends React.Component {
             </li>
           })}
         </ul>
-        <ul className="separated-list opacity-60 flex flex-wrap justify-center space-x-6 mb-4 lg:mb-0 lg:mr-6">
+        <ul className="separated-list flex flex-wrap justify-center space-x-6 mb-4 lg:mb-0 lg:mr-6">
           {settings.footer.locations.map((data, index) => {
             return <li key={`content_item_${index}`}>{data.name}</li>
           })}
         </ul>
-        <p className="opacity-60 text-center lg:mr-auto">{settings.footer.signoff}</p>
+        <p className="text-center lg:mr-auto">{settings.footer.signoff}</p>
       </footer>
     );
   }

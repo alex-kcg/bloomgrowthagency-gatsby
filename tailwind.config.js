@@ -19,7 +19,7 @@ module.exports = {
       ebony: '#071014',
       'deep-sea': '#091319',
       slate: '#3a4449',
-      concrete: '#b4b4b4',
+      concrete: '#bebebe',
       lime: '#d8ff34',
     }),
     fontFamily: {
