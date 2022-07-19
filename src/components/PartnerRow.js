@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import PropTypes from "prop-types";
 
 const PartnerRow = ({ partnerRow }) => (
-  <div className="select-none text-6xl text-slate mb-4 lg:text-11xl lg:mb-6">
+  <div className="select-none text-6xl tracking-tight text-slate mb-4 lg:text-11xl lg:mb-6">
     <Swiper
       className="marquee"
       modules={[Autoplay]}

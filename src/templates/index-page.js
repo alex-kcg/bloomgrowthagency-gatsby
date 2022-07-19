@@ -17,7 +17,11 @@ export const IndexPageTemplate = ({
       <section>
         <div className="text-center max-w-xs mx-auto mb-6 lg:max-w-3xl lg:mb-10">
           <h1 className="font-serif tracking-tight text-4xl lg:text-5xl mb-6 lg:mb-10">{heading}</h1>
-          <a className="inline-block text-base py-4 px-12 rounded-full text-deep-sea bg-lime" href={button.url}>{button.text}</a>
+          <a className="button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-lime text-deep-sea" href={button.url}>
+            <span className="relative z-10">
+              {button.text}
+            </span>
+          </a>
         </div>
         {partnerRows.map((row, index) => (
           <PartnerRow key={index} partnerRow={row} />
