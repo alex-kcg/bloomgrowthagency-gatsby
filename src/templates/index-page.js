@@ -13,9 +13,9 @@ export const IndexPageTemplate = ({
   partnerRows,
 }) => {
   return (
-    <div>
+    <div className="w-full">
       <section>
-        <div className="text-center max-w-xs mx-auto mb-6 lg:max-w-3xl lg:mb-10">
+        <div className="text-center mx-auto mb-6 px-4 lg:max-w-3xl lg:mb-10">
           <h1 className="font-serif tracking-tight text-4xl lg:text-5xl mb-6 lg:mb-10">{heading}</h1>
           <a className="button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-lime text-deep-sea" href={button.url}>
             <span className="relative z-10">
