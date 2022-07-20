@@ -58,11 +58,12 @@ body {
   @apply relative;
 
   transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),
-              background-color 100ms cubic-bezier(.694, 0, 0.335, 1);
+              background-color 100ms cubic-bezier(.694, 0, 0.335, 1),
+              color 100ms cubic-bezier(.694, 0, 0.335, 1);
 }
 
 .button:before {
-  @apply absolute bg-white h-full w-full inset-y-0 inset-x-0 opacity-80;
+  @apply absolute bg-sidewalk h-full w-full inset-y-0 inset-x-0;
 
   content: " ";
   animation: opacityFallbackOut .5s step-end forwards;
@@ -74,6 +75,10 @@ body {
 .button:hover:before {
   animation: opacityFallbackIn 0s step-start forwards;
   clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+}
+
+.button-lime:before {
+  @apply bg-lime;
 }
 
 @tailwind components;

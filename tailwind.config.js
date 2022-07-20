@@ -5,10 +5,9 @@ module.exports = {
   ],
   theme: {
     screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1256px',
+      sm: '680px',
+      md: '968px',
+      lg: '1256px',
     },
     colors: ({ colors }) => ({
       inherit: colors.inherit,
@@ -18,8 +17,9 @@ module.exports = {
       white: colors.white,
       ebony: '#071014',
       'deep-sea': '#091319',
-      slate: '#3a4449',
+      slate: '#3a474d',
       concrete: '#bebebe',
+      sidewalk: '#f8f7f3',
       lime: '#d8ff34',
     }),
     fontFamily: {
@@ -77,7 +77,11 @@ module.exports = {
       '10xl': ['5.5rem', { lineHeight: '6.5rem' }],
       '11xl': ['6rem', { lineHeight: '7rem' }],
     },
-    extend: {},
+    extend: {
+      spacing: {
+        22: '5.5rem',
+      },
+    },
   },
   plugins: [],
 }

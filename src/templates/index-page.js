@@ -15,9 +15,9 @@ export const IndexPageTemplate = ({
   return (
     <div className="w-full">
       <section>
-        <div className="text-center mx-auto mb-6 px-4 lg:max-w-3xl lg:mb-10">
-          <h1 className="font-serif tracking-tight text-4xl lg:text-5xl mb-6 lg:mb-10">{heading}</h1>
-          <a className="button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-lime text-deep-sea" href={button.url}>
+        <div className="container mx-auto px-4 text-center mb-10 md:w-full lg:mb-14">
+          <h1 className="font-serif tracking-tight text-4xl mb-6 md:text-8xl lg:mb-10">{heading}</h1>
+          <a className="button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-lime text-ebony" href={button.url}>
             <span className="relative z-10">
               {button.text}
             </span>
