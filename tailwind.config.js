@@ -21,6 +21,7 @@ module.exports = {
       concrete: '#bebebe',
       sidewalk: '#f8f7f3',
       lime: '#d8ff34',
+      violet: '#c16fff',
     }),
     fontFamily: {
       sans: [

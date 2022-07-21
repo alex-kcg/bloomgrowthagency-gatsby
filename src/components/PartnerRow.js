@@ -19,7 +19,7 @@ const PartnerRow = ({ partnerRow }) => (
       autoplay={{delay: 1}}
     >
       {partnerRow.partners.map((partner, index) => (
-        <SwiperSlide key={index} className={`w-auto px-2 ${index % 2 === 0 ? 'font-sans' : 'font-serif'} ${index % 3 === 0 ? 'italic' : 'not-italic'}`}>{partner.text}</SwiperSlide>
+        <SwiperSlide key={index} className={`w-auto px-3 ${index % 2 === 0 ? 'font-sans' : 'font-serif'} ${index % 3 === 0 ? 'italic' : 'not-italic'}`}>{partner.text}</SwiperSlide>
       ))}
     </Swiper>
   </div>

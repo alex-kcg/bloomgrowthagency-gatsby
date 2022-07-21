@@ -56,14 +56,18 @@ body {
 
 .button {
   @apply relative;
+}
 
+.button,
+.button svg {
   transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),
               background-color 100ms cubic-bezier(.694, 0, 0.335, 1),
-              color 100ms cubic-bezier(.694, 0, 0.335, 1);
+              color 100ms cubic-bezier(.694, 0, 0.335, 1),
+              border-color 100ms cubic-bezier(.694, 0, 0.335, 1);
 }
 
 .button:before {
-  @apply absolute bg-sidewalk h-full w-full inset-y-0 inset-x-0;
+  @apply absolute bg-violet h-full w-full inset-y-0 inset-x-0;
 
   content: " ";
   animation: opacityFallbackOut .5s step-end forwards;
@@ -79,6 +83,10 @@ body {
 
 .button-lime:before {
   @apply bg-lime;
+}
+
+.button-violet:before {
+  @apply bg-violet;
 }
 
 @tailwind components;
