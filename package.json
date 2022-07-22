@@ -49,6 +49,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.7",
     "gatsby-plugin-postcss": "^5.17.0",
+    "gsap": "^3.10.4",
     "postcss": "^8.4.14",
     "prettier": "^2.0.5",
     "swiper": "^8.2.6",

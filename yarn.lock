@@ -3497,6 +3497,11 @@
   "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001361.tgz"
   "version" "1.0.30001361"
 
+"canvas-image-cover@^2.0.2":
+  "integrity" "sha512-wbba8N9hePFLq7QYZZwojhm9fLNZO22/anmfRimfNa2XsCZ51iXp/luEWLqimqppscmKusLK3ypu1NveLmgOTA=="
+  "resolved" "https://registry.npmjs.org/canvas-image-cover/-/canvas-image-cover-2.0.2.tgz"
+  "version" "2.0.2"
+
 "ccount@^1.0.0", "ccount@^1.0.3":
   "integrity" "sha512-vlNK021QdI7PNeiUh/lKkC/mNHHfV0m/Ad5JoI0TYtlBnJAslM/JIkm/tGC88bkLIwO6OQ5uV6ztS6kVAtCDlg=="
   "resolved" "https://registry.npmjs.org/ccount/-/ccount-1.1.0.tgz"
@@ -6890,6 +6895,11 @@
     "kind-of" "^6.0.2"
     "section-matter" "^1.0.0"
     "strip-bom-string" "^1.0.0"
+
+"gsap@^3.10.4":
+  "integrity" "sha512-6QatdkKxXCMfvCW4rM++0RqyLQAzFX5nwl3yHS0XPgkZBkiSEY3VZVbMltrdtsbER/xZonLtyHt684wRp4erlQ=="
+  "resolved" "https://registry.npmjs.org/gsap/-/gsap-3.10.4.tgz"
+  "version" "3.10.4"
 
 "gzip-size@5.1.1":
   "integrity" "sha512-FNHi6mmoHvs1mxZAds4PpdCS6QG8B4C1krxJsMutgxl5t3+GlRTzzI3NEkifXx2pVsOvJdOGSmIgDhQ55FwdPA=="

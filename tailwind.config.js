@@ -15,7 +15,7 @@ module.exports = {
       transparent: colors.transparent,
       black: colors.black,
       white: colors.white,
-      ebony: '#071014',
+      ebony: '#030e12',
       'deep-sea': '#091319',
       slate: '#3a474d',
       concrete: '#bebebe',

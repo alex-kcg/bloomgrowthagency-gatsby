@@ -98,4 +98,8 @@ body {
   @apply ease-linear; 
 }
 
+.hero-bg-foreground {
+  min-height: 500vh;
+}
+
 @tailwind utilities;

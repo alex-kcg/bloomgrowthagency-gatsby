@@ -6,7 +6,7 @@ const Navbar = class extends React.Component {
   render() {
     return (
       <nav
-        className="navbar bg-ebony w-full"
+        className="navbar relative z-50 w-full"
         role="navigation"
         aria-label="main-navigation"
       >

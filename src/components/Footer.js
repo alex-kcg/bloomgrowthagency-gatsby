@@ -4,7 +4,7 @@ import settings from "../data/settings.yml"
 const Footer = class extends React.Component {
   render() {
     return (
-      <footer className="footer sticky z-50 bottom-0 bg-ebony text-concrete text-sm w-full mt-auto">
+      <footer className="footer sticky z-50 bottom-0 text-concrete text-sm w-full mt-auto">
         <div className="container mx-auto px-4 sm:flex sm:flex-row-reverse sm:items-center py-2 sm:py-4">
           <ul className="flex flex-wrap justify-center space-x-3 mb-2 sm:mb-0">
             {settings.footer.socialMediaLinks.map((data, index) => {
