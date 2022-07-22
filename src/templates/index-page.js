@@ -17,7 +17,7 @@ export const IndexPageTemplate = ({
       <section>
         <div className="container mx-auto px-4 text-center mb-10 md:w-full lg:mb-14">
           <h1 className="font-serif tracking-tight text-4xl mb-6 md:text-8xl lg:mb-10">{heading}</h1>
-          <a className="button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-lime text-ebony" href={button.url}>
+          <a className="button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-electric-lime text-ebony" href={button.url}>
             <span className="relative z-10">
               {button.text}
             </span>
@@ -42,6 +42,9 @@ IndexPageTemplate.propTypes = {
       partners: PropTypes.arrayOf(
         PropTypes.shape({
           text: PropTypes.string,
+          url: PropTypes.string,
+          colorClassName: PropTypes.string,
+          fontClassName: PropTypes.string,
         })
       ),
     }),
@@ -89,6 +92,9 @@ export const pageQuery = graphql`
           direction
           partners {
             text
+            url
+            colorClassName
+            fontClassName
           }
         }
       }

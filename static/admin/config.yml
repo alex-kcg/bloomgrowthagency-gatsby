@@ -61,6 +61,30 @@ collections:
                     fields:
                       [
                         { label: Text, name: text, widget: text },
+                        { label: URL, name: url, widget: string },
+                        {
+                          label: "Hover color",
+                          name: "colorClassName",
+                          widget: "select",
+                          options: [
+                            { label: "Dark Gray", value: "hover:text-dark-gray" },
+                            { label: "Gray", value: "hover:text-gray" },
+                            { label: "Voltage", value: "hover:text-voltage" },
+                            { label: "Summer Rain", value: "hover:text-summer-rain" },
+                            { label: "Electric Lime", value: "hover:text-electric-lime" },
+                          ]
+                        },
+                        {
+                          label: "Font style",
+                          name: "fontClassName",
+                          widget: "select",
+                          options: [
+                            { label: "Sans normal", value: "font-sans font-normal" },
+                            { label: "Serif normal", value: "font-serif font-normal" },
+                            { label: "Serif light", value: "font-serif font-light" },
+                            { label: "Serif light italic", value: "font-serif font-light italic" },
+                          ]
+                        },
                       ],
                   },
                 ],

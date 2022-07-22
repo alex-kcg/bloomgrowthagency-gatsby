@@ -67,7 +67,7 @@ body {
 }
 
 .button:before {
-  @apply absolute bg-violet h-full w-full inset-y-0 inset-x-0;
+  @apply absolute bg-voltage h-full w-full inset-y-0 inset-x-0;
 
   content: " ";
   animation: opacityFallbackOut .5s step-end forwards;
@@ -81,12 +81,12 @@ body {
   clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
 }
 
-.button-lime:before {
-  @apply bg-lime;
+.button-electric-lime:before {
+  @apply bg-electric-lime;
 }
 
-.button-violet:before {
-  @apply bg-violet;
+.button-voltage:before {
+  @apply bg-voltage;
 }
 
 @tailwind components;

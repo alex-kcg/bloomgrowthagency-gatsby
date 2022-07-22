@@ -8,7 +8,6 @@ const PartnerRow = ({ partnerRow }) => (
     <Swiper
       className="marquee"
       modules={[Autoplay]}
-      dir={partnerRow.direction}
       spaceBetween={0}
       loop={true}
       loopedSlides={50}
@@ -16,10 +15,14 @@ const PartnerRow = ({ partnerRow }) => (
       allowTouchMove={false}
       slidesPerView="auto"
       speed={6000}
-      autoplay={{delay: 1}}
+      autoplay={{delay: 1, reverseDirection: partnerRow.direction === 'ltr'}}
     >
       {partnerRow.partners.map((partner, index) => (
-        <SwiperSlide key={index} className={`w-auto px-3 ${index % 2 === 0 ? 'font-sans' : 'font-serif'} ${index % 3 === 0 ? 'italic' : 'not-italic'}`}>{partner.text}</SwiperSlide>
+        <SwiperSlide key={index} className="w-auto px-3">
+          <a href={partner.url} target="_blank" className={`transition-colors duration-300 ease-in-out ${partner.colorClassName} ${partner.fontClassName}`}>
+            {partner.text}
+          </a>
+        </SwiperSlide>
       ))}
     </Swiper>
   </div>
@@ -29,8 +32,10 @@ PartnerRow.propTypes = {
   direction: PropTypes.string,
   partners: PropTypes.arrayOf(
     PropTypes.shape({
-      image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
       text: PropTypes.string,
+      url: PropTypes.string,
+      colorClassName: PropTypes.string,
+      fontClassName: PropTypes.string,
     })
   ),
 };
