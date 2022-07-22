@@ -58,7 +58,7 @@ partnerRows:
     - text: Braintrust
       url: https://www.usebraintrust.com/
       colorClassName: hover:text-gray
-      fontClassName: font-sans font-normal
+      fontClassName: font-serif font-normal
     - text: Fidelity
       url: https://www.fidelity.com/
       colorClassName: hover:text-electric-lime
