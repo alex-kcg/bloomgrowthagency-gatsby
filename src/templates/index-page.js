@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { motion } from "framer-motion"
 import Layout from "../components/Layout";
 import PartnerRow from "../components/PartnerRow";
 
@@ -16,16 +17,34 @@ export const IndexPageTemplate = ({
     <div className="w-full">
       <section>
         <div className="container mx-auto px-4 text-center mb-10 md:w-full lg:mb-14">
-          <h1 className="font-serif tracking-tight text-4xl mb-6 md:text-8xl lg:mb-10">{heading}</h1>
-          <a className="button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-electric-lime text-ebony" href={button.url}>
+          <motion.h1
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            transition={{ delay: 0.25 }}
+            className="font-serif tracking-tight text-4xl mb-6 md:text-8xl lg:mb-10">
+            {heading}
+          </motion.h1>
+          <motion.a
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            transition={{ delay: 0.375 }}
+            className="button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-electric-lime text-ebony"
+            href={button.url}
+          >
             <span className="relative z-10">
               {button.text}
             </span>
-          </a>
+          </motion.a>
         </div>
-        {partnerRows.map((row, index) => (
-          <PartnerRow key={index} partnerRow={row} />
-        ))}
+        <motion.div
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          {partnerRows.map((row, index) => (
+            <PartnerRow key={index} partnerRow={row} />
+          ))}
+        </motion.div>
       </section>
     </div>
   );
