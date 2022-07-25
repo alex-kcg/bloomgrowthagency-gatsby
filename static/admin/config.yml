@@ -67,7 +67,6 @@ collections:
                           name: "colorClassName",
                           widget: "select",
                           options: [
-                            { label: "Dark Gray", value: "hover:text-dark-gray" },
                             { label: "Gray", value: "hover:text-gray" },
                             { label: "Voltage", value: "hover:text-voltage" },
                             { label: "Summer Rain", value: "hover:text-summer-rain" },

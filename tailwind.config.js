@@ -21,7 +21,6 @@ module.exports = {
       slate: '#3a474d',
       sidewalk: '#f8f7f3',
       gray: '#bebebe',
-      'dark-gray': '#333333',
       'electric-lime': '#d8ff34',
       voltage: '#c16fff',
       'summer-rain': '#40ebd5',

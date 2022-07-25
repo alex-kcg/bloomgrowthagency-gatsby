@@ -11,7 +11,7 @@ partnerRows:
     partners:
     - text: Retirable
       url: https://retirable.com/
-      colorClassName: hover:text-dark-gray
+      colorClassName: hover:text-electric-lime
       fontClassName: font-sans font-normal
     - text: Slice
       url: https://slicelife.com/
@@ -41,7 +41,7 @@ partnerRows:
     partners:
     - text: MainStreet
       url: https://www.mainstreet.com/
-      colorClassName: hover:text-dark-gray
+      colorClassName: hover:text-electric-lime
       fontClassName: font-serif font-normal
     - text: Merge
       url: https://mergeworld.com/
