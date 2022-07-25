@@ -25,7 +25,7 @@ const Footer = class extends React.Component {
                 return <li key={`content_item_${index}`}>{data.name}</li>
               })}
             </ul>
-            <p className="text-center block w-full mt-6 sm:w-auto sm:mr-auto sm:mt-0">{settings.footer.signoff}</p>
+            <p className="text-center block w-full mt-4 sm:w-auto sm:mr-auto sm:mt-0">{settings.footer.signoff}</p>
           </div>
         </div>
       </footer>
