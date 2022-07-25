@@ -20,7 +20,7 @@ const Footer = class extends React.Component {
                 </li>
               })}
             </ul>
-            <ul className="separated-list flex flex-wrap justify-center space-x-6 ml-6 sm:ml-0 sm:mr-6">
+            <ul className="separated-list flex flex-wrap justify-center space-x-6 ml-4 sm:ml-0 sm:mr-6">
               {settings.footer.locations.map((data, index) => {
                 return <li key={`content_item_${index}`}>{data.name}</li>
               })}
