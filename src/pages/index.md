@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
 title: Bloom Growth Agency
-description: The design studio fueling fast moving product companies
+description: A product design studio for fast moving companies
 heading: The design studio fueling fast moving product companies
 button:
   text: Get in touch
