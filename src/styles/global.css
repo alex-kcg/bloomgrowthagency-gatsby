@@ -41,7 +41,7 @@
 }
 
 body {
-  @apply bg-ebony text-white;
+  @apply bg-not-dark-blue text-white;
 }
 
 .separated-list > li:not(:last-child) {

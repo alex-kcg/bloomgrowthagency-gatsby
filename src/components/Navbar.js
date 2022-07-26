@@ -7,7 +7,7 @@ const Navbar = class extends React.Component {
   render() {
     return (
       <nav
-        className="navbar top-0 inset-x-0 bg-ebony w-full"
+        className="navbar top-0 inset-x-0 bg-not-dark-blue w-full"
         role="navigation"
         aria-label="main-navigation"
       >

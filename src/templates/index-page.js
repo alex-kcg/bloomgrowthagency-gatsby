@@ -28,7 +28,7 @@ export const IndexPageTemplate = ({
             animate={{ y: 0, opacity: 1 }}
             initial={{ y: 100, opacity: 0 }}
             transition={{ duration: 0.375, ease: 'easeOut', delay: 0.75 }}
-            className=" button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-electric-lime text-ebony"
+            className=" button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-electric-lime text-not-dark-blue"
             href={button.url}
           >
             <span className="relative z-10">
