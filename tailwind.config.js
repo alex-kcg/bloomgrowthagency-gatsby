@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
+    "./static/**/*.{yml,yaml}",
   ],
   theme: {
     screens: {
@@ -15,13 +16,16 @@ module.exports = {
       transparent: colors.transparent,
       black: colors.black,
       white: colors.white,
-      ebony: '#030e12',
+      'electric-lime': '#d8ff34',
+      'summer-rain': '#40ebd5',
+      voltage: '#c16fff',
+      'not-dark-blue': '#071014',
+      'background-blue': '#122933',
+      gray: '#bebebe',
+      'dark-gray': '#333333',
+      cream: '#f8f7f3',
       'deep-sea': '#091319',
       slate: '#3a474d',
-      concrete: '#bebebe',
-      sidewalk: '#f8f7f3',
-      lime: '#d8ff34',
-      violet: '#c16fff',
     }),
     fontFamily: {
       sans: [

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { motion } from "framer-motion";
 import Layout from "../components/Layout";
 import PartnerRow from "../components/PartnerRow";
 import { gsap } from "gsap"
@@ -72,22 +73,40 @@ export const IndexPageTemplate = ({
   });
 
   return (
-    <div className="w-full">
+    <div className="w-full h-screen flex justify-center items-center py-44">
       <div className="fixed z-0 inset-0 flex justify-center items-center">
         <canvas id="hero-bg" className="hero-bg aspect-video w-full" ref={heroBgRef} />
       </div>
       <section className="hero-bg-foreground relative z-50">
         <div className="container mx-auto px-4 text-center mb-10 md:w-full lg:mb-14">
-          <h1 className="font-serif tracking-tight text-4xl mb-6 md:text-8xl lg:mb-10">{heading}</h1>
-          <a className="button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-lime text-ebony" href={button.url}>
+          <motion.h1
+            animate={{ y: 0, opacity: 1 }}
+            initial={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.375, ease: 'easeOut', delay: 0.5 }}
+            className=" font-serif tracking-tight text-4xl mb-6 md:text-8xl lg:mb-10">
+            {heading}
+          </motion.h1>
+          <motion.a
+            animate={{ y: 0, opacity: 1 }}
+            initial={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.375, ease: 'easeOut', delay: 0.75 }}
+            className=" button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-electric-lime text-not-dark-blue"
+            href={button.url}
+          >
             <span className="relative z-10">
               {button.text}
             </span>
-          </a>
+          </motion.a>
         </div>
-        {partnerRows.map((row, index) => (
-          <PartnerRow key={index} partnerRow={row} />
-        ))}
+        <motion.div
+          animate={{ y: 0, opacity: 1 }}
+          initial={{ y: 100, opacity: 0 }}
+          transition={{ duration: 1, ease: 'easeOut', delay: 1.5 }}
+        >
+          {partnerRows.map((row, index) => (
+            <PartnerRow key={index} partnerRow={row} />
+          ))}
+        </motion.div>
       </section>
     </div>
   );
@@ -104,6 +123,9 @@ IndexPageTemplate.propTypes = {
       partners: PropTypes.arrayOf(
         PropTypes.shape({
           text: PropTypes.string,
+          url: PropTypes.string,
+          colorClassName: PropTypes.string,
+          fontClassName: PropTypes.string,
         })
       ),
     }),
@@ -151,6 +173,9 @@ export const pageQuery = graphql`
           direction
           partners {
             text
+            url
+            colorClassName
+            fontClassName
           }
         }
       }

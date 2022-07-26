@@ -32,7 +32,9 @@ const TemplateWrapper = ({ children }) => {
         <meta name="theme-color" content="#d8ff34" />
       </Helmet>
       <Navbar />
-      <div className="flex-1 flex flex-col justify-center items-center overflow-hidden sm:justify-start">{children}</div>
+      <div className="overflow-x-hidden">
+        {children}
+      </div>
       <Footer />
     </div>
   );

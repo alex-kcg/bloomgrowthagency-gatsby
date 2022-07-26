@@ -41,7 +41,10 @@
 }
 
 body {
-  @apply bg-ebony text-white;
+  @apply text-white;
+
+  background-color: #030e12;
+  min-height: 500vh;
 }
 
 .separated-list > li:not(:last-child) {
@@ -67,7 +70,7 @@ body {
 }
 
 .button:before {
-  @apply absolute bg-violet h-full w-full inset-y-0 inset-x-0;
+  @apply absolute bg-voltage h-full w-full inset-y-0 inset-x-0;
 
   content: " ";
   animation: opacityFallbackOut .5s step-end forwards;
@@ -81,12 +84,12 @@ body {
   clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
 }
 
-.button-lime:before {
-  @apply bg-lime;
+.button-electric-lime:before {
+  @apply bg-electric-lime;
 }
 
-.button-violet:before {
-  @apply bg-violet;
+.button-voltage:before {
+  @apply bg-voltage;
 }
 
 @tailwind components;
@@ -96,10 +99,6 @@ body {
 
 .marquee .swiper-wrapper {
   @apply ease-linear; 
-}
-
-.hero-bg-foreground {
-  min-height: 500vh;
 }
 
 @tailwind utilities;
