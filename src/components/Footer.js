@@ -1,10 +1,16 @@
 import * as React from "react";
 import settings from "../data/settings.yml"
+import { motion } from "framer-motion";
 
 const Footer = class extends React.Component {
   render() {
     return (
-      <footer className="footer fixed z-50 bottom-0 w-full mt-auto pt-4 sm:pt-24">
+      <motion.footer
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut', delay: 2.25 }}
+        className="footer fixed z-50 bottom-0 w-full mt-auto pt-4 sm:pt-24"
+      >
         <div className="text-gray text-sm">
           <div className="container mx-auto px-4 flex flex-wrap items-center justify-center py-2 sm:flex-nowrap sm:flex-row-reverse sm:justify-start sm:py-4">
             <ul className="flex flex-wrap justify-center space-x-3">
@@ -28,7 +34,7 @@ const Footer = class extends React.Component {
             <p className="text-center block w-full mt-4 sm:w-auto sm:mr-auto sm:mt-0">{settings.footer.signoff}</p>
           </div>
         </div>
-      </footer>
+      </motion.footer>
     );
   }
 };

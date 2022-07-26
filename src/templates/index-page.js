@@ -82,26 +82,29 @@ export const IndexPageTemplate = ({
           <motion.h1
             animate={{ y: 0, opacity: 1 }}
             initial={{ y: 100, opacity: 0 }}
-            transition={{ duration: 0.375, ease: 'easeOut', delay: 0.5 }}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.5 }}
             className=" font-serif tracking-tight text-4xl mb-6 md:text-8xl lg:mb-10">
             {heading}
           </motion.h1>
-          <motion.a
+          <motion.div
             animate={{ y: 0, opacity: 1 }}
             initial={{ y: 100, opacity: 0 }}
-            transition={{ duration: 0.375, ease: 'easeOut', delay: 0.75 }}
-            className=" button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-electric-lime text-not-dark-blue"
-            href={button.url}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.75 }}
           >
-            <span className="relative z-10">
-              {button.text}
-            </span>
-          </motion.a>
+            <a
+              className=" button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-electric-lime text-not-dark-blue"
+              href={button.url}
+            >
+              <span className="relative z-10">
+                {button.text}
+              </span>
+            </a>
+          </motion.div>
         </div>
         <motion.div
           animate={{ y: 0, opacity: 1 }}
           initial={{ y: 100, opacity: 0 }}
-          transition={{ duration: 1, ease: 'easeOut', delay: 1.5 }}
+          transition={{ duration: 1, ease: 'easeOut', delay: 1.25 }}
         >
           {partnerRows.map((row, index) => (
             <PartnerRow key={index} partnerRow={row} />
