@@ -42,7 +42,7 @@ export const IndexPageTemplate = ({
         <motion.div
           animate={{ y: 0, opacity: 1 }}
           initial={{ y: 100, opacity: 0 }}
-          transition={{ duration: 1, ease: 'easeOut', delay: 1.5 }}
+          transition={{ duration: 1, ease: 'easeOut', delay: 1.25 }}
         >
           {partnerRows.map((row, index) => (
             <PartnerRow key={index} partnerRow={row} />

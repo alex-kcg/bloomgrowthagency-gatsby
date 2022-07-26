@@ -8,7 +8,7 @@ const Footer = class extends React.Component {
       <motion.footer
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
-        transition={{ duration: 0.5, ease: 'easeOut', delay: 2.5 }}
+        transition={{ duration: 0.5, ease: 'easeOut', delay: 2.25 }}
         className="footer sticky z-50 bottom-0 w-full mt-auto pt-4 sm:pt-24"
       >
         <div className="text-gray text-sm">
