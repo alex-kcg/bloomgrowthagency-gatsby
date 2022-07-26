@@ -41,11 +41,11 @@ partnerRows:
     partners:
     - text: MainStreet
       url: https://www.mainstreet.com/
-      colorClassName: hover:text-electric-lime
+      colorClassName: hover:text-gray
       fontClassName: font-serif font-normal
     - text: Merge
       url: https://mergeworld.com/
-      colorClassName: hover:text-gray
+      colorClassName: hover:text-electric-lime
       fontClassName: font-sans font-normal
     - text: One Finance
       url: https://www.one.app/
