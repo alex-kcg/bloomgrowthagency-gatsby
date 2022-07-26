@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import Layout from "../components/Layout";
 import PartnerRow from "../components/PartnerRow";
 
@@ -18,17 +18,17 @@ export const IndexPageTemplate = ({
       <section>
         <div className="container mx-auto px-4 text-center mb-10 md:w-full lg:mb-14">
           <motion.h1
-            animate={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            transition={{ delay: 0.25 }}
-            className="font-serif tracking-tight text-4xl mb-6 md:text-8xl lg:mb-10">
+            animate={{ y: 0, opacity: 1 }}
+            initial={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.375, ease: 'easeOut', delay: 0.5 }}
+            className=" font-serif tracking-tight text-4xl mb-6 md:text-8xl lg:mb-10">
             {heading}
           </motion.h1>
           <motion.a
-            animate={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            transition={{ delay: 0.375 }}
-            className="button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-electric-lime text-ebony"
+            animate={{ y: 0, opacity: 1 }}
+            initial={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.375, ease: 'easeOut', delay: 0.75 }}
+            className=" button inline-block text-base text-center overflow-hidden py-4 px-12 rounded-full bg-electric-lime text-ebony"
             href={button.url}
           >
             <span className="relative z-10">
@@ -37,9 +37,9 @@ export const IndexPageTemplate = ({
           </motion.a>
         </div>
         <motion.div
-          animate={{ opacity: 1 }}
-          initial={{ opacity: 0 }}
-          transition={{ delay: 0.5 }}
+          animate={{ y: 0, opacity: 1 }}
+          initial={{ y: 100, opacity: 0 }}
+          transition={{ duration: 1, ease: 'easeOut', delay: 1.5 }}
         >
           {partnerRows.map((row, index) => (
             <PartnerRow key={index} partnerRow={row} />
