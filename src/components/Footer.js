@@ -5,7 +5,7 @@ const Footer = class extends React.Component {
   render() {
     return (
       <footer className="footer sticky z-50 bottom-0 w-full mt-auto pt-4 sm:pt-24">
-        <div className="bg-not-dark-blue text-gray text-sm">
+        <div className="text-gray text-sm">
           <div className="container mx-auto px-4 flex flex-wrap items-center justify-center py-2 sm:flex-nowrap sm:flex-row-reverse sm:justify-start sm:py-4">
             <ul className="flex flex-wrap justify-center space-x-3">
               {settings.footer.socialMediaLinks.map((data, index) => {
