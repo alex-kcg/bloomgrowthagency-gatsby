@@ -5,7 +5,7 @@ description: A product design studio for fast moving companies
 heading: The design studio fueling fast moving product companies
 button:
   text: Get in touch
-  url: "mailto:team@bloomgrowthagency.com"
+  url: "mailto:team@bloomgrowthagency.com?subject=Bloom%20Website%20Inquiry"
 partnerRows:
   - direction: ltr
     partners:
