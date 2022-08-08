@@ -113,15 +113,16 @@ export const IndexPageTemplate = ({
               </h1>
             </div>
           </div>
+          <div className="text-6xl tracking-tight text-slate mb-4 lg:text-11xl lg:mb-6">
+            <div>
+              {partnerRows.map((row, index) => (
+                <PartnerRow key={index} partnerRow={row} />
+              ))}
+            </div>
+          </div>
         </div>
       </motion.section>
-      <div className="overflow-x-hidden min-h-screen py-44 w-full flex justify-center items-center">
-        <div>
-          {partnerRows.map((row, index) => (
-            <PartnerRow key={index} partnerRow={row} />
-          ))}
-        </div>
-      </div>
+      <div className="min-h-screen py-44 w-full" />
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

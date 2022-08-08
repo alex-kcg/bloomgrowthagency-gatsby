@@ -1,30 +1,26 @@
 import * as React from "react";
-import { Autoplay } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 
 const PartnerRow = ({ partnerRow }) => (
-  <div className="select-none text-6xl tracking-tight text-slate mb-4 lg:text-11xl lg:mb-6">
-    <Swiper
-      className="marquee"
-      modules={[Autoplay]}
-      spaceBetween={0}
-      loop={true}
-      loopedSlides={50}
-      centeredSlides={true}
-      allowTouchMove={false}
-      slidesPerView="auto"
-      speed={6000}
-      autoplay={{delay: 1, reverseDirection: partnerRow.direction === 'ltr'}}
+  <div
+    className="relative select-none overflow-x-hidden mb-14"
+    style={{ height: '1.1667em' }}
+  >
+    <motion.div
+      animate={{ x: [partnerRow.direction === 'ltr' ? 0 : -20000, partnerRow.direction === 'ltr' ? -20000 : 0], transition: { x: { repeat: Infinity, repeatType: 'loop', duration: 300, ease: 'linear' }} }}
+      className={`marquee absolute whitespace-nowrap ${partnerRow.direction}`}
     >
-      {partnerRow.partners.map((partner, index) => (
-        <SwiperSlide key={index} className="w-auto px-3">
-          <a href={partner.url} target="_blank" className={`transition-colors duration-300 ease-in-out ${partner.colorClassName} ${partner.fontClassName}`}>
-            {partner.text}
-          </a>
-        </SwiperSlide>
+      {[...Array(100)].map((e, i) => (
+        <span className="iteration" key={i}>
+          {partnerRow.partners.map((partner, index) => (
+            <a key={index} href={partner.url} target="_blank" className={`px-3 transition-colors duration-300 ease-in-out ${partner.colorClassName} ${partner.fontClassName}`}>
+              {partner.text}
+            </a>
+          ))}
+        </span>
       ))}
-    </Swiper>
+    </motion.div>
   </div>
 );
 

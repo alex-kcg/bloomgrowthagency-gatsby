@@ -92,13 +92,6 @@ body {
 
 @tailwind components;
 
-@import 'swiper/css';
-@import 'swiper/css/autoplay';
-
-.marquee .swiper-wrapper {
-  @apply ease-linear; 
-}
-
 .hero-headline > span:last-child > span:first-child {
   @apply text-electric-lime;
 }
