@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 import { motion } from "framer-motion";
+import settings from "../data/settings.yml"
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import PartnerRow from "../components/PartnerRow";
@@ -9,6 +10,8 @@ import Accordion from "../components/Accordion";
 import PartnerCard from "../components/PartnerCard";
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+import arrowIcon from "../img/arrow.svg"
 
 const { useEffect, useRef } = React;
 
@@ -332,33 +335,46 @@ export const IndexPageTemplate = ({
                   </a>
                 </div>
               </div>
-              <div className="hidden py-20 flex justify-between -mx-3">
+              <div className="py-20 flex justify-between -mx-3">
                 <div className="w-full px-3 lg:w-1/2">
-                  Bloom
+                  <Link to="/" title="Logo">
+                    <img src={settings.header.logo.image} alt={settings.header.logo.alt} className="h-20 w-auto" />
+                  </Link>
                 </div>
                 <div className="w-full px-3 lg:w-5/12">
-                  <h3 className="mb-2">
+                  <h3 className="font-light text-3xl leading-normal tracking-snug mb-2">
                     Zach Greenberger
                   </h3>
-                  <h4 className="mb-14">
+                  <h4 className="text-lg font-light leading-relaxed mb-10">
                     Head of Growth
                   </h4>
-                  <ul>
-                    <li>
-                      <a href="mailto:zach@bloomgrowthagency.com">
-                        zach@bloomgrowthagency.com
+                  <ul className="mb-10">
+                    <li className="border-b border-gray">
+                      <a className="group flex flex-wrap justify-start items-center space-x-4 py-4" href="mailto:zach@bloomgrowthagency.com">
+                        <img src={arrowIcon} alt="Arrow icon" className="block w-8 h-8 p-2 rounded-full bg-summer-rain" />
+                        <span className="transition-color duration-500 ease-out group-hover:text-summer-rain">
+                          zach@bloomgrowthagency.com
+                        </span>
                       </a>
                     </li>
-                    <li>
-                      <a href="tel:+14136363186">
-                        +1 413.636.3186
+                    <li className="border-b border-gray">
+                      <a className="group flex flex-wrap justify-start items-center space-x-4 py-4" href="tel:+14136363186">
+                        <img src={arrowIcon} alt="Arrow icon" className="block w-8 h-8 p-2 rounded-full bg-voltage" />
+                        <span className="transition-color duration-500 ease-out group-hover:text-voltage">
+                          +1 413.636.3186
+                        </span>
                       </a>
                     </li>
-                    <li>
-                      MA / NYC / SF
+                    <li className="border-b border-gray">
+                      <a className="group flex flex-wrap justify-start items-center space-x-4 py-4" href="#">
+                        <img src={arrowIcon} alt="Arrow icon" className="block w-8 h-8 p-2 rounded-full bg-electric-lime" />
+                        <span className="transition-color duration-500 ease-out group-hover:text-electric-lime">
+                          MA / NYC / SF
+                        </span>
+                      </a>
                     </li>
                   </ul>
-                  <nav>
+                  <nav className="flex flex-wrap space-x-6 text-lg font-light leading-relaxed mb-10">
                     <a href="#">
                       Careers
                     </a>
@@ -369,7 +385,9 @@ export const IndexPageTemplate = ({
                       LinkedIn
                     </a>
                   </nav>
-                  Copyright © 2022 Bloom Growth Agency
+                  <p className="text-sm font-light leading-relaxed">
+                    Copyright © 2022 Bloom Growth Agency
+                  </p>
                 </div>
               </div>
             </div>
