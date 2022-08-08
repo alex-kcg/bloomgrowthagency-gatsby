@@ -136,9 +136,14 @@ export const IndexPageTemplate = ({
             <div className="max-w-[63.5rem] mx-auto">
               <ol className="section-1-ol font-light text-3xl leading-normal tracking-snug flex flex-col items-start space-y-40 lg:w-1/2">
                 {numberedList.map((listItem, index) => (
-                  <li key={index}>
+                  <motion.li
+                    key={index}
+                    initial={{ color: '#bebebe' }}
+                    whileInView={{ color: '#f8f7f3' }}
+                    viewport={{ margin: '-50%' }}
+                  >
                     {listItem.text}
-                  </li>
+                  </motion.li>
                 ))}
               </ol>
             </div>
@@ -293,7 +298,7 @@ export const IndexPageTemplate = ({
         whileInView={{ opacity: 1 }}
         id="section-4"
       >
-        <div className="background fixed z-0 inset-0 flex justify-center items-center">
+        <div className="background fixed z-0 inset-0 flex justify-center items-center transform -scale-x-100">
           <canvas className="aspect-video w-full" />
         </div>
         <div className="foreground relative z-50 w-full">
@@ -309,7 +314,7 @@ export const IndexPageTemplate = ({
                   <p className="pb-6 text-lg font-light leading-relaxed">
                     We’re helping partners build world class design organizations with our handbuilt pipeline. Interested? 
                   </p>
-                  <a href="#" className="transition-color duration-500 ease-out hover:text-electric-lime">
+                  <a href="#" className="transition-color duration-500 ease-out text-electric-lime">
                     <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
                     </svg>
@@ -327,7 +332,7 @@ export const IndexPageTemplate = ({
                   <p className="pb-6 text-lg font-light leading-relaxed">
                     Scaling products and design operations is hard. We’re here to make it easy. 
                   </p>
-                  <a href="#" className="transition-color duration-500 ease-out hover:text-electric-lime">
+                  <a href="#" className="transition-color duration-500 ease-out text-electric-lime">
                     <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
                     </svg>

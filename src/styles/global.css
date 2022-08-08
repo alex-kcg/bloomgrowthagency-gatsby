@@ -118,12 +118,4 @@ body {
   line-height: 0.72727272em;
 }
 
-.section-1-ol li {
-  @apply text-gray;
-}
-
-.section-1-ol li.active {
-  @apply text-cream;
-}
-
 @tailwind utilities;
