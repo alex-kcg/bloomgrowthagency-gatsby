@@ -332,7 +332,7 @@ export const IndexPageTemplate = ({
                   </a>
                 </div>
               </div>
-              <div className="py-20 flex justify-between -mx-3">
+              <div className="hidden py-20 flex justify-between -mx-3">
                 <div className="w-full px-3 lg:w-1/2">
                   Bloom
                 </div>
