@@ -35,7 +35,7 @@ export const IndexPageTemplate = ({
   // store a reference to the box div
   // wait until DOM has been rendered
   useEffect(() => {
-    const initFrameSequence = (selector, filename, fileformat, canvasWidth, canvasHeight, frameCount) => {
+    const initFrameSequence = (selector, filename, fileformat, canvasWidth, canvasHeight, frameCount, top = false, bottom = false) => {
       const container = document.getElementById(selector);
       const canvas = container.querySelector('canvas');
       const context = canvas.getContext('2d');
@@ -65,8 +65,8 @@ export const IndexPageTemplate = ({
       }
 
       window.addEventListener('scroll', () => {  
-        const containerScrollTop = 0 - container.getBoundingClientRect().top;
-        const maxScrollTop = container.scrollHeight - window.innerHeight;
+        const containerScrollTop = (top ? 0 : window.innerHeight) - container.getBoundingClientRect().top;
+        const maxScrollTop = (bottom ? 0 : window.innerHeight) + container.scrollHeight;
         const scrollFraction =  containerScrollTop / maxScrollTop;
         const normalizedScrollFraction =  scrollFraction > 1 ? 1 : scrollFraction < 0 ? 0 : scrollFraction;
         const frameIndex = Math.min(
@@ -80,10 +80,10 @@ export const IndexPageTemplate = ({
       preloadImages()
     };
 
-    initFrameSequence('hero', 'BG-SiteAnim-PlanterModel-Phase1-v6-frame', 'jpg', 1440, 810, 180)
-    initFrameSequence('section-1', 'BG-SiteAnim-PlanterModel-Phase2-v5-frame', 'jpg', 1200, 1200, 150)
-    initFrameSequence('section-3', 'phase4-v5-frame', 'jpg', 1200, 675, 200)
-    initFrameSequence('section-4', 'BG-SiteAnim-PlanterModel-Phase6-v3-frame', 'jpg', 960, 540, 90)
+    initFrameSequence('hero', 'BG-SiteAnim-PlanterModel-Phase1-v6-frame', 'jpg', 1440, 810, 180, true, false)
+    initFrameSequence('section-1', 'BG-SiteAnim-PlanterModel-Phase2-v5-frame', 'jpg', 1200, 1200, 150, false, false)
+    initFrameSequence('section-3', 'phase4-v5-frame', 'jpg', 1200, 675, 200, false, false)
+    initFrameSequence('section-4', 'BG-SiteAnim-PlanterModel-Phase6-v3-frame', 'jpg', 960, 540, 90, false, true)
   });
 
   return (
@@ -129,7 +129,10 @@ export const IndexPageTemplate = ({
         id="section-1"
         className="min-h-[200vh]"
       >
-        <div className="background fixed z-0 inset-0 flex justify-end items-center">
+        <div
+          className="background fixed z-0 inset-0 flex justify-end items-center"
+          style={{ backgroundColor: '#010b0d' }}
+        >
           <canvas className="aspect-square w-1/2" />
         </div>
         <div className="foreground relative z-50 w-full">
