@@ -41,9 +41,7 @@
 }
 
 body {
-  @apply text-white;
-
-  background-color: #030e12;
+  @apply text-white bg-not-dark-blue;
 }
 
 .separated-list > li:not(:last-child) {
@@ -56,38 +54,39 @@ body {
   content: "|";
 }
 
-.button {
+.bg-animate {
   @apply relative;
 }
 
-.button,
-.button svg {
+.bg-animate,
+.bg-animate .bg-inner-animate {
   transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),
               background-color 100ms cubic-bezier(.694, 0, 0.335, 1),
               color 100ms cubic-bezier(.694, 0, 0.335, 1),
               border-color 100ms cubic-bezier(.694, 0, 0.335, 1);
 }
 
-.button:before {
-  @apply absolute bg-voltage h-full w-full inset-y-0 inset-x-0;
+.bg-animate:before {
+  @apply absolute bg-voltage inset-0;
 
   content: " ";
+  border-radius: inherit;
   animation: opacityFallbackOut .5s step-end forwards;
   clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
   transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1),
               -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
 }
 
-.button:hover:before {
+.bg-animate:hover:before {
   animation: opacityFallbackIn 0s step-start forwards;
   clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
 }
 
-.button-electric-lime:before {
+.bg-animate-electric-lime:before {
   @apply bg-electric-lime;
 }
 
-.button-voltage:before {
+.bg-animate-voltage:before {
   @apply bg-voltage;
 }
 
@@ -98,6 +97,33 @@ body {
 
 .marquee .swiper-wrapper {
   @apply ease-linear; 
+}
+
+.hero-headline > span:last-child > span:first-child {
+  @apply text-electric-lime;
+}
+
+.section-1-ol {
+  counter-reset: section-1-ol;
+}
+
+.section-1-ol li {
+  counter-increment: section-1-ol;
+}
+
+.section-1-ol li::before {
+  @apply block text-10xl font-light pb-8 mb-8 border-b border-gray;
+
+  content: "0" counter(section-1-ol);
+  line-height: 0.72727272em;
+}
+
+.section-1-ol li {
+  @apply text-gray;
+}
+
+.section-1-ol li.active {
+  @apply text-cream;
 }
 
 @tailwind utilities;

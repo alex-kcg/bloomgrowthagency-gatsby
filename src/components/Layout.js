@@ -31,11 +31,9 @@ const TemplateWrapper = ({ children }) => {
         <meta name="msapplication-TileColor" content="#071014" />
         <meta name="theme-color" content="#d8ff34" />
       </Helmet>
-      <Navbar />
-      <div className="overflow-x-hidden">
+      <div>
         {children}
       </div>
-      <Footer />
     </div>
   );
 };

@@ -30,16 +30,6 @@ collections:
           - { label: Description, name: description, widget: text }
           - { label: Heading, name: heading, widget: string }
           - {
-              label: Button,
-              name: button,
-              widget: object,
-              fields:
-                [
-                  { label: Text, name: text, widget: string },
-                  { label: URL, name: url, widget: string },
-                ],
-            }
-          - {
               label: Partner rows,
               name: partnerRows,
               widget: list,
@@ -88,6 +78,28 @@ collections:
                   },
                 ],
             }
+          - {
+              label: Numbered list,
+              name: numberedList,
+              widget: list,
+              fields:
+                [
+                  { label: Text, name: text, widget: text },
+                ],
+            }
+          - { label: Accordion heading, name: accordionHeading, widget: string }
+          - {
+              label: Accordion items,
+              name: accordionItems,
+              widget: list,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: text },
+                  { label: Body, name: body, widget: textarea },
+                ],
+            }
+          - { label: Partners heading, name: partnersHeading, widget: string }
+          - { label: Partners subheading, name: partnersSubheading, widget: string }
   - name: "settings"
     label: "Settings"
     files:

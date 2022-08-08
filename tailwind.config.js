@@ -76,15 +76,22 @@ module.exports = {
       '4xl': ['2.5rem', { lineHeight: '3rem' }],
       '5xl': ['3rem', { lineHeight: '3.5rem' }],
       '6xl': ['3.5rem', { lineHeight: '4rem' }],
-      '7xl': ['4rem', { lineHeight: '5rem' }],
-      '8xl': ['4.5rem', { lineHeight: '5.5rem' }],
-      '9xl': ['5rem', { lineHeight: '6rem' }],
-      '10xl': ['5.5rem', { lineHeight: '6.5rem' }],
-      '11xl': ['6rem', { lineHeight: '7rem' }],
+      '7xl': ['4rem', { lineHeight: '4.5rem' }],
+      '8xl': ['4.5rem', { lineHeight: '5rem' }],
+      '9xl': ['5rem', { lineHeight: '5.5rem' }],
+      '10xl': ['5.5rem', { lineHeight: '6rem' }],
+      '11xl': ['6rem', { lineHeight: '6.5rem' }],
     },
     extend: {
       spacing: {
         22: '5.5rem',
+        23: '5.75rem',
+      },
+      letterSpacing: {
+        snug: '-0.0125em',
+      },
+      blur: {
+        '3xl': '56px',
       },
     },
   },

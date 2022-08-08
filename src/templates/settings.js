@@ -7,7 +7,11 @@ import Footer from "../components/Footer";
 export const SettingsTemplate = ({}) => {
   return (
     <div className="min-h-screen flex flex-col justify-between items-stretch">
-      <Navbar />
+      <div className="absolute z-50 top-0 inset-x-0 w-full">
+        <div className="container mx-auto px-4 py-8 md:py-16">
+          <Navbar />
+        </div>
+      </div>
       <Footer />
     </div>
   );
