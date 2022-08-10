@@ -97,14 +97,14 @@ export const IndexPageTemplate = ({
           <canvas className="aspect-video w-full" />
         </div>
         <div className="foreground relative z-50 w-full">
-          <div className="min-h-[200vh]">
+          <div className="min-h-[300vh]">
             <div className="sticky top-0 h-screen w-full flex justify-center items-center">
               <div className="container mx-auto px-4 py-44 text-center">
                 <Navbar />
               </div>
             </div>
           </div>
-          <div className="min-h-screen w-full flex justify-center items-center">
+          <div className="w-full flex justify-center items-center">
             <div className="container mx-auto px-4 py-44 text-center md:w-full">
               <h1 className="hero-headline font-serif tracking-tight text-4xl max-w-5xl mx-auto md:text-8xl">
                 {heading.split(' ').map((text, index) => (
@@ -127,7 +127,6 @@ export const IndexPageTemplate = ({
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         id="section-1"
-        className="min-h-[200vh]"
       >
         <div
           className="background fixed z-0 inset-0 flex justify-end items-center"
