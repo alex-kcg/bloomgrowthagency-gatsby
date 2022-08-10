@@ -13,10 +13,10 @@ const Accordion = ({ accordionItem }) => {
         onClick={() => setExpanded(expanded ? false : true)}
         className="relative font-serif tracking-snug text-6xl font-light py-6 pr-16 cursor-pointer"
       >
-        <span
-          className={`${expanded ? 'bg-electric-lime text-not-dark-blue' : ''}`}
-        >
-          {accordionItem.heading}
+        <span className="bg-animate bg-animate-electric-lime hover:text-not-dark-blue">
+          <span className="relative">
+            {accordionItem.heading}
+          </span>
         </span>
         <button className="absolute right-0 top-1/2 transform -translate-y-1/2 text-cream border border-slate rounded-full bg-animate bg-animate-electric-lime hover:border-not-dark-blue hover:text-not-dark-blue">
           <svg className="relative h-10 w-10" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
