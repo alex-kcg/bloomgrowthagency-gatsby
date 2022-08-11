@@ -93,8 +93,8 @@ export const IndexPageTemplate = ({
         whileInView={{ opacity: 1 }}
         id="hero"
       >
-        <div className="background fixed z-0 inset-0 flex justify-center items-center">
-          <canvas className="aspect-video w-full" />
+        <div className="background fixed z-0 inset-0 flex justify-center items-center overflow-hidden">
+          <canvas className="absolute aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-50 w-full">
           <div className="min-h-[300vh]">
@@ -180,8 +180,8 @@ export const IndexPageTemplate = ({
         whileInView={{ opacity: 1 }}
         id="section-3"
       >
-        <div className="background fixed z-0 inset-0 flex justify-center items-center">
-          <canvas className="aspect-video w-full" />
+        <div className="background fixed z-0 inset-0 flex justify-center items-center overflow-hidden">
+          <canvas className="absolute aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-50 w-full">
           <div className="container py-44">
@@ -301,8 +301,8 @@ export const IndexPageTemplate = ({
         whileInView={{ opacity: 1 }}
         id="section-4"
       >
-        <div className="background fixed z-0 inset-0 flex justify-center items-center transform -scale-x-100">
-          <canvas className="aspect-video w-full" />
+        <div className="background fixed z-0 inset-0 flex justify-center items-center overflow-hidden transform -scale-x-100">
+          <canvas className="absolute aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-50 w-full">
           <div className="container py-44">
