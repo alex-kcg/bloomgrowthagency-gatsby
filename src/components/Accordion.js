@@ -6,7 +6,7 @@ const Accordion = ({ accordionItem }) => {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <li className="border-b border-slate overflow-hidden">
+    <li className="border-b border-slate overflow-hidden mb-8 md:mb-16">
       <motion.h3
         initial={false}
         onClick={() => setExpanded(expanded ? false : true)}
