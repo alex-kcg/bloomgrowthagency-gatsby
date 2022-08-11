@@ -44,6 +44,28 @@ body {
   @apply text-white bg-not-dark-blue;
 }
 
+.container {
+  @apply w-full px-4 mx-auto;
+}
+
+@screen sm {
+  .container {
+    max-width: 680px;
+  }
+}
+
+@screen md {
+  .container {
+    max-width: 968px;
+  }
+}
+
+@screen lg {
+  .container {
+    max-width: 1256px;
+  }
+}
+
 .separated-list > li:not(:last-child) {
   @apply relative;
 }

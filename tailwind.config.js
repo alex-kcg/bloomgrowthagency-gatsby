@@ -1,14 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  corePlugins: {
+    container: false,
+  },
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
     "./static/**/*.{yml,yaml}",
   ],
   theme: {
     screens: {
-      sm: '680px',
-      md: '968px',
-      lg: '1256px',
+      sm: '768px',
+      md: '1000px',
+      lg: '1256px', // Originally spec'd for 1240px, but increased for gutter spacing on containers at 1256px+
     },
     colors: ({ colors }) => ({
       inherit: colors.inherit,
