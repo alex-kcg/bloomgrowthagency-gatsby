@@ -81,7 +81,7 @@ export const IndexPageTemplate = ({
     };
 
     initFrameSequence('hero', 'BG-SiteAnim-PlanterModel-Phase1-v7-frame_DeMain_', 'jpg', 1440, 810, 120, true, false)
-    initFrameSequence('section-1', 'BG-SiteAnim-PlanterModel-Phase2-v5-frame', 'jpg', 1200, 1200, 150, false, false)
+    initFrameSequence('section-1', 'BG-SiteAnim-PlanterModel-Phase2-v7-Squareframe', 'jpg', 810, 810, 144, false, false)
     initFrameSequence('section-3', 'phase4-v5-frame', 'jpg', 1200, 675, 200, false, false)
     initFrameSequence('section-4', 'BG-SiteAnim-PlanterModel-Phase6-v3-frame', 'jpg', 960, 540, 90, false, true)
   });
@@ -99,19 +99,19 @@ export const IndexPageTemplate = ({
         <div className="foreground relative z-50 w-full">
           <div className="min-h-[300vh]">
             <div className="sticky top-0 h-screen w-full flex justify-center items-center">
-              <div className="container py-44 text-center">
+              <div className="container py-40 text-center">
                 <Navbar />
               </div>
             </div>
           </div>
-          <div className="w-full flex justify-center items-center">
-            <div className="container py-44 text-center md:w-full">
-              <h1 className="hero-headline font-serif font-light tracking-tighter text-4xl max-w-5xl mx-auto md:text-10xl">
+          <div className="w-full flex justify-center items-center px-4 text-center md:border-b md:border-slate md:pb-60 md:mb-60">
+            <h1 className="font-serif font-light tracking-tighter text-4xl border-b border-slate w-full pb-30 mb-30 md:border-0 md:pb-0 md:mb-0 md:text-10xl">
+              <span className="hero-headline block max-w-xs mx-auto md:max-w-5xl">
                 {heading.split(' ').map((text, index) => (
                   <span key={index}>{text.match(/\w+|\s+|[^\s\w]+/g).map((text, index) => (<span key={index}>{text}</span>))} </span> 
                 ))}
-              </h1>
-            </div>
+              </span>
+            </h1>
           </div>
           <div className="text-6xl tracking-tight text-slate mb-4 md:text-11xl md:mb-6">
             <div>
@@ -122,28 +122,29 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </motion.section>
-      <div className="min-h-screen py-44 w-full" />
+      <div className="min-h-screen py-40 w-full hidden md:block" />
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         id="section-1"
       >
         <div
-          className="background fixed z-0 inset-0 flex justify-end items-center"
-          style={{ backgroundColor: '#010b0d' }}
+          className="background fixed z-0 inset-0 justify-end items-center hidden md:flex"
+          style={{ backgroundColor: '#000407' }}
         >
           <canvas className="aspect-square w-1/2" />
         </div>
         <div className="foreground relative z-50 w-full">
-          <div className="container mx-auto px-4 py-44">
+          <div className="container mx-auto px-4 py-40">
             <div className="max-w-[63.5rem] mx-auto">
-              <ol className="section-1-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-40 max-w-sm md:max-w-full md:w-1/2">
+              <ol className="section-1-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-1/2 md:space-y-40">
                 {numberedList.map((listItem, index) => (
                   <motion.li
                     key={index}
-                    initial={{ color: '#bebebe' }}
-                    whileInView={{ color: '#f8f7f3' }}
+                    initial={{ opacity: 0.5, color: '#bebebe' }}
+                    whileInView={{ opacity: 1, color: '#f8f7f3' }}
                     viewport={{ margin: '-50%' }}
+                    className="w-full"
                   >
                     {listItem.text}
                   </motion.li>
@@ -153,16 +154,16 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </motion.section>
-      <div className="min-h-screen py-44 w-full" />
+      <div className="min-h-screen py-40 w-full hidden md:block" />
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         id="section-2"
       >
         <div className="foreground relative z-50 w-full">
-          <div className="container py-44">
+          <div className="container py-40">
             <div className="max-w-[63.5rem] mx-auto">
-              <h2 className="font-serif font-light tracking-snug text-4xl mb-40 max-w-[37.5rem] md:text-8xl">
+              <h2 className="font-serif font-light tracking-snug text-4xl mb-20 max-w-[37.5rem] md:text-8xl md:mb-40">
                 {accordionHeading}
               </h2>
             </div>
@@ -174,7 +175,7 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </motion.section>
-      <div className="min-h-screen py-44 w-full" />
+      <div className="min-h-screen py-40 w-full hidden md:block" />
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -184,7 +185,7 @@ export const IndexPageTemplate = ({
           <canvas className="absolute aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-50 w-full">
-          <div className="container py-44">
+          <div className="container py-20 md:py-40">
             <div className="max-w-[63.5rem] mx-auto">
               <div className="max-w-[37.5rem]">
                 <h2 className="font-serif font-light tracking-tight text-5xl mb-14 md:text-8xl">
@@ -295,7 +296,7 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </motion.section>
-      <div className="min-h-screen py-44 w-full" />
+      <div className="min-h-screen py-40 w-full hidden md:block" />
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -305,52 +306,56 @@ export const IndexPageTemplate = ({
           <canvas className="absolute aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-50 w-full">
-          <div className="container py-44">
+          <div className="container pt-10 md:py-20">
             <div className="max-w-[63.5rem] mx-auto">
-              <div className="border-b border-gray py-20 flex justify-between -mx-4 sm:-mx-3">
-                <div className="w-full px-4 sm:px-3 md:w-1/2">
-                  <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
-                    Are you building a design team? 
-                  </h2>
-                </div>
-                <div className="w-full px-4 sm:px-3 md:w-5/12">
-                  <p className="pb-6 text-lg font-light leading-relaxed">
-                    We’re helping partners build world class design organizations with our handbuilt pipeline. Interested? 
-                  </p>
-                  <a href="#" className="transition-color duration-500 ease-out text-electric-lime">
-                    <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
-                    </svg>
-                    Let’s chat pipeline
-                  </a>
-                </div>
-              </div>
-              <div className="border-b border-gray py-20 flex justify-between -mx-4 sm:-mx-3">
-                <div className="w-full px-4 sm:px-3 md:w-1/2">
-                  <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
-                    Let’s be fearless together
-                  </h2>
-                </div>
-                <div className="w-full px-4 sm:px-3 md:w-5/12">
-                  <p className="pb-6 text-lg font-light leading-relaxed">
-                    Scaling products and design operations is hard. We’re here to make it easy. 
-                  </p>
-                  <a href="#" className="transition-color duration-500 ease-out text-electric-lime">
-                    <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
-                    </svg>
-                    Let’s chat pipeline
-                  </a>
+              <div className="border-b border-gray py-10 md:py-20">
+                <div className="flex flex-wrap justify-between -mx-4 sm:-mx-3">
+                  <div className="w-full px-4 sm:px-3 md:w-1/2">
+                    <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
+                      Are you building a design team? 
+                    </h2>
+                  </div>
+                  <div className="w-full px-4 sm:px-3 md:w-5/12">
+                    <p className="pb-6 text-lg font-light leading-relaxed">
+                      We’re helping partners build world class design organizations with our handbuilt pipeline. Interested? 
+                    </p>
+                    <a href="#" className="transition-color duration-500 ease-out text-electric-lime">
+                      <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
+                      </svg>
+                      Let’s chat pipeline
+                    </a>
+                  </div>
                 </div>
               </div>
-              <div className="py-20 flex justify-between -mx-4 sm:-mx-3">
+              <div className="border-b border-gray py-10 md:py-20">
+                <div className="flex flex-wrap justify-between -mx-4 sm:-mx-3">
+                  <div className="w-full px-4 sm:px-3 md:w-1/2">
+                    <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
+                      Let’s be fearless together
+                    </h2>
+                  </div>
+                  <div className="w-full px-4 sm:px-3 md:w-5/12">
+                    <p className="pb-6 text-lg font-light leading-relaxed">
+                      Scaling products and design operations is hard. We’re here to make it easy. 
+                    </p>
+                    <a href="#" className="transition-color duration-500 ease-out text-electric-lime">
+                      <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
+                      </svg>
+                      Let’s chat pipeline
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="py-10 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:py-20">
                 <div className="w-full px-4 sm:px-3 md:w-1/2">
                   <Link to="/" title="Logo">
-                    <img src={settings.header.logo.image} alt={settings.header.logo.alt} className="h-20 w-auto mb-10 md:mb-0" />
+                    <img src={settings.header.logo.image} alt={settings.header.logo.alt} className="h-16 w-auto mb-10 md:mb-0 md:h-20" />
                   </Link>
                 </div>
                 <div className="w-full px-4 sm:px-3 md:w-5/12">
-                  <h3 className="font-light text-lg leading-normal tracking-tighter mb-2 md:text-3xl md:leading-normal">
+                  <h3 className="font-light text-3xl leading-normal tracking-tighter mb-2">
                     Zach Greenberger
                   </h3>
                   <h4 className="text-lg font-light leading-relaxed mb-10">

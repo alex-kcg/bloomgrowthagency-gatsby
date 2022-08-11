@@ -76,40 +76,42 @@ body {
   content: "|";
 }
 
-.bg-animate {
-  @apply relative;
-}
-
-.bg-animate,
-.bg-animate .bg-inner-animate {
-  transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),
-              background-color 100ms cubic-bezier(.694, 0, 0.335, 1),
-              color 100ms cubic-bezier(.694, 0, 0.335, 1),
-              border-color 100ms cubic-bezier(.694, 0, 0.335, 1);
-}
-
-.bg-animate:before {
-  @apply absolute bg-voltage inset-0;
-
-  content: " ";
-  border-radius: inherit;
-  animation: opacityFallbackOut .5s step-end forwards;
-  clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
-  transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1),
-              -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
-}
-
-.bg-animate:hover:before {
-  animation: opacityFallbackIn 0s step-start forwards;
-  clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
-}
-
-.bg-animate-electric-lime:before {
-  @apply bg-electric-lime;
-}
-
-.bg-animate-voltage:before {
-  @apply bg-voltage;
+@screen md {
+  .bg-animate {
+    @apply relative;
+  }
+  
+  .bg-animate,
+  .bg-animate .bg-inner-animate {
+    transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),
+                background-color 100ms cubic-bezier(.694, 0, 0.335, 1),
+                color 100ms cubic-bezier(.694, 0, 0.335, 1),
+                border-color 100ms cubic-bezier(.694, 0, 0.335, 1);
+  }
+  
+  .bg-animate:before {
+    @apply absolute bg-voltage inset-0;
+  
+    content: " ";
+    border-radius: inherit;
+    animation: opacityFallbackOut .5s step-end forwards;
+    clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+    transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1),
+                -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
+  }
+  
+  .bg-animate:hover:before {
+    animation: opacityFallbackIn 0s step-start forwards;
+    clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+  }
+  
+  .bg-animate-electric-lime:before {
+    @apply bg-electric-lime;
+  }
+  
+  .bg-animate-voltage:before {
+    @apply bg-voltage;
+  }
 }
 
 @tailwind components;

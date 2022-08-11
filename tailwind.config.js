@@ -89,6 +89,7 @@ module.exports = {
       spacing: {
         22: '5.5rem',
         23: '5.75rem',
+        30: '7.5rem',
       },
       letterSpacing: {
         snug: '-0.0125em',
