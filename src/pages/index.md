@@ -13,7 +13,7 @@ partnerRows:
     - text: Slice
       url: https://slicelife.com/
       colorClassName: hover:text-gray
-      fontClassName: font-serif font-normal
+      fontClassName: font-serif font-light tracking-tighter
     - text: Caribou
       url: https://www.caribou.com/
       colorClassName: hover:text-voltage
@@ -21,7 +21,7 @@ partnerRows:
     - text: Chime
       url: https://www.chime.com/
       colorClassName: hover:text-summer-rain
-      fontClassName: font-serif font-light italic
+      fontClassName: font-serif font-light tracking-tighter italic
     - text: Insurify
       url: https://insurify.com/
       colorClassName: hover:text-electric-lime
@@ -29,17 +29,17 @@ partnerRows:
     - text: Fuse
       url: https://www.fuseignited.com/
       colorClassName: hover:text-gray
-      fontClassName: font-serif font-normal
+      fontClassName: font-serif font-light tracking-tighter
     - text: VersusGame
       url: https://versusgame.com/app/game
       colorClassName: hover:text-summer-rain
-      fontClassName: font-serif font-light italic
+      fontClassName: font-serif font-light tracking-tighter italic
   - direction: rtl
     partners:
     - text: MainStreet
       url: https://www.mainstreet.com/
       colorClassName: hover:text-gray
-      fontClassName: font-serif font-normal
+      fontClassName: font-serif font-light tracking-tighter
     - text: Merge
       url: https://mergeworld.com/
       colorClassName: hover:text-electric-lime
@@ -47,7 +47,7 @@ partnerRows:
     - text: One Finance
       url: https://www.one.app/
       colorClassName: hover:text-voltage
-      fontClassName: font-serif font-light italic
+      fontClassName: font-serif font-light tracking-tighter italic
     - text: Clutter
       url: https://www.clutter.com/
       colorClassName: hover:text-summer-rain
@@ -55,7 +55,7 @@ partnerRows:
     - text: Braintrust
       url: https://www.usebraintrust.com/
       colorClassName: hover:text-gray
-      fontClassName: font-serif font-normal
+      fontClassName: font-serif font-light tracking-tighter
     - text: Fidelity
       url: https://www.fidelity.com/
       colorClassName: hover:text-electric-lime
@@ -69,7 +69,7 @@ partnerRows:
     - text: Chime
       url: https://www.chime.com/
       colorClassName: hover:text-summer-rain
-      fontClassName: font-serif font-light italic
+      fontClassName: font-serif font-light tracking-tighter italic
     - text: Insurify
       url: https://insurify.com/
       colorClassName: hover:text-electric-lime
@@ -77,11 +77,11 @@ partnerRows:
     - text: Fuse
       url: https://www.fuseignited.com/
       colorClassName: hover:text-gray
-      fontClassName: font-serif font-normal
+      fontClassName: font-serif font-light tracking-tighter
     - text: VersusGame
       url: https://versusgame.com/app/game
       colorClassName: hover:text-summer-rain
-      fontClassName: font-serif font-light italic
+      fontClassName: font-serif font-light tracking-tighter italic
     - text: Retirable
       url: https://retirable.com/
       colorClassName: hover:text-electric-lime
@@ -89,7 +89,7 @@ partnerRows:
     - text: Slice
       url: https://slicelife.com/
       colorClassName: hover:text-gray
-      fontClassName: font-serif font-normal
+      fontClassName: font-serif font-light tracking-tighter
 numberedList:
   - text: Bloom is a product design studio, visualizing the future of products and digital ecosystems.
   - text: We take an embedded approach to our partnerships to elevate design and product maturity.

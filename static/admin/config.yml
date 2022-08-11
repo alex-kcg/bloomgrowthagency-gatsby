@@ -69,9 +69,8 @@ collections:
                           widget: "select",
                           options: [
                             { label: "Sans normal", value: "font-sans font-normal" },
-                            { label: "Serif normal", value: "font-serif font-normal" },
-                            { label: "Serif light", value: "font-serif font-light" },
-                            { label: "Serif light italic", value: "font-serif font-light italic" },
+                            { label: "Serif light", value: "font-serif font-light tracking-tighter" },
+                            { label: "Serif light italic", value: "font-serif font-light tracking-tighter italic" },
                           ]
                         },
                       ],

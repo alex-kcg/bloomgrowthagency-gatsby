@@ -106,7 +106,7 @@ export const IndexPageTemplate = ({
           </div>
           <div className="w-full flex justify-center items-center">
             <div className="container py-44 text-center md:w-full">
-              <h1 className="hero-headline font-serif tracking-tight text-4xl max-w-5xl mx-auto md:text-8xl">
+              <h1 className="hero-headline font-serif font-light tracking-tighter text-4xl max-w-5xl mx-auto md:text-10xl">
                 {heading.split(' ').map((text, index) => (
                   <span key={index}>{text.match(/\w+|\s+|[^\s\w]+/g).map((text, index) => (<span key={index}>{text}</span>))} </span> 
                 ))}
@@ -137,7 +137,7 @@ export const IndexPageTemplate = ({
         <div className="foreground relative z-50 w-full">
           <div className="container mx-auto px-4 py-44">
             <div className="max-w-[63.5rem] mx-auto">
-              <ol className="section-1-ol font-light text-3xl leading-normal tracking-snug flex flex-col items-start space-y-40 lg:w-1/2">
+              <ol className="section-1-ol font-light text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-40 lg:w-1/2">
                 {numberedList.map((listItem, index) => (
                   <motion.li
                     key={index}
@@ -162,7 +162,7 @@ export const IndexPageTemplate = ({
         <div className="foreground relative z-50 w-full">
           <div className="container py-44">
             <div className="max-w-[63.5rem] mx-auto">
-              <h2 className="font-serif tracking-tight text-4xl mb-40 max-w-[37.5rem] md:text-8xl">
+              <h2 className="font-serif font-light tracking-snug text-4xl mb-40 max-w-[37.5rem] md:text-8xl">
                 {accordionHeading}
               </h2>
             </div>
@@ -187,10 +187,10 @@ export const IndexPageTemplate = ({
           <div className="container py-44">
             <div className="max-w-[63.5rem] mx-auto">
               <div className="max-w-[37.5rem]">
-                <h2 className="font-serif tracking-tight text-4xl mb-14 md:text-8xl">
+                <h2 className="font-serif font-light tracking-tight text-4xl mb-14 md:text-8xl">
                   {partnersHeading}
                 </h2>
-                <p className="font-light text-3xl leading-normal mb-40 tracking-snug">
+                <p className="font-light text-3xl leading-normal mb-40 tracking-tighter">
                   {partnersSubheading}
                 </p>
               </div>
@@ -309,7 +309,7 @@ export const IndexPageTemplate = ({
             <div className="max-w-[63.5rem] mx-auto">
               <div className="border-b border-gray py-20 flex justify-between -mx-4 sm:-mx-3">
                 <div className="w-full px-4 sm:px-3 lg:w-1/2">
-                  <h2 className="font-serif tracking-snug text-6xl font-light">
+                  <h2 className="font-serif font-light tracking-tight text-6xl">
                     Are you building a design team? 
                   </h2>
                 </div>
@@ -327,7 +327,7 @@ export const IndexPageTemplate = ({
               </div>
               <div className="border-b border-gray py-20 flex justify-between -mx-4 sm:-mx-3">
                 <div className="w-full px-4 sm:px-3 lg:w-1/2">
-                  <h2 className="font-serif tracking-snug text-6xl font-light">
+                  <h2 className="font-serif font-light tracking-tight text-6xl">
                     Let’s be fearless together
                   </h2>
                 </div>
@@ -350,7 +350,7 @@ export const IndexPageTemplate = ({
                   </Link>
                 </div>
                 <div className="w-full px-4 sm:px-3 lg:w-5/12">
-                  <h3 className="font-light text-3xl leading-normal tracking-snug mb-2">
+                  <h3 className="font-light text-3xl leading-normal tracking-tighter mb-2">
                     Zach Greenberger
                   </h3>
                   <h4 className="text-lg font-light leading-relaxed mb-10">
