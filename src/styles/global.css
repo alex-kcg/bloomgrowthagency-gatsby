@@ -100,6 +100,7 @@ body {
                 -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
   }
   
+  .group:hover .group-bg-animate:before,
   .bg-animate:hover:before {
     animation: opacityFallbackIn 0s step-start forwards;
     clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
