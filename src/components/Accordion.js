@@ -11,7 +11,7 @@ const Accordion = ({ accordionItem }) => {
       <motion.h3
         initial={false}
         onClick={() => setExpanded(expanded ? false : true)}
-        className="relative font-serif tracking-snug text-6xl font-light py-6 pr-16 cursor-pointer"
+        className="relative font-serif font-light tracking-snug text-3xl py-6 pr-16 cursor-pointer md:text-6xl"
       >
         <span className="bg-animate bg-animate-electric-lime hover:text-not-dark-blue">
           <span className="relative">
@@ -38,7 +38,7 @@ const Accordion = ({ accordionItem }) => {
             }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            <p className="pb-6 text-lg font-light leading-relaxed max-w-[37.5rem]">
+            <p className="pb-6 text-base font-light leading-relaxed max-w-[37.5rem] md:text-lg">
               {accordionItem.body}
             </p>
           </motion.div>

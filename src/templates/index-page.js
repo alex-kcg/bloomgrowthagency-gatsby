@@ -113,7 +113,7 @@ export const IndexPageTemplate = ({
               </h1>
             </div>
           </div>
-          <div className="text-6xl tracking-tight text-slate mb-4 lg:text-11xl lg:mb-6">
+          <div className="text-6xl tracking-tight text-slate mb-4 md:text-11xl md:mb-6">
             <div>
               {partnerRows.map((row, index) => (
                 <PartnerRow key={index} partnerRow={row} />
@@ -137,7 +137,7 @@ export const IndexPageTemplate = ({
         <div className="foreground relative z-50 w-full">
           <div className="container mx-auto px-4 py-44">
             <div className="max-w-[63.5rem] mx-auto">
-              <ol className="section-1-ol font-light text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-40 lg:w-1/2">
+              <ol className="section-1-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-40 max-w-sm md:max-w-full md:w-1/2">
                 {numberedList.map((listItem, index) => (
                   <motion.li
                     key={index}
@@ -187,15 +187,15 @@ export const IndexPageTemplate = ({
           <div className="container py-44">
             <div className="max-w-[63.5rem] mx-auto">
               <div className="max-w-[37.5rem]">
-                <h2 className="font-serif font-light tracking-tight text-4xl mb-14 md:text-8xl">
+                <h2 className="font-serif font-light tracking-tight text-5xl mb-14 md:text-8xl">
                   {partnersHeading}
                 </h2>
-                <p className="font-light text-3xl leading-normal mb-40 tracking-tighter">
+                <p className="font-light text-lg leading-normal mb-40 tracking-tighter md:text-3xl md:leading-normal">
                   {partnersSubheading}
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap gap-y-12 -mx-4 items-stretch sm:-mx-3 sm:gap-y-6">
+            <div className="flex flex-wrap gap-y-10 -mx-4 items-stretch sm:-mx-3 sm:gap-y-6">
               <div className="flex w-full px-4 sm:px-3 sm:w-1/2 md:w-1/3">
                 <PartnerCard
                   logo={`<svg width="130" height="40" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -308,12 +308,12 @@ export const IndexPageTemplate = ({
           <div className="container py-44">
             <div className="max-w-[63.5rem] mx-auto">
               <div className="border-b border-gray py-20 flex justify-between -mx-4 sm:-mx-3">
-                <div className="w-full px-4 sm:px-3 lg:w-1/2">
-                  <h2 className="font-serif font-light tracking-tight text-6xl">
+                <div className="w-full px-4 sm:px-3 md:w-1/2">
+                  <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
                     Are you building a design team? 
                   </h2>
                 </div>
-                <div className="w-full px-4 sm:px-3 lg:w-5/12">
+                <div className="w-full px-4 sm:px-3 md:w-5/12">
                   <p className="pb-6 text-lg font-light leading-relaxed">
                     We’re helping partners build world class design organizations with our handbuilt pipeline. Interested? 
                   </p>
@@ -326,12 +326,12 @@ export const IndexPageTemplate = ({
                 </div>
               </div>
               <div className="border-b border-gray py-20 flex justify-between -mx-4 sm:-mx-3">
-                <div className="w-full px-4 sm:px-3 lg:w-1/2">
-                  <h2 className="font-serif font-light tracking-tight text-6xl">
+                <div className="w-full px-4 sm:px-3 md:w-1/2">
+                  <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
                     Let’s be fearless together
                   </h2>
                 </div>
-                <div className="w-full px-4 sm:px-3 lg:w-5/12">
+                <div className="w-full px-4 sm:px-3 md:w-5/12">
                   <p className="pb-6 text-lg font-light leading-relaxed">
                     Scaling products and design operations is hard. We’re here to make it easy. 
                   </p>
@@ -344,13 +344,13 @@ export const IndexPageTemplate = ({
                 </div>
               </div>
               <div className="py-20 flex justify-between -mx-4 sm:-mx-3">
-                <div className="w-full px-4 sm:px-3 lg:w-1/2">
+                <div className="w-full px-4 sm:px-3 md:w-1/2">
                   <Link to="/" title="Logo">
-                    <img src={settings.header.logo.image} alt={settings.header.logo.alt} className="h-20 w-auto" />
+                    <img src={settings.header.logo.image} alt={settings.header.logo.alt} className="h-20 w-auto mb-10 md:mb-0" />
                   </Link>
                 </div>
-                <div className="w-full px-4 sm:px-3 lg:w-5/12">
-                  <h3 className="font-light text-3xl leading-normal tracking-tighter mb-2">
+                <div className="w-full px-4 sm:px-3 md:w-5/12">
+                  <h3 className="font-light text-lg leading-normal tracking-tighter mb-2 md:text-3xl md:leading-normal">
                     Zach Greenberger
                   </h3>
                   <h4 className="text-lg font-light leading-relaxed mb-10">

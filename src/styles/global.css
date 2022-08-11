@@ -127,10 +127,20 @@ body {
 }
 
 .section-1-ol li::before {
-  @apply block text-10xl font-light pb-8 mb-8 border-b border-gray;
+  @apply block text-7xl font-light pb-8 mb-8 border-b border-gray;
 
   content: "0" counter(section-1-ol);
   line-height: 0.72727272em;
 }
+
+@screen md {
+  .section-1-ol li::before {
+    @apply block text-10xl;
+
+    line-height: 0.72727272em;
+  }
+}
+
+
 
 @tailwind utilities;
