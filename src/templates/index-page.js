@@ -80,7 +80,7 @@ export const IndexPageTemplate = ({
       preloadImages()
     };
 
-    initFrameSequence('hero', 'BG-SiteAnim-PlanterModel-Phase1-v6-frame', 'jpg', 1440, 810, 180, true, false)
+    initFrameSequence('hero', 'BG-SiteAnim-PlanterModel-Phase1-v7-frame_DeMain_', 'jpg', 1440, 810, 120, true, false)
     initFrameSequence('section-1', 'BG-SiteAnim-PlanterModel-Phase2-v5-frame', 'jpg', 1200, 1200, 150, false, false)
     initFrameSequence('section-3', 'phase4-v5-frame', 'jpg', 1200, 675, 200, false, false)
     initFrameSequence('section-4', 'BG-SiteAnim-PlanterModel-Phase6-v3-frame', 'jpg', 960, 540, 90, false, true)
