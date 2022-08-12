@@ -27,7 +27,7 @@ const PartnerRow = ({ partnerRow }) => {
 
   return (
     <div
-      className="relative select-none overflow-hidden"
+      className="relative select-none overflow-hidden mb-4 md:mb-6"
       style={{ height: '1.1667em' }}
     >
       <motion.div

@@ -96,14 +96,14 @@ export const IndexPageTemplate = ({
           <canvas className="absolute aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-50 w-full">
-          <div className="min-h-[300vh]">
-            <div className="sticky top-0 h-screen w-full flex justify-center items-center">
-              <div className="container py-40 text-center">
+          <div className="md:min-h-[300vh]">
+            <div className="md:sticky md:top-0 md:h-screen w-full flex justify-center items-center">
+              <div className="container py-8 text-center">
                 <Navbar />
               </div>
             </div>
           </div>
-          <div className="w-full flex justify-center items-center px-4 text-center md:border-b md:border-slate md:pb-60 md:mb-60">
+          <div className="w-full flex justify-center items-center px-4 text-center pt-8 md:pt-0 md:border-b md:border-slate md:pb-60 md:mb-60">
             <h1 className="font-serif font-light tracking-tighter text-4xl border-b border-slate w-full pb-30 mb-30 md:border-0 md:pb-0 md:mb-0 md:text-10xl">
               <span className="block max-w-xs mx-auto md:max-w-5xl">
                 <span className="hero-headline overflow-hidden">
@@ -117,7 +117,7 @@ export const IndexPageTemplate = ({
               </span>
             </h1>
           </div>
-          <div className="text-6xl tracking-tight text-slate mb-4 md:text-11xl md:mb-6">
+          <div className="text-6xl tracking-tight text-slate pb-20 md:text-11xl md:mb-0">
             <div>
               {partnerRows.map((row, index) => (
                 <PartnerRow key={index} partnerRow={row} />
@@ -141,7 +141,7 @@ export const IndexPageTemplate = ({
         </div>
         <div className="foreground relative z-50 w-full">
           <div className="h-[50vh] w-full hidden md:block" />
-          <div className="container mx-auto px-4 py-40 md:py-0">
+          <div className="container mx-auto px-4 py-20 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
               <ol className="section-1-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-1/2 md:space-y-40">
                 {numberedList.map((listItem, index) => (
@@ -156,7 +156,7 @@ export const IndexPageTemplate = ({
       <div className="h-[50vh] w-full hidden md:block" />
       <section id="section-2">
         <div className="foreground relative z-50 w-full">
-          <div className="container py-40 md:py-0">
+          <div className="container py-20 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
               <h2 className="font-serif font-light tracking-snug text-4xl mb-20 max-w-[37.5rem] md:text-8xl md:mb-40">
                 {accordionHeading}
@@ -186,7 +186,7 @@ export const IndexPageTemplate = ({
                 <h2 className="font-serif font-light tracking-tight text-5xl mb-14 md:text-8xl">
                   {partnersHeading}
                 </h2>
-                <p className="font-light text-lg leading-normal mb-40 tracking-tighter md:text-3xl md:leading-normal">
+                <p className="font-light text-lg leading-normal mb-20 tracking-tighter md:text-3xl md:leading-normal md:mb-40">
                   {partnersSubheading}
                 </p>
               </div>
