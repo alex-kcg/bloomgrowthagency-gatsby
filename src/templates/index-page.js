@@ -87,6 +87,14 @@ export const IndexPageTemplate = ({
 
   return (
     <main>
+      <motion.header
+        className="fixed z-50 py-8 text-center md:py-16"
+        animate={{ top: '0%', left: '50%', translateY: '0%', translateX: '-50%' }}
+        initial={{ top: '50%', left: '50%', translateY: '-50%', translateX: '-50%' }}
+        transition={{ duration: 1, ease: 'easeInOut', delay: 1.5 }}
+      >
+        <Navbar />
+      </motion.header>
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -95,14 +103,8 @@ export const IndexPageTemplate = ({
         <div className="background fixed z-0 inset-0 flex justify-center items-center overflow-hidden">
           <canvas className="absolute aspect-video min-w-full min-h-full" />
         </div>
-        <div className="foreground relative z-50 w-full">
-          <div className="md:min-h-[300vh]">
-            <div className="md:sticky md:top-0 md:h-screen w-full flex justify-center items-center">
-              <div className="container py-8 text-center">
-                <Navbar />
-              </div>
-            </div>
-          </div>
+        <div className="foreground relative z-40 w-full">
+          <div className="md:min-h-[300vh]" />
           <div className="w-full flex justify-center items-center px-4 text-center pt-8 md:pt-0 md:border-b md:border-slate md:pb-60 md:mb-60">
             <h1 className="font-serif font-light tracking-tighter text-4xl border-b border-slate w-full pb-30 mb-30 md:border-0 md:pb-0 md:mb-0 md:text-10xl">
               <span className="block max-w-xs mx-auto md:max-w-5xl">
@@ -139,13 +141,13 @@ export const IndexPageTemplate = ({
         >
           <canvas className="aspect-square w-1/2" />
         </div>
-        <div className="foreground relative z-50 w-full">
+        <div className="foreground relative z-40 w-full">
           <div className="h-[50vh] w-full hidden md:block" />
           <div className="container mx-auto px-4 py-20 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
               <ol className="section-1-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-1/2 md:space-y-40">
                 {numberedList.map((listItem, index) => (
-                  <OrderedListItem key={index} text={listItem.text} />
+                  <OrderedListItem key={index} index={(index + 1) > 9 ? '' + (index + 1) : '0' + (index + 1)} text={listItem.text} />
                 ))}
               </ol>
             </div>
@@ -155,7 +157,7 @@ export const IndexPageTemplate = ({
       </motion.section>
       <div className="h-[50vh] w-full hidden md:block" />
       <section id="section-2">
-        <div className="foreground relative z-50 w-full">
+        <div className="foreground relative z-40 w-full">
           <div className="container py-20 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
               <h2 className="font-serif font-light tracking-snug text-4xl mb-20 max-w-[37.5rem] md:text-8xl md:mb-40">
@@ -179,7 +181,7 @@ export const IndexPageTemplate = ({
         <div className="background fixed z-0 inset-0 flex justify-center items-center overflow-hidden">
           <canvas className="absolute aspect-square min-w-full min-h-full" />
         </div>
-        <div className="foreground relative z-50 w-full">
+        <div className="foreground relative z-40 w-full">
           <div className="container py-20 md:py-40">
             <div className="max-w-[63.5rem] mx-auto">
               <div className="max-w-[37.5rem]">
@@ -300,7 +302,7 @@ export const IndexPageTemplate = ({
         <div className="background fixed z-0 inset-0 flex justify-center items-center overflow-hidden">
           <canvas className="absolute aspect-video min-w-full min-h-full" />
         </div>
-        <div className="foreground relative z-50 w-full">
+        <div className="foreground relative z-40 w-full">
           <div className="container pt-10 md:py-20">
             <div className="max-w-[63.5rem] mx-auto">
               <div className="border-b border-gray py-10 md:py-20">
