@@ -81,8 +81,8 @@ export const IndexPageTemplate = ({
 
     initFrameSequence('hero', 'BG-SiteAnim-PlanterModel-Phase1-v7-frame_DeMain_', 'jpg', 1440, 810, 120, true, false)
     initFrameSequence('section-1', 'BG-SiteAnim-PlanterModel-Phase2-v7-Squareframe', 'jpg', 810, 810, 144, true, true)
-    initFrameSequence('section-3', 'phase4-v5-frame', 'jpg', 1200, 675, 200, false, false)
-    initFrameSequence('section-4', 'BG-SiteAnim-PlanterModel-Phase6-v3-frame', 'jpg', 960, 540, 90, false, true)
+    initFrameSequence('section-3', 'Phase4-v6-frame_DeMain_', 'jpg', 960, 960, 60, false, false)
+    initFrameSequence('section-4', 'Phase6-v4-frame_DeMain_', 'jpg', 960, 540, 60, false, true)
   });
 
   return (
@@ -177,7 +177,7 @@ export const IndexPageTemplate = ({
         id="section-3"
       >
         <div className="background fixed z-0 inset-0 flex justify-center items-center overflow-hidden">
-          <canvas className="absolute aspect-video min-w-full min-h-full" />
+          <canvas className="absolute aspect-square min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-50 w-full">
           <div className="container py-20 md:py-40">
@@ -297,7 +297,7 @@ export const IndexPageTemplate = ({
         whileInView={{ opacity: 1 }}
         id="section-4"
       >
-        <div className="background fixed z-0 inset-0 flex justify-center items-center overflow-hidden transform -scale-x-100">
+        <div className="background fixed z-0 inset-0 flex justify-center items-center overflow-hidden">
           <canvas className="absolute aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-50 w-full">
