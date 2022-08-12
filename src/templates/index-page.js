@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 import PartnerRow from "../components/PartnerRow";
 import Accordion from "../components/Accordion";
 import PartnerCard from "../components/PartnerCard";
+import OrderedListItem from "../components/OrderedListItem";
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -32,8 +33,6 @@ export const IndexPageTemplate = ({
   partnersHeading,
   partnersSubheading,
 }) => {
-  // store a reference to the box div
-  // wait until DOM has been rendered
   useEffect(() => {
     const initFrameSequence = (selector, filename, fileformat, canvasWidth, canvasHeight, frameCount, top = false, bottom = false) => {
       const container = document.getElementById(selector);
@@ -81,7 +80,7 @@ export const IndexPageTemplate = ({
     };
 
     initFrameSequence('hero', 'BG-SiteAnim-PlanterModel-Phase1-v7-frame_DeMain_', 'jpg', 1440, 810, 120, true, false)
-    initFrameSequence('section-1', 'BG-SiteAnim-PlanterModel-Phase2-v7-Squareframe', 'jpg', 810, 810, 144, false, false)
+    initFrameSequence('section-1', 'BG-SiteAnim-PlanterModel-Phase2-v7-Squareframe', 'jpg', 810, 810, 144, true, true)
     initFrameSequence('section-3', 'phase4-v5-frame', 'jpg', 1200, 675, 200, false, false)
     initFrameSequence('section-4', 'BG-SiteAnim-PlanterModel-Phase6-v3-frame', 'jpg', 960, 540, 90, false, true)
   });
@@ -106,10 +105,15 @@ export const IndexPageTemplate = ({
           </div>
           <div className="w-full flex justify-center items-center px-4 text-center md:border-b md:border-slate md:pb-60 md:mb-60">
             <h1 className="font-serif font-light tracking-tighter text-4xl border-b border-slate w-full pb-30 mb-30 md:border-0 md:pb-0 md:mb-0 md:text-10xl">
-              <span className="hero-headline block max-w-xs mx-auto md:max-w-5xl">
-                {heading.split(' ').map((text, index) => (
-                  <span key={index}>{text.match(/\w+|\s+|[^\s\w]+/g).map((text, index) => (<span key={index}>{text}</span>))} </span> 
-                ))}
+              <span className="block max-w-xs mx-auto md:max-w-5xl">
+                <span className="hero-headline overflow-hidden">
+                  {heading.split(' ').map((text, index) => (
+                    <motion.span
+                      key={index}
+                    >
+                      {text.match(/\w+|\s+|[^\s\w]+/g).map((text, index) => (<span key={index}>{text}</span>))} </motion.span>
+                  ))}
+                </span>
               </span>
             </h1>
           </div>
@@ -122,10 +126,11 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </motion.section>
-      <div className="min-h-screen py-40 w-full hidden md:block" />
+      <div className="h-[50vh] w-full hidden md:block" />
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
+        viewport={{ margin: '-50%' }}
         id="section-1"
       >
         <div
@@ -135,33 +140,23 @@ export const IndexPageTemplate = ({
           <canvas className="aspect-square w-1/2" />
         </div>
         <div className="foreground relative z-50 w-full">
-          <div className="container mx-auto px-4 py-40">
+          <div className="h-[50vh] w-full hidden md:block" />
+          <div className="container mx-auto px-4 py-40 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
               <ol className="section-1-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-1/2 md:space-y-40">
                 {numberedList.map((listItem, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0.5, color: '#bebebe' }}
-                    whileInView={{ opacity: 1, color: '#f8f7f3' }}
-                    viewport={{ margin: '-50%' }}
-                    className="w-full"
-                  >
-                    {listItem.text}
-                  </motion.li>
+                  <OrderedListItem key={index} text={listItem.text} />
                 ))}
               </ol>
             </div>
           </div>
+          <div className="h-[50vh] w-full hidden md:block" />
         </div>
       </motion.section>
-      <div className="min-h-screen py-40 w-full hidden md:block" />
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        id="section-2"
-      >
+      <div className="h-[50vh] w-full hidden md:block" />
+      <section id="section-2">
         <div className="foreground relative z-50 w-full">
-          <div className="container py-40">
+          <div className="container py-40 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
               <h2 className="font-serif font-light tracking-snug text-4xl mb-20 max-w-[37.5rem] md:text-8xl md:mb-40">
                 {accordionHeading}
@@ -174,8 +169,8 @@ export const IndexPageTemplate = ({
             </ul>
           </div>
         </div>
-      </motion.section>
-      <div className="min-h-screen py-40 w-full hidden md:block" />
+      </section>
+      <div className="h-screen w-full hidden md:block" />
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -296,7 +291,7 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </motion.section>
-      <div className="min-h-screen py-40 w-full hidden md:block" />
+      <div className="h-screen w-full hidden md:block" />
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
