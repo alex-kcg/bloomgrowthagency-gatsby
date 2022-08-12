@@ -29,7 +29,7 @@ const PartnerCard = ({
           </ul>
         }
       </header>
-      <p className="bg-inner-animate relative mt-8 pt-8 border-t border-cream">
+      <p className="bg-inner-animate relative mt-8 pt-8 border-t border-slate">
         {description}
       </p>
     </a>
