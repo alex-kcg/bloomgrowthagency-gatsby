@@ -9,17 +9,9 @@ import PartnerRow from "../components/PartnerRow";
 import Accordion from "../components/Accordion";
 import PartnerCard from "../components/PartnerCard";
 import OrderedListItem from "../components/OrderedListItem";
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-
 import arrowIcon from "../img/arrow.svg"
 
 const { useEffect, useRef } = React;
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger)
-  gsap.core.globals("ScrollTrigger", ScrollTrigger)
-}
 
 // eslint-disable-next-line
 export const IndexPageTemplate = ({
