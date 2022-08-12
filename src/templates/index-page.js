@@ -77,6 +77,11 @@ export const IndexPageTemplate = ({
     initFrameSequence('section-4', 'Phase6-v4-frame_DeMain_', 'jpg', 960, 540, 60, false, true)
   });
 
+  const globalTransitionYDistance = 200;
+  const globalTransitionYOffset = '20vh';
+  const globalTransitionDuration = 0.5;
+  const globalTransitionEase = 'easeOut';
+
   return (
     <main>
       <motion.header
@@ -92,12 +97,12 @@ export const IndexPageTemplate = ({
         whileInView={{ opacity: 1 }}
         id="hero"
       >
-        <div className="background fixed z-0 inset-0 flex justify-center items-center overflow-hidden">
+        <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
           <canvas className="absolute aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full">
-          <div className="md:min-h-[300vh]" />
-          <div className="w-full flex justify-center items-center px-4 text-center pt-8 md:pt-0 md:border-b md:border-slate md:pb-60 md:mb-60">
+          <div className="hidden md:block md:min-h-[300vh]" />
+          <div className="w-full flex justify-center items-center px-4 text-center pt-36 md:pt-0 md:border-b md:border-slate md:pb-60 md:mb-60">
             <h1 className="font-serif font-light tracking-tighter text-4xl border-b border-slate w-full pb-30 mb-30 md:border-0 md:pb-0 md:mb-0 md:text-10xl">
               <span className="block max-w-xs mx-auto md:max-w-5xl">
                 <span className="hero-headline overflow-hidden">
@@ -150,18 +155,36 @@ export const IndexPageTemplate = ({
       <div className="h-[50vh] w-full hidden md:block" />
       <section id="section-2">
         <div className="foreground relative z-40 w-full">
-          <div className="container py-20 md:py-0">
-            <div className="max-w-[63.5rem] mx-auto">
+          <motion.div
+            initial={{ scale: 1, opacity: 1 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: globalTransitionDuration, ease: globalTransitionEase }}
+            viewport={{ once: true, offset: globalTransitionYOffset }}
+            className="container py-20 md:py-0"
+          >
+            <motion.div
+              initial={{ translateY: globalTransitionYDistance }}
+              whileInView={{ translateY: 0 }}
+              transition={{ duration: globalTransitionDuration, ease: globalTransitionEase }}
+              viewport={{ once: true, offset: globalTransitionYOffset }}
+              className="max-w-[63.5rem] mx-auto"
+            >
               <h2 className="font-serif font-light tracking-snug text-4xl mb-20 max-w-[37.5rem] md:text-8xl md:mb-40">
                 {accordionHeading}
               </h2>
-            </div>
-            <ul className="max-w-[50.5rem] mx-auto">
+            </motion.div>
+            <motion.ul
+              initial={{ translateY: globalTransitionYDistance }}
+              whileInView={{ translateY: 0 }}
+              transition={{ duration: globalTransitionDuration, ease: globalTransitionEase }}
+              viewport={{ once: true, offset: globalTransitionYOffset }}
+              className="max-w-[50.5rem] mx-auto"
+            >
               {accordionItems.map((item, index) => (
                 <Accordion key={index} accordionItem={item} />
               ))}
-            </ul>
-          </div>
+            </motion.ul>
+          </motion.div>
         </div>
       </section>
       <div className="h-screen w-full hidden md:block" />
@@ -170,7 +193,7 @@ export const IndexPageTemplate = ({
         whileInView={{ opacity: 1 }}
         id="section-3"
       >
-        <div className="background fixed z-0 inset-0 flex justify-center items-center overflow-hidden">
+        <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
           <canvas className="absolute aspect-square min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full">
@@ -291,7 +314,7 @@ export const IndexPageTemplate = ({
         whileInView={{ opacity: 1 }}
         id="section-4"
       >
-        <div className="background fixed z-0 inset-0 flex justify-center items-center overflow-hidden">
+        <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
           <canvas className="absolute aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full">
