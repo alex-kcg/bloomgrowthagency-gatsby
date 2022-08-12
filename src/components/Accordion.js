@@ -6,11 +6,11 @@ const Accordion = ({ accordionItem }) => {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <li className="group border-b border-slate overflow-hidden mb-2 md:mb-4">
+    <li className="border-b border-slate overflow-hidden mb-2 md:mb-4">
       <motion.h3
         initial={false}
         onClick={() => setExpanded(expanded ? false : true)}
-        className="relative font-serif font-light tracking-snug text-3xl py-6 pr-16 cursor-pointer md:text-6xl"
+        className="group relative font-serif font-light tracking-snug text-3xl py-6 pr-16 cursor-pointer md:text-6xl"
       >
         <span className="group-bg-animate bg-animate bg-animate-electric-lime md:group-hover:text-not-dark-blue">
           <span className="relative">
