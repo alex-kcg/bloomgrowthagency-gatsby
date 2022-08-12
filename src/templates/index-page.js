@@ -170,7 +170,12 @@ export const IndexPageTemplate = ({
               className="max-w-[63.5rem] mx-auto"
             >
               <h2 className="font-serif font-light tracking-snug text-4xl mb-20 max-w-[37.5rem] md:text-8xl md:mb-40">
-                {accordionHeading}
+                {accordionHeading.split(' ').map((text, index) => (
+                  <motion.span
+                    key={index}
+                  >
+                    {text.match(/\w+|\s+|[^\s\w]+/g).map((text, index) => (<span key={index}>{text}</span>))} </motion.span>
+                ))}
               </h2>
             </motion.div>
             <motion.ul
@@ -201,10 +206,20 @@ export const IndexPageTemplate = ({
             <div className="max-w-[63.5rem] mx-auto">
               <div className="max-w-[37.5rem]">
                 <h2 className="font-serif font-light tracking-tight text-5xl mb-14 md:text-8xl">
-                  {partnersHeading}
+                  {partnersHeading.split(' ').map((text, index) => (
+                    <motion.span
+                      key={index}
+                    >
+                      {text.match(/\w+|\s+|[^\s\w]+/g).map((text, index) => (<span key={index}>{text}</span>))} </motion.span>
+                  ))}
                 </h2>
                 <p className="font-light text-lg leading-normal mb-20 tracking-tighter md:text-3xl md:leading-normal md:mb-40">
-                  {partnersSubheading}
+                  {partnersSubheading.split(' ').map((text, index) => (
+                    <motion.span
+                      key={index}
+                    >
+                      {text.match(/\w+|\s+|[^\s\w]+/g).map((text, index) => (<span key={index}>{text}</span>))} </motion.span>
+                  ))}
                 </p>
               </div>
             </div>
