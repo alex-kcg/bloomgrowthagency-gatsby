@@ -66,7 +66,7 @@ export const IndexPageTemplate = ({
 
       window.addEventListener('scroll', () => {  
         const containerScrollTop = (top ? 0 : window.innerHeight) - container.getBoundingClientRect().top;
-        const maxScrollTop = (bottom ? 0 : window.innerHeight) + container.scrollHeight;
+        const maxScrollTop = (top ? 0 - window.innerHeight : 0) + (bottom ? 0 : window.innerHeight) + container.scrollHeight;
         const scrollFraction =  containerScrollTop / maxScrollTop;
         const normalizedScrollFraction =  scrollFraction > 1 ? 1 : scrollFraction < 0 ? 0 : scrollFraction;
         const frameIndex = Math.min(
