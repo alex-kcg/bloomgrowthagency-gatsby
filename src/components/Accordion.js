@@ -17,10 +17,12 @@ const Accordion = ({ accordionItem }) => {
             {accordionItem.heading}
           </span>
         </span>
-        <button className="absolute right-0 top-1/2 transform -translate-y-1/2 text-cream border border-slate rounded-full group-bg-animate bg-animate bg-animate-electric-lime md:group-hover:border-not-dark-blue md:group-hover:text-not-dark-blue">
-          <svg className="relative h-10 w-10" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path className={`fill-current ${expanded ? 'hidden' : ''}`} fillRule="evenodd" clipRule="evenodd" d="M20.4285 14.8571C20.4285 14.3838 20.2367 14 20 14C19.7633 14 19.5714 14.3838 19.5714 14.8571V19.1428H14.8571C14.3838 19.1428 14 19.3347 14 19.5713C14 19.808 14.3838 19.9999 14.8571 19.9999H19.5714V25.1429C19.5714 25.6162 19.7633 26 20 26C20.2367 26 20.4285 25.6162 20.4285 25.1429V19.9999H25.1429C25.6162 19.9999 26 19.808 26 19.5713C26 19.3347 25.6162 19.1428 25.1429 19.1428H20.4285V14.8571Z" />
-            <path className={`fill-current ${expanded ? '' : 'hidden'}`} fillRule="evenodd" clipRule="evenodd" d="M26 19.5C26 19.7761 25.6162 20 25.1429 20L14.8571 20C14.3838 20 14 19.7761 14 19.5C14 19.2239 14.3838 19 14.8571 19L25.1429 19C25.6162 19 26 19.2239 26 19.5Z" />
+        <button className="absolute right-0 top-1/2 h-10 w-10 transform -translate-y-1/2 text-cream border border-slate rounded-full group-bg-animate bg-animate bg-animate-electric-lime md:group-hover:border-not-dark-blue md:group-hover:text-not-dark-blue">
+          <svg className={`absolute inset-0 h-10 w-10 transform origin-center transition-transform ease-out duration-500 ${expanded ? 'rotate-180' : ''}`} width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path className={`fill-current ${expanded ? '' : ''}`} fillRule="evenodd" clipRule="evenodd" d="M26 19.5C26 19.7761 25.6162 20 25.1429 20L14.8571 20C14.3838 20 14 19.7761 14 19.5C14 19.2239 14.3838 19 14.8571 19L25.1429 19C25.6162 19 26 19.2239 26 19.5Z" />
+          </svg>
+          <svg className={`absolute inset-0 h-10 w-10 transform origin-center transition-transform ease-out duration-500 ${expanded ? 'rotate-180' : '-rotate-90'}`} width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path className={`fill-current ${expanded ? '' : ''}`} fillRule="evenodd" clipRule="evenodd" d="M26 19.5C26 19.7761 25.6162 20 25.1429 20L14.8571 20C14.3838 20 14 19.7761 14 19.5C14 19.2239 14.3838 19 14.8571 19L25.1429 19C25.6162 19 26 19.2239 26 19.5Z" />
           </svg>
         </button>
       </motion.h3>
