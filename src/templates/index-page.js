@@ -102,8 +102,8 @@ export const IndexPageTemplate = ({
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="hidden md:block md:min-h-[300vh]" />
-          <div className="w-full flex justify-center items-center px-4 text-center pt-36 md:pt-0 md:border-b md:border-slate md:pb-60 md:mb-60">
-            <h1 className="font-serif font-light tracking-tighter text-4xl border-b border-slate w-full pb-30 mb-30 md:border-0 md:pb-0 md:mb-0 md:text-10xl">
+          <div className="w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:pt-0 md:mb-60">
+            <h1 className="font-serif font-light tracking-tighter text-4xl w-full md:text-10xl">
               <span className="block max-w-xs mx-auto md:max-w-5xl">
                 <span className="hero-headline overflow-hidden">
                   {heading.split(' ').map((text, index) => (
