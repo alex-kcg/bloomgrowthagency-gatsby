@@ -357,7 +357,7 @@ export const IndexPageTemplate = ({
         <div className="foreground relative z-40 w-full">
           <div className="container pt-10 md:py-20">
             <div className="max-w-[63.5rem] mx-auto">
-              <div className="border-b border-gray py-10 md:py-20">
+              <div className="border-b border-slate py-10 md:py-20">
                 <div className="flex flex-wrap justify-between -mx-4 sm:-mx-3">
                   <div className="w-full px-4 sm:px-3 md:w-1/2">
                     <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
@@ -377,7 +377,7 @@ export const IndexPageTemplate = ({
                   </div>
                 </div>
               </div>
-              <div className="border-b border-gray py-10 md:py-20">
+              <div className="hidden border-b border-slate py-10 md:py-20">
                 <div className="flex flex-wrap justify-between -mx-4 sm:-mx-3">
                   <div className="w-full px-4 sm:px-3 md:w-1/2">
                     <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
@@ -411,7 +411,7 @@ export const IndexPageTemplate = ({
                     Head of Growth
                   </h4>
                   <ul className="mb-10">
-                    <li className="border-b border-gray">
+                    <li className="border-b border-slate">
                       <a className="group flex flex-wrap justify-start items-center space-x-4 py-4" href="mailto:zach@bloomgrowthagency.com">
                         <img src={arrowIcon} alt="Arrow icon" className="block w-8 h-8 p-2 rounded-full bg-summer-rain" />
                         <span className="transition-color duration-500 ease-out group-hover:text-summer-rain">
@@ -419,7 +419,7 @@ export const IndexPageTemplate = ({
                         </span>
                       </a>
                     </li>
-                    <li className="border-b border-gray">
+                    <li className="border-b border-slate">
                       <a className="group flex flex-wrap justify-start items-center space-x-4 py-4" href="tel:+14136363186">
                         <img src={arrowIcon} alt="Arrow icon" className="block w-8 h-8 p-2 rounded-full bg-voltage" />
                         <span className="transition-color duration-500 ease-out group-hover:text-voltage">
@@ -427,7 +427,7 @@ export const IndexPageTemplate = ({
                         </span>
                       </a>
                     </li>
-                    <li className="border-b border-gray">
+                    <li className="border-b border-slate">
                       <button className="group flex flex-wrap justify-start items-center space-x-4 py-4">
                         <img src={arrowIcon} alt="Arrow icon" className="block w-8 h-8 p-2 rounded-full bg-electric-lime" />
                         <span className="transition-color duration-500 ease-out group-hover:text-electric-lime">

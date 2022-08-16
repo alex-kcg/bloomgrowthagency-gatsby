@@ -18,7 +18,7 @@ const OrderedListItem = ({ text, index }) => {
       <motion.hr
         initial={{ width: '100%' }}
         whileInView={{ width: '100%' }}
-        className="my-6 border-gray md:my-8"
+        className="my-6 border-slate md:my-8"
       />
       <SplitTextOnWordBoundaries text={text} />
     </motion.li>
