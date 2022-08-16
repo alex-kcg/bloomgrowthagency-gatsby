@@ -31,24 +31,17 @@ export const IndexPageTemplate = ({
       window.scrollTo(0, 0);
     }
 
-    const initFrameSequence = (selector, filename, fileformat, canvasWidth, canvasHeight, frameCount, top = false, bottom = false, loop = false) => {
+    const currentFrame = (filename, fileformat, index) => (
+      `/img/${filename}${index.toString().padStart(4, '0')}.${fileformat}`
+    )
+
+    const initIntroSequence = (selector, filename, fileformat, canvasWidth, canvasHeight, frameCount, loop = 0) => {
       const container = document.getElementById(selector);
       const canvas = container.querySelector('canvas');
       const context = canvas.getContext('2d');
 
-      const currentFrame = index => (
-        `/img/${filename}${index.toString().padStart(4, '0')}.${fileformat}`
-      )
-
-      const preloadImages = () => {
-        for (let i = 1; i < frameCount; i++) {
-          const img = new Image();
-          img.src = currentFrame(i);
-        }
-      };
-
       const img = new Image()
-      img.src = currentFrame(1);
+      img.src = currentFrame(filename, fileformat, 1);
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
       img.onload = function(){
@@ -56,69 +49,102 @@ export const IndexPageTemplate = ({
       }
 
       const updateImage = index => {
-        img.src = currentFrame(index);
+        img.src = currentFrame(filename, fileformat, index);
         context.drawImage(img, 0, 0);
       }
 
-      if (loop) {
-        let scrolled = false;
+      let scrolled = false;
 
-        const loopSpeedInterval = 40;
+      const loopSpeedInterval = 75,
+            playbackSpeedInterval = 40;
 
-        function playSequence () {
-          for (let i = loop; i < frameCount; i++) {
-            (function(index) {
-              setTimeout(function() {
-                requestAnimationFrame(() => updateImage(index + 1))
-              }, loopSpeedInterval * (index - loop + 1))
-            })(i);
-          }
+      function playSequence () {
+        for (let i = loop; i < frameCount; i++) {
+          (function(index) {
+            setTimeout(function() {
+              requestAnimationFrame(() => updateImage(index + 1))
+            }, playbackSpeedInterval * (index - loop + 1))
+          })(i);
         }
-
-        function loopSequence () {
-          for (let i = 0; i < loop; i++) {
-            (function(index) {
-              setTimeout(function() {
-                requestAnimationFrame(() => updateImage(index + 1))
-
-                if ((index + 1) === loop) {
-                  if (scrolled) {
-                    playSequence()
-                  } else {
-                    loopSequence()
-                  }
-                }
-              }, loopSpeedInterval * (index + 1))
-            })(i);
-          }
-        }
-        loopSequence()
-
-        window.addEventListener('scroll', () => {
-          scrolled = true
-        });
-      } else {
-        window.addEventListener('scroll', () => {
-          const containerScrollTop = (top ? 0 : window.innerHeight) - container.getBoundingClientRect().top;
-          const maxScrollTop = (top ? 0 - window.innerHeight : 0) + (bottom ? 0 : window.innerHeight) + container.scrollHeight;
-          const scrollFraction =  containerScrollTop / maxScrollTop;
-          const normalizedScrollFraction =  scrollFraction > 1 ? 1 : scrollFraction < 0 ? 0 : scrollFraction;
-          const frameIndex = Math.min(
-            frameCount - 1,
-            Math.ceil(normalizedScrollFraction * frameCount)
-          );
-          
-          requestAnimationFrame(() => updateImage(frameIndex + 1))
-        })
       }
+
+      function loopSequence () {
+        for (let i = 0; i < loop; i++) {
+          (function(index) {
+            setTimeout(function() {
+              requestAnimationFrame(() => updateImage(index + 1))
+
+              if ((index + 1) === loop) {
+                if (scrolled) {
+                  playSequence()
+                } else {
+                  loopSequence()
+                }
+              }
+            }, loopSpeedInterval * (index + 1))
+          })(i);
+        }
+      }
+
+      window.addEventListener('scroll', () => {
+        scrolled = true
+      });
+
+      for (let i = 1; i < frameCount; i++) {
+        const img = new Image();
+        img.src = currentFrame(filename, fileformat, i);
+
+        if ((i + 1) === frameCount) {
+          loopSequence()
+        }
+      }
+    };
+
+    const initScrollFrameSequence = (selector, filename, fileformat, canvasWidth, canvasHeight, frameCount, top = false, bottom = false) => {
+      const container = document.getElementById(selector);
+      const canvas = container.querySelector('canvas');
+      const context = canvas.getContext('2d');
+
+      const preloadImages = () => {
+        for (let i = 1; i < frameCount; i++) {
+          const img = new Image();
+          img.src = currentFrame(filename, fileformat, i);
+        }
+      };
+
+      const img = new Image()
+      img.src = currentFrame(filename, fileformat, 1);
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
+      img.onload = function(){
+        context.drawImage(img, 0, 0);
+      }
+
+      const updateImage = index => {
+        img.src = currentFrame(filename, fileformat, index);
+        context.drawImage(img, 0, 0);
+      }
+
+      window.addEventListener('scroll', () => {
+        const containerScrollTop = (top ? 0 : window.innerHeight) - container.getBoundingClientRect().top;
+        const maxScrollTop = (top ? 0 - window.innerHeight : 0) + (bottom ? 0 : window.innerHeight) + container.scrollHeight;
+        const scrollFraction =  containerScrollTop / maxScrollTop;
+        const normalizedScrollFraction =  scrollFraction > 1 ? 1 : scrollFraction < 0 ? 0 : scrollFraction;
+        const frameIndex = Math.min(
+          frameCount - 1,
+          Math.ceil(normalizedScrollFraction * frameCount)
+        );
+        
+        requestAnimationFrame(() => updateImage(frameIndex + 1))
+      })
 
       preloadImages()
     };
 
-    initFrameSequence('hero', 'BG-SiteAnim-PlanterModel-Phase1-v8-frame_DeMain_', 'jpg', 1440, 810, 120, true, false, 20)
-    initFrameSequence('section-1', 'BG-SiteAnim-PlanterModel-Phase2-v7-Squareframe', 'jpg', 810, 810, 144, true, true)
-    initFrameSequence('section-3', 'Phase4-v6-frame_DeMain_', 'jpg', 960, 960, 60, false, false)
-    initFrameSequence('section-4', 'Phase6-v4-frame_DeMain_', 'jpg', 960, 540, 60, false, true)
+    initIntroSequence('hero', 'BG-SiteAnim-PlanterModel-Phase1-v8-frame_DeMain_', 'jpg', 1440, 810, 120, 20)
+    initScrollFrameSequence('section-1', 'BG-SiteAnim-PlanterModel-Phase2-v7-Squareframe', 'jpg', 810, 810, 144, true, true)
+    initScrollFrameSequence('section-3', 'Phase4-v6-frame_DeMain_', 'jpg', 960, 960, 60, false, false)
+    initScrollFrameSequence('section-4', 'Phase6-v4-frame_DeMain_', 'jpg', 960, 540, 60, false, true)
   });
 
   const globalTransitionYDistance = 200;
@@ -129,10 +155,10 @@ export const IndexPageTemplate = ({
   return (
     <main>
       <motion.header
-        className="hidden fixed z-50 py-8 text-center md:py-16"
+        className="fixed z-50 py-8 text-center md:py-16"
         animate={{ top: '0%', left: '50%', translateY: '0%', translateX: '-50%' }}
         initial={{ top: '50%', left: '50%', translateY: '-50%', translateX: '-50%' }}
-        transition={{ duration: 1, ease: 'easeInOut', delay: 1.5 }}
+        transition={{ duration: 1, ease: 'easeInOut', delay: 2.5 }}
       >
         <Navbar />
       </motion.header>
@@ -145,21 +171,25 @@ export const IndexPageTemplate = ({
           <canvas className="absolute aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full">
-          <div className="hidden md:block md:min-h-[200vh]" />
-          <div className="w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:pt-0 md:mb-60">
+          <div className="w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:h-screen md:pt-0 md:mb-60">
             <h1 className="font-serif font-light tracking-tighter text-4xl w-full md:text-10xl">
               <span className="block max-w-xs mx-auto md:max-w-5xl">
-                <SplitTextOnWordBoundaries className="hero-headline overflow-hidden" text={heading} />
+                <SplitTextOnWordBoundaries className="hero-headline overflow-hidden" text={heading} delay={3.5} />
               </span>
             </h1>
           </div>
-          <div className="text-6xl tracking-tight text-slate pb-20 md:text-11xl md:mb-0">
+          <motion.div
+            className="text-6xl tracking-tight text-slate pb-20 md:text-11xl md:mb-0"
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            transition={{ duration: 1, ease: 'easeInOut', delay: 5 }}
+          >
             <div>
               {partnerRows.map((row, index) => (
                 <PartnerRow key={index} partnerRow={row} />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </motion.section>
       <div className="h-[50vh] w-full hidden md:block" />
