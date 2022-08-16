@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Kalos Creative Group",
   "dependencies": {
+    "@motionone/utils": "^10.13.2",
     "bulma": "^0.9.0",
     "gatsby": "^4.0.0",
     "gatsby-plugin-google-tagmanager": "^4.18.1",

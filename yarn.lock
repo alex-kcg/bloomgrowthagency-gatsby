@@ -1838,17 +1838,17 @@
     "@motionone/utils" "^10.13.1"
     "tslib" "^2.3.1"
 
-"@motionone/types@^10.12.0", "@motionone/types@^10.13.0":
-  "integrity" "sha512-qegk4qg8U1N9ZwAJ187BG3TkZz1k9LP/pvNtCSlqdq/PMUDKlCFG4ZnjJ481P0IOH/vIw1OzIbKIuyg0A3rk9g=="
-  "resolved" "https://registry.npmjs.org/@motionone/types/-/types-10.13.0.tgz"
-  "version" "10.13.0"
+"@motionone/types@^10.12.0", "@motionone/types@^10.13.0", "@motionone/types@^10.13.2":
+  "integrity" "sha512-yYV4q5v5F0iADhab4wHfqaRJnM/eVtQLjUPhyEcS72aUz/xyOzi09GzD/Gu+K506BDfqn5eULIilUI77QNaqhw=="
+  "resolved" "https://registry.npmjs.org/@motionone/types/-/types-10.13.2.tgz"
+  "version" "10.13.2"
 
-"@motionone/utils@^10.12.0", "@motionone/utils@^10.13.1":
-  "integrity" "sha512-TjDPTIppaf3ofBXQv4ZzAketJgN0sclALXfZ6mfrkjJkOy83mLls9744F+6S+VKCpBmvbZcBY4PQfrfhAfeMtA=="
-  "resolved" "https://registry.npmjs.org/@motionone/utils/-/utils-10.13.1.tgz"
-  "version" "10.13.1"
+"@motionone/utils@^10.12.0", "@motionone/utils@^10.13.1", "@motionone/utils@^10.13.2":
+  "integrity" "sha512-6Lw5bDA/w7lrPmT/jYWQ76lkHlHs9fl2NZpJ22cVy1kKDdEH+Cl1U6hMTpdphO6VQktQ6v2APngag91WBKLqlA=="
+  "resolved" "https://registry.npmjs.org/@motionone/utils/-/utils-10.13.2.tgz"
+  "version" "10.13.2"
   dependencies:
-    "@motionone/types" "^10.13.0"
+    "@motionone/types" "^10.13.2"
     "hey-listen" "^1.0.8"
     "tslib" "^2.3.1"
 
@@ -6957,11 +6957,6 @@
     "kind-of" "^6.0.2"
     "section-matter" "^1.0.0"
     "strip-bom-string" "^1.0.0"
-
-"gsap@^3.10.4":
-  "integrity" "sha512-6QatdkKxXCMfvCW4rM++0RqyLQAzFX5nwl3yHS0XPgkZBkiSEY3VZVbMltrdtsbER/xZonLtyHt684wRp4erlQ=="
-  "resolved" "https://registry.npmjs.org/gsap/-/gsap-3.10.4.tgz"
-  "version" "3.10.4"
 
 "gzip-size@5.1.1":
   "integrity" "sha512-FNHi6mmoHvs1mxZAds4PpdCS6QG8B4C1krxJsMutgxl5t3+GlRTzzI3NEkifXx2pVsOvJdOGSmIgDhQ55FwdPA=="

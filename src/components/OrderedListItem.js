@@ -13,7 +13,7 @@ const OrderedListItem = ({ text, index }) => {
       className="w-full"
     >
       <span className="block text-7xl font-light leading-[0.72727272em] md:text-10xl md:leading-[0.72727272em]">
-        {index}
+        <SplitTextOnWordBoundaries text={index} />
       </span>
       <motion.hr
         initial={{ width: '100%' }}
