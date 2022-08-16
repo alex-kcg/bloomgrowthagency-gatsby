@@ -14,10 +14,6 @@ import arrowIcon from "../img/arrow.svg"
 
 const { useEffect } = React;
 
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
-
 // eslint-disable-next-line
 export const IndexPageTemplate = ({
   title,
@@ -31,6 +27,10 @@ export const IndexPageTemplate = ({
   partnersSubheading,
 }) => {
   useEffect(() => {
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
+
     const initFrameSequence = (selector, filename, fileformat, canvasWidth, canvasHeight, frameCount, top = false, bottom = false, loop = false) => {
       const container = document.getElementById(selector);
       const canvas = container.querySelector('canvas');
