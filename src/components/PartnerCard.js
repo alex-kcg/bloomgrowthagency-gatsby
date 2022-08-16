@@ -10,7 +10,7 @@ const PartnerCard = ({
   logo,
 }) => {
   return (
-    <a href="#" className={`block group backdrop-blur-3xl w-full px-8 py-12 rounded-3xl border border-gray border-opacity-[0.08] text-cream font-light text-lg leading-normal ${className ? className : ''}`}>
+    <div className={`block group backdrop-blur-3xl w-full px-8 py-12 rounded-3xl border border-gray border-opacity-[0.08] text-cream font-light text-lg leading-normal ${className ? className : ''}`}>
       <header className="relative">
         <div className="h-23 flex justify-start items-center" dangerouslySetInnerHTML={{ __html: logo }} />
         <h3 className="sr-only">
@@ -32,7 +32,7 @@ const PartnerCard = ({
       <p className="bg-inner-animate relative mt-8 pt-8 border-t border-slate">
         {description}
       </p>
-    </a>
+    </div>
   );
 };
 

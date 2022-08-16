@@ -19,8 +19,6 @@ export const SettingsTemplate = ({}) => {
 SettingsTemplate.propTypes = {};
 
 const Settings = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
-
   return (
     <SettingsTemplate />
   );
