@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import SplitTextOnWordBoundaries from "./SplitTextOnWordBoundaries";
+
 import { motion } from "framer-motion";
 
 const OrderedListItem = ({ text, index }) => {
@@ -18,12 +20,7 @@ const OrderedListItem = ({ text, index }) => {
         whileInView={{ width: '100%' }}
         className="my-6 border-gray md:my-8"
       />
-      {text.split(' ').map((text, index) => (
-        <motion.span
-          key={index}
-        >
-          {text.match(/\w+|\s+|[^\s\w]+/g).map((text, index) => (<span key={index}>{text}</span>))} </motion.span>
-      ))}
+      <SplitTextOnWordBoundaries text={text} />
     </motion.li>
   );
 };

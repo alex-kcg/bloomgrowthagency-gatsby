@@ -9,6 +9,7 @@ import PartnerRow from "../components/PartnerRow";
 import Accordion from "../components/Accordion";
 import PartnerCard from "../components/PartnerCard";
 import OrderedListItem from "../components/OrderedListItem";
+import SplitTextOnWordBoundaries from "../components/SplitTextOnWordBoundaries";
 import arrowIcon from "../img/arrow.svg"
 
 const { useEffect } = React;
@@ -105,14 +106,7 @@ export const IndexPageTemplate = ({
           <div className="w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:pt-0 md:mb-60">
             <h1 className="font-serif font-light tracking-tighter text-4xl w-full md:text-10xl">
               <span className="block max-w-xs mx-auto md:max-w-5xl">
-                <span className="hero-headline overflow-hidden">
-                  {heading.split(' ').map((text, index) => (
-                    <motion.span
-                      key={index}
-                    >
-                      {text.match(/\w+|\s+|[^\s\w]+/g).map((text, index) => (<span key={index}>{text}</span>))} </motion.span>
-                  ))}
-                </span>
+                <SplitTextOnWordBoundaries className="hero-headline overflow-hidden" text={heading} />
               </span>
             </h1>
           </div>
@@ -170,12 +164,7 @@ export const IndexPageTemplate = ({
               className="max-w-[63.5rem] mx-auto"
             >
               <h2 className="font-serif font-light tracking-snug text-4xl mb-20 max-w-[37.5rem] md:text-8xl md:mb-40">
-                {accordionHeading.split(' ').map((text, index) => (
-                  <motion.span
-                    key={index}
-                  >
-                    {text.match(/\w+|\s+|[^\s\w]+/g).map((text, index) => (<span key={index}>{text}</span>))} </motion.span>
-                ))}
+                <SplitTextOnWordBoundaries text={accordionHeading} />
               </h2>
             </motion.div>
             <motion.ul
@@ -206,20 +195,10 @@ export const IndexPageTemplate = ({
             <div className="max-w-[63.5rem] mx-auto">
               <div className="max-w-[37.5rem]">
                 <h2 className="font-serif font-light tracking-tight text-5xl mb-14 md:text-8xl">
-                  {partnersHeading.split(' ').map((text, index) => (
-                    <motion.span
-                      key={index}
-                    >
-                      {text.match(/\w+|\s+|[^\s\w]+/g).map((text, index) => (<span key={index}>{text}</span>))} </motion.span>
-                  ))}
+                  <SplitTextOnWordBoundaries text={partnersHeading} />
                 </h2>
                 <p className="font-light text-lg leading-normal mb-20 tracking-tighter md:text-3xl md:leading-normal md:mb-40">
-                  {partnersSubheading.split(' ').map((text, index) => (
-                    <motion.span
-                      key={index}
-                    >
-                      {text.match(/\w+|\s+|[^\s\w]+/g).map((text, index) => (<span key={index}>{text}</span>))} </motion.span>
-                  ))}
+                  <SplitTextOnWordBoundaries text={partnersSubheading} />
                 </p>
               </div>
             </div>
