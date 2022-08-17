@@ -40,10 +40,11 @@ export const IndexPageTemplate = ({
       const canvas = container.querySelector('canvas');
       const context = canvas.getContext('2d');
 
-      const img = new Image()
-      img.src = currentFrame(filename, fileformat, 1);
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
+
+      const img = new Image()
+      img.src = currentFrame(filename, fileformat, 1);
       img.onload = function(){
         context.drawImage(img, 0, 0);
       }
@@ -105,6 +106,9 @@ export const IndexPageTemplate = ({
       const canvas = container.querySelector('canvas');
       const context = canvas.getContext('2d');
 
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
+
       const preloadImages = () => {
         for (let i = 1; i < frameCount; i++) {
           const img = new Image();
@@ -112,10 +116,10 @@ export const IndexPageTemplate = ({
         }
       };
 
+      preloadImages();
+
       const img = new Image()
       img.src = currentFrame(filename, fileformat, 1);
-      canvas.width = canvasWidth;
-      canvas.height = canvasHeight;
       img.onload = function(){
         context.drawImage(img, 0, 0);
       }
@@ -137,14 +141,54 @@ export const IndexPageTemplate = ({
         
         requestAnimationFrame(() => updateImage(frameIndex + 1))
       })
+    };
 
-      preloadImages()
+    const loopedSequence = (selector, filename, fileformat, canvasWidth, canvasHeight, frameCount, loopInterval = 75) => {
+      const container = document.getElementById(selector);
+      const canvas = container.querySelector('canvas');
+      const context = canvas.getContext('2d');
+
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
+
+      const img = new Image()
+      img.src = currentFrame(filename, fileformat, 1);
+      img.onload = function(){
+        context.drawImage(img, 0, 0);
+      }
+
+      const preloadImages = () => {
+        for (let i = 1; i < frameCount; i++) {
+          const img = new Image();
+          img.src = currentFrame(filename, fileformat, i);
+        }
+      };
+
+      preloadImages();
+
+      const updateImage = index => {
+        img.src = currentFrame(filename, fileformat, index);
+        context.drawImage(img, 0, 0);
+      }
+
+      let i = 0;
+
+      function sequenceFrame () {
+        console.log(i, frameCount)
+        if (i >= frameCount) {
+          i = 0;
+        }
+
+        requestAnimationFrame(() => updateImage(i++ + 1))
+      }
+  
+      setInterval(sequenceFrame, loopInterval);
     };
 
     initIntroSequence('hero', 'BG-SiteAnim-PlanterModel-Phase1-v8-frame_DeMain_', 'jpg', 1440, 810, 120, 20)
-    initScrollFrameSequence('section-1', 'BG-SiteAnim-PlanterModel-Phase2-v7-Squareframe', 'jpg', 810, 810, 144, true, true)
-    initScrollFrameSequence('section-3', 'Phase4-v6-frame_DeMain_', 'jpg', 960, 960, 60, false, false)
-    initScrollFrameSequence('section-4', 'Phase6-v4-frame_DeMain_', 'jpg', 960, 540, 60, false, true)
+    initScrollFrameSequence('section-1', 'BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_', 'jpg', 1440, 810, 120, true, true)
+    initScrollFrameSequence('section-3', 'Phase4-v7-frame_DeMain_', 'jpg', 960, 960, 69, false, false)
+    loopedSequence('section-4', 'Phase6-v5-frame_DeMain_', 'jpg', 960, 540, 59)
   });
 
   const globalTransitionYDistance = 200;
@@ -199,11 +243,8 @@ export const IndexPageTemplate = ({
         viewport={{ margin: '-50%' }}
         id="section-1"
       >
-        <div
-          className="background fixed z-0 inset-0 justify-end items-center hidden md:flex"
-          style={{ backgroundColor: '#000407' }}
-        >
-          <canvas className="aspect-square w-1/2" />
+        <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
+          <canvas className="absolute aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="h-[50vh] w-full hidden md:block" />
@@ -381,8 +422,11 @@ export const IndexPageTemplate = ({
         whileInView={{ opacity: 1 }}
         id="section-4"
       >
-        <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="absolute aspect-video min-w-full min-h-full" />
+        <div
+          className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex"
+          style={{backgroundColor: '#010c0e'}}
+        >
+          <canvas className="absolute aspect-video bottom-0 left-0 w-2/3 transform -scale-x-100" />
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="container pt-10 md:py-20">
