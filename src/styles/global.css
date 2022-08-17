@@ -113,6 +113,38 @@ body {
   .bg-animate-voltage:before {
     @apply bg-voltage;
   }
+
+  .section-1-ol {
+    @apply -translate-y-[8.75rem];
+  }
+
+  .section-1-ol[data-position="2"] {
+    @apply -translate-y-[36.25rem];
+  }
+
+  .section-1-ol[data-position="3"] {
+    @apply -translate-y-[63.75rem];
+  }
+
+  .section-1-ol li {
+    @apply opacity-50;
+  }
+
+  .section-1-ol li hr {
+    @apply w-0;
+  }
+
+  .section-1-ol[data-position="1"] li:nth-child(1),
+  .section-1-ol[data-position="2"] li:nth-child(2),
+  .section-1-ol[data-position="3"] li:nth-child(3) {
+    @apply opacity-100;
+  }
+
+  .section-1-ol[data-position="1"] li:nth-child(1) hr,
+  .section-1-ol[data-position="2"] li:nth-child(2) hr,
+  .section-1-ol[data-position="3"] li:nth-child(3) hr {
+    @apply w-80;
+  }
 }
 
 @tailwind components;

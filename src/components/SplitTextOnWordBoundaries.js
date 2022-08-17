@@ -14,7 +14,7 @@ const SplitTextOnWordBoundaries = ({ className, text, delay = 0 }) => {
               <motion.span
                 initial={{ opacity: 0, y: '100%', rotateZ: '10deg' }}
                 whileInView={{ opacity: 1, y: '0%', rotateZ: '0deg' }}
-                transition={{ duration: 0.5, ease: 'easeOut', delay: (delay + (index * 0.1)) }}
+                transition={{ duration: 0.5, ease: 'easeOut', delay: (delay + (index * 0.05)) }}
                 viewport={{ once: true }}
                 className="inline-block"
               >

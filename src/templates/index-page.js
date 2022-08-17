@@ -35,15 +35,26 @@ export const IndexPageTemplate = ({
       `/img/${filename}${index.toString().padStart(4, '0')}.${fileformat}`
     )
 
-    const initIntroSequence = (selector, filename, fileformat, canvasWidth, canvasHeight, frameCount, loop = 0) => {
-      const container = document.getElementById(selector);
-      const canvas = container.querySelector('canvas');
-      const context = canvas.getContext('2d');
-
+    const setupCanvasContext = (canvas, canvasWidth, canvasHeight) => {
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
 
-      const img = new Image()
+      return canvas.getContext('2d');
+    };
+
+    const preloadImages = (filename, fileformat, frameCount) => {
+      for (let i = 1; i < frameCount; i++) {
+        const img = new Image();
+        img.src = currentFrame(filename, fileformat, i);
+      }
+    };
+
+    const setupHero = (selector, filename, fileformat, canvasWidth, canvasHeight, frameCount, loop = 0) => {
+      const container = document.getElementById(selector);
+      const canvas = container.querySelector('canvas');
+      const context = setupCanvasContext(canvas, canvasWidth, canvasHeight);
+      const img = new Image();
+
       img.src = currentFrame(filename, fileformat, 1);
       img.onload = function(){
         context.drawImage(img, 0, 0);
@@ -89,6 +100,18 @@ export const IndexPageTemplate = ({
 
       window.addEventListener('scroll', () => {
         scrolled = true
+
+        const containerScrollTop = 0 - container.getBoundingClientRect().top;
+        const maxScrollTop = container.scrollHeight - window.innerHeight;
+        const scrollFraction = containerScrollTop / maxScrollTop;
+
+        if (scrollFraction >= 0 && scrollFraction <= 1) {
+          canvas.classList.add('opacity-100');
+          canvas.classList.remove('opacity-0');
+        } else {
+          canvas.classList.remove('opacity-100');
+          canvas.classList.add('opacity-0');
+        }
       });
 
       for (let i = 1; i < frameCount; i++) {
@@ -101,24 +124,22 @@ export const IndexPageTemplate = ({
       }
     };
 
-    const initScrollFrameSequence = (selector, filename, fileformat, canvasWidth, canvasHeight, frameCount, top = false, bottom = false) => {
+    const setupSectionOne = () => {
+      const selector = 'section-1';
+      const filename = 'BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_';
+      const fileformat = 'jpg';
+      const canvasWidth = 1440;
+      const canvasHeight = 810;
+      const frameCount = 120;
+
       const container = document.getElementById(selector);
       const canvas = container.querySelector('canvas');
-      const context = canvas.getContext('2d');
+      const orderedList = container.querySelector('.section-1-ol');
+      const context = setupCanvasContext(canvas, canvasWidth, canvasHeight);
+      const img = new Image();
 
-      canvas.width = canvasWidth;
-      canvas.height = canvasHeight;
+      preloadImages(filename, fileformat, frameCount);
 
-      const preloadImages = () => {
-        for (let i = 1; i < frameCount; i++) {
-          const img = new Image();
-          img.src = currentFrame(filename, fileformat, i);
-        }
-      };
-
-      preloadImages();
-
-      const img = new Image()
       img.src = currentFrame(filename, fileformat, 1);
       img.onload = function(){
         context.drawImage(img, 0, 0);
@@ -130,65 +151,147 @@ export const IndexPageTemplate = ({
       }
 
       window.addEventListener('scroll', () => {
-        const containerScrollTop = (top ? 0 : window.innerHeight) - container.getBoundingClientRect().top;
-        const maxScrollTop = (top ? 0 - window.innerHeight : 0) + (bottom ? 0 : window.innerHeight) + container.scrollHeight;
-        const scrollFraction =  containerScrollTop / maxScrollTop;
+        const containerScrollTop = window.innerHeight - container.getBoundingClientRect().top;
+        const maxScrollTop = window.innerHeight + container.scrollHeight;
+        const scrollFraction = containerScrollTop / maxScrollTop;
         const normalizedScrollFraction =  scrollFraction > 1 ? 1 : scrollFraction < 0 ? 0 : scrollFraction;
         const frameIndex = Math.min(
           frameCount - 1,
           Math.ceil(normalizedScrollFraction * frameCount)
         );
+
+        if (scrollFraction > 1 || scrollFraction <= 0.4) {
+          orderedList.classList.remove('md:opacity-100');
+          orderedList.classList.add('md:opacity-0');
+        } else {
+          orderedList.classList.add('md:opacity-100');
+          orderedList.classList.remove('md:opacity-0');
+        }
+
+        if (scrollFraction >= 0 && scrollFraction <= 1) {
+          canvas.classList.add('opacity-100');
+          canvas.classList.remove('opacity-0');
+
+          if (scrollFraction > 0.8) {
+            orderedList.setAttribute('data-position', '3');
+          } else if (scrollFraction > 0.6) {
+            orderedList.setAttribute('data-position', '2');
+          } else {
+            orderedList.setAttribute('data-position', '1');
+          }
+        } else {
+          canvas.classList.remove('opacity-100');
+          canvas.classList.add('opacity-0');
+        }
         
         requestAnimationFrame(() => updateImage(frameIndex + 1))
       })
     };
 
-    const loopedSequence = (selector, filename, fileformat, canvasWidth, canvasHeight, frameCount, loopInterval = 75) => {
+    const setupSectionThree = () => {
+      const selector = 'section-3';
+      const filename = 'Phase4-v7-frame_DeMain_';
+      const fileformat = 'jpg';
+      const canvasWidth = 960;
+      const canvasHeight = 960;
+      const frameCount = 69;
+
       const container = document.getElementById(selector);
       const canvas = container.querySelector('canvas');
-      const context = canvas.getContext('2d');
+      const context = setupCanvasContext(canvas, canvasWidth, canvasHeight);
+      const img = new Image();
 
-      canvas.width = canvasWidth;
-      canvas.height = canvasHeight;
+      preloadImages(filename, fileformat, frameCount);
 
-      const img = new Image()
       img.src = currentFrame(filename, fileformat, 1);
       img.onload = function(){
         context.drawImage(img, 0, 0);
       }
-
-      const preloadImages = () => {
-        for (let i = 1; i < frameCount; i++) {
-          const img = new Image();
-          img.src = currentFrame(filename, fileformat, i);
-        }
-      };
-
-      preloadImages();
 
       const updateImage = index => {
         img.src = currentFrame(filename, fileformat, index);
         context.drawImage(img, 0, 0);
       }
 
+      window.addEventListener('scroll', () => {
+        const containerScrollTop = window.innerHeight - container.getBoundingClientRect().top;
+        const maxScrollTop = window.innerHeight + container.scrollHeight;
+        const scrollFraction = containerScrollTop / maxScrollTop;
+        const normalizedScrollFraction =  scrollFraction > 1 ? 1 : scrollFraction < 0 ? 0 : scrollFraction;
+        const frameIndex = Math.min(
+          frameCount - 1,
+          Math.ceil(normalizedScrollFraction * frameCount)
+        );
+
+        if (scrollFraction >= 0 && scrollFraction <= 1) {
+          canvas.classList.add('opacity-100');
+          canvas.classList.remove('opacity-0');
+        } else {
+          canvas.classList.remove('opacity-100');
+          canvas.classList.add('opacity-0');
+        }
+        
+        requestAnimationFrame(() => updateImage(frameIndex + 1))
+      })
+    };
+
+    const setupSectionFour = () => {
+      const selector = 'section-4';
+      const filename = 'Phase6-v5-frame_DeMain_';
+      const fileformat = 'jpg';
+      const canvasWidth = 960;
+      const canvasHeight = 540;
+      const frameCount = 59;
+      const loopInterval = 75;
+
+      const container = document.getElementById(selector);
+      const canvas = container.querySelector('canvas');
+      const context = setupCanvasContext(canvas, canvasWidth, canvasHeight);
+      const img = new Image();
+
+      img.src = currentFrame(filename, fileformat, 1);
+      img.onload = function(){
+        context.drawImage(img, 0, 0);
+      }
+
+      preloadImages(filename, fileformat, frameCount);
+
+      const updateImage = index => {
+        img.src = currentFrame(filename, fileformat, index);
+        context.drawImage(img, 0, 0);
+      }
+
+      window.addEventListener('scroll', () => {
+        const containerScrollTop = window.innerHeight - container.getBoundingClientRect().top;
+        const maxScrollTop = container.scrollHeight;
+        const scrollFraction = containerScrollTop / maxScrollTop;
+
+        if (scrollFraction >= 0 && scrollFraction <= 1) {
+          canvas.classList.add('opacity-100');
+          canvas.classList.remove('opacity-0');
+        } else {
+          canvas.classList.remove('opacity-100');
+          canvas.classList.add('opacity-0');
+        }
+      });
+
       let i = 0;
 
       function sequenceFrame () {
-        console.log(i, frameCount)
         if (i >= frameCount) {
           i = 0;
         }
 
-        requestAnimationFrame(() => updateImage(i++ + 1))
+        requestAnimationFrame(() => updateImage(i++ + 1));
       }
   
       setInterval(sequenceFrame, loopInterval);
     };
 
-    initIntroSequence('hero', 'BG-SiteAnim-PlanterModel-Phase1-v8-frame_DeMain_', 'jpg', 1440, 810, 120, 20)
-    initScrollFrameSequence('section-1', 'BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_', 'jpg', 1440, 810, 120, true, true)
-    initScrollFrameSequence('section-3', 'Phase4-v7-frame_DeMain_', 'jpg', 960, 960, 69, false, false)
-    loopedSequence('section-4', 'Phase6-v5-frame_DeMain_', 'jpg', 960, 540, 59)
+    setupHero('hero', 'BG-SiteAnim-PlanterModel-Phase1-v8-frame_DeMain_', 'jpg', 1440, 810, 120, 20)
+    setupSectionOne()
+    setupSectionThree()
+    setupSectionFour()
   });
 
   const globalTransitionYDistance = 200;
@@ -198,69 +301,59 @@ export const IndexPageTemplate = ({
 
   return (
     <main>
-      <motion.header
-        className="fixed z-50 py-8 text-center md:py-16"
-        animate={{ top: '0%', left: '50%', translateY: '0%', translateX: '-50%' }}
-        initial={{ top: '50%', left: '50%', translateY: '-50%', translateX: '-50%' }}
-        transition={{ duration: 1, ease: 'easeInOut', delay: 2.5 }}
-      >
+      <header className="fixed z-50 py-8 text-center left-1/2 top-0 -translate-x-1/2 md:py-16">
         <Navbar />
-      </motion.header>
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        id="hero"
-      >
+      </header>
+      <section id="hero">
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="absolute aspect-video min-w-full min-h-full" />
+          <canvas className="transition-opacity duration-300 ease-out absolute aspect-video min-w-full min-h-full" />
         </div>
-        <div className="foreground relative z-40 w-full">
-          <div className="w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:h-screen md:pt-0 md:mb-60">
-            <h1 className="font-serif font-light tracking-tighter text-4xl w-full md:text-10xl">
-              <span className="block max-w-xs mx-auto md:max-w-5xl">
-                <SplitTextOnWordBoundaries className="hero-headline overflow-hidden" text={heading} delay={3.5} />
-              </span>
-            </h1>
+        <div
+          className="foreground relative z-40 w-full"
+        >
+          <div className="w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:min-h-screen md:pt-0 md:mb-60">
+            <motion.div
+              initial={{ opacity: 0.3 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ amount: 'all' }}
+              transition={{ duration: 1, ease: 'easeInOut' }}
+              className="w-full md:-my-44 md:py-44"
+            >
+              <h1 className="font-serif font-light tracking-tighter text-4xl md:text-10xl">
+                <span className="block max-w-xs mx-auto md:max-w-5xl">
+                  <SplitTextOnWordBoundaries className="hero-headline overflow-hidden" text={heading} delay={3.5} />
+                </span>
+              </h1>
+            </motion.div>
           </div>
-          <motion.div
-            className="text-6xl tracking-tight text-slate pb-20 md:text-11xl md:mb-0"
-            animate={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            transition={{ duration: 1, ease: 'easeInOut', delay: 5 }}
-          >
+          <div className="text-6xl tracking-tight text-slate pb-20 md:text-11xl md:min-h-screen md:mb-0">
             <div>
               {partnerRows.map((row, index) => (
                 <PartnerRow key={index} partnerRow={row} />
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
-      </motion.section>
-      <div className="h-[50vh] w-full hidden md:block" />
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ margin: '-50%' }}
-        id="section-1"
-      >
+      </section>
+      <section id="section-1">
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="absolute aspect-video min-w-full min-h-full" />
+          <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute aspect-video min-w-full min-h-full" />
         </div>
-        <div className="foreground relative z-40 w-full">
-          <div className="h-[50vh] w-full hidden md:block" />
-          <div className="container mx-auto px-4 py-20 md:py-0">
-            <div className="max-w-[63.5rem] mx-auto">
-              <ol className="section-1-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-1/2 md:space-y-40">
-                {numberedList.map((listItem, index) => (
-                  <OrderedListItem key={index} index={(index + 1) > 9 ? '' + (index + 1) : '0' + (index + 1)} text={listItem.text} />
-                ))}
-              </ol>
+        <div className="foreground relative z-40 w-full md:100vh">
+          <div className="md:fixed md:inset-x-0 md:top-1/2">
+            <div className="container mx-auto px-4 py-20 md:py-0">
+              <div className="max-w-[63.5rem] mx-auto">
+                <ol className="section-1-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-1/2 md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
+                  {numberedList.map((listItem, index) => (
+                    <OrderedListItem key={index} index={(index + 1) > 9 ? '' + (index + 1) : '0' + (index + 1)} text={listItem.text} />
+                  ))}
+                </ol>
+              </div>
             </div>
           </div>
-          <div className="h-[50vh] w-full hidden md:block" />
         </div>
-      </motion.section>
-      <div className="h-[50vh] w-full hidden md:block" />
+      </section>
+      <div className="h-[100vh] w-full hidden md:block" />
       <section id="section-2">
         <div className="foreground relative z-40 w-full">
           <motion.div
@@ -302,7 +395,7 @@ export const IndexPageTemplate = ({
         id="section-3"
       >
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="absolute aspect-square min-w-full min-h-full" />
+          <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute aspect-square min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="container py-20 md:py-40">
@@ -424,9 +517,9 @@ export const IndexPageTemplate = ({
       >
         <div
           className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex"
-          style={{backgroundColor: '#010c0e'}}
+          style={{ backgroundColor: '#010c0e' }}
         >
-          <canvas className="absolute aspect-video bottom-0 left-0 w-2/3 transform -scale-x-100" />
+          <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute aspect-video bottom-0 left-0 w-2/3 transform -scale-x-100" />
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="container pt-10 md:py-20">
