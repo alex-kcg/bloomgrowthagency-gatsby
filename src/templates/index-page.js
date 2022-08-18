@@ -49,7 +49,15 @@ export const IndexPageTemplate = ({
       }
     };
 
-    const setupHero = (selector, filename, fileformat, canvasWidth, canvasHeight, frameCount, loop = 0) => {
+    const setupSectionOne = () => {
+      const selector = 'hero';
+      const filename = 'BG-SiteAnim-PlanterModel-Phase1-v9-frame_DeMain_';
+      const fileformat = 'jpg';
+      const canvasWidth = 1440;
+      const canvasHeight = 810;
+      const frameCount = 120;
+      const loop = 20;
+
       const container = document.getElementById(selector);
       const canvas = container.querySelector('canvas');
       const context = setupCanvasContext(canvas, canvasWidth, canvasHeight);
@@ -105,7 +113,7 @@ export const IndexPageTemplate = ({
         const maxScrollTop = container.scrollHeight - window.innerHeight;
         const scrollFraction = containerScrollTop / maxScrollTop;
 
-        if (scrollFraction >= 0 && scrollFraction <= 1) {
+        if (scrollFraction >= 0 && scrollFraction < 1) {
           canvas.classList.add('opacity-100');
           canvas.classList.remove('opacity-0');
         } else {
@@ -124,7 +132,7 @@ export const IndexPageTemplate = ({
       }
     };
 
-    const setupSectionOne = () => {
+    const setupSectionTwo = () => {
       const selector = 'section-1';
       const filename = 'BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_';
       const fileformat = 'jpg';
@@ -168,7 +176,7 @@ export const IndexPageTemplate = ({
           orderedList.classList.remove('md:opacity-0');
         }
 
-        if (scrollFraction >= 0 && scrollFraction <= 1) {
+        if (scrollFraction >= 0 && scrollFraction < 1) {
           canvas.classList.add('opacity-100');
           canvas.classList.remove('opacity-0');
 
@@ -223,7 +231,7 @@ export const IndexPageTemplate = ({
           Math.ceil(normalizedScrollFraction * frameCount)
         );
 
-        if (scrollFraction >= 0 && scrollFraction <= 1) {
+        if (scrollFraction >= 0 && scrollFraction < 1) {
           canvas.classList.add('opacity-100');
           canvas.classList.remove('opacity-0');
         } else {
@@ -266,7 +274,7 @@ export const IndexPageTemplate = ({
         const maxScrollTop = container.scrollHeight;
         const scrollFraction = containerScrollTop / maxScrollTop;
 
-        if (scrollFraction >= 0 && scrollFraction <= 1) {
+        if (scrollFraction >= 0) {
           canvas.classList.add('opacity-100');
           canvas.classList.remove('opacity-0');
         } else {
@@ -288,10 +296,10 @@ export const IndexPageTemplate = ({
       setInterval(sequenceFrame, loopInterval);
     };
 
-    setupHero('hero', 'BG-SiteAnim-PlanterModel-Phase1-v8-frame_DeMain_', 'jpg', 1440, 810, 120, 20)
-    setupSectionOne()
-    setupSectionThree()
-    setupSectionFour()
+    setupSectionOne();
+    setupSectionTwo();
+    setupSectionThree();
+    setupSectionFour();
   });
 
   const globalTransitionYDistance = 200;
