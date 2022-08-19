@@ -46,6 +46,8 @@ export const IndexPageTemplate = ({
       for (let i = 1; i < frameCount; i++) {
         const img = new Image();
         img.src = currentFrame(filename, fileformat, i);
+
+        console.log('caching', currentFrame(filename, fileformat, i));
       }
     };
 
@@ -84,6 +86,8 @@ export const IndexPageTemplate = ({
             setTimeout(function() {
               requestAnimationFrame(() => updateImage(frameCount - loop + index + 1))
 
+              console.log('looping outro', index);
+
               if ((index + 1) === loop) {
                 loopOutroSequence()
               }
@@ -98,6 +102,8 @@ export const IndexPageTemplate = ({
             setTimeout(function() {
               requestAnimationFrame(() => updateImage(index + 1))
 
+              console.log('playing sequence', index);
+
               if ((index + 1) == frameCount) {
                 loopOutroSequence();
               }
@@ -111,6 +117,8 @@ export const IndexPageTemplate = ({
           (function(index) {
             setTimeout(function() {
               requestAnimationFrame(() => updateImage(index + 1))
+
+              console.log('looping intro', index);
 
               if ((index + 1) === loop) {
                 if (scrolled) {
@@ -146,6 +154,8 @@ export const IndexPageTemplate = ({
       for (let i = 1; i < frameCount; i++) {
         const img = new Image();
         img.src = currentFrame(filename, fileformat, i);
+
+        console.log('caching', currentFrame(filename, fileformat, i));
 
         if ((i + 1) === frameCount) {
           loopIntroSequence()
