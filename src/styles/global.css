@@ -76,7 +76,19 @@ body {
   content: "|";
 }
 
+.navbar-container {
+  @apply fixed left-1/2 top-0 transform -translate-x-1/2;
+}
+
 @screen md {
+  .navbar-container {
+    @apply top-1/2 -translate-y-1/2;
+  }
+
+  .scrolled .navbar-container {
+    @apply top-0 translate-y-0;
+  }
+
   .bg-animate {
     @apply relative;
   }
@@ -148,6 +160,14 @@ body {
 }
 
 @tailwind components;
+
+.hero-headline-wrapper {
+  @apply hidden;
+}
+
+.scrolled .hero-headline-wrapper {
+  @apply block;
+}
 
 .hero-headline > span:last-child > span:first-child {
   @apply text-electric-lime;

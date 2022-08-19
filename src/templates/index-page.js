@@ -78,17 +78,35 @@ export const IndexPageTemplate = ({
       const loopSpeedInterval = 75,
             playbackSpeedInterval = 40;
 
+      function loopOutroSequence () {
+        for (let i = 0; i < loop; i++) {
+          (function(index) {
+            setTimeout(function() {
+              requestAnimationFrame(() => updateImage(frameCount - loop + index + 1))
+
+              if ((index + 1) === loop) {
+                loopOutroSequence()
+              }
+            }, loopSpeedInterval * (index + 1))
+          })(i);
+        }
+      }
+
       function playSequence () {
         for (let i = loop; i < frameCount; i++) {
           (function(index) {
             setTimeout(function() {
               requestAnimationFrame(() => updateImage(index + 1))
+
+              if ((index + 1) == frameCount) {
+                loopOutroSequence();
+              }
             }, playbackSpeedInterval * (index - loop + 1))
           })(i);
         }
       }
 
-      function loopSequence () {
+      function loopIntroSequence () {
         for (let i = 0; i < loop; i++) {
           (function(index) {
             setTimeout(function() {
@@ -98,7 +116,7 @@ export const IndexPageTemplate = ({
                 if (scrolled) {
                   playSequence()
                 } else {
-                  loopSequence()
+                  loopIntroSequence()
                 }
               }
             }, loopSpeedInterval * (index + 1))
@@ -107,11 +125,14 @@ export const IndexPageTemplate = ({
       }
 
       window.addEventListener('scroll', () => {
-        scrolled = true
-
         const containerScrollTop = 0 - container.getBoundingClientRect().top;
         const maxScrollTop = container.scrollHeight - window.innerHeight;
         const scrollFraction = containerScrollTop / maxScrollTop;
+
+        if (scrollFraction > 0.2) {
+          scrolled = true
+          document.body.classList.add('scrolled');
+        }
 
         if (scrollFraction >= 0 && scrollFraction < 1) {
           canvas.classList.add('opacity-100');
@@ -127,7 +148,7 @@ export const IndexPageTemplate = ({
         img.src = currentFrame(filename, fileformat, i);
 
         if ((i + 1) === frameCount) {
-          loopSequence()
+          loopIntroSequence()
         }
       }
     };
@@ -309,7 +330,7 @@ export const IndexPageTemplate = ({
 
   return (
     <main>
-      <header className="fixed z-50 py-8 text-center left-1/2 top-0 -translate-x-1/2 md:py-16">
+      <header className="navbar-container z-50 py-8 text-center transition-all duration-500 ease-in-out md:py-16">
         <Navbar />
       </header>
       <section id="hero">
@@ -319,20 +340,22 @@ export const IndexPageTemplate = ({
         <div
           className="foreground relative z-40 w-full"
         >
-          <div className="w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:min-h-screen md:pt-0 md:mb-60">
-            <motion.div
-              initial={{ opacity: 0.3 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ amount: 'all' }}
-              transition={{ duration: 1, ease: 'easeInOut' }}
-              className="w-full md:-my-44 md:py-44"
-            >
-              <h1 className="font-serif font-light tracking-tighter text-4xl md:text-10xl">
-                <span className="block max-w-xs mx-auto md:max-w-5xl">
-                  <SplitTextOnWordBoundaries className="hero-headline overflow-hidden" text={heading} delay={3.5} />
-                </span>
-              </h1>
-            </motion.div>
+          <div className="w-full md:min-h-[200vh]">
+            <div className="sticky top-0 w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:min-h-screen md:pt-0 md:mb-60">
+              <motion.div
+                initial={{ opacity: 0.5 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ amount: 'all' }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                className="w-full md:-my-44 md:py-44"
+              >
+                <h1 className="hero-headline-wrapper font-serif font-light tracking-tighter text-4xl md:text-10xl">
+                  <span className="block max-w-xs mx-auto md:max-w-5xl">
+                    <SplitTextOnWordBoundaries className="hero-headline overflow-hidden" text={heading} delay={0.5} />
+                  </span>
+                </h1>
+              </motion.div>
+            </div>
           </div>
           <div className="text-6xl tracking-tight text-slate pb-20 md:text-11xl md:min-h-screen md:mb-0">
             <div>
