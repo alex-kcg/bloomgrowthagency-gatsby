@@ -142,7 +142,7 @@ export const IndexPageTemplate = ({
           document.body.classList.add('scrolled');
         }
 
-        if (scrollFraction >= 0 && scrollFraction < 1) {
+        if (scrollFraction >= 0 && scrollFraction < 1.2) {
           canvas.classList.add('opacity-100');
           canvas.classList.remove('opacity-0');
         } else {
