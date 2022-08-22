@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import { motion } from "framer-motion";
@@ -47,7 +47,7 @@ export const IndexPageTemplate = ({
         const img = new Image();
         img.src = currentFrame(filename, fileformat, i);
 
-        console.log('caching', currentFrame(filename, fileformat, i));
+        // console.log('caching', currentFrame(filename, fileformat, i));
       }
     };
 
@@ -86,7 +86,7 @@ export const IndexPageTemplate = ({
             setTimeout(function() {
               requestAnimationFrame(() => updateImage(frameCount - loop + index + 1))
 
-              console.log('looping outro', index);
+              // console.log('looping outro', index);
 
               if ((index + 1) === loop) {
                 loopOutroSequence()
@@ -102,7 +102,7 @@ export const IndexPageTemplate = ({
             setTimeout(function() {
               requestAnimationFrame(() => updateImage(index + 1))
 
-              console.log('playing sequence', index);
+              // console.log('playing sequence', index);
 
               if ((index + 1) == frameCount) {
                 loopOutroSequence();
@@ -118,7 +118,7 @@ export const IndexPageTemplate = ({
             setTimeout(function() {
               requestAnimationFrame(() => updateImage(index + 1))
 
-              console.log('looping intro', index);
+              // console.log('looping intro', index);
 
               if ((index + 1) === loop) {
                 if (scrolled) {
@@ -138,7 +138,7 @@ export const IndexPageTemplate = ({
         const scrollFraction = containerScrollTop / maxScrollTop;
 
         if (scrollFraction > 0.2) {
-          scrolled = true
+          scrolled = true;
           document.body.classList.add('scrolled');
         }
 
@@ -155,7 +155,7 @@ export const IndexPageTemplate = ({
         const img = new Image();
         img.src = currentFrame(filename, fileformat, i);
 
-        console.log('caching', currentFrame(filename, fileformat, i));
+        // console.log('caching', currentFrame(filename, fileformat, i));
 
         if ((i + 1) === frameCount) {
           loopIntroSequence()
@@ -357,7 +357,7 @@ export const IndexPageTemplate = ({
                 whileInView={{ opacity: 1 }}
                 viewport={{ amount: 'all' }}
                 transition={{ duration: 0.5, ease: 'easeInOut' }}
-                className="w-full md:-my-44 md:py-44"
+                className="w-full md:-mt-44 md:pt-44"
               >
                 <h1 className="hero-headline-wrapper font-serif font-light tracking-tighter text-4xl md:text-10xl">
                   <span className="block max-w-xs mx-auto md:max-w-5xl">
@@ -411,9 +411,17 @@ export const IndexPageTemplate = ({
               viewport={{ once: true, offset: globalTransitionYOffset }}
               className="max-w-[63.5rem] mx-auto"
             >
-              <h2 className="font-serif font-light tracking-snug text-4xl mb-20 max-w-[37.5rem] md:text-8xl md:mb-40">
-                <SplitTextOnWordBoundaries text={accordionHeading} />
-              </h2>
+              <motion.div
+                initial={{ opacity: 0.5 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ amount: 'all' }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                className="w-full md:-mt-44 md:pt-44"
+              >
+                <h2 className="font-serif font-light tracking-snug text-4xl mb-20 max-w-[37.5rem] md:text-8xl md:mb-40">
+                  <SplitTextOnWordBoundaries text={accordionHeading} />
+                </h2>
+              </motion.div>
             </motion.div>
             <motion.ul
               initial={{ translateY: globalTransitionYDistance }}
@@ -423,7 +431,15 @@ export const IndexPageTemplate = ({
               className="max-w-[50.5rem] mx-auto"
             >
               {accordionItems.map((item, index) => (
-                <Accordion key={index} accordionItem={item} />
+                <motion.div
+                  initial={{ opacity: 0.5 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ amount: 'all' }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  className="w-full md:-mt-44 md:pt-44"
+                >
+                  <Accordion key={index} accordionItem={item} />
+                </motion.div>
               ))}
             </motion.ul>
           </motion.div>
@@ -442,12 +458,28 @@ export const IndexPageTemplate = ({
           <div className="container py-20 md:py-40">
             <div className="max-w-[63.5rem] mx-auto">
               <div className="max-w-[37.5rem]">
-                <h2 className="font-serif font-light tracking-tight text-5xl mb-14 md:text-8xl">
-                  <SplitTextOnWordBoundaries text={partnersHeading} />
-                </h2>
-                <p className="font-light text-lg leading-normal mb-20 tracking-tighter md:text-3xl md:leading-normal md:mb-40">
-                  <SplitTextOnWordBoundaries text={partnersSubheading} />
-                </p>
+                <motion.div
+                  initial={{ opacity: 0.5 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ amount: 'all' }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  className="w-full md:-mt-44 md:pt-44"
+                >
+                  <h2 className="font-serif font-light tracking-tight text-5xl mb-14 md:text-8xl">
+                    <SplitTextOnWordBoundaries text={partnersHeading} />
+                  </h2>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0.5 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ amount: 'all' }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  className="w-full md:-mt-44 md:pt-44"
+                >
+                  <p className="font-light text-lg leading-normal mb-20 tracking-tighter md:text-3xl md:leading-normal md:mb-40">
+                    <SplitTextOnWordBoundaries text={partnersSubheading} />
+                  </p>
+                </motion.div>
               </div>
             </div>
             <div className="flex flex-wrap gap-y-10 -mx-4 items-stretch sm:-mx-3 sm:gap-y-6">
@@ -568,40 +600,72 @@ export const IndexPageTemplate = ({
               <div className="border-b border-slate py-10 md:py-20">
                 <div className="flex flex-wrap justify-between -mx-4 sm:-mx-3">
                   <div className="w-full px-4 sm:px-3 md:w-1/2">
-                    <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
-                      Are you building a design team? 
-                    </h2>
+                    <motion.div
+                      initial={{ opacity: 0.5 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ amount: 'all' }}
+                      transition={{ duration: 0.5, ease: 'easeInOut' }}
+                      className="w-full md:-mt-44 md:pt-44"
+                    >
+                      <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
+                        Are you building a design team? 
+                      </h2>
+                    </motion.div>
                   </div>
                   <div className="w-full px-4 sm:px-3 md:w-5/12">
-                    <p className="pb-6 text-lg font-light leading-relaxed">
-                      We’re helping partners build world class design organizations with our handbuilt pipeline. Interested? 
-                    </p>
-                    <button className="transition-color duration-500 ease-out text-electric-lime">
-                      <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
-                      </svg>
-                      Let’s chat pipeline
-                    </button>
+                    <motion.div
+                      initial={{ opacity: 0.5 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ amount: 'all' }}
+                      transition={{ duration: 0.5, ease: 'easeInOut' }}
+                      className="w-full md:-mt-44 md:pt-44"
+                    >
+                      <p className="pb-6 text-lg font-light leading-relaxed">
+                        We’re helping partners build world class design organizations with our handbuilt pipeline. Interested? 
+                      </p>
+                      <button className="transition-color duration-500 ease-out text-electric-lime">
+                        <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
+                        </svg>
+                        Let’s chat pipeline
+                      </button>
+                    </motion.div>
                   </div>
                 </div>
               </div>
               <div className="hidden border-b border-slate py-10 md:py-20">
                 <div className="flex flex-wrap justify-between -mx-4 sm:-mx-3">
                   <div className="w-full px-4 sm:px-3 md:w-1/2">
-                    <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
-                      Let’s be fearless together
-                    </h2>
+                    <motion.div
+                      initial={{ opacity: 0.5 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ amount: 'all' }}
+                      transition={{ duration: 0.5, ease: 'easeInOut' }}
+                      className="w-full md:-mt-44 md:pt-44"
+                    >
+                      <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
+                        Let’s be fearless together
+                      </h2>
+                    </motion.div>
                   </div>
                   <div className="w-full px-4 sm:px-3 md:w-5/12">
-                    <p className="pb-6 text-lg font-light leading-relaxed">
-                      Scaling products and design operations is hard. We’re here to make it easy. 
-                    </p>
-                    <button className="transition-color duration-500 ease-out text-electric-lime">
-                      <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
-                      </svg>
-                      Let’s chat pipeline
-                    </button>
+                    <motion.div
+                      initial={{ opacity: 0.5 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ amount: 'all' }}
+                      transition={{ duration: 0.5, ease: 'easeInOut' }}
+                      className="w-full md:-mt-44 md:pt-44"
+                    >
+                      <p className="pb-6 text-lg font-light leading-relaxed">
+                        Scaling products and design operations is hard. We’re here to make it easy. 
+                      </p>
+                      <button className="transition-color duration-500 ease-out text-electric-lime">
+                        <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
+                        </svg>
+                        Let’s chat pipeline
+                      </button>
+                    </motion.div>
                   </div>
                 </div>
               </div>
@@ -612,12 +676,28 @@ export const IndexPageTemplate = ({
                   </Link>
                 </div>
                 <div className="w-full px-4 sm:px-3 md:w-5/12">
-                  <h3 className="font-light text-3xl leading-normal tracking-tighter mb-2">
-                    Zach Greenberger
-                  </h3>
-                  <h4 className="text-lg font-light leading-relaxed mb-10">
-                    Head of Growth
-                  </h4>
+                  <motion.div
+                    initial={{ opacity: 0.5 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ amount: 'all' }}
+                    transition={{ duration: 0.5, ease: 'easeInOut' }}
+                    className="w-full md:-mt-44 md:pt-44"
+                  >
+                    <h3 className="font-light text-3xl leading-normal tracking-tighter mb-2">
+                      Zach Greenberger
+                    </h3>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0.5 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ amount: 'all' }}
+                    transition={{ duration: 0.5, ease: 'easeInOut' }}
+                    className="w-full md:-mt-44 md:pt-44"
+                  >
+                    <h4 className="text-lg font-light leading-relaxed mb-10">
+                      Head of Growth
+                    </h4>
+                  </motion.div>
                   <ul className="mb-10">
                     <li className="border-b border-slate">
                       <a className="group flex flex-wrap justify-start items-center space-x-4 py-4" href="mailto:zach@bloomgrowthagency.com">
