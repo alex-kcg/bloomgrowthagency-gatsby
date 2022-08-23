@@ -42,15 +42,6 @@ export const IndexPageTemplate = ({
       return canvas.getContext('2d');
     };
 
-    const preloadImages = (filename, fileformat, frameCount) => {
-      for (let i = 1; i < frameCount; i++) {
-        const img = new Image();
-        img.src = currentFrame(filename, fileformat, i);
-
-        // console.log('caching', currentFrame(filename, fileformat, i));
-      }
-    };
-
     const cacheImages = async (images) => {
       const promises = await images.map((src) => {
         return new Promise(function (resolve, reject) {
@@ -195,8 +186,6 @@ export const IndexPageTemplate = ({
       const context = setupCanvasContext(canvas, canvasWidth, canvasHeight);
       const img = new Image();
 
-      preloadImages(filename, fileformat, frameCount);
-
       img.src = currentFrame(filename, fileformat, 1);
       img.onload = function(){
         context.drawImage(img, 0, 0);
@@ -207,41 +196,49 @@ export const IndexPageTemplate = ({
         context.drawImage(img, 0, 0);
       }
 
-      window.addEventListener('scroll', () => {
-        const containerScrollTop = window.innerHeight - container.getBoundingClientRect().top;
-        const maxScrollTop = window.innerHeight + container.scrollHeight;
-        const scrollFraction = containerScrollTop / maxScrollTop;
-        const normalizedScrollFraction =  scrollFraction > 1 ? 1 : scrollFraction < 0 ? 0 : scrollFraction;
-        const frameIndex = Math.min(
-          frameCount - 1,
-          Math.ceil(normalizedScrollFraction * frameCount)
-        );
+      let images = []
 
-        if (scrollFraction > 1 || scrollFraction <= 0.4) {
-          orderedList.classList.remove('md:opacity-100');
-          orderedList.classList.add('md:opacity-0');
-        } else {
-          orderedList.classList.add('md:opacity-100');
-          orderedList.classList.remove('md:opacity-0');
-        }
+      for (let i = 0; i < frameCount; i++) {
+        images.push(currentFrame(filename, fileformat, i));
+      }
 
-        if (scrollFraction >= 0 && scrollFraction < 1) {
-          canvas.classList.add('opacity-100');
-          canvas.classList.remove('opacity-0');
+      cacheImages(images).then(() => {
+        window.addEventListener('scroll', () => {
+          const containerScrollTop = window.innerHeight - container.getBoundingClientRect().top;
+          const maxScrollTop = window.innerHeight + container.scrollHeight;
+          const scrollFraction = containerScrollTop / maxScrollTop;
+          const normalizedScrollFraction =  scrollFraction > 1 ? 1 : scrollFraction < 0 ? 0 : scrollFraction;
+          const frameIndex = Math.min(
+            frameCount - 1,
+            Math.ceil(normalizedScrollFraction * frameCount)
+          );
 
-          if (scrollFraction > 0.8) {
-            orderedList.setAttribute('data-position', '3');
-          } else if (scrollFraction > 0.6) {
-            orderedList.setAttribute('data-position', '2');
+          if (scrollFraction > 1 || scrollFraction <= 0.4) {
+            orderedList.classList.remove('md:opacity-100');
+            orderedList.classList.add('md:opacity-0');
           } else {
-            orderedList.setAttribute('data-position', '1');
+            orderedList.classList.add('md:opacity-100');
+            orderedList.classList.remove('md:opacity-0');
           }
-        } else {
-          canvas.classList.remove('opacity-100');
-          canvas.classList.add('opacity-0');
-        }
-        
-        requestAnimationFrame(() => updateImage(frameIndex + 1))
+
+          if (scrollFraction >= 0 && scrollFraction < 1) {
+            canvas.classList.add('opacity-100');
+            canvas.classList.remove('opacity-0');
+
+            if (scrollFraction > 0.8) {
+              orderedList.setAttribute('data-position', '3');
+            } else if (scrollFraction > 0.6) {
+              orderedList.setAttribute('data-position', '2');
+            } else {
+              orderedList.setAttribute('data-position', '1');
+            }
+          } else {
+            canvas.classList.remove('opacity-100');
+            canvas.classList.add('opacity-0');
+          }
+          
+          requestAnimationFrame(() => updateImage(frameIndex + 1))
+        })
       })
     };
 
@@ -258,8 +255,6 @@ export const IndexPageTemplate = ({
       const context = setupCanvasContext(canvas, canvasWidth, canvasHeight);
       const img = new Image();
 
-      preloadImages(filename, fileformat, frameCount);
-
       img.src = currentFrame(filename, fileformat, 1);
       img.onload = function(){
         context.drawImage(img, 0, 0);
@@ -270,25 +265,33 @@ export const IndexPageTemplate = ({
         context.drawImage(img, 0, 0);
       }
 
-      window.addEventListener('scroll', () => {
-        const containerScrollTop = window.innerHeight - container.getBoundingClientRect().top;
-        const maxScrollTop = window.innerHeight + container.scrollHeight;
-        const scrollFraction = containerScrollTop / maxScrollTop;
-        const normalizedScrollFraction =  scrollFraction > 1 ? 1 : scrollFraction < 0 ? 0 : scrollFraction;
-        const frameIndex = Math.min(
-          frameCount - 1,
-          Math.ceil(normalizedScrollFraction * frameCount)
-        );
+      let images = []
 
-        if (scrollFraction >= 0 && scrollFraction < 1) {
-          canvas.classList.add('opacity-100');
-          canvas.classList.remove('opacity-0');
-        } else {
-          canvas.classList.remove('opacity-100');
-          canvas.classList.add('opacity-0');
-        }
-        
-        requestAnimationFrame(() => updateImage(frameIndex + 1))
+      for (let i = 0; i < frameCount; i++) {
+        images.push(currentFrame(filename, fileformat, i));
+      }
+
+      cacheImages(images).then(() => {
+        window.addEventListener('scroll', () => {
+          const containerScrollTop = window.innerHeight - container.getBoundingClientRect().top;
+          const maxScrollTop = window.innerHeight + container.scrollHeight;
+          const scrollFraction = containerScrollTop / maxScrollTop;
+          const normalizedScrollFraction =  scrollFraction > 1 ? 1 : scrollFraction < 0 ? 0 : scrollFraction;
+          const frameIndex = Math.min(
+            frameCount - 1,
+            Math.ceil(normalizedScrollFraction * frameCount)
+          );
+
+          if (scrollFraction >= 0 && scrollFraction < 1) {
+            canvas.classList.add('opacity-100');
+            canvas.classList.remove('opacity-0');
+          } else {
+            canvas.classList.remove('opacity-100');
+            canvas.classList.add('opacity-0');
+          }
+          
+          requestAnimationFrame(() => updateImage(frameIndex + 1))
+        })
       })
     };
 
@@ -310,39 +313,45 @@ export const IndexPageTemplate = ({
       img.onload = function(){
         context.drawImage(img, 0, 0);
       }
-
-      preloadImages(filename, fileformat, frameCount);
-
+  
       const updateImage = index => {
         img.src = currentFrame(filename, fileformat, index);
         context.drawImage(img, 0, 0);
       }
 
-      window.addEventListener('scroll', () => {
-        const containerScrollTop = window.innerHeight - container.getBoundingClientRect().top;
-        const maxScrollTop = container.scrollHeight;
-        const scrollFraction = containerScrollTop / maxScrollTop;
+      let images = []
 
-        if (scrollFraction >= 0) {
-          canvas.classList.add('opacity-100');
-          canvas.classList.remove('opacity-0');
-        } else {
-          canvas.classList.remove('opacity-100');
-          canvas.classList.add('opacity-0');
-        }
-      });
-
-      let i = 0;
-
-      function sequenceFrame () {
-        if (i >= frameCount) {
-          i = 0;
-        }
-
-        requestAnimationFrame(() => updateImage(i++ + 1));
+      for (let i = 0; i < frameCount; i++) {
+        images.push(currentFrame(filename, fileformat, i));
       }
-  
-      setInterval(sequenceFrame, loopInterval);
+
+      cacheImages(images).then(() => {
+        window.addEventListener('scroll', () => {
+          const containerScrollTop = window.innerHeight - container.getBoundingClientRect().top;
+          const maxScrollTop = container.scrollHeight;
+          const scrollFraction = containerScrollTop / maxScrollTop;
+
+          if (scrollFraction >= 0) {
+            canvas.classList.add('opacity-100');
+            canvas.classList.remove('opacity-0');
+          } else {
+            canvas.classList.remove('opacity-100');
+            canvas.classList.add('opacity-0');
+          }
+        });
+
+        let i = 0;
+
+        function sequenceFrame () {
+          if (i >= frameCount) {
+            i = 0;
+          }
+
+          requestAnimationFrame(() => updateImage(i++ + 1));
+        }
+    
+        setInterval(sequenceFrame, loopInterval);
+      })
     };
 
     setupSectionOne();
