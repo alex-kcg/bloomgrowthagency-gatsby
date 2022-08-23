@@ -33,7 +33,6 @@ const PartnerRow = ({ partnerRow }) => {
       <motion.div
         animate={controls}
         className={`marquee absolute whitespace-nowrap ${partnerRow.direction}`}
-        onHoverStart={() => { console.log('pause animation with "controls.stop()"') } }
       >
         {[...Array(100)].map((e, i) => (
           <span className="iteration" key={i}>

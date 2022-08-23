@@ -60,10 +60,13 @@ export const IndexPageTemplate = ({
       const frameCount = 120;
       const loop = 20;
 
+      const body = document.body;
       const container = document.getElementById(selector);
       const canvas = container.querySelector('canvas');
       const context = setupCanvasContext(canvas, canvasWidth, canvasHeight);
       const img = new Image();
+
+      body.classList.add('overflow-hidden');
 
       img.src = currentFrame(filename, fileformat, 1);
       img.onload = function(){
@@ -139,7 +142,7 @@ export const IndexPageTemplate = ({
 
         if (scrollFraction > 0.2) {
           scrolled = true;
-          document.body.classList.add('scrolled');
+          body.classList.add('scrolled');
         }
 
         if (scrollFraction >= 0 && scrollFraction < 1.2) {
@@ -151,16 +154,28 @@ export const IndexPageTemplate = ({
         }
       });
 
-      for (let i = 1; i < frameCount; i++) {
-        const img = new Image();
-        img.src = currentFrame(filename, fileformat, i);
+      function loadImages() {
+        return new Promise((resolve, reject) => {
+          (function loadEach(index) {
+            if (index < frameCount) {
+              const img = new Image();
+              img.src = currentFrame(filename, fileformat, index);
 
-        // console.log('caching', currentFrame(filename, fileformat, i));
-
-        if ((i + 1) === frameCount) {
-          loopIntroSequence()
-        }
+              img.onload = function() {
+                loadEach(++index);
+              };
+              img.onerror = (err) => reject(err);
+            } else {
+              resolve();
+            }
+          })(0)
+        });
       }
+
+      loadImages().then(() => {
+        body.classList.remove('overflow-hidden');
+        loopIntroSequence()
+      }).catch((err) => console.error(err));
     };
 
     const setupSectionTwo = () => {
