@@ -51,6 +51,21 @@ export const IndexPageTemplate = ({
       }
     };
 
+    const cacheImages = async (images) => {
+      const promises = await images.map((src) => {
+        return new Promise(function (resolve, reject) {
+          const img = new Image();
+          img.src = src;
+          img.onload = resolve();
+          img.onerror = reject();
+  
+          // console.log('caching', src);
+        })
+      })
+
+      await Promise.all(promises);
+    };
+
     const setupSectionOne = () => {
       const selector = 'hero';
       const filename = 'BG-SiteAnim-PlanterModel-Phase1-v9-frame_DeMain_';
@@ -66,7 +81,13 @@ export const IndexPageTemplate = ({
       const context = setupCanvasContext(canvas, canvasWidth, canvasHeight);
       const img = new Image();
 
-      body.classList.add('overflow-hidden');
+      let images = []
+
+      for (let i = 0; i < frameCount; i++) {
+        images.push(currentFrame(filename, fileformat, i));
+      }
+
+      body.classList.add('md:overflow-hidden');
 
       img.src = currentFrame(filename, fileformat, 1);
       img.onload = function(){
@@ -135,46 +156,28 @@ export const IndexPageTemplate = ({
         }
       }
 
-      window.addEventListener('scroll', () => {
-        const containerScrollTop = 0 - container.getBoundingClientRect().top;
-        const maxScrollTop = container.scrollHeight - window.innerHeight;
-        const scrollFraction = containerScrollTop / maxScrollTop;
+      cacheImages(images).then(() => {
+        body.classList.remove('md:overflow-hidden');
+        loopIntroSequence();
 
-        if (scrollFraction > 0.2) {
-          scrolled = true;
-          body.classList.add('scrolled');
-        }
-
-        if (scrollFraction >= 0 && scrollFraction < 1.2) {
-          canvas.classList.add('opacity-100');
-          canvas.classList.remove('opacity-0');
-        } else {
-          canvas.classList.remove('opacity-100');
-          canvas.classList.add('opacity-0');
-        }
-      });
-
-      function loadImages() {
-        return new Promise((resolve, reject) => {
-          (function loadEach(index) {
-            if (index < frameCount) {
-              const img = new Image();
-              img.src = currentFrame(filename, fileformat, index);
-
-              img.onload = function() {
-                loadEach(++index);
-              };
-              img.onerror = (err) => reject(err);
-            } else {
-              resolve();
-            }
-          })(0)
+        window.addEventListener('scroll', () => {
+          const containerScrollTop = 0 - container.getBoundingClientRect().top;
+          const maxScrollTop = container.scrollHeight - window.innerHeight;
+          const scrollFraction = containerScrollTop / maxScrollTop;
+  
+          if (scrollFraction > 0.2) {
+            scrolled = true;
+            body.classList.add('scrolled');
+          }
+  
+          if (scrollFraction >= 0 && scrollFraction < 1.2) {
+            canvas.classList.add('opacity-100');
+            canvas.classList.remove('opacity-0');
+          } else {
+            canvas.classList.remove('opacity-100');
+            canvas.classList.add('opacity-0');
+          }
         });
-      }
-
-      loadImages().then(() => {
-        body.classList.remove('overflow-hidden');
-        loopIntroSequence()
       }).catch((err) => console.error(err));
     };
 
