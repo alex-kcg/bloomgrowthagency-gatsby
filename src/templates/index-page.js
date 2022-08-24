@@ -27,14 +27,10 @@ export const IndexPageTemplate = ({
   partnersSubheading,
 }) => {
   useEffect(() => {
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    }
+    const body = document.body;
+    let scrolled = false;
 
-    const currentFrame = (filename, fileformat, index) => (
-      `/img/${filename}${index.toString().padStart(4, '0')}.${fileformat}`
-    )
-
+    // Function to setup canvas 
     const setupCanvasContext = (canvas, canvasWidth, canvasHeight) => {
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
@@ -42,13 +38,62 @@ export const IndexPageTemplate = ({
       return canvas.getContext('2d');
     };
 
+    const sectionOneContainer = document.getElementById('hero');
+    const sectionOneCanvas = sectionOneContainer.querySelector('canvas');
+    const sectionOneContext = setupCanvasContext(sectionOneCanvas, 1440, 810);
+    const sectionOneFilename = 'BG-SiteAnim-PlanterModel-Phase1-v9-frame_DeMain_';
+    const sectionOneFrameCount = 120;
+    const sectionOneLoopCount = 20;
+    const SectionOneLoopSpeedInterval = 75;
+    const SectionOnePlaybackSpeedInterval = 40;
+    const sectionOneImage = new Image();
+
+    const sectionTwoContainer = document.getElementById('section-1');
+    const sectionTwoCanvas = sectionTwoContainer.querySelector('canvas');
+    const sectionTwoContext = setupCanvasContext(sectionTwoCanvas, 1440, 810);
+    const sectionTwoFilename = 'BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_';
+    const sectionTwoFrameCount = 120;
+    const sectionTwoOrderedList = sectionTwoContainer.querySelector('.section-1-ol');
+    const sectionTwoImage = new Image();
+
+    const sectionThreeContainer = document.getElementById('section-3');
+    const sectionThreeCanvas = sectionThreeContainer.querySelector('canvas');
+    const sectionThreeContext = setupCanvasContext(sectionThreeCanvas, 960, 960);
+    const sectionThreeFilename = 'Phase4-v7-frame_DeMain_';
+    const sectionThreeFrameCount = 69;
+    const sectionThreeImage = new Image();
+
+    const sectionFourContainer = document.getElementById('section-4');
+    const sectionFourCanvas = sectionFourContainer.querySelector('canvas');
+    const sectionFourContext = setupCanvasContext(sectionFourCanvas, 960, 540);
+    const sectionFourFilename = 'Phase6-v5-frame_DeMain_';
+    const sectionFourFrameCount = 59;
+    const sectionFourLoopInterval = 75;
+    const sectionFourImage = new Image();
+
+    let imagesPhaseOne = [];
+    let imagesPhaseTwo = [];
+
+    window.onbeforeunload = function () {
+      // Scroll to the top
+      window.scrollTo(0, 0);
+      // Prevent scrolling until images are done caching
+      body.classList.add('md:overflow-hidden');
+    }
+
+    // Function that returns path for image
+    const currentFrame = (filename, index, fileformat = 'jpg') => (
+      `/img/${filename}${index.toString().padStart(4, '0')}.${fileformat}`
+    )
+
+    // Async function to cache images
     const cacheImages = async (images) => {
       const promises = await images.map((src) => {
         return new Promise(function (resolve, reject) {
-          const img = new Image();
-          img.src = src;
-          img.onload = resolve();
-          img.onerror = reject();
+          const cachedImage = new Image();
+          cachedImage.src = src;
+          cachedImage.onload = resolve();
+          cachedImage.onerror = reject();
   
           // console.log('caching', src);
         })
@@ -57,307 +102,209 @@ export const IndexPageTemplate = ({
       await Promise.all(promises);
     };
 
-    const setupSectionOne = () => {
-      const selector = 'hero';
-      const filename = 'BG-SiteAnim-PlanterModel-Phase1-v9-frame_DeMain_';
-      const fileformat = 'jpg';
-      const canvasWidth = 1440;
-      const canvasHeight = 810;
-      const frameCount = 120;
-      const loop = 20;
+    // Push phase one images to array to prepare for caching
+    for (let i = 0; i < sectionOneFrameCount; i++) {
+      imagesPhaseOne.push(currentFrame(sectionOneFilename, i));
+    }
+    for (let i = 0; i < sectionTwoFrameCount; i++) {
+      imagesPhaseTwo.push(currentFrame(sectionTwoFilename, i));
+    }
+    for (let i = 0; i < sectionThreeFrameCount; i++) {
+      imagesPhaseTwo.push(currentFrame(sectionThreeFilename, i));
+    }
+    for (let i = 0; i < sectionFourFrameCount; i++) {
+      imagesPhaseTwo.push(currentFrame(sectionFourFilename, i));
+    }
 
-      const body = document.body;
-      const container = document.getElementById(selector);
-      const canvas = container.querySelector('canvas');
-      const context = setupCanvasContext(canvas, canvasWidth, canvasHeight);
-      const img = new Image();
+    // Section One start
+    const updateSectionOneImage = index => {
+      sectionOneImage.src = currentFrame(sectionOneFilename, index);
+      sectionOneContext.drawImage(sectionOneImage, 0, 0);
+    }
 
-      let images = []
+    const sectionOneLoopOutroSequence = () => {
+      for (let i = 0; i < sectionOneLoopCount; i++) {
+        (function(index) {
+          setTimeout(function() {
+            requestAnimationFrame(() => updateSectionOneImage(sectionOneFrameCount - sectionOneLoopCount + index + 1))
 
-      for (let i = 0; i < frameCount; i++) {
-        images.push(currentFrame(filename, fileformat, i));
-      }
+            // console.log('looping outro', index);
 
-      body.classList.add('md:overflow-hidden');
-
-      img.src = currentFrame(filename, fileformat, 1);
-      img.onload = function(){
-        context.drawImage(img, 0, 0);
-      }
-
-      const updateImage = index => {
-        img.src = currentFrame(filename, fileformat, index);
-        context.drawImage(img, 0, 0);
-      }
-
-      let scrolled = false;
-
-      const loopSpeedInterval = 75,
-            playbackSpeedInterval = 40;
-
-      function loopOutroSequence () {
-        for (let i = 0; i < loop; i++) {
-          (function(index) {
-            setTimeout(function() {
-              requestAnimationFrame(() => updateImage(frameCount - loop + index + 1))
-
-              // console.log('looping outro', index);
-
-              if ((index + 1) === loop) {
-                loopOutroSequence()
-              }
-            }, loopSpeedInterval * (index + 1))
-          })(i);
-        }
-      }
-
-      function playSequence () {
-        for (let i = loop; i < frameCount; i++) {
-          (function(index) {
-            setTimeout(function() {
-              requestAnimationFrame(() => updateImage(index + 1))
-
-              // console.log('playing sequence', index);
-
-              if ((index + 1) == frameCount) {
-                loopOutroSequence();
-              }
-            }, playbackSpeedInterval * (index - loop + 1))
-          })(i);
-        }
-      }
-
-      function loopIntroSequence () {
-        for (let i = 0; i < loop; i++) {
-          (function(index) {
-            setTimeout(function() {
-              requestAnimationFrame(() => updateImage(index + 1))
-
-              // console.log('looping intro', index);
-
-              if ((index + 1) === loop) {
-                if (scrolled) {
-                  playSequence()
-                } else {
-                  loopIntroSequence()
-                }
-              }
-            }, loopSpeedInterval * (index + 1))
-          })(i);
-        }
-      }
-
-      cacheImages(images).then(() => {
-        body.classList.remove('md:overflow-hidden');
-        loopIntroSequence();
-
-        window.addEventListener('scroll', () => {
-          const containerScrollTop = 0 - container.getBoundingClientRect().top;
-          const maxScrollTop = container.scrollHeight - window.innerHeight;
-          const scrollFraction = containerScrollTop / maxScrollTop;
-  
-          if (scrollFraction > 0.2) {
-            scrolled = true;
-            body.classList.add('scrolled');
-          }
-  
-          if (scrollFraction >= 0 && scrollFraction < 1.2) {
-            canvas.classList.add('opacity-100');
-            canvas.classList.remove('opacity-0');
-          } else {
-            canvas.classList.remove('opacity-100');
-            canvas.classList.add('opacity-0');
-          }
-        });
-      }).catch((err) => console.error(err));
-    };
-
-    const setupSectionTwo = () => {
-      const selector = 'section-1';
-      const filename = 'BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_';
-      const fileformat = 'jpg';
-      const canvasWidth = 1440;
-      const canvasHeight = 810;
-      const frameCount = 120;
-
-      const container = document.getElementById(selector);
-      const canvas = container.querySelector('canvas');
-      const orderedList = container.querySelector('.section-1-ol');
-      const context = setupCanvasContext(canvas, canvasWidth, canvasHeight);
-      const img = new Image();
-
-      img.src = currentFrame(filename, fileformat, 1);
-      img.onload = function(){
-        context.drawImage(img, 0, 0);
-      }
-
-      const updateImage = index => {
-        img.src = currentFrame(filename, fileformat, index);
-        context.drawImage(img, 0, 0);
-      }
-
-      let images = []
-
-      for (let i = 0; i < frameCount; i++) {
-        images.push(currentFrame(filename, fileformat, i));
-      }
-
-      cacheImages(images).then(() => {
-        window.addEventListener('scroll', () => {
-          const containerScrollTop = window.innerHeight - container.getBoundingClientRect().top;
-          const maxScrollTop = window.innerHeight + container.scrollHeight;
-          const scrollFraction = containerScrollTop / maxScrollTop;
-          const normalizedScrollFraction =  scrollFraction > 1 ? 1 : scrollFraction < 0 ? 0 : scrollFraction;
-          const frameIndex = Math.min(
-            frameCount - 1,
-            Math.ceil(normalizedScrollFraction * frameCount)
-          );
-
-          if (scrollFraction > 1 || scrollFraction <= 0.4) {
-            orderedList.classList.remove('md:opacity-100');
-            orderedList.classList.add('md:opacity-0');
-          } else {
-            orderedList.classList.add('md:opacity-100');
-            orderedList.classList.remove('md:opacity-0');
-          }
-
-          if (scrollFraction >= 0 && scrollFraction < 1) {
-            canvas.classList.add('opacity-100');
-            canvas.classList.remove('opacity-0');
-
-            if (scrollFraction > 0.8) {
-              orderedList.setAttribute('data-position', '3');
-            } else if (scrollFraction > 0.6) {
-              orderedList.setAttribute('data-position', '2');
-            } else {
-              orderedList.setAttribute('data-position', '1');
+            if ((index + 1) === sectionOneLoopCount) {
+              sectionOneLoopOutroSequence()
             }
-          } else {
-            canvas.classList.remove('opacity-100');
-            canvas.classList.add('opacity-0');
-          }
-          
-          requestAnimationFrame(() => updateImage(frameIndex + 1))
-        })
-      })
-    };
+          }, SectionOneLoopSpeedInterval * (index + 1))
+        })(i);
+      }
+    }
 
-    const setupSectionThree = () => {
-      const selector = 'section-3';
-      const filename = 'Phase4-v7-frame_DeMain_';
-      const fileformat = 'jpg';
-      const canvasWidth = 960;
-      const canvasHeight = 960;
-      const frameCount = 69;
+    const sectionOnePlaySequence = () => {
+      for (let i = sectionOneLoopCount; i < sectionOneFrameCount; i++) {
+        (function(index) {
+          setTimeout(function() {
+            requestAnimationFrame(() => updateSectionOneImage(index + 1))
 
-      const container = document.getElementById(selector);
-      const canvas = container.querySelector('canvas');
-      const context = setupCanvasContext(canvas, canvasWidth, canvasHeight);
-      const img = new Image();
+            // console.log('playing sequence', index);
 
-      img.src = currentFrame(filename, fileformat, 1);
-      img.onload = function(){
-        context.drawImage(img, 0, 0);
+            if ((index + 1) == sectionOneFrameCount) {
+              sectionOneLoopOutroSequence();
+            }
+          }, SectionOnePlaybackSpeedInterval * (index - sectionOneLoopCount + 1))
+        })(i);
+      }
+    }
+
+    const sectionOneLoopIntroSequence = () => {
+      for (let i = 0; i < sectionOneLoopCount; i++) {
+        (function(index) {
+          setTimeout(function() {
+            requestAnimationFrame(() => updateSectionOneImage(index + 1))
+
+            // console.log('looping intro', index);
+
+            if ((index + 1) === sectionOneLoopCount) {
+              if (scrolled) {
+                sectionOnePlaySequence()
+              } else {
+                sectionOneLoopIntroSequence()
+              }
+            }
+          }, SectionOneLoopSpeedInterval * (index + 1))
+        })(i);
+      }
+    }
+
+    // Render the first frame while caching
+    sectionOneImage.src = currentFrame(sectionOneFilename, 1);
+    sectionOneImage.onload = function(){
+      sectionOneContext.drawImage(sectionOneImage, 0, 0);
+    }
+
+    cacheImages(imagesPhaseOne).then(() => {
+      body.classList.remove('md:overflow-hidden');
+      sectionOneLoopIntroSequence();
+
+      cacheImages(imagesPhaseTwo)      
+    }).catch((err) => console.error(err));
+
+    // Section Two start
+    const updateSectionTwoImage = index => {
+      sectionTwoImage.src = currentFrame(sectionTwoFilename, index);
+      sectionTwoContext.drawImage(sectionTwoImage, 0, 0);
+    }
+
+    // Section Three start
+    const updateSectionThreeImage = index => {
+      sectionThreeImage.src = currentFrame(sectionThreeFilename, index);
+      sectionThreeContext.drawImage(sectionThreeImage, 0, 0);
+    }
+
+    // Section Four start
+    const updateSectionFourImage = index => {
+      sectionFourImage.src = currentFrame(sectionFourFilename, index);
+      sectionFourContext.drawImage(sectionFourImage, 0, 0);
+    }
+
+    let sectionFourIndex = 0;
+
+    function sequenceSectionFourFrame () {
+      if (sectionFourIndex >= sectionFourFrameCount) {
+        sectionFourIndex = 0;
       }
 
-      const updateImage = index => {
-        img.src = currentFrame(filename, fileformat, index);
-        context.drawImage(img, 0, 0);
+      requestAnimationFrame(() => updateSectionFourImage(sectionFourIndex++ + 1));
+    }
+
+    setInterval(sequenceSectionFourFrame, sectionFourLoopInterval);
+
+    window.addEventListener('scroll', () => {
+      // Section One
+      const sectionOneContainerScrollTop = 0 - sectionOneContainer.getBoundingClientRect().top;
+      const sectionOneMaxScrollTop = sectionOneContainer.scrollHeight - window.innerHeight;
+      const sectionOneScrollFraction = sectionOneContainerScrollTop / sectionOneMaxScrollTop;
+
+      if (sectionOneScrollFraction > 0.2) {
+        scrolled = true;
+        body.classList.add('scrolled');
       }
 
-      let images = []
-
-      for (let i = 0; i < frameCount; i++) {
-        images.push(currentFrame(filename, fileformat, i));
+      if (sectionOneScrollFraction >= 0 && sectionOneScrollFraction < 1.2) {
+        sectionOneCanvas.classList.add('opacity-100');
+        sectionOneCanvas.classList.remove('opacity-0');
+      } else {
+        sectionOneCanvas.classList.remove('opacity-100');
+        sectionOneCanvas.classList.add('opacity-0');
       }
 
-      cacheImages(images).then(() => {
-        window.addEventListener('scroll', () => {
-          const containerScrollTop = window.innerHeight - container.getBoundingClientRect().top;
-          const maxScrollTop = window.innerHeight + container.scrollHeight;
-          const scrollFraction = containerScrollTop / maxScrollTop;
-          const normalizedScrollFraction =  scrollFraction > 1 ? 1 : scrollFraction < 0 ? 0 : scrollFraction;
-          const frameIndex = Math.min(
-            frameCount - 1,
-            Math.ceil(normalizedScrollFraction * frameCount)
-          );
+      // Section Two
+      const sectionTwoContainerScrollTop = window.innerHeight - sectionTwoContainer.getBoundingClientRect().top;
+      const sectionTwoMaxScrollTop = window.innerHeight + sectionTwoContainer.scrollHeight;
+      const sectionTwoScrollFraction = sectionTwoContainerScrollTop / sectionTwoMaxScrollTop;
+      const normalizedSectionTwoScrollFraction =  sectionTwoScrollFraction > 1 ? 1 : sectionTwoScrollFraction < 0 ? 0 : sectionTwoScrollFraction;
+      const sectionTwoFrameIndex = Math.min(
+        sectionTwoFrameCount - 1,
+        Math.ceil(normalizedSectionTwoScrollFraction * sectionTwoFrameCount)
+      );
 
-          if (scrollFraction >= 0 && scrollFraction < 1) {
-            canvas.classList.add('opacity-100');
-            canvas.classList.remove('opacity-0');
-          } else {
-            canvas.classList.remove('opacity-100');
-            canvas.classList.add('opacity-0');
-          }
-          
-          requestAnimationFrame(() => updateImage(frameIndex + 1))
-        })
-      })
-    };
-
-    const setupSectionFour = () => {
-      const selector = 'section-4';
-      const filename = 'Phase6-v5-frame_DeMain_';
-      const fileformat = 'jpg';
-      const canvasWidth = 960;
-      const canvasHeight = 540;
-      const frameCount = 59;
-      const loopInterval = 75;
-
-      const container = document.getElementById(selector);
-      const canvas = container.querySelector('canvas');
-      const context = setupCanvasContext(canvas, canvasWidth, canvasHeight);
-      const img = new Image();
-
-      img.src = currentFrame(filename, fileformat, 1);
-      img.onload = function(){
-        context.drawImage(img, 0, 0);
-      }
-  
-      const updateImage = index => {
-        img.src = currentFrame(filename, fileformat, index);
-        context.drawImage(img, 0, 0);
+      if (sectionTwoScrollFraction > 1 || sectionTwoScrollFraction <= 0.4) {
+        sectionTwoOrderedList.classList.remove('md:opacity-100');
+        sectionTwoOrderedList.classList.add('md:opacity-0');
+      } else {
+        sectionTwoOrderedList.classList.add('md:opacity-100');
+        sectionTwoOrderedList.classList.remove('md:opacity-0');
       }
 
-      let images = []
+      if (sectionTwoScrollFraction >= 0 && sectionTwoScrollFraction < 1) {
+        sectionTwoCanvas.classList.add('opacity-100');
+        sectionTwoCanvas.classList.remove('opacity-0');
 
-      for (let i = 0; i < frameCount; i++) {
-        images.push(currentFrame(filename, fileformat, i));
-      }
-
-      cacheImages(images).then(() => {
-        window.addEventListener('scroll', () => {
-          const containerScrollTop = window.innerHeight - container.getBoundingClientRect().top;
-          const maxScrollTop = container.scrollHeight;
-          const scrollFraction = containerScrollTop / maxScrollTop;
-
-          if (scrollFraction >= 0) {
-            canvas.classList.add('opacity-100');
-            canvas.classList.remove('opacity-0');
-          } else {
-            canvas.classList.remove('opacity-100');
-            canvas.classList.add('opacity-0');
-          }
-        });
-
-        let i = 0;
-
-        function sequenceFrame () {
-          if (i >= frameCount) {
-            i = 0;
-          }
-
-          requestAnimationFrame(() => updateImage(i++ + 1));
+        if (sectionTwoScrollFraction > 0.8) {
+          sectionTwoOrderedList.setAttribute('data-position', '3');
+        } else if (sectionTwoScrollFraction > 0.6) {
+          sectionTwoOrderedList.setAttribute('data-position', '2');
+        } else {
+          sectionTwoOrderedList.setAttribute('data-position', '1');
         }
-    
-        setInterval(sequenceFrame, loopInterval);
-      })
-    };
+      } else {
+        sectionTwoCanvas.classList.remove('opacity-100');
+        sectionTwoCanvas.classList.add('opacity-0');
+      }
+      
+      requestAnimationFrame(() => updateSectionTwoImage(sectionTwoFrameIndex + 1))
 
-    setupSectionOne();
-    setupSectionTwo();
-    setupSectionThree();
-    setupSectionFour();
+      // Section Three
+      const sectionThreeContainerScrollTop = window.innerHeight - sectionThreeContainer.getBoundingClientRect().top;
+      const sectionThreeMaxScrollTop = window.innerHeight + sectionThreeContainer.scrollHeight;
+      const sectionThreeScrollFraction = sectionThreeContainerScrollTop / sectionThreeMaxScrollTop;
+      const normalizedSectionThreeScrollFraction =  sectionThreeScrollFraction > 1 ? 1 : sectionThreeScrollFraction < 0 ? 0 : sectionThreeScrollFraction;
+      const sectionThreeFrameIndex = Math.min(
+        sectionThreeFrameCount - 1,
+        Math.ceil(normalizedSectionThreeScrollFraction * sectionThreeFrameCount)
+      );
+
+      if (sectionThreeScrollFraction >= 0 && sectionThreeScrollFraction < 1) {
+        sectionThreeCanvas.classList.add('opacity-100');
+        sectionThreeCanvas.classList.remove('opacity-0');
+      } else {
+        sectionThreeCanvas.classList.remove('opacity-100');
+        sectionThreeCanvas.classList.add('opacity-0');
+      }
+      
+      requestAnimationFrame(() => updateSectionThreeImage(sectionThreeFrameIndex + 1))
+
+      // Section Four
+      const sectionFourContainerScrollTop = window.innerHeight - sectionFourContainer.getBoundingClientRect().top;
+      const sectionFourMaxScrollTop = sectionFourContainer.scrollHeight;
+      const sectionFourScrollFraction = sectionFourContainerScrollTop / sectionFourMaxScrollTop;
+
+      if (sectionFourScrollFraction >= 0) {
+        sectionFourCanvas.classList.add('opacity-100');
+        sectionFourCanvas.classList.remove('opacity-0');
+      } else {
+        sectionFourCanvas.classList.remove('opacity-100');
+        sectionFourCanvas.classList.add('opacity-0');
+      }
+    });
   });
 
   const globalTransitionYDistance = 200;
@@ -459,6 +406,7 @@ export const IndexPageTemplate = ({
             >
               {accordionItems.map((item, index) => (
                 <motion.div
+                  key={index}
                   initial={{ opacity: 0.5 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ amount: 'all' }}
