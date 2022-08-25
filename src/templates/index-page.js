@@ -100,7 +100,7 @@ export const IndexPageTemplate = ({
           images[key].onload = resolve();
           images[key].onerror = reject();
   
-          console.log('caching', key);
+          // console.log('caching', key);
         })
       })
 
@@ -126,7 +126,7 @@ export const IndexPageTemplate = ({
       const image = imagesPhaseOne[currentFrame(sectionOneFilename, sectionOneIndex)];
       if (image) {
         sectionOneContext.drawImage(image, 0, 0);
-        console.log('updating section 1 image', image);
+        // console.log('updating section 1 image', image);
       }
     }
 
@@ -222,7 +222,7 @@ export const IndexPageTemplate = ({
 
         if (image) {
           sectionTwoContext.drawImage(image, 0, 0);
-          console.log('updating section 2 image', sectionTwoImage);
+          // console.log('updating section 2 image', sectionTwoImage);
         }
       }
     }
@@ -237,7 +237,7 @@ export const IndexPageTemplate = ({
 
         if (image) {
           sectionThreeContext.drawImage(image, 0, 0);
-          console.log('updating section 3 image', image);
+          // console.log('updating section 3 image', image);
         }
       }
     }
@@ -252,7 +252,7 @@ export const IndexPageTemplate = ({
 
         if (image) {
           sectionFourContext.drawImage(image, 0, 0);
-          console.log('updating section 4 image', image);
+          // console.log('updating section 4 image', image);
         }
       }
     }
