@@ -48,6 +48,7 @@ export const IndexPageTemplate = ({
     const sectionOnePlaybackSpeedInterval = 40;
     const sectionOneImage = new Image();
     let sectionOneActive = true;
+    let sectionOneIndex = 0;
 
     const sectionTwoContainer = document.getElementById('section-1');
     const sectionTwoCanvas = sectionTwoContainer.querySelector('canvas');
@@ -56,6 +57,7 @@ export const IndexPageTemplate = ({
     const sectionTwoFrameCount = 120;
     const sectionTwoOrderedList = sectionTwoContainer.querySelector('.section-1-ol');
     const sectionTwoImage = new Image();
+    let sectionTwoIndex = 0;
 
     const sectionThreeContainer = document.getElementById('section-3');
     const sectionThreeCanvas = sectionThreeContainer.querySelector('canvas');
@@ -63,6 +65,7 @@ export const IndexPageTemplate = ({
     const sectionThreeFilename = 'Phase4-v7-frame_DeMain_';
     const sectionThreeFrameCount = 69;
     const sectionThreeImage = new Image();
+    let sectionThreeIndex = 0;
 
     const sectionFourContainer = document.getElementById('section-4');
     const sectionFourCanvas = sectionFourContainer.querySelector('canvas');
@@ -72,9 +75,10 @@ export const IndexPageTemplate = ({
     const sectionFourLoopInterval = 75;
     const sectionFourImage = new Image();
     let sectionFourActive = false;
+    let sectionFourIndex = 0;
 
-    let imagesPhaseOne = [];
-    let imagesPhaseTwo = [];
+    let imagesPhaseOne = {};
+    let imagesPhaseTwo = {};
 
     window.onbeforeunload = function () {
       // Scroll to the top
@@ -90,14 +94,13 @@ export const IndexPageTemplate = ({
 
     // Async function to cache images
     const cacheImages = async (images) => {
-      const promises = await images.map((src) => {
+      const promises = await Object.keys(images).map((key, index) => {
         return new Promise(function (resolve, reject) {
-          const cachedImage = new Image();
-          cachedImage.src = src;
-          cachedImage.onload = resolve();
-          cachedImage.onerror = reject();
+          images[key].src = key;
+          images[key].onload = resolve();
+          images[key].onerror = reject();
   
-          // console.log('caching', src);
+          console.log('caching', key);
         })
       })
 
@@ -106,75 +109,95 @@ export const IndexPageTemplate = ({
 
     // Push phase one images to array to prepare for caching
     for (let i = 0; i < sectionOneFrameCount; i++) {
-      imagesPhaseOne.push(currentFrame(sectionOneFilename, i));
+      imagesPhaseOne[currentFrame(sectionOneFilename, i)] = new Image();
     }
     for (let i = 0; i < sectionTwoFrameCount; i++) {
-      imagesPhaseTwo.push(currentFrame(sectionTwoFilename, i));
+      imagesPhaseTwo[currentFrame(sectionTwoFilename, i)] = new Image();
     }
     for (let i = 0; i < sectionThreeFrameCount; i++) {
-      imagesPhaseTwo.push(currentFrame(sectionThreeFilename, i));
+      imagesPhaseTwo[currentFrame(sectionThreeFilename, i)] = new Image();
     }
     for (let i = 0; i < sectionFourFrameCount; i++) {
-      imagesPhaseTwo.push(currentFrame(sectionFourFilename, i));
+      imagesPhaseTwo[currentFrame(sectionFourFilename, i)] = new Image();
     }
 
     // Section One start
-    const updateSectionOneImage = index => {
-      sectionOneImage.src = currentFrame(sectionOneFilename, index); 
-      sectionOneContext.drawImage(sectionOneImage, 0, 0);
+    const updateSectionOneImage = () => {
+      const image = imagesPhaseOne[currentFrame(sectionOneFilename, sectionOneIndex)];
+      if (image) {
+        sectionOneContext.drawImage(image, 0, 0);
+        console.log('updating section 1 image', image);
+      }
     }
 
-    // const sectionOneLoopOutroSequence = () => {
-    //   for (let i = 0; i < sectionOneLoopCount; i++) {
-    //     (function(index) {
-    //       setTimeout(function() {
-    //         requestAnimationFrame(() => updateSectionOneImage(sectionOneFrameCount - sectionOneLoopCount + index + 1))
+    const sectionOneLoopOutroSequence = () => {
+      for (let i = 0; i < sectionOneLoopCount; i++) {
+        (function(index) {
+          if (sectionOneActive) {
+            setTimeout(function() {
+              const lastIndex = sectionOneIndex;
+              sectionOneIndex = sectionOneFrameCount - sectionOneLoopCount + index + 1;
+  
+              if (lastIndex !== sectionOneIndex) {
+                requestAnimationFrame(() => updateSectionOneImage())
+  
+                // console.log('looping outro', index);
+              }
+  
+              if ((index + 1) === sectionOneLoopCount) {
+                sectionOneLoopOutroSequence()
+              }
+            }, sectionOneLoopSpeedInterval * (index + 1)) 
+          }
+        })(i);
+      }
+    }
 
-    //         // console.log('looping outro', index);
+    const sectionOnePlaySequence = () => {
+      for (let i = sectionOneLoopCount; i < sectionOneFrameCount; i++) {
+        (function(index) {
+          setTimeout(function() {
+            const lastIndex = sectionOneIndex;
+            sectionOneIndex = index + 1;
 
-    //         if ((index + 1) === sectionOneLoopCount) {
-    //           sectionOneLoopOutroSequence()
-    //         }
-    //       }, sectionOneLoopSpeedInterval * (index + 1))
-    //     })(i);
-    //   }
-    // }
+            if (lastIndex !== sectionOneIndex) {
+              requestAnimationFrame(() => updateSectionOneImage())
+            }
 
-    // const sectionOnePlaySequence = () => {
-    //   for (let i = sectionOneLoopCount; i < sectionOneFrameCount; i++) {
-    //     (function(index) {
-    //       setTimeout(function() {
-    //         requestAnimationFrame(() => updateSectionOneImage(index + 1))
+            // console.log('playing sequence', index);
 
-    //         // console.log('playing sequence', index);
+            if ((index + 1) == sectionOneFrameCount) {
+              sectionOneLoopOutroSequence();
+            }
+          }, sectionOnePlaybackSpeedInterval * (index - sectionOneLoopCount + 1))
+        })(i);
+      }
+    }
 
-    //         if ((index + 1) == sectionOneFrameCount) {
-    //           sectionOneLoopOutroSequence();
-    //         }
-    //       }, sectionOnePlaybackSpeedInterval * (index - sectionOneLoopCount + 1))
-    //     })(i);
-    //   }
-    // }
+    const sectionOneLoopIntroSequence = () => {
+      for (let i = 0; i < sectionOneLoopCount; i++) {
+        (function(index) {
+          setTimeout(function() {
+            const lastIndex = sectionOneIndex;
+            sectionOneIndex = index + 1;
 
-    // const sectionOneLoopIntroSequence = () => {
-    //   for (let i = 0; i < sectionOneLoopCount; i++) {
-    //     (function(index) {
-    //       setTimeout(function() {
-    //         requestAnimationFrame(() => updateSectionOneImage(index + 1))
+            if (lastIndex !== sectionOneIndex) {
+              requestAnimationFrame(() => updateSectionOneImage(index + 1))
+            }
 
-    //         // console.log('looping intro', index);
+            // console.log('looping intro', index);
 
-    //         if ((index + 1) === sectionOneLoopCount) {
-    //           if (scrolled) {
-    //             sectionOnePlaySequence()
-    //           } else {
-    //             sectionOneLoopIntroSequence()
-    //           }
-    //         }
-    //       }, sectionOneLoopSpeedInterval * (index + 1))
-    //     })(i);
-    //   }
-    // }
+            if ((index + 1) === sectionOneLoopCount) {
+              if (scrolled) {
+                sectionOnePlaySequence()
+              } else {
+                sectionOneLoopIntroSequence()
+              }
+            }
+          }, sectionOneLoopSpeedInterval * (index + 1))
+        })(i);
+      }
+    }
 
     // Render the first frame while caching
     sectionOneImage.src = currentFrame(sectionOneFilename, 1);
@@ -184,43 +207,65 @@ export const IndexPageTemplate = ({
 
     cacheImages(imagesPhaseOne).then(() => {
       body.classList.remove('md:overflow-hidden');
-      // sectionOneLoopIntroSequence();
+      sectionOneLoopIntroSequence();
 
       cacheImages(imagesPhaseTwo);
     }).catch((err) => console.error(err));
 
     // Section Two start
     const updateSectionTwoImage = index => {
-      console.log('updating section 2 image', index);
-      sectionTwoImage.src = currentFrame(sectionTwoFilename, index);
-      sectionTwoContext.drawImage(sectionTwoImage, 0, 0);
+      const lastIndex = sectionTwoIndex;
+      sectionTwoIndex = index;
+
+      if (lastIndex !== sectionTwoIndex) {
+        const image = imagesPhaseTwo[currentFrame(sectionTwoFilename, sectionTwoIndex)];
+
+        if (image) {
+          sectionTwoContext.drawImage(image, 0, 0);
+          console.log('updating section 2 image', sectionTwoImage);
+        }
+      }
     }
 
     // Section Three start
     const updateSectionThreeImage = index => {
-      console.log('updating section 3 image', index);
-      sectionThreeImage.src = currentFrame(sectionThreeFilename, index);
-      sectionThreeContext.drawImage(sectionThreeImage, 0, 0);
+      const lastIndex = sectionThreeIndex;
+      sectionThreeIndex = index;
+
+      if (lastIndex !== sectionThreeIndex) {
+        const image = imagesPhaseTwo[currentFrame(sectionThreeFilename, sectionThreeIndex)]
+
+        if (image) {
+          sectionThreeContext.drawImage(image, 0, 0);
+          console.log('updating section 3 image', image);
+        }
+      }
     }
 
     // Section Four start
     const updateSectionFourImage = index => {
-      console.log('updating section 4 image', index);
-      sectionFourImage.src = currentFrame(sectionFourFilename, index);
-      sectionFourContext.drawImage(sectionFourImage, 0, 0);
+      const lastIndex = sectionFourIndex;
+      sectionFourIndex = index;
+
+      if (lastIndex !== sectionFourIndex) {
+        const image = imagesPhaseTwo[currentFrame(sectionFourFilename, sectionFourIndex)];
+
+        if (image) {
+          sectionFourContext.drawImage(image, 0, 0);
+          console.log('updating section 4 image', image);
+        }
+      }
     }
 
-    // let sectionFourIndex = 0;
+    function sequenceSectionFourFrame () {
+      if (sectionFourIndex >= sectionFourFrameCount) {
+        sectionFourIndex = 0;
+      }
 
-    // function sequenceSectionFourFrame () {
-    //   if (sectionFourIndex >= sectionFourFrameCount) {
-    //     sectionFourIndex = 0;
-    //   }
+      requestAnimationFrame(() => updateSectionFourImage(sectionFourIndex++ + 1));
+    }
 
-    //   requestAnimationFrame(() => updateSectionFourImage(sectionFourIndex++ + 1));
-    // }
-
-    // setInterval(sequenceSectionFourFrame, sectionFourLoopInterval);
+    setInterval(sequenceSectionFourFrame, sectionFourLoopInterval);
 
     window.addEventListener('scroll', () => {
       // Section One
@@ -231,6 +276,10 @@ export const IndexPageTemplate = ({
       if (sectionOneScrollFraction > 0.2) {
         scrolled = true;
         body.classList.add('scrolled');
+      }
+
+      if (sectionOneScrollFraction > 1) {
+        sectionOneActive = false;
       }
 
       if (sectionOneScrollFraction >= 0 && sectionOneScrollFraction < 1.2) {
