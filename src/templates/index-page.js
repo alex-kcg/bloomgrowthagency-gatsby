@@ -120,61 +120,61 @@ export const IndexPageTemplate = ({
 
     // Section One start
     const updateSectionOneImage = index => {
-      sectionOneImage.src = currentFrame(sectionOneFilename, index);
+      sectionOneImage.src = currentFrame(sectionOneFilename, index); 
       sectionOneContext.drawImage(sectionOneImage, 0, 0);
     }
 
-    const sectionOneLoopOutroSequence = () => {
-      for (let i = 0; i < sectionOneLoopCount; i++) {
-        (function(index) {
-          setTimeout(function() {
-            requestAnimationFrame(() => updateSectionOneImage(sectionOneFrameCount - sectionOneLoopCount + index + 1))
+    // const sectionOneLoopOutroSequence = () => {
+    //   for (let i = 0; i < sectionOneLoopCount; i++) {
+    //     (function(index) {
+    //       setTimeout(function() {
+    //         requestAnimationFrame(() => updateSectionOneImage(sectionOneFrameCount - sectionOneLoopCount + index + 1))
 
-            // console.log('looping outro', index);
+    //         // console.log('looping outro', index);
 
-            if ((index + 1) === sectionOneLoopCount) {
-              sectionOneLoopOutroSequence()
-            }
-          }, sectionOneLoopSpeedInterval * (index + 1))
-        })(i);
-      }
-    }
+    //         if ((index + 1) === sectionOneLoopCount) {
+    //           sectionOneLoopOutroSequence()
+    //         }
+    //       }, sectionOneLoopSpeedInterval * (index + 1))
+    //     })(i);
+    //   }
+    // }
 
-    const sectionOnePlaySequence = () => {
-      for (let i = sectionOneLoopCount; i < sectionOneFrameCount; i++) {
-        (function(index) {
-          setTimeout(function() {
-            requestAnimationFrame(() => updateSectionOneImage(index + 1))
+    // const sectionOnePlaySequence = () => {
+    //   for (let i = sectionOneLoopCount; i < sectionOneFrameCount; i++) {
+    //     (function(index) {
+    //       setTimeout(function() {
+    //         requestAnimationFrame(() => updateSectionOneImage(index + 1))
 
-            // console.log('playing sequence', index);
+    //         // console.log('playing sequence', index);
 
-            if ((index + 1) == sectionOneFrameCount) {
-              sectionOneLoopOutroSequence();
-            }
-          }, sectionOnePlaybackSpeedInterval * (index - sectionOneLoopCount + 1))
-        })(i);
-      }
-    }
+    //         if ((index + 1) == sectionOneFrameCount) {
+    //           sectionOneLoopOutroSequence();
+    //         }
+    //       }, sectionOnePlaybackSpeedInterval * (index - sectionOneLoopCount + 1))
+    //     })(i);
+    //   }
+    // }
 
-    const sectionOneLoopIntroSequence = () => {
-      for (let i = 0; i < sectionOneLoopCount; i++) {
-        (function(index) {
-          setTimeout(function() {
-            requestAnimationFrame(() => updateSectionOneImage(index + 1))
+    // const sectionOneLoopIntroSequence = () => {
+    //   for (let i = 0; i < sectionOneLoopCount; i++) {
+    //     (function(index) {
+    //       setTimeout(function() {
+    //         requestAnimationFrame(() => updateSectionOneImage(index + 1))
 
-            // console.log('looping intro', index);
+    //         // console.log('looping intro', index);
 
-            if ((index + 1) === sectionOneLoopCount) {
-              if (scrolled) {
-                sectionOnePlaySequence()
-              } else {
-                sectionOneLoopIntroSequence()
-              }
-            }
-          }, sectionOneLoopSpeedInterval * (index + 1))
-        })(i);
-      }
-    }
+    //         if ((index + 1) === sectionOneLoopCount) {
+    //           if (scrolled) {
+    //             sectionOnePlaySequence()
+    //           } else {
+    //             sectionOneLoopIntroSequence()
+    //           }
+    //         }
+    //       }, sectionOneLoopSpeedInterval * (index + 1))
+    //     })(i);
+    //   }
+    // }
 
     // Render the first frame while caching
     sectionOneImage.src = currentFrame(sectionOneFilename, 1);
@@ -184,9 +184,9 @@ export const IndexPageTemplate = ({
 
     cacheImages(imagesPhaseOne).then(() => {
       body.classList.remove('md:overflow-hidden');
-      sectionOneLoopIntroSequence();
+      // sectionOneLoopIntroSequence();
 
-      cacheImages(imagesPhaseTwo)      
+      cacheImages(imagesPhaseTwo);
     }).catch((err) => console.error(err));
 
     // Section Two start
@@ -207,17 +207,17 @@ export const IndexPageTemplate = ({
       sectionFourContext.drawImage(sectionFourImage, 0, 0);
     }
 
-    let sectionFourIndex = 0;
+    // let sectionFourIndex = 0;
 
-    function sequenceSectionFourFrame () {
-      if (sectionFourIndex >= sectionFourFrameCount) {
-        sectionFourIndex = 0;
-      }
+    // function sequenceSectionFourFrame () {
+    //   if (sectionFourIndex >= sectionFourFrameCount) {
+    //     sectionFourIndex = 0;
+    //   }
 
-      requestAnimationFrame(() => updateSectionFourImage(sectionFourIndex++ + 1));
-    }
+    //   requestAnimationFrame(() => updateSectionFourImage(sectionFourIndex++ + 1));
+    // }
 
-    setInterval(sequenceSectionFourFrame, sectionFourLoopInterval);
+    // setInterval(sequenceSectionFourFrame, sectionFourLoopInterval);
 
     window.addEventListener('scroll', () => {
       // Section One
