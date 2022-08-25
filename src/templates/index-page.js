@@ -56,7 +56,6 @@ export const IndexPageTemplate = ({
     const sectionTwoFilename = 'BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_';
     const sectionTwoFrameCount = 120;
     const sectionTwoOrderedList = sectionTwoContainer.querySelector('.section-1-ol');
-    const sectionTwoImage = new Image();
     let sectionTwoIndex = 0;
 
     const sectionThreeContainer = document.getElementById('section-3');
@@ -64,7 +63,6 @@ export const IndexPageTemplate = ({
     const sectionThreeContext = setupCanvasContext(sectionThreeCanvas, 960, 960);
     const sectionThreeFilename = 'Phase4-v7-frame_DeMain_';
     const sectionThreeFrameCount = 69;
-    const sectionThreeImage = new Image();
     let sectionThreeIndex = 0;
 
     const sectionFourContainer = document.getElementById('section-4');
@@ -73,7 +71,6 @@ export const IndexPageTemplate = ({
     const sectionFourFilename = 'Phase6-v5-frame_DeMain_';
     const sectionFourFrameCount = 59;
     const sectionFourLoopInterval = 75;
-    const sectionFourImage = new Image();
     let sectionFourActive = false;
     let sectionFourIndex = 0;
 
@@ -133,22 +130,20 @@ export const IndexPageTemplate = ({
     const sectionOneLoopOutroSequence = () => {
       for (let i = 0; i < sectionOneLoopCount; i++) {
         (function(index) {
-          if (sectionOneActive) {
-            setTimeout(function() {
-              const lastIndex = sectionOneIndex;
-              sectionOneIndex = sectionOneFrameCount - sectionOneLoopCount + index + 1;
-  
-              if (lastIndex !== sectionOneIndex) {
-                requestAnimationFrame(() => updateSectionOneImage())
-  
-                // console.log('looping outro', index);
-              }
-  
-              if ((index + 1) === sectionOneLoopCount) {
-                sectionOneLoopOutroSequence()
-              }
-            }, sectionOneLoopSpeedInterval * (index + 1)) 
-          }
+          setTimeout(function() {
+            const lastIndex = sectionOneIndex;
+            sectionOneIndex = sectionOneFrameCount - sectionOneLoopCount + index + 1;
+
+            if (sectionOneActive && lastIndex !== sectionOneIndex) {
+              requestAnimationFrame(() => updateSectionOneImage())
+
+              // console.log('looping outro', index);
+            }
+
+            if ((index + 1) === sectionOneLoopCount) {
+              sectionOneLoopOutroSequence()
+            }
+          }, sectionOneLoopSpeedInterval * (index + 1)) 
         })(i);
       }
     }
@@ -244,10 +239,9 @@ export const IndexPageTemplate = ({
 
     // Section Four start
     const updateSectionFourImage = index => {
-      const lastIndex = sectionFourIndex;
       sectionFourIndex = index;
 
-      if (lastIndex !== sectionFourIndex) {
+      if (sectionFourActive) {
         const image = imagesPhaseTwo[currentFrame(sectionFourFilename, sectionFourIndex)];
 
         if (image) {
@@ -278,14 +272,12 @@ export const IndexPageTemplate = ({
         body.classList.add('scrolled');
       }
 
-      if (sectionOneScrollFraction > 1) {
-        sectionOneActive = false;
-      }
-
       if (sectionOneScrollFraction >= 0 && sectionOneScrollFraction < 1.2) {
+        sectionOneActive = true;
         sectionOneCanvas.classList.add('opacity-100');
         sectionOneCanvas.classList.remove('opacity-0');
       } else {
+        sectionOneActive = false;
         sectionOneCanvas.classList.remove('opacity-100');
         sectionOneCanvas.classList.add('opacity-0');
       }
@@ -352,9 +344,11 @@ export const IndexPageTemplate = ({
       const sectionFourScrollFraction = sectionFourContainerScrollTop / sectionFourMaxScrollTop;
 
       if (sectionFourScrollFraction >= 0) {
+        sectionFourActive = true;
         sectionFourCanvas.classList.add('opacity-100');
         sectionFourCanvas.classList.remove('opacity-0');
       } else {
+        sectionFourActive = false;
         sectionFourCanvas.classList.remove('opacity-100');
         sectionFourCanvas.classList.add('opacity-0');
       }
