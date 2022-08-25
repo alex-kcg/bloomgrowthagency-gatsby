@@ -191,18 +191,21 @@ export const IndexPageTemplate = ({
 
     // Section Two start
     const updateSectionTwoImage = index => {
+      console.log('updating section 2 image', index);
       sectionTwoImage.src = currentFrame(sectionTwoFilename, index);
       sectionTwoContext.drawImage(sectionTwoImage, 0, 0);
     }
 
     // Section Three start
     const updateSectionThreeImage = index => {
+      console.log('updating section 3 image', index);
       sectionThreeImage.src = currentFrame(sectionThreeFilename, index);
       sectionThreeContext.drawImage(sectionThreeImage, 0, 0);
     }
 
     // Section Four start
     const updateSectionFourImage = index => {
+      console.log('updating section 4 image', index);
       sectionFourImage.src = currentFrame(sectionFourFilename, index);
       sectionFourContext.drawImage(sectionFourImage, 0, 0);
     }
