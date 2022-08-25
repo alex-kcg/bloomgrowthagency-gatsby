@@ -14,9 +14,7 @@ const Navbar = class extends React.Component {
         initial={{ rotateX: 90, opacity: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut', delay: 1 }}
       >
-        <Link to="/" title="Logo">
-          <img src={settings.header.logo.image} alt={settings.header.logo.alt} className="block h-12 w-auto mx-auto" />
-        </Link>
+        <img src={settings.header.logo.image} alt={settings.header.logo.alt} className="block h-12 w-auto mx-auto" />
       </motion.nav>
     );
   }

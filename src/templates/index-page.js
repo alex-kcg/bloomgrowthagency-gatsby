@@ -367,7 +367,7 @@ export const IndexPageTemplate = ({
       </header>
       <section id="hero">
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="transition-opacity duration-300 ease-out absolute aspect-video min-w-full min-h-full" />
+          <canvas className="transition-opacity duration-300 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
         <div
           className="foreground relative z-40 w-full"
@@ -392,7 +392,7 @@ export const IndexPageTemplate = ({
       </section>
       <section id="section-1">
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute aspect-video min-w-full min-h-full" />
+          <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full md:100vh">
           <div className="md:fixed md:inset-x-0 md:top-1/2">
@@ -432,7 +432,7 @@ export const IndexPageTemplate = ({
         id="section-3"
       >
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute aspect-square min-w-full min-h-full" />
+          <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute -z-10 aspect-square min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="container py-20 md:py-40">
@@ -556,7 +556,7 @@ export const IndexPageTemplate = ({
           className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex"
           style={{ backgroundColor: '#010c0e' }}
         >
-          <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute aspect-video bottom-0 left-0 w-2/3 transform -scale-x-100" />
+          <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute -z-10 aspect-video bottom-0 left-0 w-2/3 transform -scale-x-100" />
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="container pt-10 md:py-20">
