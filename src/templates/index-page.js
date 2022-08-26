@@ -30,6 +30,15 @@ export const IndexPageTemplate = ({
     const body = document.body;
     let scrolled = false;
 
+    // Prevent scrolling until images are done caching
+    body.classList.add('loaded');
+    body.classList.add('md:overflow-hidden');
+
+    window.onbeforeunload = function () {
+      // Scroll to the top
+      window.scrollTo(0, 0);
+    }
+
     // Function to setup canvas 
     const setupCanvasContext = (canvas, canvasWidth, canvasHeight) => {
       canvas.width = canvasWidth;
@@ -38,8 +47,9 @@ export const IndexPageTemplate = ({
       return canvas.getContext('2d');
     };
 
-    const sectionOneContainer = document.getElementById('hero');
+    const sectionOneContainer = document.getElementById('section-1');
     const sectionOneCanvas = sectionOneContainer.querySelector('canvas');
+    const sectionOneAnimateWords = sectionOneContainer.querySelectorAll('.animate-words');
     const sectionOneContext = setupCanvasContext(sectionOneCanvas, 1440, 810);
     const sectionOneFilename = 'BG-SiteAnim-PlanterModel-Phase1-v9-frame_DeMain_';
     const sectionOneFrameCount = 120;
@@ -50,39 +60,37 @@ export const IndexPageTemplate = ({
     let sectionOneActive = true;
     let sectionOneIndex = 0;
 
-    const sectionTwoContainer = document.getElementById('section-1');
+    const sectionTwoContainer = document.getElementById('section-2');
     const sectionTwoCanvas = sectionTwoContainer.querySelector('canvas');
     const sectionTwoContext = setupCanvasContext(sectionTwoCanvas, 1440, 810);
     const sectionTwoFilename = 'BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_';
     const sectionTwoFrameCount = 120;
-    const sectionTwoOrderedList = sectionTwoContainer.querySelector('.section-1-ol');
+    const sectionTwoOrderedList = sectionTwoContainer.querySelector('.section-2-ol');
     let sectionTwoIndex = 0;
 
     const sectionThreeContainer = document.getElementById('section-3');
-    const sectionThreeCanvas = sectionThreeContainer.querySelector('canvas');
-    const sectionThreeContext = setupCanvasContext(sectionThreeCanvas, 960, 960);
-    const sectionThreeFilename = 'Phase4-v7-frame_DeMain_';
-    const sectionThreeFrameCount = 69;
-    let sectionThreeIndex = 0;
+    const sectionThreeAnimateWords = sectionThreeContainer.querySelectorAll('.animate-words');
 
     const sectionFourContainer = document.getElementById('section-4');
     const sectionFourCanvas = sectionFourContainer.querySelector('canvas');
-    const sectionFourContext = setupCanvasContext(sectionFourCanvas, 960, 540);
-    const sectionFourFilename = 'Phase6-v5-frame_DeMain_';
-    const sectionFourFrameCount = 59;
-    const sectionFourLoopInterval = 75;
-    let sectionFourActive = false;
+    const sectionFourAnimateWords = sectionFourContainer.querySelectorAll('.animate-words');
+    const sectionFourContext = setupCanvasContext(sectionFourCanvas, 960, 960);
+    const sectionFourFilename = 'Phase4-v7-frame_DeMain_';
+    const sectionFourFrameCount = 69;
     let sectionFourIndex = 0;
+
+    const sectionFiveContainer = document.getElementById('section-5');
+    const sectionFiveCanvas = sectionFiveContainer.querySelector('canvas');
+    const sectionFiveAnimateWords = sectionFiveContainer.querySelectorAll('.animate-words');
+    const sectionFiveContext = setupCanvasContext(sectionFiveCanvas, 960, 540);
+    const sectionFiveFilename = 'Phase6-v5-frame_DeMain_';
+    const sectionFiveFrameCount = 59;
+    const sectionFiveLoopInterval = 75;
+    let sectionFiveActive = false;
+    let sectionFiveIndex = 0;
 
     let imagesPhaseOne = {};
     let imagesPhaseTwo = {};
-
-    window.onbeforeunload = function () {
-      // Scroll to the top
-      window.scrollTo(0, 0);
-      // Prevent scrolling until images are done caching
-      body.classList.add('md:overflow-hidden');
-    }
 
     // Function that returns path for image
     const currentFrame = (filename, index, fileformat = 'jpg') => (
@@ -111,11 +119,11 @@ export const IndexPageTemplate = ({
     for (let i = 0; i < sectionTwoFrameCount; i++) {
       imagesPhaseTwo[currentFrame(sectionTwoFilename, i)] = new Image();
     }
-    for (let i = 0; i < sectionThreeFrameCount; i++) {
-      imagesPhaseTwo[currentFrame(sectionThreeFilename, i)] = new Image();
-    }
     for (let i = 0; i < sectionFourFrameCount; i++) {
       imagesPhaseTwo[currentFrame(sectionFourFilename, i)] = new Image();
+    }
+    for (let i = 0; i < sectionFiveFrameCount; i++) {
+      imagesPhaseTwo[currentFrame(sectionFiveFilename, i)] = new Image();
     }
 
     // Section One start
@@ -222,44 +230,44 @@ export const IndexPageTemplate = ({
       }
     }
 
-    // Section Three start
-    const updateSectionThreeImage = index => {
-      const lastIndex = sectionThreeIndex;
-      sectionThreeIndex = index;
+    // Section Four start
+    const updateSectionFourImage = index => {
+      const lastIndex = sectionFourIndex;
+      sectionFourIndex = index;
 
-      if (lastIndex !== sectionThreeIndex) {
-        const image = imagesPhaseTwo[currentFrame(sectionThreeFilename, sectionThreeIndex)]
+      if (lastIndex !== sectionFourIndex) {
+        const image = imagesPhaseTwo[currentFrame(sectionFourFilename, sectionFourIndex)]
 
         if (image) {
-          sectionThreeContext.drawImage(image, 0, 0);
+          sectionFourContext.drawImage(image, 0, 0);
           // console.log('updating section 3 image', image);
         }
       }
     }
 
-    // Section Four start
-    const updateSectionFourImage = index => {
-      sectionFourIndex = index;
+    // Section Five start
+    const updateSectionFiveImage = index => {
+      sectionFiveIndex = index;
 
-      if (sectionFourActive) {
-        const image = imagesPhaseTwo[currentFrame(sectionFourFilename, sectionFourIndex)];
+      if (sectionFiveActive) {
+        const image = imagesPhaseTwo[currentFrame(sectionFiveFilename, sectionFiveIndex)];
 
         if (image) {
-          sectionFourContext.drawImage(image, 0, 0);
+          sectionFiveContext.drawImage(image, 0, 0);
           // console.log('updating section 4 image', image);
         }
       }
     }
 
-    function sequenceSectionFourFrame () {
-      if (sectionFourIndex >= sectionFourFrameCount) {
-        sectionFourIndex = 0;
+    function sequenceSectionFiveFrame () {
+      if (sectionFiveIndex >= sectionFiveFrameCount) {
+        sectionFiveIndex = 0;
       }
 
-      requestAnimationFrame(() => updateSectionFourImage(sectionFourIndex++ + 1));
+      requestAnimationFrame(() => updateSectionFiveImage(sectionFiveIndex++ + 1));
     }
 
-    setInterval(sequenceSectionFourFrame, sectionFourLoopInterval);
+    setInterval(sequenceSectionFiveFrame, sectionFiveLoopInterval);
 
     window.addEventListener('scroll', () => {
       // Section One
@@ -267,9 +275,15 @@ export const IndexPageTemplate = ({
       const sectionOneMaxScrollTop = sectionOneContainer.scrollHeight - window.innerHeight;
       const sectionOneScrollFraction = sectionOneContainerScrollTop / sectionOneMaxScrollTop;
 
-      if (sectionOneScrollFraction > 0.2) {
+      if (!scrolled && sectionOneScrollFraction > 0.05) {
         scrolled = true;
         body.classList.add('scrolled');
+
+        setTimeout(() => {
+          sectionOneAnimateWords.forEach((el) => {
+            el.classList.add('active');
+          });
+        }, 500);
       }
 
       if (sectionOneScrollFraction >= 0 && sectionOneScrollFraction < 1.2) {
@@ -306,10 +320,30 @@ export const IndexPageTemplate = ({
 
         if (sectionTwoScrollFraction > 0.8) {
           sectionTwoOrderedList.setAttribute('data-position', '3');
+
+          sectionTwoOrderedList.querySelectorAll('li:nth-child(3) .animate-words, li:nth-child(2) .animate-words, li:nth-child(1) .animate-words').forEach((el) => {
+            el.classList.add('active');
+          });
         } else if (sectionTwoScrollFraction > 0.6) {
           sectionTwoOrderedList.setAttribute('data-position', '2');
+ 
+          sectionTwoOrderedList.querySelectorAll('li:nth-child(3) .animate-words').forEach((el) => {
+            el.classList.remove('active');
+          });
+
+          sectionTwoOrderedList.querySelectorAll('li:nth-child(2) .animate-words, li:nth-child(1) .animate-words').forEach((el) => {
+            el.classList.add('active');
+          });
         } else {
           sectionTwoOrderedList.setAttribute('data-position', '1');
+
+          sectionTwoOrderedList.querySelectorAll('li:nth-child(3) .animate-words, li:nth-child(2) .animate-words').forEach((el) => {
+            el.classList.remove('active');
+          });
+
+          sectionTwoOrderedList.querySelectorAll('li:nth-child(1) .animate-words').forEach((el) => {
+            el.classList.add('active');
+          });
         }
       } else {
         sectionTwoCanvas.classList.remove('opacity-100');
@@ -323,34 +357,68 @@ export const IndexPageTemplate = ({
       const sectionThreeMaxScrollTop = window.innerHeight + sectionThreeContainer.scrollHeight;
       const sectionThreeScrollFraction = sectionThreeContainerScrollTop / sectionThreeMaxScrollTop;
       const normalizedSectionThreeScrollFraction =  sectionThreeScrollFraction > 1 ? 1 : sectionThreeScrollFraction < 0 ? 0 : sectionThreeScrollFraction;
-      const sectionThreeFrameIndex = Math.min(
-        sectionThreeFrameCount - 1,
-        Math.ceil(normalizedSectionThreeScrollFraction * sectionThreeFrameCount)
-      );
 
-      if (sectionThreeScrollFraction >= 0 && sectionThreeScrollFraction < 1) {
-        sectionThreeCanvas.classList.add('opacity-100');
-        sectionThreeCanvas.classList.remove('opacity-0');
+      if (sectionThreeScrollFraction >= 0.2 && sectionThreeScrollFraction < 1) {
+        sectionThreeAnimateWords.forEach((el) => {
+          el.classList.add('active');
+        });
       } else {
-        sectionThreeCanvas.classList.remove('opacity-100');
-        sectionThreeCanvas.classList.add('opacity-0');
+        sectionThreeAnimateWords.forEach((el) => {
+          el.classList.remove('active');
+        });
       }
-      
-      requestAnimationFrame(() => updateSectionThreeImage(sectionThreeFrameIndex + 1))
 
       // Section Four
       const sectionFourContainerScrollTop = window.innerHeight - sectionFourContainer.getBoundingClientRect().top;
-      const sectionFourMaxScrollTop = sectionFourContainer.scrollHeight;
+      const sectionFourMaxScrollTop = window.innerHeight + sectionFourContainer.scrollHeight;
       const sectionFourScrollFraction = sectionFourContainerScrollTop / sectionFourMaxScrollTop;
+      const normalizedSectionFourScrollFraction =  sectionFourScrollFraction > 1 ? 1 : sectionFourScrollFraction < 0 ? 0 : sectionFourScrollFraction;
+      const sectionFourFrameIndex = Math.min(
+        sectionFourFrameCount - 1,
+        Math.ceil(normalizedSectionFourScrollFraction * sectionFourFrameCount)
+      );
 
-      if (sectionFourScrollFraction >= 0) {
-        sectionFourActive = true;
+      if (sectionFourScrollFraction >= 0 && sectionFourScrollFraction < 1) {
         sectionFourCanvas.classList.add('opacity-100');
         sectionFourCanvas.classList.remove('opacity-0');
+
+        if (sectionFourScrollFraction >= 0.2) {
+          sectionFourAnimateWords.forEach((el) => {
+            el.classList.add('active');
+          });
+        }
       } else {
-        sectionFourActive = false;
         sectionFourCanvas.classList.remove('opacity-100');
         sectionFourCanvas.classList.add('opacity-0');
+
+        sectionFourAnimateWords.forEach((el) => {
+          el.classList.remove('active');
+        });
+      }
+      
+      requestAnimationFrame(() => updateSectionFourImage(sectionFourFrameIndex + 1))
+
+      // Section Five
+      const sectionFiveContainerScrollTop = window.innerHeight - sectionFiveContainer.getBoundingClientRect().top;
+      const sectionFiveMaxScrollTop = sectionFiveContainer.scrollHeight;
+      const sectionFiveScrollFraction = sectionFiveContainerScrollTop / sectionFiveMaxScrollTop;
+
+      if (sectionFiveScrollFraction >= 0) {
+        sectionFiveActive = true;
+        sectionFiveCanvas.classList.add('opacity-100');
+        sectionFiveCanvas.classList.remove('opacity-0');
+
+        sectionFiveAnimateWords.forEach((el) => {
+          el.classList.add('active');
+        });
+      } else {
+        sectionFiveActive = false;
+        sectionFiveCanvas.classList.remove('opacity-100');
+        sectionFiveCanvas.classList.add('opacity-0');
+
+        sectionFiveAnimateWords.forEach((el) => {
+          el.classList.remove('active');
+        });
       }
     });
   });
@@ -362,10 +430,10 @@ export const IndexPageTemplate = ({
 
   return (
     <main>
-      <header className="navbar-container z-50 py-8 text-center transition-all duration-500 ease-in-out md:py-16">
+      <header className="navbar-container w-full z-50 py-8 text-center transition-all duration-500 ease-in-out md:py-16">
         <Navbar />
       </header>
-      <section id="hero">
+      <section id="section-1">
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
           <canvas className="transition-opacity duration-300 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
@@ -376,7 +444,7 @@ export const IndexPageTemplate = ({
             <div className="sticky top-0 w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:min-h-screen md:pt-0 md:mb-60">
               <h1 className="hero-headline-wrapper font-serif font-light tracking-tighter text-4xl md:text-10xl">
                 <span className="block max-w-xs mx-auto md:max-w-5xl">
-                  <SplitTextOnWordBoundaries className="hero-headline overflow-hidden" text={heading} delay={0.5} />
+                  <SplitTextOnWordBoundaries className="hero-headline overflow-hidden" text={heading} />
                 </span>
               </h1>
             </div>
@@ -390,7 +458,7 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </section>
-      <section id="section-1">
+      <section id="section-2">
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
           <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
@@ -398,7 +466,7 @@ export const IndexPageTemplate = ({
           <div className="md:fixed md:inset-x-0 md:top-1/2">
             <div className="container mx-auto px-4 py-20 md:py-0">
               <div className="max-w-[63.5rem] mx-auto">
-                <ol className="section-1-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-1/2 md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
+                <ol className="section-2-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-1/2 md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
                   {numberedList.map((listItem, index) => (
                     <OrderedListItem key={index} index={(index + 1) > 9 ? '' + (index + 1) : '0' + (index + 1)} text={listItem.text} />
                   ))}
@@ -409,7 +477,7 @@ export const IndexPageTemplate = ({
         </div>
       </section>
       <div className="h-[100vh] w-full hidden md:block" />
-      <section id="section-2">
+      <section id="section-3">
         <div className="foreground relative z-40 w-full">
           <div className="container py-20 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
@@ -429,7 +497,7 @@ export const IndexPageTemplate = ({
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        id="section-3"
+        id="section-4"
       >
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
           <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute -z-10 aspect-square min-w-full min-h-full" />
@@ -550,7 +618,7 @@ export const IndexPageTemplate = ({
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        id="section-4"
+        id="section-5"
       >
         <div
           className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex"

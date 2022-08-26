@@ -76,8 +76,163 @@ body {
   content: "|";
 }
 
+.navbar {
+  @apply opacity-0 transition-all duration-500 delay-1000 ease-out;
+
+  transform: rotateX(90deg);
+}
+
+.loaded .navbar {
+  @apply opacity-100;
+
+  transform: rotateX(0deg);
+}
+
 .navbar-container {
   @apply fixed left-1/2 top-0 transform -translate-x-1/2;
+}
+
+.navbar-container::after {
+  @apply absolute -z-10 inset-x-0 top-0 h-80 opacity-0 transition-opacity duration-1000 delay-[3000] ease-in-out pointer-events-none;
+
+  content: " ";
+  background: linear-gradient(rgb(3, 14, 18, 1), rgb(3, 14, 18, 0))
+}
+
+.animate-words .animate-word {
+  @apply opacity-0 translate-y-full rotate-[10deg];
+}
+
+.animate-words.active .animate-word {
+  @apply opacity-100 translate-y-0 rotate-0;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(2) .animate-word {
+  transition-delay: 50ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(3) .animate-word {
+  transition-delay: 100ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(4) .animate-word {
+  transition-delay: 150ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(5) .animate-word {
+  transition-delay: 200ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(6) .animate-word {
+  transition-delay: 250ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(7) .animate-word {
+  transition-delay: 300ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(8) .animate-word {
+  transition-delay: 350ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(9) .animate-word {
+  transition-delay: 400ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(10) .animate-word {
+  transition-delay: 450ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(11) .animate-word {
+  transition-delay: 500ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(12) .animate-word {
+  transition-delay: 550ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(13) .animate-word {
+  transition-delay: 600ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(14) .animate-word {
+  transition-delay: 650ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(15) .animate-word {
+  transition-delay: 700ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(16) .animate-word {
+  transition-delay: 750ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(17) .animate-word {
+  transition-delay: 800ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(18) .animate-word {
+  transition-delay: 900ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(19) .animate-word {
+  transition-delay: 950ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(20) .animate-word {
+  transition-delay: 1000ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(21) .animate-word {
+  transition-delay: 1050ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(22) .animate-word {
+  transition-delay: 1100ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(23) .animate-word {
+  transition-delay: 1150ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(24) .animate-word {
+  transition-delay: 1200ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(25) .animate-word {
+  transition-delay: 1250ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(26) .animate-word {
+  transition-delay: 1300ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(27) .animate-word {
+  transition-delay: 1350ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(28) .animate-word {
+  transition-delay: 1400ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(29) .animate-word {
+  transition-delay: 1450ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(30) .animate-word {
+  transition-delay: 1500ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(31) .animate-word {
+  transition-delay: 1550ms;
+}
+
+.animate-words.active > .animate-word-wrapper:nth-child(32) .animate-word {
+  transition-delay: 1600ms;
+}
+
+.scrolled .navbar-container::after {
+  @apply opacity-100;
 }
 
 @screen md {
@@ -126,35 +281,35 @@ body {
     @apply bg-voltage;
   }
 
-  .section-1-ol {
+  .section-2-ol {
     @apply -translate-y-[8.75rem];
   }
 
-  .section-1-ol[data-position="2"] {
+  .section-2-ol[data-position="2"] {
     @apply -translate-y-[36.25rem];
-  }
+  }  
 
-  .section-1-ol[data-position="3"] {
+  .section-2-ol[data-position="3"] {
     @apply -translate-y-[63.75rem];
   }
 
-  .section-1-ol li {
+  .section-2-ol li {
     @apply opacity-50;
   }
 
-  .section-1-ol li hr {
+  .section-2-ol li hr {
     @apply w-0;
   }
 
-  .section-1-ol[data-position="1"] li:nth-child(1),
-  .section-1-ol[data-position="2"] li:nth-child(2),
-  .section-1-ol[data-position="3"] li:nth-child(3) {
+  .section-2-ol[data-position="1"] li:nth-child(1),
+  .section-2-ol[data-position="2"] li:nth-child(2),
+  .section-2-ol[data-position="3"] li:nth-child(3) {
     @apply opacity-100;
   }
 
-  .section-1-ol[data-position="1"] li:nth-child(1) hr,
-  .section-1-ol[data-position="2"] li:nth-child(2) hr,
-  .section-1-ol[data-position="3"] li:nth-child(3) hr {
+  .section-2-ol[data-position="1"] li:nth-child(1) hr,
+  .section-2-ol[data-position="2"] li:nth-child(2) hr,
+  .section-2-ol[data-position="3"] li:nth-child(3) hr {
     @apply w-80;
   }
 }
