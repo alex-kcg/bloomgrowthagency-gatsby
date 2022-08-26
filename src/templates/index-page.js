@@ -402,8 +402,9 @@ export const IndexPageTemplate = ({
       const sectionFiveContainerScrollTop = window.innerHeight - sectionFiveContainer.getBoundingClientRect().top;
       const sectionFiveMaxScrollTop = sectionFiveContainer.scrollHeight;
       const sectionFiveScrollFraction = sectionFiveContainerScrollTop / sectionFiveMaxScrollTop;
+      const normalizedSectionFiveScrollFraction =  sectionFiveScrollFraction > 1 ? 1 : sectionFiveScrollFraction < 0 ? 0 : sectionFiveScrollFraction;
 
-      if (sectionFiveScrollFraction >= 0) {
+      if (normalizedSectionFiveScrollFraction >= 0) {
         sectionFiveActive = true;
         sectionFiveCanvas.classList.add('opacity-100');
         sectionFiveCanvas.classList.remove('opacity-0');
@@ -619,6 +620,7 @@ export const IndexPageTemplate = ({
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         id="section-5"
+        className="md:h-1"
       >
         <div
           className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex"
@@ -626,7 +628,7 @@ export const IndexPageTemplate = ({
         >
           <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute -z-10 aspect-video bottom-0 left-0 w-2/3 transform -scale-x-100" />
         </div>
-        <div className="foreground relative z-40 w-full">
+        <div className="foreground relative z-40 w-full h-full md:fixed md:inset-0 md:overflow-y-auto">
           <div className="container pt-10 md:py-20">
             <div className="max-w-[63.5rem] mx-auto">
               <div className="border-b border-slate py-10 md:py-20">

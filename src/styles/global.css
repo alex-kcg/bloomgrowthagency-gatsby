@@ -93,7 +93,7 @@ body {
 }
 
 .navbar-container::after {
-  @apply absolute -z-10 inset-x-0 top-0 h-80 opacity-0 transition-opacity duration-1000 delay-[3000] ease-in-out pointer-events-none;
+  @apply absolute -z-10 inset-x-0 top-0 h-40 opacity-0 transition-opacity duration-1000 delay-[3000] ease-in-out pointer-events-none md:h-60;
 
   content: " ";
   background: linear-gradient(rgb(3, 14, 18, 1), rgb(3, 14, 18, 0))
