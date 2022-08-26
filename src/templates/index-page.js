@@ -65,11 +65,13 @@ export const IndexPageTemplate = ({
     const sectionTwoContext = setupCanvasContext(sectionTwoCanvas, 1440, 810);
     const sectionTwoFilename = 'BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_';
     const sectionTwoFrameCount = 120;
+    const sectionTwoOrderedListWrapper = sectionTwoContainer.querySelector('.section-2-ol-wrapper');
     const sectionTwoOrderedList = sectionTwoContainer.querySelector('.section-2-ol');
     let sectionTwoIndex = 0;
 
     const sectionThreeContainer = document.getElementById('section-3');
     const sectionThreeAnimateWords = sectionThreeContainer.querySelectorAll('.animate-words');
+    const sectionThreeAccordionContainer = sectionThreeContainer.querySelector('.accordion-container');
 
     const sectionFourContainer = document.getElementById('section-4');
     const sectionFourCanvas = sectionFourContainer.querySelector('canvas');
@@ -298,8 +300,8 @@ export const IndexPageTemplate = ({
 
       // Section Two
       const sectionTwoContainerScrollTop = window.innerHeight - sectionTwoContainer.getBoundingClientRect().top;
-      const sectionTwoMaxScrollTop = window.innerHeight + sectionTwoContainer.scrollHeight;
-      const sectionTwoScrollFraction = sectionTwoContainerScrollTop / sectionTwoMaxScrollTop;
+      const sectionTwoMaxScrollTop = sectionTwoContainer.scrollHeight;
+      const sectionTwoScrollFraction = (sectionTwoContainerScrollTop / sectionTwoMaxScrollTop);
       const normalizedSectionTwoScrollFraction =  sectionTwoScrollFraction > 1 ? 1 : sectionTwoScrollFraction < 0 ? 0 : sectionTwoScrollFraction;
       const sectionTwoFrameIndex = Math.min(
         sectionTwoFrameCount - 1,
@@ -309,9 +311,27 @@ export const IndexPageTemplate = ({
       if (sectionTwoScrollFraction > 1 || sectionTwoScrollFraction <= 0.4) {
         sectionTwoOrderedList.classList.remove('md:opacity-100');
         sectionTwoOrderedList.classList.add('md:opacity-0');
+
+        sectionTwoContainer.classList.add('pointer-events-none');
       } else {
         sectionTwoOrderedList.classList.add('md:opacity-100');
         sectionTwoOrderedList.classList.remove('md:opacity-0');
+
+        sectionTwoContainer.classList.remove('pointer-events-none');
+      }
+
+      if (sectionTwoScrollFraction > 0.5) {
+        sectionTwoCanvas.classList.add('duration-700');
+        sectionTwoCanvas.classList.remove('duration-150');
+      } else {
+        sectionTwoCanvas.classList.add('duration-150');
+        sectionTwoCanvas.classList.remove('duration-700');
+      }
+
+      if (sectionTwoScrollFraction > 0.95) {
+        sectionTwoOrderedListWrapper.classList.add('scrolled-past');
+      } else {
+        sectionTwoOrderedListWrapper.classList.remove('scrolled-past');
       }
 
       if (sectionTwoScrollFraction >= 0 && sectionTwoScrollFraction < 1) {
@@ -356,16 +376,21 @@ export const IndexPageTemplate = ({
       const sectionThreeContainerScrollTop = window.innerHeight - sectionThreeContainer.getBoundingClientRect().top;
       const sectionThreeMaxScrollTop = window.innerHeight + sectionThreeContainer.scrollHeight;
       const sectionThreeScrollFraction = sectionThreeContainerScrollTop / sectionThreeMaxScrollTop;
-      const normalizedSectionThreeScrollFraction =  sectionThreeScrollFraction > 1 ? 1 : sectionThreeScrollFraction < 0 ? 0 : sectionThreeScrollFraction;
 
       if (sectionThreeScrollFraction >= 0.2 && sectionThreeScrollFraction < 1) {
+        sectionThreeContainer.classList.remove('pointer-events-none');
+
         sectionThreeAnimateWords.forEach((el) => {
           el.classList.add('active');
         });
+        sectionThreeAccordionContainer.classList.remove('md:opacity-0');
       } else {
+        sectionThreeContainer.classList.add('pointer-events-none');
+
         sectionThreeAnimateWords.forEach((el) => {
           el.classList.remove('active');
         });
+        sectionThreeAccordionContainer.classList.add('md:opacity-0');
       }
 
       // Section Four
@@ -382,6 +407,8 @@ export const IndexPageTemplate = ({
         sectionFourCanvas.classList.add('opacity-100');
         sectionFourCanvas.classList.remove('opacity-0');
 
+        sectionFourContainer.classList.remove('pointer-events-none');
+
         if (sectionFourScrollFraction >= 0.2) {
           sectionFourAnimateWords.forEach((el) => {
             el.classList.add('active');
@@ -390,6 +417,8 @@ export const IndexPageTemplate = ({
       } else {
         sectionFourCanvas.classList.remove('opacity-100');
         sectionFourCanvas.classList.add('opacity-0');
+
+        sectionFourContainer.classList.add('pointer-events-none');
 
         sectionFourAnimateWords.forEach((el) => {
           el.classList.remove('active');
@@ -402,12 +431,13 @@ export const IndexPageTemplate = ({
       const sectionFiveContainerScrollTop = window.innerHeight - sectionFiveContainer.getBoundingClientRect().top;
       const sectionFiveMaxScrollTop = sectionFiveContainer.scrollHeight;
       const sectionFiveScrollFraction = sectionFiveContainerScrollTop / sectionFiveMaxScrollTop;
-      const normalizedSectionFiveScrollFraction =  sectionFiveScrollFraction > 1 ? 1 : sectionFiveScrollFraction < 0 ? 0 : sectionFiveScrollFraction;
 
-      if (normalizedSectionFiveScrollFraction >= 0) {
+      if (sectionFiveScrollFraction >= 0) {
         sectionFiveActive = true;
         sectionFiveCanvas.classList.add('opacity-100');
         sectionFiveCanvas.classList.remove('opacity-0');
+
+        sectionFiveContainer.classList.remove('pointer-events-none');
 
         sectionFiveAnimateWords.forEach((el) => {
           el.classList.add('active');
@@ -416,6 +446,8 @@ export const IndexPageTemplate = ({
         sectionFiveActive = false;
         sectionFiveCanvas.classList.remove('opacity-100');
         sectionFiveCanvas.classList.add('opacity-0');
+
+        sectionFiveContainer.classList.add('pointer-events-none');
 
         sectionFiveAnimateWords.forEach((el) => {
           el.classList.remove('active');
@@ -431,12 +463,12 @@ export const IndexPageTemplate = ({
 
   return (
     <main>
-      <header className="navbar-container w-full z-50 py-8 text-center transition-all duration-500 ease-in-out md:py-16">
+      <header className="navbar-container w-full z-50 py-8 text-center transition-all duration-500 ease-in-out pointer-events-none md:py-16">
         <Navbar />
       </header>
       <section id="section-1">
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="transition-opacity duration-300 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
+          <canvas className="transition-opacity duration-700 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
         <div
           className="foreground relative z-40 w-full"
@@ -459,14 +491,14 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </section>
-      <section id="section-2">
+      <section id="section-2" className="md:-mb-[35vh] pointer-events-none">
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
+          <canvas className="opacity-0 transition-opacity duration-150 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
-        <div className="foreground relative z-40 w-full md:100vh">
+        <div className="foreground relative z-40 w-full md:h-[200vh]">
           <div className="md:fixed md:inset-x-0 md:top-1/2">
             <div className="container mx-auto px-4 py-20 md:py-0">
-              <div className="max-w-[63.5rem] mx-auto">
+              <div className="section-2-ol-wrapper max-w-[63.5rem] mx-auto md:transition-all md:duration-500 md:ease-out">
                 <ol className="section-2-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-1/2 md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
                   {numberedList.map((listItem, index) => (
                     <OrderedListItem key={index} index={(index + 1) > 9 ? '' + (index + 1) : '0' + (index + 1)} text={listItem.text} />
@@ -477,8 +509,7 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </section>
-      <div className="h-[100vh] w-full hidden md:block" />
-      <section id="section-3">
+      <section id="section-3" className="pointer-events-none">
         <div className="foreground relative z-40 w-full">
           <div className="container py-20 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
@@ -486,7 +517,7 @@ export const IndexPageTemplate = ({
                 <SplitTextOnWordBoundaries text={accordionHeading} />
               </h2>
             </div>
-            <ul className="max-w-[50.5rem] mx-auto">
+            <ul className="accordion-container max-w-[50.5rem] mx-auto md:opacity-0 md:transition-opacity md:duration-300 md:delay-300">
               {accordionItems.map((item, index) => (
                 <Accordion key={index} accordionItem={item} />
               ))}
@@ -494,14 +525,16 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </section>
-      <div className="h-screen w-full hidden md:block" />
+      <div className="h-[75vh] w-full hidden md:block" />
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.7 }}
         id="section-4"
+        className="pointer-events-none"
       >
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute -z-10 aspect-square min-w-full min-h-full" />
+          <canvas className="opacity-0 transition-opacity duration-700 ease-out absolute -z-10 aspect-square min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="container py-20 md:py-40">
@@ -619,14 +652,15 @@ export const IndexPageTemplate = ({
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.7 }}
         id="section-5"
-        className="md:h-1"
+        className="pointer-events-none md:h-1"
       >
         <div
           className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex"
           style={{ backgroundColor: '#010c0e' }}
         >
-          <canvas className="opacity-0 transition-opacity duration-300 ease-out absolute -z-10 aspect-video bottom-0 left-0 w-2/3 transform -scale-x-100" />
+          <canvas className="opacity-0 transition-opacity duration-700 ease-out absolute -z-10 aspect-video bottom-0 left-0 w-2/3 transform -scale-x-100" />
         </div>
         <div className="foreground relative z-40 w-full h-full md:fixed md:inset-0 md:overflow-y-auto">
           <div className="container pt-10 md:py-20">

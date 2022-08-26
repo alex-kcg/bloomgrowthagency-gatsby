@@ -5,11 +5,11 @@ const Navbar = class extends React.Component {
   render() {
     return (
       <nav
-        className="navbar"
+        className="navbar pointer-events-none"
         role="navigation"
         aria-label="main-navigation"
       >
-        <img src={settings.header.logo.image} alt={settings.header.logo.alt} className="block h-12 w-auto mx-auto" />
+        <img src={settings.header.logo.image} alt={settings.header.logo.alt} className="block h-12 w-auto mx-auto pointer-events-auto" />
       </nav>
     );
   }
