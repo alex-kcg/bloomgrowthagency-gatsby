@@ -84,8 +84,8 @@ export const IndexPageTemplate = ({
     const sectionFiveContainer = document.getElementById('section-5');
     const sectionFiveCanvas = sectionFiveContainer.querySelector('canvas');
     const sectionFiveAnimateWords = sectionFiveContainer.querySelectorAll('.animate-words');
-    const sectionFiveContext = setupCanvasContext(sectionFiveCanvas, 960, 540);
-    const sectionFiveFilename = 'Phase6-v5-frame_DeMain_';
+    const sectionFiveContext = setupCanvasContext(sectionFiveCanvas, 1440, 810);
+    const sectionFiveFilename = 'Phase6-v5-frame_WIDE';
     const sectionFiveFrameCount = 59;
     const sectionFiveLoopInterval = 75;
     let sectionFiveActive = false;
@@ -656,11 +656,8 @@ export const IndexPageTemplate = ({
         id="section-5"
         className="pointer-events-none md:h-1"
       >
-        <div
-          className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex"
-          style={{ backgroundColor: '#010c0e' }}
-        >
-          <canvas className="opacity-0 transition-opacity duration-700 ease-out absolute -z-10 aspect-video bottom-0 left-0 w-2/3 transform -scale-x-100" />
+        <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
+          <canvas className="opacity-0 transition-opacity duration-700 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full h-full md:fixed md:inset-0 md:overflow-y-auto">
           <div className="container pt-10 md:py-20">
