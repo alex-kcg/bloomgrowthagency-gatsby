@@ -79,6 +79,9 @@ export const IndexPageTemplate = ({
     const sectionFourContext = setupCanvasContext(sectionFourCanvas, 960, 960);
     const sectionFourFilename = 'Phase4-v8-frame_DeMain_';
     const sectionFourFrameCount = 49;
+    const sectionFourLoopCount = 20;
+    const sectionFourLoopSpeedInterval = 75;
+    let sectionFourActive = false;
     let sectionFourIndex = 0;
 
     const sectionFiveContainer = document.getElementById('section-5');
@@ -255,6 +258,27 @@ export const IndexPageTemplate = ({
       }
     }
 
+    const sectionFourLoopOutroSequence = () => {
+      for (let i = 0; i < sectionFourLoopCount; i++) {
+        (function(index) {
+          setTimeout(function() {
+            const lastIndex = sectionFourIndex;
+            sectionFourIndex = sectionFourFrameCount - sectionFourLoopCount + index + 1;
+
+            if (sectionFourActive && lastIndex !== sectionFourIndex) {
+              requestAnimationFrame(() => updateSectionFourImage(sectionFourIndex))
+
+              // console.log('looping outro', index);
+            }
+
+            if ((index + 1) === sectionFourLoopCount) {
+              sectionFourLoopOutroSequence()
+            }
+          }, sectionFourLoopSpeedInterval * (index + 1)) 
+        })(i);
+      }
+    }
+
     // Section Five start
     const updateSectionFiveImage = index => {
       sectionFiveIndex = index;
@@ -412,6 +436,8 @@ export const IndexPageTemplate = ({
       );
 
       if (sectionFourScrollFraction >= 0 && sectionFourScrollFraction < 1) {
+        sectionFourActive = true;
+
         sectionFourCanvas.classList.add('opacity-100');
         sectionFourCanvas.classList.remove('opacity-0');
 
@@ -423,6 +449,8 @@ export const IndexPageTemplate = ({
           });
         }
       } else {
+        sectionFourActive = false;
+
         sectionFourCanvas.classList.remove('opacity-100');
         sectionFourCanvas.classList.add('opacity-0');
 
@@ -432,7 +460,13 @@ export const IndexPageTemplate = ({
           el.classList.remove('active');
         });
       }
-      
+
+      // if (sectionFourFrameIndex > sectionFourFrameCount - sectionFourLoopCount) {
+      //   sectionFourLoopOutroSequence();
+      // } else {
+      //   requestAnimationFrame(() => updateSectionFourImage(sectionFourFrameIndex + 1))
+      // }
+
       requestAnimationFrame(() => updateSectionFourImage(sectionFourFrameIndex + 1))
 
       // Section Five
