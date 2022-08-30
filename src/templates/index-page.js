@@ -393,9 +393,15 @@ export const IndexPageTemplate = ({
             el.classList.remove('active');
           });
 
-          sectionTwoOrderedList.querySelectorAll('li:nth-child(1) .animate-words').forEach((el) => {
-            el.classList.add('active');
-          });
+          if (sectionTwoScrollFraction > 0.4) {
+            sectionTwoOrderedList.querySelectorAll('li:nth-child(1) .animate-words').forEach((el) => {
+              el.classList.add('active');
+            });
+          } else {
+            sectionTwoOrderedList.querySelectorAll('li:nth-child(1) .animate-words').forEach((el) => {
+              el.classList.remove('active');
+            });
+          }
         }
       } else {
         sectionTwoCanvas.classList.remove('opacity-100');
