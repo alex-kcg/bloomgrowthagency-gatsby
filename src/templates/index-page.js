@@ -77,8 +77,8 @@ export const IndexPageTemplate = ({
     const sectionFourCanvas = sectionFourContainer.querySelector('canvas');
     const sectionFourAnimateWords = sectionFourContainer.querySelectorAll('.animate-words');
     const sectionFourContext = setupCanvasContext(sectionFourCanvas, 960, 960);
-    const sectionFourFilename = 'Phase4-v7-frame_DeMain_';
-    const sectionFourFrameCount = 69;
+    const sectionFourFilename = 'Phase4-v8-frame_DeMain_';
+    const sectionFourFrameCount = 49;
     let sectionFourIndex = 0;
 
     const sectionFiveContainer = document.getElementById('section-5');
