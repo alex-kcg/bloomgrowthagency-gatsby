@@ -493,8 +493,6 @@ export const IndexPageTemplate = ({
         });
       }
 
-      console.log(sectionFiveScrollFraction)
-
       if (sectionFiveScrollFraction >= 0) {
         sectionFiveActive = true;
 
