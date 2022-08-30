@@ -360,7 +360,7 @@ export const IndexPageTemplate = ({
         sectionTwoCanvas.classList.remove('duration-700');
       }
 
-      if (sectionTwoScrollFraction > 0.95) {
+      if (sectionTwoScrollFraction > 1) {
         sectionTwoOrderedListWrapper.classList.add('scrolled-past');
       } else {
         sectionTwoOrderedListWrapper.classList.remove('scrolled-past');
