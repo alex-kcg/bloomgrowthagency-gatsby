@@ -83,13 +83,21 @@ export const IndexPageTemplate = ({
 
     const sectionFiveContainer = document.getElementById('section-5');
     const sectionFiveCanvas = sectionFiveContainer.querySelector('canvas');
+    const sectionFiveAnimateHeadings = sectionFiveContainer.querySelectorAll('.animate-words-heading .animate-words');
+    const sectionFiveAnimateParagraphs = sectionFiveContainer.querySelectorAll('.animate-words-paragraph .animate-words');
     const sectionFiveAnimateWords = sectionFiveContainer.querySelectorAll('.animate-words');
+    const sectionFiveFadeIn = sectionFiveContainer.querySelectorAll('.fade-in');
+    const sectionFiveHorizontalRules = sectionFiveContainer.querySelectorAll('hr');
     const sectionFiveContext = setupCanvasContext(sectionFiveCanvas, 1440, 810);
     const sectionFiveFilename = 'Phase6-v5-frame_WIDE';
     const sectionFiveFrameCount = 59;
     const sectionFiveLoopInterval = 75;
     let sectionFiveActive = false;
     let sectionFiveIndex = 0;
+    let sectionFiveAnimateHeadingsTimeout;
+    let sectionFiveAnimateParagraphsTimeout;
+    let sectionFiveAnimateWordsTimeout;
+    let sectionFiveFadeInTimeout;
 
     let imagesPhaseOne = {};
     let imagesPhaseTwo = {};
@@ -434,23 +442,70 @@ export const IndexPageTemplate = ({
 
       if (sectionFiveScrollFraction >= 0) {
         sectionFiveActive = true;
-        sectionFiveCanvas.classList.add('opacity-100');
-        sectionFiveCanvas.classList.remove('opacity-0');
+        sectionFiveCanvas.classList.add('opacity-100', 'delay-1000');
+        sectionFiveCanvas.classList.remove('opacity-0', 'grayscale');
 
         sectionFiveContainer.classList.remove('pointer-events-none');
 
-        sectionFiveAnimateWords.forEach((el) => {
-          el.classList.add('active');
+        sectionFiveHorizontalRules.forEach((el) => {
+          el.classList.remove('w-0');
+          el.classList.add('w-full', 'delay-1000');
         });
+
+        sectionFiveAnimateHeadingsTimeout = setTimeout(function() {
+          sectionFiveAnimateHeadings.forEach((el) => {
+            el.classList.add('active');
+          });
+        }, 1000);
+
+        sectionFiveAnimateParagraphsTimeout = setTimeout(function() {
+          sectionFiveAnimateParagraphs.forEach((el) => {
+            el.classList.add('active');
+          });
+        }, 1500);
+
+        sectionFiveAnimateWordsTimeout = setTimeout(function() {
+          sectionFiveAnimateWords.forEach((el) => {
+            el.classList.add('active');
+          });
+        }, 2000);
+
+        sectionFiveFadeInTimeout = setTimeout(function() {
+          sectionFiveFadeIn.forEach((el) => {
+            el.classList.remove('opacity-0');
+          });
+        }, 2000);
       } else {
         sectionFiveActive = false;
-        sectionFiveCanvas.classList.remove('opacity-100');
-        sectionFiveCanvas.classList.add('opacity-0');
+        clearTimeout(sectionFiveAnimateHeadingsTimeout);
+        clearTimeout(sectionFiveAnimateParagraphsTimeout);
+        clearTimeout(sectionFiveAnimateWordsTimeout);
+        clearTimeout(sectionFiveFadeInTimeout);
+
+        sectionFiveCanvas.classList.remove('opacity-100', 'delay-1000');
+        sectionFiveCanvas.classList.add('opacity-0', 'grayscale');
 
         sectionFiveContainer.classList.add('pointer-events-none');
 
+        sectionFiveHorizontalRules.forEach((el) => {
+          el.classList.add('w-0');
+          el.classList.remove('w-full', 'delay-1000');
+        });
+
+        sectionFiveAnimateHeadings.forEach((el) => {
+          el.classList.remove('active');
+        });
+
+        sectionFiveAnimateParagraphs.forEach((el) => {
+          el.classList.remove('active');
+        });
+
         sectionFiveAnimateWords.forEach((el) => {
           el.classList.remove('active');
+        });
+
+        sectionFiveFadeIn.forEach((el) => {
+          el.classList.add('opacity-0');
         });
       }
     });
@@ -657,65 +712,71 @@ export const IndexPageTemplate = ({
         className="pointer-events-none md:h-1"
       >
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="opacity-0 transition-opacity duration-700 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
+          <canvas className="opacity-0 transition-all duration-[1.5s] delay-1000 ease-out grayscale absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full h-full md:fixed md:inset-0 md:overflow-y-auto">
           <div className="container pt-10 md:py-20">
             <div className="max-w-[63.5rem] mx-auto">
-              <div className="border-b border-slate py-10 md:py-20">
+              <div className="py-10 md:py-20">
                 <div className="flex flex-wrap justify-between -mx-4 sm:-mx-3">
                   <div className="w-full px-4 sm:px-3 md:w-1/2">
-                    <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
-                      Are you building a design team? 
+                    <h2 className="animate-words-heading font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
+                      <SplitTextOnWordBoundaries text="Are you building a design team?" /> 
                     </h2>
                   </div>
                   <div className="w-full px-4 sm:px-3 md:w-5/12">
-                    <p className="pb-6 text-lg font-light leading-relaxed">
-                      We’re helping partners build world class design organizations with our handbuilt pipeline. Interested? 
+                    <p className="animate-words-paragraph pb-6 text-lg font-light leading-relaxed">
+                      <SplitTextOnWordBoundaries text="We’re helping partners build world class design organizations with our handbuilt pipeline. Interested?" /> 
                     </p>
-                    <button className="transition-color duration-500 ease-out text-electric-lime">
-                      <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
-                      </svg>
-                      Let’s chat pipeline
-                    </button>
+                    <div className="fade-in opacity-0 transition-opacity duration-1000">
+                      <button className="transition-color duration-500 ease-out text-electric-lime">
+                        <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
+                        </svg>
+                        Let’s chat pipeline
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="hidden border-b border-slate py-10 md:py-20">
+              <hr className="border-slate mx-auto transition-all duration-1000 delay-1000 ease-out w-0" />
+              <div className="hidden py-10 md:py-20">
                 <div className="flex flex-wrap justify-between -mx-4 sm:-mx-3">
                   <div className="w-full px-4 sm:px-3 md:w-1/2">
-                    <h2 className="font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
-                      Let’s be fearless together
+                    <h2 className="animate-words-heading font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-6xl">
+                      <SplitTextOnWordBoundaries text="Let’s be fearless together" /> 
                     </h2>
                   </div>
                   <div className="w-full px-4 sm:px-3 md:w-5/12">
-                    <p className="pb-6 text-lg font-light leading-relaxed">
-                      Scaling products and design operations is hard. We’re here to make it easy. 
+                    <p className="animate-words-paragraph pb-6 text-lg font-light leading-relaxed">
+                      <SplitTextOnWordBoundaries text="Scaling products and design operations is hard. We’re here to make it easy." /> 
                     </p>
-                    <button className="transition-color duration-500 ease-out text-electric-lime">
-                      <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
-                      </svg>
-                      Let’s chat pipeline
-                    </button>
+                    <div className="fade-in opacity-0 transition-opacity duration-1000">
+                      <button className="transition-color duration-500 ease-out text-electric-lime">
+                        <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
+                        </svg>
+                        Let’s chat pipeline
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
+              <hr className="hidden border-slate mx-auto transition-all duration-1000 delay-1000 ease-out w-0" />
               <div className="py-10 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:py-20">
                 <div className="w-full px-4 sm:px-3 md:w-1/2">
-                  <Link to="/" title="Logo">
+                  <Link className="fade-in opacity-0 transition-opacity duration-1000" to="/" title="Logo">
                     <img src={settings.header.logo.image} alt={settings.header.logo.alt} className="h-16 w-auto mb-10 md:mb-0 md:h-20" />
                   </Link>
                 </div>
                 <div className="w-full px-4 sm:px-3 md:w-5/12">
                   <h3 className="font-light text-3xl leading-normal tracking-tighter mb-2">
-                    Zach Greenberger
+                    <SplitTextOnWordBoundaries text="Zach Greenberger" /> 
                   </h3>
                   <h4 className="text-lg font-light leading-relaxed mb-10">
-                    Head of Growth
+                    <SplitTextOnWordBoundaries text="Head of Growth" /> 
                   </h4>
-                  <ul className="mb-10">
+                  <ul className="fade-in opacity-0 transition-opacity duration-1000 mb-10">
                     <li className="border-b border-slate">
                       <a className="group flex flex-wrap justify-start items-center space-x-4 py-4" href="mailto:zach@bloomgrowthagency.com">
                         <img src={arrowIcon} alt="Arrow icon" className="block w-8 h-8 p-2 rounded-full bg-summer-rain" />
@@ -741,7 +802,7 @@ export const IndexPageTemplate = ({
                       </button>
                     </li>
                   </ul>
-                  <nav className="flex flex-wrap space-x-6 text-lg font-light leading-relaxed mb-10">
+                  <nav className="fade-in opacity-0 transition-opacity duration-1000 flex flex-wrap space-x-6 text-lg font-light leading-relaxed mb-10">
                     <button>
                       Careers
                     </button>
@@ -752,7 +813,7 @@ export const IndexPageTemplate = ({
                       LinkedIn
                     </button>
                   </nav>
-                  <p className="text-sm font-light leading-relaxed">
+                  <p className="fade-in opacity-0 transition-opacity duration-1000 text-sm font-light leading-relaxed">
                     Copyright © 2022 Bloom Growth Agency
                   </p>
                 </div>
