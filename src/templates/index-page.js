@@ -550,7 +550,7 @@ export const IndexPageTemplate = ({
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
           <canvas className="opacity-0 transition-opacity duration-150 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
-        <div className="foreground relative z-40 w-full md:h-[200vh]">
+        <div className="foreground relative z-40 w-full md:h-[300vh]">
           <div className="md:fixed md:inset-x-0 md:top-1/2">
             <div className="container mx-auto px-4 py-20 md:py-0">
               <div className="section-2-ol-wrapper max-w-[63.5rem] mx-auto md:transition-all md:duration-500 md:ease-out">
