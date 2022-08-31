@@ -70,6 +70,7 @@ export const IndexPageTemplate = ({
     let sectionTwoIndex = 0;
 
     const sectionThreeContainer = document.getElementById('section-3');
+    const sectionThreeForeground = sectionThreeContainer.querySelector('.foreground');
     const sectionThreeAnimateWords = sectionThreeContainer.querySelectorAll('.animate-words');
     const sectionThreeAccordionContainer = sectionThreeContainer.querySelector('.accordion-container');
 
@@ -409,10 +410,10 @@ export const IndexPageTemplate = ({
 
       // Section Three
       const sectionThreeContainerScrollTop = window.innerHeight - sectionThreeContainer.getBoundingClientRect().top;
-      const sectionThreeMaxScrollTop = window.innerHeight + sectionThreeContainer.scrollHeight;
+      const sectionThreeMaxScrollTop = (window.innerHeight / 2) + sectionThreeContainer.scrollHeight;
       const sectionThreeScrollFraction = sectionThreeContainerScrollTop / sectionThreeMaxScrollTop;
 
-      if (sectionThreeScrollFraction >= 0.2 && sectionThreeScrollFraction < 1) {
+      if (sectionThreeScrollFraction >= 0.25 && sectionThreeScrollFraction < 1) {
         sectionThreeContainer.classList.remove('pointer-events-none');
 
         sectionThreeAnimateWords.forEach((el) => {
@@ -428,6 +429,12 @@ export const IndexPageTemplate = ({
         sectionThreeAccordionContainer.classList.add('md:opacity-0');
       }
 
+      if (sectionThreeScrollFraction > 1) {
+        sectionThreeForeground.classList.add('scale-50');
+      } else {
+        sectionThreeForeground.classList.remove('scale-50');
+      }
+
       // Section Four
       const sectionFourContainerScrollTop = window.innerHeight - sectionFourContainer.getBoundingClientRect().top;
       const sectionFourMaxScrollTop = (window.innerHeight / 2) + sectionFourContainer.scrollHeight;
@@ -438,7 +445,7 @@ export const IndexPageTemplate = ({
         Math.ceil(normalizedSectionFourScrollFraction * sectionFourFrameCount)
       );
 
-      if (sectionFourScrollFraction >= 0 && sectionFourScrollFraction < 1) {
+      if (sectionThreeScrollFraction > 1 && sectionFourScrollFraction < 1) {
         sectionFourActive = true;
 
         sectionFourCanvas.classList.add('opacity-100');
@@ -566,7 +573,7 @@ export const IndexPageTemplate = ({
         <div
           className="foreground relative z-40 w-full"
         >
-          <div className="w-full md:min-h-[200vh]">
+          <div className="w-full h-screen md:min-h-[200vh]">
             <div className="sticky top-0 w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:min-h-screen md:pt-0 md:mb-60">
               <h1 className="hero-headline-wrapper font-serif font-light tracking-tighter text-4xl md:text-10xl">
                 <span className="block max-w-xs mx-auto md:max-w-5xl">
@@ -603,7 +610,7 @@ export const IndexPageTemplate = ({
         </div>
       </section>
       <section id="section-3" className="pointer-events-none">
-        <div className="foreground relative z-40 w-full">
+        <div className="foreground relative z-40 w-full transition-all duration-1000 ease-out transform">
           <div className="container py-20 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
               <h2 className="font-serif font-light tracking-snug text-4xl mb-20 max-w-[37.5rem] md:text-8xl md:mb-40">
@@ -618,7 +625,7 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </section>
-      <div className="h-[75vh] w-full hidden md:block" />
+      <div className="h-[50vh] w-full hidden md:block" />
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
