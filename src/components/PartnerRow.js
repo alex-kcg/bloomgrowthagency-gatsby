@@ -22,11 +22,14 @@ const PartnerRow = ({ partnerRow }) => {
   };
 
   useEffect(() => {
-    controls.start(controlParams)
+    controls.start(controlParams);
+
+    console.log();
   }, [])
 
   return (
     <div
+      data-partner-row-animation={partnerRow.partners.length}
       className="relative select-none overflow-hidden mb-4 md:mb-6"
       style={{ height: '1.1667em' }}
     >
@@ -37,9 +40,9 @@ const PartnerRow = ({ partnerRow }) => {
         {[...Array(100)].map((e, i) => (
           <span className="iteration" key={i}>
             {partnerRow.partners.map((partner, index) => (
-              <a key={index} href={partner.url} target="_blank" className={`px-3 transition-colors duration-300 ease-in-out ${partner.colorClassName} ${partner.fontClassName}`}>
+              <span key={index} data-active-color-class={partner.colorClassName} className={`px-3 transition-colors duration-300 ease-in-out ${partner.fontClassName}`}>
                 {partner.text}
-              </a>
+              </span>
             ))}
           </span>
         ))}

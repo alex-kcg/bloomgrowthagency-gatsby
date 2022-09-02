@@ -2,20 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import SplitTextOnWordBoundaries from "./SplitTextOnWordBoundaries";
 
-const OrderedListItem = ({ text, index }) => {
+const OrderedListItem = ({ heading, text }) => {
   return (
     <li className="w-full md:h-[27.5rem] md:transition-opacity md:duration-300 md:ease-out">
-      <span className="block text-7xl font-light leading-[0.72727272em] md:text-10xl md:leading-[0.72727272em]">
-        <SplitTextOnWordBoundaries text={index} />
+      <span className="block text-2xl leading-tighter font-light md:text-5xl md:leading-tighter">
+        <SplitTextOnWordBoundaries text={heading} />
       </span>
-      <hr className="my-6 border-slate max-w-full md:transition-all md:duration-500 md:ease-out md:my-8 md:delay-300" />
+      <hr className="mt-4 mb-6 border-slate max-w-full md:transition-all md:duration-500 md:ease-out md:mt-4 md:mb-8 md:delay-300" />
       <SplitTextOnWordBoundaries text={text} />
     </li>
   );
 };
 
 OrderedListItem.propTypes = {
-  index: PropTypes.string,
+  heading: PropTypes.string,
   text: PropTypes.string,
 };
 

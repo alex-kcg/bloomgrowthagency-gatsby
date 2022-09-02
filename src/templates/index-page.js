@@ -58,7 +58,7 @@ export const IndexPageTemplate = ({
     const sectionOnePlaybackSpeedInterval = 40;
     const sectionOneImage = new Image();
     let sectionOneActive = true;
-    let sectionOneIndex = 0;
+    let sectionOneIndex = -1;
 
     const sectionTwoContainer = document.getElementById('section-2');
     const sectionTwoCanvas = sectionTwoContainer.querySelector('canvas');
@@ -115,8 +115,6 @@ export const IndexPageTemplate = ({
           images[key].src = key;
           images[key].onload = resolve();
           images[key].onerror = reject();
-  
-          // console.log('caching', key);
         })
       })
 
@@ -142,7 +140,6 @@ export const IndexPageTemplate = ({
       const image = imagesPhaseOne[currentFrame(sectionOneFilename, sectionOneIndex)];
       if (image) {
         sectionOneContext.drawImage(image, 0, 0);
-        // console.log('updating section 1 image', image);
       }
     }
 
@@ -155,8 +152,6 @@ export const IndexPageTemplate = ({
 
             if (sectionOneActive && lastIndex !== sectionOneIndex) {
               requestAnimationFrame(() => updateSectionOneImage())
-
-              // console.log('looping outro', index);
             }
 
             if ((index + 1) === sectionOneLoopCount) {
@@ -178,8 +173,6 @@ export const IndexPageTemplate = ({
               requestAnimationFrame(() => updateSectionOneImage())
             }
 
-            // console.log('playing sequence', index);
-
             if ((index + 1) == sectionOneFrameCount) {
               sectionOneLoopOutroSequence();
             }
@@ -193,22 +186,20 @@ export const IndexPageTemplate = ({
         (function(index) {
           setTimeout(function() {
             const lastIndex = sectionOneIndex;
-            sectionOneIndex = index + 1;
+            sectionOneIndex = index;
 
             if (lastIndex !== sectionOneIndex) {
-              requestAnimationFrame(() => updateSectionOneImage(index + 1))
+              requestAnimationFrame(() => updateSectionOneImage())
             }
-
-            // console.log('looping intro', index);
 
             if ((index + 1) === sectionOneLoopCount) {
               if (scrolled) {
-                sectionOnePlaySequence()
+                sectionOnePlaySequence();
               } else {
-                sectionOneLoopIntroSequence()
+                sectionOneLoopIntroSequence();
               }
             }
-          }, sectionOneLoopSpeedInterval * (index + 1))
+          }, sectionOneLoopSpeedInterval * (index))
         })(i);
       }
     }
@@ -236,7 +227,6 @@ export const IndexPageTemplate = ({
 
         if (image) {
           sectionTwoContext.drawImage(image, 0, 0);
-          // console.log('updating section 2 image', sectionTwoImage);
         }
       }
     }
@@ -251,7 +241,6 @@ export const IndexPageTemplate = ({
 
         if (image) {
           sectionFourContext.drawImage(image, 0, 0);
-          // console.log('updating section 3 image', image);
         }
       }
     }
@@ -265,8 +254,6 @@ export const IndexPageTemplate = ({
 
             if (sectionFourActive && lastIndex !== sectionFourIndex) {
               requestAnimationFrame(() => updateSectionFourImage(sectionFourIndex))
-
-              // console.log('looping outro', index);
             }
 
             if ((index + 1) === sectionFourLoopCount) {
@@ -279,24 +266,23 @@ export const IndexPageTemplate = ({
 
     // Section Five start
     const updateSectionFiveImage = index => {
-      sectionFiveIndex = index;
-
       if (sectionFiveActive) {
-        const image = imagesPhaseTwo[currentFrame(sectionFiveFilename, sectionFiveIndex)];
+        const image = imagesPhaseTwo[currentFrame(sectionFiveFilename, index)];
 
         if (image) {
           sectionFiveContext.drawImage(image, 0, 0);
-          // console.log('updating section 4 image', image);
+          sectionFiveIndex = index;
         }
       }
     }
 
     function sequenceSectionFiveFrame () {
-      if (sectionFiveIndex >= sectionFiveFrameCount) {
+      if (sectionFiveIndex > sectionFiveFrameCount) {
         sectionFiveIndex = 0;
       }
 
-      requestAnimationFrame(() => updateSectionFiveImage(sectionFiveIndex++ + 1));
+      requestAnimationFrame(() => updateSectionFiveImage(sectionFiveIndex));
+      sectionFiveIndex++;
     }
 
     setInterval(sequenceSectionFiveFrame, sectionFiveLoopInterval);
@@ -338,7 +324,7 @@ export const IndexPageTemplate = ({
         Math.ceil(normalizedSectionTwoScrollFraction * sectionTwoFrameCount)
       );
 
-      if (sectionTwoScrollFraction > 1 || sectionTwoScrollFraction <= 0.4) {
+      if (sectionTwoScrollFraction > 1.1 || sectionTwoScrollFraction <= 0.4) {
         sectionTwoOrderedList.classList.remove('md:opacity-100');
         sectionTwoOrderedList.classList.add('md:opacity-0');
 
@@ -358,13 +344,13 @@ export const IndexPageTemplate = ({
         sectionTwoCanvas.classList.remove('duration-700');
       }
 
-      if (sectionTwoScrollFraction > 1) {
+      if (sectionTwoScrollFraction > 1.1) {
         sectionTwoOrderedListWrapper.classList.add('scrolled-past');
       } else {
         sectionTwoOrderedListWrapper.classList.remove('scrolled-past');
       }
 
-      if (sectionTwoScrollFraction >= 0 && sectionTwoScrollFraction < 1) {
+      if (sectionTwoScrollFraction > 0 && sectionTwoScrollFraction <= 1.1) {
         sectionTwoCanvas.classList.add('opacity-100');
         sectionTwoCanvas.classList.remove('opacity-0');
 
@@ -413,7 +399,7 @@ export const IndexPageTemplate = ({
       const sectionThreeMaxScrollTop = (window.innerHeight / 2) + sectionThreeContainer.scrollHeight;
       const sectionThreeScrollFraction = sectionThreeContainerScrollTop / sectionThreeMaxScrollTop;
 
-      if (sectionThreeScrollFraction >= 0.25 && sectionThreeScrollFraction < 1) {
+      if (sectionTwoScrollFraction > 1.1 && sectionThreeScrollFraction < 1) {
         sectionThreeContainer.classList.remove('pointer-events-none');
 
         sectionThreeAnimateWords.forEach((el) => {
@@ -573,7 +559,7 @@ export const IndexPageTemplate = ({
         <div
           className="foreground relative z-40 w-full"
         >
-          <div className="w-full h-screen md:min-h-[200vh]">
+          <div className="w-full min-h-screen md:min-h-[200vh]">
             <div className="sticky top-0 w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:min-h-screen md:pt-0 md:mb-60">
               <h1 className="hero-headline-wrapper font-serif font-light tracking-tighter text-4xl md:text-10xl">
                 <span className="block max-w-xs mx-auto md:max-w-5xl">
@@ -591,7 +577,7 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </section>
-      <section id="section-2" className="md:-mb-[35vh] pointer-events-none">
+      <section id="section-2" className="md:-mb-[15vh] pointer-events-none">
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
           <canvas className="opacity-0 transition-opacity duration-150 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
@@ -601,7 +587,7 @@ export const IndexPageTemplate = ({
               <div className="section-2-ol-wrapper max-w-[63.5rem] mx-auto md:transition-all md:duration-500 md:ease-out">
                 <ol className="section-2-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-1/2 md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
                   {numberedList.map((listItem, index) => (
-                    <OrderedListItem key={index} index={(index + 1) > 9 ? '' + (index + 1) : '0' + (index + 1)} text={listItem.text} />
+                    <OrderedListItem key={index} heading={listItem.heading} text={listItem.text} />
                   ))}
                 </ol>
               </div>
@@ -760,7 +746,7 @@ export const IndexPageTemplate = ({
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="container">
-            <div className="max-w-[63.5rem] mx-auto py-10 md:py-20 md:flex md:flex-col md:min-h-screen">
+            <div className="max-w-[63.5rem] mx-auto pt-10 md:pt-20 md:flex md:flex-col md:min-h-screen">
               <div className="py-10 md:py-20">
                 <div className="flex flex-wrap justify-between -mx-4 sm:-mx-3">
                   <div className="w-full px-4 sm:px-3 md:w-1/2">
@@ -784,7 +770,7 @@ export const IndexPageTemplate = ({
                 </div>
               </div>
               <hr className="border-slate mx-auto transition-all duration-500 ease-out w-0" />
-              <div className="fade-in-footer opacity-0 transition-opacity duration-500 py-10 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:py-20 md:mt-auto">
+              <div className="fade-in-footer opacity-0 transition-opacity duration-500 py-6 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:mt-auto">
                 <div className="w-full px-4 sm:px-3 md:ml-auto md:w-5/12">
                   <h3 className="font-light text-3xl leading-normal tracking-tighter mb-2">
                     <SplitTextOnWordBoundaries text="Zach Greenberger" /> 
@@ -922,6 +908,7 @@ export const pageQuery = graphql`
           }
         }
         numberedList {
+          heading
           text
         }
         accordionHeading
