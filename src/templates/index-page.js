@@ -83,6 +83,7 @@ export const IndexPageTemplate = ({
     const sectionFourLoopCount = 20;
     const sectionFourLoopSpeedInterval = 75;
     let sectionFourActive = false;
+    let sectionFourLoopOutroActive = false;
     let sectionFourIndex = 0;
 
     const sectionFiveContainer = document.getElementById('section-5');
@@ -96,7 +97,7 @@ export const IndexPageTemplate = ({
     const sectionFiveContext = setupCanvasContext(sectionFiveCanvas, 1440, 810);
     const sectionFiveFilename = 'Phase6-v5-frame_WIDE';
     const sectionFiveFrameCount = 59;
-    const sectionFiveLoopInterval = 75;
+    const sectionFiveLoopSpeedInterval = 75;
     let sectionFiveActive = false;
     let sectionFiveIndex = 0;
 
@@ -245,24 +246,19 @@ export const IndexPageTemplate = ({
       }
     }
 
-    const sectionFourLoopOutroSequence = () => {
-      for (let i = 0; i < sectionFourLoopCount; i++) {
-        (function(index) {
-          setTimeout(function() {
-            const lastIndex = sectionFourIndex;
-            sectionFourIndex = sectionFourFrameCount - sectionFourLoopCount + index + 1;
+    function sectionFourLoopOutroSequence () {
+      if (sectionFourActive && sectionFourLoopOutroActive) {
+        let index = sectionFourIndex + 1;
 
-            if (sectionFourActive && lastIndex !== sectionFourIndex) {
-              requestAnimationFrame(() => updateSectionFourImage(sectionFourIndex))
-            }
-
-            if ((index + 1) === sectionFourLoopCount) {
-              sectionFourLoopOutroSequence()
-            }
-          }, sectionFourLoopSpeedInterval * (index + 1)) 
-        })(i);
+        if (index > sectionFourFrameCount) {
+          index = sectionFourFrameCount - sectionFourLoopCount;
+        }
+  
+        requestAnimationFrame(() => updateSectionFourImage(index));
       }
     }
+
+    setInterval(sectionFourLoopOutroSequence, sectionFourLoopSpeedInterval);
 
     // Section Five start
     const updateSectionFiveImage = index => {
@@ -285,7 +281,7 @@ export const IndexPageTemplate = ({
       sectionFiveIndex++;
     }
 
-    setInterval(sequenceSectionFiveFrame, sectionFiveLoopInterval);
+    setInterval(sequenceSectionFiveFrame, sectionFiveLoopSpeedInterval);
 
     window.addEventListener('scroll', () => {
       // Section One
@@ -434,6 +430,14 @@ export const IndexPageTemplate = ({
       if (sectionThreeScrollFraction > 1 && sectionFourScrollFraction < 1) {
         sectionFourActive = true;
 
+        if (sectionFourFrameIndex >= (sectionFourFrameCount - sectionFourLoopCount)) {
+          sectionFourLoopOutroActive = true;
+        } else {
+          sectionFourLoopOutroActive = false;
+
+          requestAnimationFrame(() => updateSectionFourImage(sectionFourFrameIndex + 1))
+        }
+
         sectionFourCanvas.classList.add('opacity-100');
         sectionFourCanvas.classList.remove('opacity-0');
 
@@ -456,15 +460,7 @@ export const IndexPageTemplate = ({
           el.classList.remove('active');
         });
       }
-
-      // if (sectionFourFrameIndex > sectionFourFrameCount - sectionFourLoopCount) {
-      //   sectionFourLoopOutroSequence();
-      // } else {
-      //   requestAnimationFrame(() => updateSectionFourImage(sectionFourFrameIndex + 1))
-      // }
-
-      requestAnimationFrame(() => updateSectionFourImage(sectionFourFrameIndex + 1))
-
+      
       // Section Five
       const sectionFiveContainerScrollTop = (window.innerHeight / 2) - sectionFiveContainer.getBoundingClientRect().top;
       const sectionFiveMaxScrollTop = sectionFiveContainer.scrollHeight - (window.innerHeight / 2);
