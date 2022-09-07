@@ -101,13 +101,20 @@ export const IndexPageTemplate = ({
     let sectionFiveActive = false;
     let sectionFiveIndex = 0;
 
+    const mobileScrollAnimationOffset = 300;
+
     let imagesPhaseOne = {};
     let imagesPhaseTwo = {};
+
+    // Function to check if is mobile layout
+    const isMobile = () => {
+      return window.innerWidth < 1000;
+    };
 
     // Function that returns path for image
     const currentFrame = (filename, index, fileformat = 'jpg') => (
       `/img/${filename}${index.toString().padStart(4, '0')}.${fileformat}`
-    )
+    );
 
     // Async function to cache images
     const cacheImages = async (images) => {
@@ -203,6 +210,14 @@ export const IndexPageTemplate = ({
           }, sectionOneLoopSpeedInterval * (index))
         })(i);
       }
+    }
+
+    if (isMobile()) {
+      setTimeout(() => {
+        sectionOneAnimateWords.forEach((el) => {
+          el.classList.add('active');
+        });
+      }, 1500);
     }
 
     // Render the first frame while caching
@@ -320,101 +335,129 @@ export const IndexPageTemplate = ({
         Math.ceil(normalizedSectionTwoScrollFraction * sectionTwoFrameCount)
       );
 
-      if (sectionTwoScrollFraction > 1.1 || sectionTwoScrollFraction <= 0.4) {
-        sectionTwoOrderedList.classList.remove('md:opacity-100');
-        sectionTwoOrderedList.classList.add('md:opacity-0');
-
-        sectionTwoContainer.classList.add('pointer-events-none');
-      } else {
-        sectionTwoOrderedList.classList.add('md:opacity-100');
-        sectionTwoOrderedList.classList.remove('md:opacity-0');
-
+      if (isMobile()) {
         sectionTwoContainer.classList.remove('pointer-events-none');
-      }
 
-      if (sectionTwoScrollFraction > 0.5) {
-        sectionTwoCanvas.classList.add('duration-700');
-        sectionTwoCanvas.classList.remove('duration-150');
-      } else {
-        sectionTwoCanvas.classList.add('duration-150');
-        sectionTwoCanvas.classList.remove('duration-700');
-      }
-
-      if (sectionTwoScrollFraction > 1.1) {
-        sectionTwoOrderedListWrapper.classList.add('scrolled-past');
-      } else {
-        sectionTwoOrderedListWrapper.classList.remove('scrolled-past');
-      }
-
-      if (sectionTwoScrollFraction > 0 && sectionTwoScrollFraction <= 1.1) {
-        sectionTwoCanvas.classList.add('opacity-100');
-        sectionTwoCanvas.classList.remove('opacity-0');
-
-        if (sectionTwoScrollFraction > 0.8) {
-          sectionTwoOrderedList.setAttribute('data-position', '3');
-
-          sectionTwoOrderedList.querySelectorAll('li:nth-child(3) .animate-words, li:nth-child(2) .animate-words, li:nth-child(1) .animate-words').forEach((el) => {
-            el.classList.add('active');
-          });
-        } else if (sectionTwoScrollFraction > 0.6) {
-          sectionTwoOrderedList.setAttribute('data-position', '2');
- 
-          sectionTwoOrderedList.querySelectorAll('li:nth-child(3) .animate-words').forEach((el) => {
-            el.classList.remove('active');
-          });
-
-          sectionTwoOrderedList.querySelectorAll('li:nth-child(2) .animate-words, li:nth-child(1) .animate-words').forEach((el) => {
+        if (sectionTwoContainerScrollTop > mobileScrollAnimationOffset) {
+          sectionTwoOrderedList.querySelectorAll('.animate-words').forEach((el) => {
             el.classList.add('active');
           });
         } else {
-          sectionTwoOrderedList.setAttribute('data-position', '1');
-
-          sectionTwoOrderedList.querySelectorAll('li:nth-child(3) .animate-words, li:nth-child(2) .animate-words').forEach((el) => {
+          sectionTwoOrderedList.querySelectorAll('.animate-words').forEach((el) => {
             el.classList.remove('active');
           });
+        }
+      } else {
+        if (sectionTwoScrollFraction > 1.1 || sectionTwoScrollFraction <= 0.4) {
+          sectionTwoOrderedList.classList.remove('md:opacity-100');
+          sectionTwoOrderedList.classList.add('md:opacity-0');
 
-          if (sectionTwoScrollFraction > 0.4) {
-            sectionTwoOrderedList.querySelectorAll('li:nth-child(1) .animate-words').forEach((el) => {
+          sectionTwoContainer.classList.add('pointer-events-none');
+        } else {
+          sectionTwoOrderedList.classList.add('md:opacity-100');
+          sectionTwoOrderedList.classList.remove('md:opacity-0');
+
+          sectionTwoContainer.classList.remove('pointer-events-none');
+        }
+
+        if (sectionTwoScrollFraction > 0.5) {
+          sectionTwoCanvas.classList.add('duration-700');
+          sectionTwoCanvas.classList.remove('duration-150');
+        } else {
+          sectionTwoCanvas.classList.add('duration-150');
+          sectionTwoCanvas.classList.remove('duration-700');
+        }
+
+        if (sectionTwoScrollFraction > 1.1) {
+          sectionTwoOrderedListWrapper.classList.add('scrolled-past');
+        } else {
+          sectionTwoOrderedListWrapper.classList.remove('scrolled-past');
+        }
+
+        if (sectionTwoScrollFraction > 0 && sectionTwoScrollFraction <= 1.1) {
+          sectionTwoCanvas.classList.add('opacity-100');
+          sectionTwoCanvas.classList.remove('opacity-0');
+
+          if (sectionTwoScrollFraction > 0.8) {
+            sectionTwoOrderedList.setAttribute('data-position', '3');
+
+            sectionTwoOrderedList.querySelectorAll('li:nth-child(3) .animate-words, li:nth-child(2) .animate-words, li:nth-child(1) .animate-words').forEach((el) => {
+              el.classList.add('active');
+            });
+          } else if (sectionTwoScrollFraction > 0.6) {
+            sectionTwoOrderedList.setAttribute('data-position', '2');
+  
+            sectionTwoOrderedList.querySelectorAll('li:nth-child(3) .animate-words').forEach((el) => {
+              el.classList.remove('active');
+            });
+
+            sectionTwoOrderedList.querySelectorAll('li:nth-child(2) .animate-words, li:nth-child(1) .animate-words').forEach((el) => {
               el.classList.add('active');
             });
           } else {
-            sectionTwoOrderedList.querySelectorAll('li:nth-child(1) .animate-words').forEach((el) => {
+            sectionTwoOrderedList.setAttribute('data-position', '1');
+
+            sectionTwoOrderedList.querySelectorAll('li:nth-child(3) .animate-words, li:nth-child(2) .animate-words').forEach((el) => {
               el.classList.remove('active');
             });
+
+            if (sectionTwoScrollFraction > 0.4) {
+              sectionTwoOrderedList.querySelectorAll('li:nth-child(1) .animate-words').forEach((el) => {
+                el.classList.add('active');
+              });
+            } else {
+              sectionTwoOrderedList.querySelectorAll('li:nth-child(1) .animate-words').forEach((el) => {
+                el.classList.remove('active');
+              });
+            }
           }
+        } else {
+          sectionTwoCanvas.classList.remove('opacity-100');
+          sectionTwoCanvas.classList.add('opacity-0');
         }
-      } else {
-        sectionTwoCanvas.classList.remove('opacity-100');
-        sectionTwoCanvas.classList.add('opacity-0');
+        
+        requestAnimationFrame(() => updateSectionTwoImage(sectionTwoFrameIndex + 1))
       }
-      
-      requestAnimationFrame(() => updateSectionTwoImage(sectionTwoFrameIndex + 1))
 
       // Section Three
       const sectionThreeContainerScrollTop = window.innerHeight - sectionThreeContainer.getBoundingClientRect().top;
       const sectionThreeMaxScrollTop = (window.innerHeight / 2) + sectionThreeContainer.scrollHeight;
       const sectionThreeScrollFraction = sectionThreeContainerScrollTop / sectionThreeMaxScrollTop;
 
-      if (sectionTwoScrollFraction > 1.1 && sectionThreeScrollFraction < 1) {
-        sectionThreeContainer.classList.remove('pointer-events-none');
-
-        sectionThreeAnimateWords.forEach((el) => {
-          el.classList.add('active');
-        });
-        sectionThreeAccordionContainer.classList.remove('md:opacity-0');
-      } else {
-        sectionThreeContainer.classList.add('pointer-events-none');
-
-        sectionThreeAnimateWords.forEach((el) => {
-          el.classList.remove('active');
-        });
-        sectionThreeAccordionContainer.classList.add('md:opacity-0');
-      }
-
-      if (sectionThreeScrollFraction > 1) {
-        sectionThreeForeground.classList.add('scale-50');
-      } else {
+      if (isMobile()) {
         sectionThreeForeground.classList.remove('scale-50');
+
+        if (sectionThreeContainerScrollTop > mobileScrollAnimationOffset && sectionThreeScrollFraction < 1) {
+          sectionThreeAnimateWords.forEach((el) => {
+            el.classList.add('active');
+          });
+        } else {
+          sectionThreeAnimateWords.forEach((el) => {
+            el.classList.remove('active');
+          });
+        }
+      } else {
+        if (sectionTwoScrollFraction > 1.1 && sectionThreeScrollFraction < 1) {
+          sectionThreeContainer.classList.remove('pointer-events-none');
+  
+          sectionThreeAnimateWords.forEach((el) => {
+            el.classList.add('active');
+          });
+          sectionThreeAccordionContainer.classList.remove('md:opacity-0');
+        } else {
+          sectionThreeContainer.classList.add('pointer-events-none');
+  
+          sectionThreeAnimateWords.forEach((el) => {
+            el.classList.remove('active');
+          });
+          sectionThreeAccordionContainer.classList.add('md:opacity-0');
+        }
+  
+        if (sectionThreeScrollFraction > 1) {
+          sectionThreeForeground.classList.add('scale-50');
+        } else {
+          sectionThreeForeground.classList.remove('scale-50');
+        }
       }
 
       // Section Four
@@ -427,113 +470,188 @@ export const IndexPageTemplate = ({
         Math.ceil(normalizedSectionFourScrollFraction * sectionFourFrameCount)
       );
 
-      if (sectionThreeScrollFraction > 1 && sectionFourScrollFraction < 1) {
-        sectionFourActive = true;
-
-        if (sectionFourFrameIndex >= (sectionFourFrameCount - sectionFourLoopCount)) {
-          sectionFourLoopOutroActive = true;
-        } else {
-          sectionFourLoopOutroActive = false;
-
-          requestAnimationFrame(() => updateSectionFourImage(sectionFourFrameIndex + 1))
-        }
-
-        sectionFourCanvas.classList.add('opacity-100');
-        sectionFourCanvas.classList.remove('opacity-0');
-
+      if (isMobile()) {
+        sectionFourLoopOutroActive = false;
         sectionFourContainer.classList.remove('pointer-events-none');
 
-        if (sectionFourScrollFraction >= 0.2) {
+        if (sectionFourContainerScrollTop > mobileScrollAnimationOffset && sectionFourScrollFraction < 1) {
           sectionFourAnimateWords.forEach((el) => {
             el.classList.add('active');
           });
+        } else {
+          sectionFourAnimateWords.forEach((el) => {
+            el.classList.remove('active');
+          });
         }
       } else {
-        sectionFourActive = false;
+        if (sectionThreeScrollFraction > 1 && sectionFourScrollFraction < 1) {
+          sectionFourActive = true;
 
-        sectionFourCanvas.classList.remove('opacity-100');
-        sectionFourCanvas.classList.add('opacity-0');
+          if (sectionFourFrameIndex >= (sectionFourFrameCount - sectionFourLoopCount)) {
+            sectionFourLoopOutroActive = true;
+          } else {
+            sectionFourLoopOutroActive = false;
 
-        sectionFourContainer.classList.add('pointer-events-none');
+            requestAnimationFrame(() => updateSectionFourImage(sectionFourFrameIndex + 1))
+          }
 
-        sectionFourAnimateWords.forEach((el) => {
-          el.classList.remove('active');
-        });
+          sectionFourCanvas.classList.add('opacity-100');
+          sectionFourCanvas.classList.remove('opacity-0');
+
+          sectionFourContainer.classList.remove('pointer-events-none');
+
+          if (sectionFourScrollFraction >= 0.2) {
+            sectionFourAnimateWords.forEach((el) => {
+              el.classList.add('active');
+            });
+          }
+        } else {
+          sectionFourActive = false;
+
+          sectionFourCanvas.classList.remove('opacity-100');
+          sectionFourCanvas.classList.add('opacity-0');
+
+          sectionFourContainer.classList.add('pointer-events-none');
+
+          sectionFourAnimateWords.forEach((el) => {
+            el.classList.remove('active');
+          });
+        }
       }
       
       // Section Five
+      const sectionFiveContainerMobileScrollTop = window.innerHeight - sectionFiveContainer.getBoundingClientRect().top;
       const sectionFiveContainerScrollTop = (window.innerHeight / 2) - sectionFiveContainer.getBoundingClientRect().top;
       const sectionFiveMaxScrollTop = sectionFiveContainer.scrollHeight - (window.innerHeight / 2);
       const sectionFiveScrollFraction = sectionFiveContainerScrollTop / sectionFiveMaxScrollTop;
 
-      if (sectionFiveScrollFraction >= 0.5) {
-        sectionFiveCanvas.classList.add('opacity-100');
-        sectionFiveCanvas.classList.remove('opacity-0', 'grayscale');
-
-        sectionFiveFooter.forEach((el) => {
-          el.classList.remove('opacity-0');
-        });
-      } else {
-        sectionFiveCanvas.classList.remove('opacity-100');
-        sectionFiveCanvas.classList.add('opacity-0', 'grayscale');
-
-        sectionFiveFooter.forEach((el) => {
-          el.classList.add('opacity-0');
-        });
-      }
-
-      if (sectionFiveScrollFraction >= 0) {
-        sectionFiveActive = true;
-
+      if (isMobile()) {
+        sectionFiveActive = false;
         sectionFiveContainer.classList.remove('pointer-events-none');
 
-        sectionFiveHorizontalRules.forEach((el) => {
-          el.classList.remove('w-0');
-          el.classList.add('w-full');
-        });
+        if (sectionFiveContainerMobileScrollTop > mobileScrollAnimationOffset) {
+          sectionFiveHorizontalRules.forEach((el) => {
+            el.classList.remove('w-0');
+            el.classList.add('w-full');
+          });
 
-        sectionFiveAnimateHeadings.forEach((el) => {
-          el.classList.add('active');
-        });
+          sectionFiveAnimateHeadings.forEach((el) => {
+            el.classList.add('active');
+          });
 
-        sectionFiveAnimateParagraphs.forEach((el) => {
-          el.classList.add('active');
-        });
+          sectionFiveAnimateParagraphs.forEach((el) => {
+            el.classList.add('active');
+          });
 
-        sectionFiveAnimateWords.forEach((el) => {
-          el.classList.add('active');
-        });
+          sectionFiveAnimateWords.forEach((el) => {
+            el.classList.add('active');
+          });
 
-        sectionFiveFadeIn.forEach((el) => {
-          el.classList.add('delay-500');
-          el.classList.remove('opacity-0');
-        });
+          sectionFiveFadeIn.forEach((el) => {
+            el.classList.add('delay-500');
+            el.classList.remove('opacity-0');
+          });
+
+          sectionFiveFooter.forEach((el) => {
+            el.classList.remove('opacity-0');
+          });
+        } else {
+          sectionFiveHorizontalRules.forEach((el) => {
+            el.classList.add('w-0');
+            el.classList.remove('w-full');
+          });
+
+          sectionFiveAnimateHeadings.forEach((el) => {
+            el.classList.remove('active');
+          });
+
+          sectionFiveAnimateParagraphs.forEach((el) => {
+            el.classList.remove('active');
+          });
+
+          sectionFiveAnimateWords.forEach((el) => {
+            el.classList.remove('active');
+          });
+
+          sectionFiveFadeIn.forEach((el) => {
+            el.classList.remove('delay-500');
+            el.classList.add('opacity-0');
+          });
+
+          sectionFiveFooter.forEach((el) => {
+            el.classList.add('opacity-0');
+          });
+        }
       } else {
-        sectionFiveActive = false;
+        if (sectionFiveScrollFraction >= 0.5) {
+          sectionFiveCanvas.classList.add('opacity-100');
+          sectionFiveCanvas.classList.remove('opacity-0', 'grayscale');
 
-        sectionFiveContainer.classList.add('pointer-events-none');
+          sectionFiveFooter.forEach((el) => {
+            el.classList.remove('opacity-0');
+          });
+        } else {
+          sectionFiveCanvas.classList.remove('opacity-100');
+          sectionFiveCanvas.classList.add('opacity-0', 'grayscale');
 
-        sectionFiveHorizontalRules.forEach((el) => {
-          el.classList.add('w-0');
-          el.classList.remove('w-full');
-        });
+          sectionFiveFooter.forEach((el) => {
+            el.classList.add('opacity-0');
+          });
+        }
 
-        sectionFiveAnimateHeadings.forEach((el) => {
-          el.classList.remove('active');
-        });
+        if (sectionFiveScrollFraction >= 0) {
+          sectionFiveActive = true;
 
-        sectionFiveAnimateParagraphs.forEach((el) => {
-          el.classList.remove('active');
-        });
+          sectionFiveContainer.classList.remove('pointer-events-none');
 
-        sectionFiveAnimateWords.forEach((el) => {
-          el.classList.remove('active');
-        });
+          sectionFiveHorizontalRules.forEach((el) => {
+            el.classList.remove('w-0');
+            el.classList.add('w-full');
+          });
 
-        sectionFiveFadeIn.forEach((el) => {
-          el.classList.remove('delay-500');
-          el.classList.add('opacity-0');
-        });
+          sectionFiveAnimateHeadings.forEach((el) => {
+            el.classList.add('active');
+          });
+
+          sectionFiveAnimateParagraphs.forEach((el) => {
+            el.classList.add('active');
+          });
+
+          sectionFiveAnimateWords.forEach((el) => {
+            el.classList.add('active');
+          });
+
+          sectionFiveFadeIn.forEach((el) => {
+            el.classList.add('delay-500');
+            el.classList.remove('opacity-0');
+          });
+        } else {
+          sectionFiveActive = false;
+
+          sectionFiveContainer.classList.add('pointer-events-none');
+
+          sectionFiveHorizontalRules.forEach((el) => {
+            el.classList.add('w-0');
+            el.classList.remove('w-full');
+          });
+
+          sectionFiveAnimateHeadings.forEach((el) => {
+            el.classList.remove('active');
+          });
+
+          sectionFiveAnimateParagraphs.forEach((el) => {
+            el.classList.remove('active');
+          });
+
+          sectionFiveAnimateWords.forEach((el) => {
+            el.classList.remove('active');
+          });
+
+          sectionFiveFadeIn.forEach((el) => {
+            el.classList.remove('delay-500');
+            el.classList.add('opacity-0');
+          });
+        }
       }
     });
   });
@@ -555,9 +673,9 @@ export const IndexPageTemplate = ({
         <div
           className="foreground relative z-40 w-full"
         >
-          <div className="w-full min-h-screen md:min-h-[200vh]">
+          <div className="w-full md:min-h-[200vh]">
             <div className="sticky top-0 w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:min-h-screen md:pt-0 md:mb-60">
-              <h1 className="hero-headline-wrapper font-serif font-light tracking-tighter text-4xl md:text-10xl">
+              <h1 className="hero-headline-wrapper leading-[1.05em] font-serif font-light tracking-tighter text-4xl md:text-10xl">
                 <span className="block max-w-xs mx-auto md:max-w-5xl">
                   <SplitTextOnWordBoundaries className="hero-headline overflow-hidden" text={heading} />
                 </span>

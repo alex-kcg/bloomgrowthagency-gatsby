@@ -320,16 +320,18 @@ body {
 
 @tailwind components;
 
-.hero-headline-wrapper {
-  @apply hidden;
-}
-
-.scrolled .hero-headline-wrapper {
-  @apply block;
-}
-
 .hero-headline > span:last-child > span:first-child {
   @apply text-electric-lime;
+}
+
+@screen md {
+  .hero-headline-wrapper {
+    @apply hidden;
+  }
+
+  .scrolled .hero-headline-wrapper {
+    @apply block;
+  }
 }
 
 @tailwind utilities;
