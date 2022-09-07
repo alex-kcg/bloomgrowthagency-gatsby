@@ -53,8 +53,8 @@ export const IndexPageTemplate = ({
     const sectionOneContext = setupCanvasContext(sectionOneCanvas, 1440, 810);
     const sectionOneFilename = 'BG-SiteAnim-PlanterModel-Phase1-v9-frame_DeMain_';
     const sectionOneFrameCount = 120;
-    const sectionOneLoopCount = 20;
-    const sectionOneLoopSpeedInterval = 75;
+    const sectionOneLoopCount = 21;
+    const sectionOneLoopSpeedInterval = 60;
     const sectionOnePlaybackSpeedInterval = 40;
     const sectionOneImage = new Image();
     let sectionOneActive = true;
@@ -81,7 +81,7 @@ export const IndexPageTemplate = ({
     const sectionFourFilename = 'Phase4-v9-frame_DeMain_';
     const sectionFourFrameCount = 49;
     const sectionFourLoopCount = 20;
-    const sectionFourLoopSpeedInterval = 75;
+    const sectionFourLoopSpeedInterval = 50;
     let sectionFourActive = false;
     let sectionFourLoopOutroActive = false;
     let sectionFourIndex = 0;
@@ -567,7 +567,7 @@ export const IndexPageTemplate = ({
           <div className="text-6xl tracking-tight text-slate pb-20 md:text-11xl md:min-h-screen md:mb-0">
             <div>
               {partnerRows.map((row, index) => (
-                <PartnerRow key={index} partnerRow={row} />
+                <PartnerRow key={index} animateDelay={index * 1000} partnerRow={row} />
               ))}
             </div>
           </div>

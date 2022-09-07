@@ -4,7 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 
 const { useEffect } = React;
 
-const PartnerRow = ({ partnerRow }) => {
+const PartnerRow = ({ partnerRow, animateDelay }) => {
   const controls = useAnimation();
   const controlParams = {
     x: [
@@ -24,12 +24,19 @@ const PartnerRow = ({ partnerRow }) => {
   useEffect(() => {
     controls.start(controlParams);
 
-    console.log();
+    setTimeout(function() {
+      function sequenceActiveColor () {
+        const activeIndex = Math.floor(Math.random() * partnerRow.partners.length);
+
+        // console.log(activeIndex);
+      }
+  
+      setInterval(sequenceActiveColor, 3000);
+    }, (animateDelay ? animateDelay : 0));
   }, [])
 
   return (
     <div
-      data-partner-row-animation={partnerRow.partners.length}
       className="relative select-none overflow-hidden mb-4 md:mb-6"
       style={{ height: '1.1667em' }}
     >
