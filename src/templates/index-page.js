@@ -79,7 +79,7 @@ export const IndexPageTemplate = ({
     const sectionFourAnimateWords = sectionFourContainer.querySelectorAll('.animate-words');
     const sectionFourContext = setupCanvasContext(sectionFourCanvas, 960, 960);
     const sectionFourFilename = 'Phase4-v9-frame_DeMain_';
-    const sectionFourFrameCount = 49;
+    const sectionFourFrameCount = 50;
     const sectionFourLoopCount = 20;
     const sectionFourLoopSpeedInterval = 50;
     let sectionFourActive = false;
@@ -87,14 +87,15 @@ export const IndexPageTemplate = ({
     let sectionFourIndex = 0;
 
     const sectionFiveContainer = document.getElementById('section-5');
-    const sectionFiveCanvas = sectionFiveContainer.querySelector('canvas');
+    // const sectionFiveCanvas = sectionFiveContainer.querySelector('canvas');
+    const sectionFiveCanvas = sectionFiveContainer.querySelector('video');
     const sectionFiveAnimateHeadings = sectionFiveContainer.querySelectorAll('.animate-words-heading .animate-words');
     const sectionFiveAnimateParagraphs = sectionFiveContainer.querySelectorAll('.animate-words-paragraph .animate-words');
     const sectionFiveAnimateWords = sectionFiveContainer.querySelectorAll('.animate-words');
     const sectionFiveFadeIn = sectionFiveContainer.querySelectorAll('.fade-in');
     const sectionFiveFooter = sectionFiveContainer.querySelectorAll('.fade-in-footer');
     const sectionFiveHorizontalRules = sectionFiveContainer.querySelectorAll('hr');
-    const sectionFiveContext = setupCanvasContext(sectionFiveCanvas, 1440, 810);
+    // const sectionFiveContext = setupCanvasContext(sectionFiveCanvas, 1440, 810);
     const sectionFiveFilename = 'Phase6-v5-frame_WIDE';
     const sectionFiveFrameCount = 59;
     const sectionFiveLoopSpeedInterval = 75;
@@ -268,6 +269,8 @@ export const IndexPageTemplate = ({
         if (index > sectionFourFrameCount) {
           index = sectionFourFrameCount - sectionFourLoopCount;
         }
+
+        console.log(index);
   
         requestAnimationFrame(() => updateSectionFourImage(index));
       }
@@ -276,27 +279,27 @@ export const IndexPageTemplate = ({
     setInterval(sectionFourLoopOutroSequence, sectionFourLoopSpeedInterval);
 
     // Section Five start
-    const updateSectionFiveImage = index => {
-      if (sectionFiveActive) {
-        const image = imagesPhaseTwo[currentFrame(sectionFiveFilename, index)];
+    // const updateSectionFiveImage = index => {
+    //   if (sectionFiveActive) {
+    //     const image = imagesPhaseTwo[currentFrame(sectionFiveFilename, index)];
 
-        if (image) {
-          sectionFiveContext.drawImage(image, 0, 0);
-          sectionFiveIndex = index;
-        }
-      }
-    }
+    //     if (image) {
+    //       sectionFiveContext.drawImage(image, 0, 0);
+    //       sectionFiveIndex = index;
+    //     }
+    //   }
+    // }
 
-    function sequenceSectionFiveFrame () {
-      if (sectionFiveIndex > sectionFiveFrameCount) {
-        sectionFiveIndex = 0;
-      }
+    // function sequenceSectionFiveFrame () {
+    //   if (sectionFiveIndex > sectionFiveFrameCount) {
+    //     sectionFiveIndex = 0;
+    //   }
 
-      requestAnimationFrame(() => updateSectionFiveImage(sectionFiveIndex));
-      sectionFiveIndex++;
-    }
+    //   requestAnimationFrame(() => updateSectionFiveImage(sectionFiveIndex));
+    //   sectionFiveIndex++;
+    // }
 
-    setInterval(sequenceSectionFiveFrame, sectionFiveLoopSpeedInterval);
+    // setInterval(sequenceSectionFiveFrame, sectionFiveLoopSpeedInterval);
 
     window.addEventListener('scroll', () => {
       // Section One
@@ -656,11 +659,6 @@ export const IndexPageTemplate = ({
     });
   });
 
-  const globalTransitionYDistance = 200;
-  const globalTransitionYOffset = '20vh';
-  const globalTransitionDuration = 0.5;
-  const globalTransitionEase = 'easeOut';
-
   return (
     <main>
       <header className="navbar-container w-full z-50 py-8 text-center transition-all duration-500 ease-in-out pointer-events-none md:py-16">
@@ -856,7 +854,9 @@ export const IndexPageTemplate = ({
         className="pointer-events-none"
       >
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="opacity-0 transition-all duration-[1.5s] ease-out grayscale absolute -z-10 aspect-video min-w-full min-h-full" />
+          <video className="opacity-0 transition-all duration-[1.5s] ease-out grayscale absolute -z-10 object-cover object-bottom min-w-full min-h-full" preload="true" autoPlay loop muted>
+            <source src="/img/Phase6-v5.mp4" type="video/mp4" /> 
+          </video>
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="container">
@@ -884,7 +884,7 @@ export const IndexPageTemplate = ({
                 </div>
               </div>
               <hr className="border-slate mx-auto transition-all duration-500 ease-out w-0" />
-              <div className="fade-in-footer opacity-0 transition-opacity duration-500 py-6 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:mt-auto">
+              <div className="fade-in-footer opacity-0 transition-opacity duration-500 pb-6 pt-10 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:mt-auto md:pt-20">
                 <div className="w-full px-4 sm:px-3 md:ml-auto md:w-5/12">
                   <h3 className="font-light text-3xl leading-normal tracking-tighter mb-2">
                     <SplitTextOnWordBoundaries text="Zach Greenberger" /> 
