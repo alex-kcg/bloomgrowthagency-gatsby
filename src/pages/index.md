@@ -91,11 +91,14 @@ partnerRows:
       colorClassName: text-gray
       fontClassName: font-serif font-light tracking-tighter
 numberedList:
-  - heading: A Design studio
+  - image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_1.jpg
+    heading: A Design studio
     text: Bloom is a product design studio, visualizing the future of products and digital ecosystems.
-  - heading: Embedded teams
+  - image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_2.jpg
+    heading: Embedded teams
     text: We take an embedded approach to our partnerships to elevate design and product maturity.
-  - heading: Focused on quality of output
+  - image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_3.jpg
+    heading: Focused on quality of output
     text: Our carefully crafted weekly design sprints lead to highly effective output.
 accordionHeading: Building products, not projects.
 accordionItems:

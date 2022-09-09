@@ -83,6 +83,16 @@ collections:
               widget: list,
               fields:
                 [
+                {
+                  label: Image,
+                  name: image,
+                  widget: object,
+                  fields:
+                    [
+                      { label: Image, name: image, widget: image },
+                      { label: Alt, name: alt, widget: string },
+                    ],
+                  },
                   { label: Heading, name: heading, widget: text },
                   { label: Text, name: text, widget: text },
                 ],
