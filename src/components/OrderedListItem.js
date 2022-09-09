@@ -5,7 +5,7 @@ import SplitTextOnWordBoundaries from "./SplitTextOnWordBoundaries";
 const OrderedListItem = ({ image, heading, text }) => {
   return (
     <li className="w-full max-w-sm mx-auto md:max-w-none md:h-[27.5rem] md:transition-opacity md:duration-300 md:ease-out">
-      <img src={image} class="block w-full md:hidden" />
+      <img src={image} className="block w-full md:hidden" />
       <span className="block text-2xl leading-tighter font-light md:text-5xl md:leading-tighter">
         <SplitTextOnWordBoundaries text={heading} />
       </span>

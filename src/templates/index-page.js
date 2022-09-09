@@ -706,8 +706,8 @@ export const IndexPageTemplate = ({
         <div className="foreground relative z-40 w-full md:h-[300vh]">
           <div className="md:fixed md:inset-x-0 md:top-1/2">
             <div className="container mx-auto px-4 py-20 md:py-0">
-              <div className="section-2-ol-wrapper max-w-[63.5rem] mx-auto md:transition-all md:duration-500 md:ease-out">
-                <ol className="section-2-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-1/2 md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
+              <div className="section-2-ol-wrapper mx-auto md:transition-all md:duration-500 md:ease-out">
+                <ol className="section-2-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-5/12 md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
                   <OrderedListItem image="/img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_1.jpg" heading="A Design studio" text="Bloom is a product design studio, visualizing the future of products and digital ecosystems." />
                   <OrderedListItem image="/img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_2.jpg" heading="Embedded teams" text="We take an embedded approach to our partnerships to elevate design and product maturity." />
                   <OrderedListItem image="/img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_3.jpg" heading="Focused on quality of output" text="Our carefully crafted weekly design sprints lead to highly effective output." />
@@ -751,15 +751,13 @@ export const IndexPageTemplate = ({
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="container py-20 md:pt-40">
-            <div className="max-w-[63.5rem] mx-auto">
-              <div className="max-w-[37.5rem]">
-                <h2 className="font-serif font-light tracking-tight text-5xl mb-14 md:text-8xl">
-                  <SplitTextOnWordBoundaries text={partnersHeading} />
-                </h2>
-                <p className="font-light text-lg leading-normal tracking-tighter md:text-3xl md:leading-normal">
-                  <SplitTextOnWordBoundaries text={partnersSubheading} />
-                </p>
-              </div>
+            <div className="max-w-[37.5rem]">
+              <h2 className="font-serif font-light tracking-tight text-5xl mb-14 md:text-8xl">
+                <SplitTextOnWordBoundaries text={partnersHeading} />
+              </h2>
+              <p className="font-light text-lg leading-normal tracking-tighter md:text-3xl md:leading-normal">
+                <SplitTextOnWordBoundaries text={partnersSubheading} />
+              </p>
             </div>
           </div>
           <div className="relative py-20 md:mb-40">
@@ -882,7 +880,7 @@ export const IndexPageTemplate = ({
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="container">
-            <div className="max-w-[63.5rem] mx-auto pt-10 md:pt-20 md:flex md:flex-col md:min-h-screen">
+            <div className="max-w-[63.5rem] mx-auto pt-10 md:pt-20">
               <div className="py-10 md:py-20">
                 <div className="flex flex-wrap justify-between -mx-4 sm:-mx-3">
                   <div className="w-full px-4 sm:px-3 md:w-1/2">
@@ -906,7 +904,7 @@ export const IndexPageTemplate = ({
                 </div>
               </div>
               <hr className="border-slate mx-auto transition-all duration-500 ease-out w-0" />
-              <div className="fade-in-footer opacity-0 transition-opacity duration-500 pb-6 pt-10 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:mt-auto md:pt-20">
+              <div className="fade-in-footer opacity-0 transition-opacity duration-500 pb-6 pt-10 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:py-20">
                 <div className="w-full px-4 sm:px-3 md:ml-auto md:w-5/12">
                   <h3 className="font-light text-3xl leading-normal tracking-tighter mb-2">
                     <SplitTextOnWordBoundaries text="Zach Greenberger" /> 

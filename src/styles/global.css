@@ -93,10 +93,16 @@ body {
 }
 
 .navbar-container::after {
-  @apply absolute -z-10 inset-x-0 top-0 h-28 opacity-0 transition-opacity duration-1000 delay-[3000ms] ease-in-out pointer-events-none md:h-48;
+  @apply absolute -z-10 inset-x-0 top-0 h-28 transition-opacity duration-1000 delay-[3000ms] ease-in-out pointer-events-none md:h-48;
 
   content: " ";
   background: linear-gradient(rgb(3, 14, 18, 1), rgb(3, 14, 18, 0.75), rgb(3, 14, 18, 0))
+}
+
+@screen md {
+  .navbar-container::after {
+    @apply opacity-0;
+  }
 }
 
 .animate-words .animate-word {
