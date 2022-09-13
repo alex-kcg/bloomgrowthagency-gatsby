@@ -2,9 +2,10 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { motion, useAnimation } from "framer-motion";
 
-const { useEffect } = React;
+const { useEffect, useRef } = React;
 
 const PartnerRow = ({ partnerRow, animateDelay }) => {
+  const el = useRef(null);
   const controls = useAnimation();
   const controlParams = {
     x: [
@@ -28,7 +29,7 @@ const PartnerRow = ({ partnerRow, animateDelay }) => {
       function sequenceActiveColor () {
         const activeIndex = Math.floor(Math.random() * partnerRow.partners.length);
 
-        // console.log(activeIndex);
+        // el.current.setAttribute('data-active-index', activeIndex)
       }
   
       setInterval(sequenceActiveColor, 3000);
@@ -37,6 +38,7 @@ const PartnerRow = ({ partnerRow, animateDelay }) => {
 
   return (
     <div
+      ref={el}
       className="relative select-none overflow-hidden mb-4 md:mb-6"
       style={{ height: '1.1667em' }}
     >

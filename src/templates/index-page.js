@@ -12,7 +12,7 @@ import OrderedListItem from "../components/OrderedListItem";
 import SplitTextOnWordBoundaries from "../components/SplitTextOnWordBoundaries";
 import arrowIcon from "../img/arrow.svg"
 
-const { useEffect } = React;
+const { useEffect, useRef } = React;
 
 // eslint-disable-next-line
 export const IndexPageTemplate = ({
@@ -26,6 +26,23 @@ export const IndexPageTemplate = ({
   partnersHeading,
   partnersSubheading,
 }) => {
+  const sectionOneContainer = useRef(null);
+  const sectionOneCanvas = useRef(null);
+
+  const sectionTwoContainer = useRef(null);
+  const sectionTwoCanvas = useRef(null);
+  const sectionTwoOrderedListWrapper = useRef(null);
+  const sectionTwoOrderedList = useRef(null);
+  
+  const sectionThreeContainer = useRef(null);
+  const sectionThreeForeground = useRef(null);
+
+  const sectionFourContainer = useRef(null);
+  const sectionFourCanvas = useRef(null);
+
+  const sectionFiveContainer = useRef(null);
+  const sectionFiveVideo = useRef(null);
+
   useEffect(() => {
     const body = document.body;
     let scrolled = false;
@@ -47,10 +64,8 @@ export const IndexPageTemplate = ({
       return canvas.getContext('2d');
     };
 
-    const sectionOneContainer = document.getElementById('section-1');
-    const sectionOneCanvas = sectionOneContainer.querySelector('canvas');
-    const sectionOneAnimateWords = sectionOneContainer.querySelectorAll('.animate-words');
-    const sectionOneContext = setupCanvasContext(sectionOneCanvas, 1440, 810);
+    const sectionOneAnimateWords = sectionOneContainer.current.querySelectorAll('.animate-words');
+    const sectionOneContext = setupCanvasContext(sectionOneCanvas.current, 1440, 810);
     const sectionOneFilename = 'BG-SiteAnim-PlanterModel-Phase1-v9-frame_DeMain_';
     const sectionOneFrameCount = 120;
     const sectionOneLoopCount = 21;
@@ -60,24 +75,16 @@ export const IndexPageTemplate = ({
     let sectionOneActive = true;
     let sectionOneIndex = -1;
 
-    const sectionTwoContainer = document.getElementById('section-2');
-    const sectionTwoCanvas = sectionTwoContainer.querySelector('canvas');
-    const sectionTwoContext = setupCanvasContext(sectionTwoCanvas, 1440, 810);
+    const sectionTwoContext = setupCanvasContext(sectionTwoCanvas.current, 1440, 810);
     const sectionTwoFilename = 'BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_';
     const sectionTwoFrameCount = 120;
-    const sectionTwoOrderedListWrapper = sectionTwoContainer.querySelector('.section-2-ol-wrapper');
-    const sectionTwoOrderedList = sectionTwoContainer.querySelector('.section-2-ol');
     let sectionTwoIndex = 0;
 
-    const sectionThreeContainer = document.getElementById('section-3');
-    const sectionThreeForeground = sectionThreeContainer.querySelector('.foreground');
-    const sectionThreeAnimateWords = sectionThreeContainer.querySelectorAll('.animate-words');
-    const sectionThreeAccordionContainer = sectionThreeContainer.querySelector('.accordion-container');
+    const sectionThreeAnimateWords = sectionThreeContainer.current.querySelectorAll('.animate-words');
+    const sectionThreeAccordionContainer = sectionThreeContainer.current.querySelector('.accordion-container');
 
-    const sectionFourContainer = document.getElementById('section-4');
-    const sectionFourCanvas = sectionFourContainer.querySelector('canvas');
-    const sectionFourAnimateWords = sectionFourContainer.querySelectorAll('.animate-words');
-    const sectionFourContext = setupCanvasContext(sectionFourCanvas, 960, 960);
+    const sectionFourAnimateWords = sectionFourContainer.current.querySelectorAll('.animate-words');
+    const sectionFourContext = setupCanvasContext(sectionFourCanvas.current, 960, 960);
     const sectionFourFilename = 'Phase4-v9-frame_DeMain_';
     const sectionFourFrameCount = 50;
     const sectionFourLoopCount = 21;
@@ -86,21 +93,13 @@ export const IndexPageTemplate = ({
     let sectionFourLoopOutroActive = false;
     let sectionFourIndex = 0;
 
-    const sectionFiveContainer = document.getElementById('section-5');
-    // const sectionFiveCanvas = sectionFiveContainer.querySelector('canvas');
-    const sectionFiveCanvas = sectionFiveContainer.querySelector('video');
-    const sectionFiveAnimateHeadings = sectionFiveContainer.querySelectorAll('.animate-words-heading .animate-words');
-    const sectionFiveAnimateParagraphs = sectionFiveContainer.querySelectorAll('.animate-words-paragraph .animate-words');
-    const sectionFiveAnimateWords = sectionFiveContainer.querySelectorAll('.animate-words');
-    const sectionFiveFadeIn = sectionFiveContainer.querySelectorAll('.fade-in');
-    const sectionFiveFooter = sectionFiveContainer.querySelectorAll('.fade-in-footer');
-    const sectionFiveHorizontalRules = sectionFiveContainer.querySelectorAll('hr');
-    // const sectionFiveContext = setupCanvasContext(sectionFiveCanvas, 1440, 810);
-    const sectionFiveFilename = 'Phase6-v5-frame_WIDE';
-    const sectionFiveFrameCount = 59;
-    const sectionFiveLoopSpeedInterval = 75;
+    const sectionFiveAnimateHeadings = sectionFiveContainer.current.querySelectorAll('.animate-words-heading .animate-words');
+    const sectionFiveAnimateParagraphs = sectionFiveContainer.current.querySelectorAll('.animate-words-paragraph .animate-words');
+    const sectionFiveAnimateWords = sectionFiveContainer.current.querySelectorAll('.animate-words');
+    const sectionFiveFadeIn = sectionFiveContainer.current.querySelectorAll('.fade-in');
+    const sectionFiveFooter = sectionFiveContainer.current.querySelectorAll('.fade-in-footer');
+    const sectionFiveHorizontalRules = sectionFiveContainer.current.querySelectorAll('hr');
     let sectionFiveActive = false;
-    let sectionFiveIndex = 0;
 
     const mobileScrollAnimationOffset = 300;
 
@@ -139,9 +138,6 @@ export const IndexPageTemplate = ({
     }
     for (let i = 0; i < sectionFourFrameCount; i++) {
       imagesPhaseTwo[currentFrame(sectionFourFilename, i)] = new Image();
-    }
-    for (let i = 0; i < sectionFiveFrameCount; i++) {
-      imagesPhaseTwo[currentFrame(sectionFiveFilename, i)] = new Image();
     }
 
     // Section One start
@@ -278,52 +274,29 @@ export const IndexPageTemplate = ({
 
     setInterval(sectionFourLoopOutroSequence, sectionFourLoopSpeedInterval);
 
-    // Section Five start
-    // const updateSectionFiveImage = index => {
-    //   if (sectionFiveActive) {
-    //     const image = imagesPhaseTwo[currentFrame(sectionFiveFilename, index)];
-
-    //     if (image) {
-    //       sectionFiveContext.drawImage(image, 0, 0);
-    //       sectionFiveIndex = index;
-    //     }
-    //   }
-    // }
-
-    // function sequenceSectionFiveFrame () {
-    //   if (sectionFiveIndex > sectionFiveFrameCount) {
-    //     sectionFiveIndex = 0;
-    //   }
-
-    //   requestAnimationFrame(() => updateSectionFiveImage(sectionFiveIndex));
-    //   sectionFiveIndex++;
-    // }
-
-    // setInterval(sequenceSectionFiveFrame, sectionFiveLoopSpeedInterval);
-
     window.addEventListener('scroll', () => {
       if (isMobile()) {
         // Section Two
-        const sectionTwoContainerScrollTop = window.innerHeight - sectionTwoContainer.getBoundingClientRect().top;
+        const sectionTwoContainerScrollTop = window.innerHeight - sectionTwoContainer.current.getBoundingClientRect().top;
 
-        sectionTwoContainer.classList.remove('md:pointer-events-none');
+        sectionTwoContainer.current.classList.remove('md:pointer-events-none');
 
         if (sectionTwoContainerScrollTop > mobileScrollAnimationOffset) {
-          sectionTwoOrderedList.querySelectorAll('.animate-words').forEach((el) => {
+          sectionTwoOrderedList.current.querySelectorAll('.animate-words').forEach((el) => {
             el.classList.add('active');
           });
         } else {
-          sectionTwoOrderedList.querySelectorAll('.animate-words').forEach((el) => {
+          sectionTwoOrderedList.current.querySelectorAll('.animate-words').forEach((el) => {
             el.classList.remove('active');
           });
         }
 
         // Section Three
-        const sectionThreeContainerScrollTop = window.innerHeight - sectionThreeContainer.getBoundingClientRect().top;
-        const sectionThreeMaxScrollTop = (window.innerHeight / 2) + sectionThreeContainer.scrollHeight;
+        const sectionThreeContainerScrollTop = window.innerHeight - sectionThreeContainer.current.getBoundingClientRect().top;
+        const sectionThreeMaxScrollTop = (window.innerHeight / 2) + sectionThreeContainer.current.scrollHeight;
         const sectionThreeScrollFraction = sectionThreeContainerScrollTop / sectionThreeMaxScrollTop;
 
-        sectionThreeForeground.classList.remove('md:scale-50');
+        sectionThreeForeground.current.classList.remove('md:scale-50');
 
         if (sectionThreeContainerScrollTop > mobileScrollAnimationOffset && sectionThreeScrollFraction < 1) {
           sectionThreeAnimateWords.forEach((el) => {
@@ -336,12 +309,12 @@ export const IndexPageTemplate = ({
         }
 
         // Section Four
-        const sectionFourContainerScrollTop = window.innerHeight - sectionFourContainer.getBoundingClientRect().top;
-        const sectionFourMaxScrollTop = (window.innerHeight / 2) + sectionFourContainer.scrollHeight;
+        const sectionFourContainerScrollTop = window.innerHeight - sectionFourContainer.current.getBoundingClientRect().top;
+        const sectionFourMaxScrollTop = (window.innerHeight / 2) + sectionFourContainer.current.scrollHeight;
         const sectionFourScrollFraction = sectionFourContainerScrollTop / sectionFourMaxScrollTop;
 
         sectionFourLoopOutroActive = false;
-        sectionFourContainer.classList.remove('md:pointer-events-none');
+        sectionFourContainer.current.classList.remove('md:pointer-events-none');
 
         if (sectionFourContainerScrollTop > mobileScrollAnimationOffset && sectionFourScrollFraction < 1) {
           sectionFourAnimateWords.forEach((el) => {
@@ -354,10 +327,10 @@ export const IndexPageTemplate = ({
         }
 
         // Section Five
-        const sectionFiveContainerScrollTop = window.innerHeight - sectionFiveContainer.getBoundingClientRect().top;
+        const sectionFiveContainerScrollTop = window.innerHeight - sectionFiveContainer.current.getBoundingClientRect().top;
 
         sectionFiveActive = false;
-        sectionFiveContainer.classList.remove('md:pointer-events-none');
+        sectionFiveContainer.current.classList.remove('md:pointer-events-none');
 
         if (sectionFiveContainerScrollTop > mobileScrollAnimationOffset) {
           sectionFiveHorizontalRules.forEach((el) => {
@@ -414,8 +387,8 @@ export const IndexPageTemplate = ({
         }
       } else {
         // Section One
-        const sectionOneContainerScrollTop = 0 - sectionOneContainer.getBoundingClientRect().top;
-        const sectionOneMaxScrollTop = sectionOneContainer.scrollHeight - window.innerHeight;
+        const sectionOneContainerScrollTop = 0 - sectionOneContainer.current.getBoundingClientRect().top;
+        const sectionOneMaxScrollTop = sectionOneContainer.current.scrollHeight - window.innerHeight;
         const sectionOneScrollFraction = sectionOneContainerScrollTop / sectionOneMaxScrollTop;
 
         if (!scrolled && sectionOneScrollFraction > 0.05) {
@@ -431,17 +404,17 @@ export const IndexPageTemplate = ({
 
         if (sectionOneScrollFraction >= 0 && sectionOneScrollFraction < 1.2) {
           sectionOneActive = true;
-          sectionOneCanvas.classList.add('opacity-100');
-          sectionOneCanvas.classList.remove('opacity-0');
+          sectionOneCanvas.current.classList.add('opacity-100');
+          sectionOneCanvas.current.classList.remove('opacity-0');
         } else {
           sectionOneActive = false;
-          sectionOneCanvas.classList.remove('opacity-100');
-          sectionOneCanvas.classList.add('opacity-0');
+          sectionOneCanvas.current.classList.remove('opacity-100');
+          sectionOneCanvas.current.classList.add('opacity-0');
         }
 
         // Section Two
-        const sectionTwoContainerScrollTop = window.innerHeight - sectionTwoContainer.getBoundingClientRect().top;
-        const sectionTwoMaxScrollTop = sectionTwoContainer.scrollHeight;
+        const sectionTwoContainerScrollTop = window.innerHeight - sectionTwoContainer.current.getBoundingClientRect().top;
+        const sectionTwoMaxScrollTop = sectionTwoContainer.current.scrollHeight;
         const sectionTwoScrollFraction = (sectionTwoContainerScrollTop / sectionTwoMaxScrollTop);
         const normalizedSectionTwoScrollFraction =  sectionTwoScrollFraction > 1 ? 1 : sectionTwoScrollFraction < 0 ? 0 : sectionTwoScrollFraction;
         const sectionTwoFrameIndex = Math.min(
@@ -450,89 +423,89 @@ export const IndexPageTemplate = ({
         );
 
         if (sectionTwoScrollFraction > 1.1 || sectionTwoScrollFraction <= 0.4) {
-          sectionTwoOrderedList.classList.remove('md:opacity-100');
-          sectionTwoOrderedList.classList.add('md:opacity-0');
+          sectionTwoOrderedList.current.classList.remove('md:opacity-100');
+          sectionTwoOrderedList.current.classList.add('md:opacity-0');
 
-          sectionTwoContainer.classList.add('md:pointer-events-none');
+          sectionTwoContainer.current.classList.add('md:pointer-events-none');
         } else {
-          sectionTwoOrderedList.classList.add('md:opacity-100');
-          sectionTwoOrderedList.classList.remove('md:opacity-0');
+          sectionTwoOrderedList.current.classList.add('md:opacity-100');
+          sectionTwoOrderedList.current.classList.remove('md:opacity-0');
 
-          sectionTwoContainer.classList.remove('md:pointer-events-none');
+          sectionTwoContainer.current.classList.remove('md:pointer-events-none');
         }
 
         if (sectionTwoScrollFraction > 0.5) {
-          sectionTwoCanvas.classList.add('duration-700');
-          sectionTwoCanvas.classList.remove('duration-150');
+          sectionTwoCanvas.current.classList.add('duration-700');
+          sectionTwoCanvas.current.classList.remove('duration-150');
         } else {
-          sectionTwoCanvas.classList.add('duration-150');
-          sectionTwoCanvas.classList.remove('duration-700');
+          sectionTwoCanvas.current.classList.add('duration-150');
+          sectionTwoCanvas.current.classList.remove('duration-700');
         }
 
         if (sectionTwoScrollFraction > 1.1) {
-          sectionTwoOrderedListWrapper.classList.add('scrolled-past');
+          sectionTwoOrderedListWrapper.current.classList.add('scrolled-past');
         } else {
-          sectionTwoOrderedListWrapper.classList.remove('scrolled-past');
+          sectionTwoOrderedListWrapper.current.classList.remove('scrolled-past');
         }
 
         if (sectionTwoScrollFraction > 0 && sectionTwoScrollFraction <= 1.1) {
-          sectionTwoCanvas.classList.add('opacity-100');
-          sectionTwoCanvas.classList.remove('opacity-0');
+          sectionTwoCanvas.current.classList.add('opacity-100');
+          sectionTwoCanvas.current.classList.remove('opacity-0');
 
           if (sectionTwoScrollFraction > 0.8) {
-            sectionTwoOrderedList.setAttribute('data-position', '3');
+            sectionTwoOrderedList.current.setAttribute('data-position', '3');
 
-            sectionTwoOrderedList.querySelectorAll('li:nth-child(3) .animate-words, li:nth-child(2) .animate-words, li:nth-child(1) .animate-words').forEach((el) => {
+            sectionTwoOrderedList.current.querySelectorAll('li:nth-child(3) .animate-words, li:nth-child(2) .animate-words, li:nth-child(1) .animate-words').forEach((el) => {
               el.classList.add('active');
             });
           } else if (sectionTwoScrollFraction > 0.6) {
-            sectionTwoOrderedList.setAttribute('data-position', '2');
+            sectionTwoOrderedList.current.setAttribute('data-position', '2');
   
-            sectionTwoOrderedList.querySelectorAll('li:nth-child(3) .animate-words').forEach((el) => {
+            sectionTwoOrderedList.current.querySelectorAll('li:nth-child(3) .animate-words').forEach((el) => {
               el.classList.remove('active');
             });
 
-            sectionTwoOrderedList.querySelectorAll('li:nth-child(2) .animate-words, li:nth-child(1) .animate-words').forEach((el) => {
+            sectionTwoOrderedList.current.querySelectorAll('li:nth-child(2) .animate-words, li:nth-child(1) .animate-words').forEach((el) => {
               el.classList.add('active');
             });
           } else {
-            sectionTwoOrderedList.setAttribute('data-position', '1');
+            sectionTwoOrderedList.current.setAttribute('data-position', '1');
 
-            sectionTwoOrderedList.querySelectorAll('li:nth-child(3) .animate-words, li:nth-child(2) .animate-words').forEach((el) => {
+            sectionTwoOrderedList.current.querySelectorAll('li:nth-child(3) .animate-words, li:nth-child(2) .animate-words').forEach((el) => {
               el.classList.remove('active');
             });
 
             if (sectionTwoScrollFraction > 0.4) {
-              sectionTwoOrderedList.querySelectorAll('li:nth-child(1) .animate-words').forEach((el) => {
+              sectionTwoOrderedList.current.querySelectorAll('li:nth-child(1) .animate-words').forEach((el) => {
                 el.classList.add('active');
               });
             } else {
-              sectionTwoOrderedList.querySelectorAll('li:nth-child(1) .animate-words').forEach((el) => {
+              sectionTwoOrderedList.current.querySelectorAll('li:nth-child(1) .animate-words').forEach((el) => {
                 el.classList.remove('active');
               });
             }
           }
         } else {
-          sectionTwoCanvas.classList.remove('opacity-100');
-          sectionTwoCanvas.classList.add('opacity-0');
+          sectionTwoCanvas.current.classList.remove('opacity-100');
+          sectionTwoCanvas.current.classList.add('opacity-0');
         }
         
         requestAnimationFrame(() => updateSectionTwoImage(sectionTwoFrameIndex + 1))
 
         // Section Three
-        const sectionThreeContainerScrollTop = window.innerHeight - sectionThreeContainer.getBoundingClientRect().top;
-        const sectionThreeMaxScrollTop = (window.innerHeight / 2) + sectionThreeContainer.scrollHeight;
+        const sectionThreeContainerScrollTop = window.innerHeight - sectionThreeContainer.current.getBoundingClientRect().top;
+        const sectionThreeMaxScrollTop = (window.innerHeight / 2) + sectionThreeContainer.current.scrollHeight;
         const sectionThreeScrollFraction = sectionThreeContainerScrollTop / sectionThreeMaxScrollTop;
 
         if (sectionTwoScrollFraction > 1.1 && sectionThreeScrollFraction < 1) {
-          sectionThreeContainer.classList.remove('md:pointer-events-none');
+          sectionThreeContainer.current.classList.remove('md:pointer-events-none');
   
           sectionThreeAnimateWords.forEach((el) => {
             el.classList.add('active');
           });
           sectionThreeAccordionContainer.classList.remove('md:opacity-0');
         } else {
-          sectionThreeContainer.classList.add('md:pointer-events-none');
+          sectionThreeContainer.current.classList.add('md:pointer-events-none');
   
           sectionThreeAnimateWords.forEach((el) => {
             el.classList.remove('active');
@@ -541,14 +514,14 @@ export const IndexPageTemplate = ({
         }
   
         if (sectionThreeScrollFraction > 1) {
-          sectionThreeForeground.classList.add('md:scale-50');
+          sectionThreeForeground.current.classList.add('md:scale-50');
         } else {
-          sectionThreeForeground.classList.remove('md:scale-50');
+          sectionThreeForeground.current.classList.remove('md:scale-50');
         }
 
         // Section Four
-        const sectionFourContainerScrollTop = window.innerHeight - sectionFourContainer.getBoundingClientRect().top;
-        const sectionFourMaxScrollTop = (window.innerHeight / 2) + sectionFourContainer.scrollHeight;
+        const sectionFourContainerScrollTop = window.innerHeight - sectionFourContainer.current.getBoundingClientRect().top;
+        const sectionFourMaxScrollTop = (window.innerHeight / 2) + sectionFourContainer.current.scrollHeight;
         const sectionFourScrollFraction = sectionFourContainerScrollTop / sectionFourMaxScrollTop;
         const normalizedSectionFourScrollFraction =  sectionFourScrollFraction > 1 ? 1 : sectionFourScrollFraction < 0 ? 0 : sectionFourScrollFraction;
         const sectionFourFrameIndex = Math.min(
@@ -567,10 +540,10 @@ export const IndexPageTemplate = ({
             requestAnimationFrame(() => updateSectionFourImage(sectionFourFrameIndex + 1))
           }
 
-          sectionFourCanvas.classList.add('opacity-100');
-          sectionFourCanvas.classList.remove('opacity-0');
+          sectionFourCanvas.current.classList.add('opacity-100');
+          sectionFourCanvas.current.classList.remove('opacity-0');
 
-          sectionFourContainer.classList.remove('md:pointer-events-none');
+          sectionFourContainer.current.classList.remove('md:pointer-events-none');
 
           if (sectionFourScrollFraction >= 0.2) {
             sectionFourAnimateWords.forEach((el) => {
@@ -580,10 +553,10 @@ export const IndexPageTemplate = ({
         } else {
           sectionFourActive = false;
 
-          sectionFourCanvas.classList.remove('opacity-100');
-          sectionFourCanvas.classList.add('opacity-0');
+          sectionFourCanvas.current.classList.remove('opacity-100');
+          sectionFourCanvas.current.classList.add('opacity-0');
 
-          sectionFourContainer.classList.add('md:pointer-events-none');
+          sectionFourContainer.current.classList.add('md:pointer-events-none');
 
           sectionFourAnimateWords.forEach((el) => {
             el.classList.remove('active');
@@ -591,20 +564,20 @@ export const IndexPageTemplate = ({
         }
         
         // Section Five
-        const sectionFiveContainerScrollTop = (window.innerHeight / 2) - sectionFiveContainer.getBoundingClientRect().top;
-        const sectionFiveMaxScrollTop = sectionFiveContainer.scrollHeight - (window.innerHeight / 2);
+        const sectionFiveContainerScrollTop = (window.innerHeight / 2) - sectionFiveContainer.current.getBoundingClientRect().top;
+        const sectionFiveMaxScrollTop = sectionFiveContainer.current.scrollHeight - (window.innerHeight / 2);
         const sectionFiveScrollFraction = sectionFiveContainerScrollTop / sectionFiveMaxScrollTop;
 
         if (sectionFiveScrollFraction >= 0.5) {
-          sectionFiveCanvas.classList.add('opacity-100');
-          sectionFiveCanvas.classList.remove('opacity-0', 'grayscale');
+          sectionFiveVideo.current.classList.add('opacity-100');
+          sectionFiveVideo.current.classList.remove('opacity-0', 'grayscale');
 
           sectionFiveFooter.forEach((el) => {
             el.classList.remove('opacity-0');
           });
         } else {
-          sectionFiveCanvas.classList.remove('opacity-100');
-          sectionFiveCanvas.classList.add('opacity-0', 'grayscale');
+          sectionFiveVideo.current.classList.remove('opacity-100');
+          sectionFiveVideo.current.classList.add('opacity-0', 'grayscale');
 
           sectionFiveFooter.forEach((el) => {
             el.classList.add('opacity-0');
@@ -614,7 +587,7 @@ export const IndexPageTemplate = ({
         if (sectionFiveScrollFraction >= 0) {
           sectionFiveActive = true;
 
-          sectionFiveContainer.classList.remove('md:pointer-events-none');
+          sectionFiveContainer.current.classList.remove('md:pointer-events-none');
 
           sectionFiveHorizontalRules.forEach((el) => {
             el.classList.remove('w-0');
@@ -640,7 +613,7 @@ export const IndexPageTemplate = ({
         } else {
           sectionFiveActive = false;
 
-          sectionFiveContainer.classList.add('md:pointer-events-none');
+          sectionFiveContainer.current.classList.add('md:pointer-events-none');
 
           sectionFiveHorizontalRules.forEach((el) => {
             el.classList.add('w-0');
@@ -673,9 +646,9 @@ export const IndexPageTemplate = ({
       <header className="navbar-container w-full z-50 py-8 text-center transition-all duration-500 ease-in-out md:pointer-events-none md:py-16">
         <Navbar />
       </header>
-      <section id="section-1">
+      <section ref={sectionOneContainer}>
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="transition-opacity duration-700 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
+          <canvas ref={sectionOneCanvas} className="transition-opacity duration-700 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
         <div
           className="foreground relative z-40 w-full"
@@ -699,15 +672,15 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </section>
-      <section id="section-2" className="md:-mb-[15vh] md:pointer-events-none">
+      <section ref={sectionTwoContainer} className="md:-mb-[15vh] md:pointer-events-none">
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="opacity-0 transition-opacity duration-150 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
+          <canvas ref={sectionTwoCanvas} className="opacity-0 transition-opacity duration-150 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full md:h-[300vh]">
           <div className="md:fixed md:inset-x-0 md:top-1/2">
             <div className="container mx-auto px-4 py-20 md:py-0">
-              <div className="section-2-ol-wrapper mx-auto md:transition-all md:duration-500 md:ease-out">
-                <ol className="section-2-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-5/12 md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
+              <div ref={sectionTwoOrderedListWrapper} className="section-2-ol-wrapper mx-auto md:transition-all md:duration-500 md:ease-out">
+                <ol ref={sectionTwoOrderedList} className="section-2-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-5/12 md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
                   <OrderedListItem image="/img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_1.jpg" heading="A Design studio" text="Bloom is a product design studio, visualizing the future of products and digital ecosystems." />
                   <OrderedListItem image="/img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_2.jpg" heading="Embedded teams" text="We take an embedded approach to our partnerships to elevate design and product maturity." />
                   <OrderedListItem image="/img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_3.jpg" heading="Focused on quality of output" text="Our carefully crafted weekly design sprints lead to highly effective output." />
@@ -722,8 +695,8 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </section>
-      <section id="section-3" className="md:pointer-events-none">
-        <div className="foreground relative z-40 w-full transition-all duration-1000 ease-out transform">
+      <section ref={sectionThreeContainer} className="md:pointer-events-none">
+        <div ref={sectionThreeForeground} className="foreground relative z-40 w-full transition-all duration-1000 ease-out transform">
           <div className="container py-20 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
               <h2 className="font-serif font-light tracking-snug text-4xl mb-20 max-w-[37.5rem] md:text-8xl md:mb-40">
@@ -743,11 +716,11 @@ export const IndexPageTemplate = ({
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
-        id="section-4"
+        ref={sectionFourContainer}
         className="md:pointer-events-none"
       >
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas className="opacity-0 transition-opacity duration-700 ease-out absolute -z-10 aspect-square min-w-full min-h-full" />
+          <canvas ref={sectionFourCanvas} className="opacity-0 transition-opacity duration-700 ease-out absolute -z-10 aspect-square min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="container py-20 md:pt-40">
@@ -870,11 +843,11 @@ export const IndexPageTemplate = ({
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
-        id="section-5"
+        ref={sectionFiveContainer}
         className="md:pointer-events-none"
       >
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <video className="opacity-0 transition-all duration-[1.5s] ease-out grayscale absolute -z-10 object-cover object-bottom min-w-full min-h-full" preload="true" autoPlay loop muted>
+          <video ref={sectionFiveVideo} className="opacity-0 transition-all duration-[1.5s] ease-out grayscale absolute -z-10 object-cover object-bottom min-w-full min-h-full" preload="true" autoPlay loop muted>
             <source src="/img/Phase6-v5.mp4" type="video/mp4" /> 
           </video>
         </div>
