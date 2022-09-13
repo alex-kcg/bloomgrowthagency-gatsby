@@ -365,7 +365,7 @@ body {
   transition-delay: 3100ms;
 }
 
-.scrolled .navbar-container::after {
+.navbar-shadow .navbar-container::after {
   @apply opacity-100;
 }
 
@@ -374,7 +374,7 @@ body {
     @apply top-1/2 -translate-y-1/2;
   }
 
-  .scrolled .navbar-container {
+  .navbar-shadow .navbar-container {
     @apply top-0 translate-y-0;
   }
 
@@ -456,16 +456,6 @@ body {
 
 .hero-headline > span:last-child > span:first-child {
   @apply text-electric-lime;
-}
-
-@screen md {
-  .hero-headline-wrapper {
-    @apply hidden;
-  }
-
-  .scrolled .hero-headline-wrapper {
-    @apply block;
-  }
 }
 
 @tailwind utilities;

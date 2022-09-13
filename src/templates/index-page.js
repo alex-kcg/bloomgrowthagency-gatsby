@@ -45,7 +45,9 @@ export const IndexPageTemplate = ({
 
   useEffect(() => {
     const body = document.body;
-    let scrolled = false;
+    let sectionOneSequencesLoaded = false;
+    let runSectionOneSequence = false;
+    let sectionOneFirstTimeoutFailed = false;
 
     // Prevent scrolling until images are done caching
     body.classList.add('loaded');
@@ -198,7 +200,7 @@ export const IndexPageTemplate = ({
             }
 
             if ((index + 1) === sectionOneLoopCount) {
-              if (scrolled) {
+              if (runSectionOneSequence) {
                 sectionOnePlaySequence();
               } else {
                 sectionOneLoopIntroSequence();
@@ -209,12 +211,31 @@ export const IndexPageTemplate = ({
       }
     }
 
+    const initSectionOne = () => {
+      runSectionOneSequence = true;
+      body.classList.add('navbar-shadow');
+
+      setTimeout(() => {
+        sectionOneAnimateWords.forEach((el) => {
+          el.classList.add('active');
+        });
+      }, 500);
+    }
+
     if (isMobile()) {
       setTimeout(() => {
         sectionOneAnimateWords.forEach((el) => {
           el.classList.add('active');
         });
       }, 1500);
+    } else {
+      setTimeout(() => {
+        if (sectionOneSequencesLoaded) {
+          initSectionOne();
+        } else {
+          sectionOneFirstTimeoutFailed = true;
+        }
+      }, 3000);
     }
 
     // Render the first frame while caching
@@ -224,8 +245,13 @@ export const IndexPageTemplate = ({
     }
 
     cacheImages(imagesPhaseOne).then(() => {
+      sectionOneSequencesLoaded = true;
       body.classList.remove('md:overflow-hidden');
       sectionOneLoopIntroSequence();
+
+      if (sectionOneFirstTimeoutFailed) {
+        initSectionOne();
+      }
 
       cacheImages(imagesPhaseTwo);
     }).catch((err) => console.error(err));
@@ -391,15 +417,8 @@ export const IndexPageTemplate = ({
         const sectionOneMaxScrollTop = sectionOneContainer.current.scrollHeight - window.innerHeight;
         const sectionOneScrollFraction = sectionOneContainerScrollTop / sectionOneMaxScrollTop;
 
-        if (!scrolled && sectionOneScrollFraction > 0.05) {
-          scrolled = true;
-          body.classList.add('scrolled');
-
-          setTimeout(() => {
-            sectionOneAnimateWords.forEach((el) => {
-              el.classList.add('active');
-            });
-          }, 500);
+        if (!runSectionOneSequence && sectionOneScrollFraction > 0.05) {
+          initSectionOne();
         }
 
         if (sectionOneScrollFraction >= 0 && sectionOneScrollFraction < 1.2) {
