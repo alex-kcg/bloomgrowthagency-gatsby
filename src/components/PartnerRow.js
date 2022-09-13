@@ -25,31 +25,47 @@ const PartnerRow = ({ partnerRow, animateDelay }) => {
   useEffect(() => {
     controls.start(controlParams);
 
-    setTimeout(function() {
-      function sequenceActiveColor () {
-        const activeIndex = Math.floor(Math.random() * partnerRow.partners.length);
+    function sequenceActiveColor () {
+      const avgWidth = window.innerWidth < 1000 ? 200 : 380;
+      // const allVisible = window.innerWidth >= avgWidth * partnerRow.partners.length;
+      const allVisible = true;
 
-        // el.current.setAttribute('data-active-index', activeIndex)
+      if (allVisible) {
+        const activeIndex = Math.floor(Math.random() * partnerRow.partners.length) + 1;
+        const allEls = el.current.querySelectorAll('.partner-wordmark');
+        const activeEls = el.current.querySelectorAll('.partner-wordmark:nth-child(' + activeIndex + ')')
+
+        allEls.forEach((el) => {
+          el.classList.remove('active');
+        });
+
+        activeEls.forEach((el) => {
+          el.classList.add('active');
+        });
       }
-  
+    }
+
+    sequenceActiveColor();
+
+    setTimeout(function() {
       setInterval(sequenceActiveColor, 3000);
     }, (animateDelay ? animateDelay : 0));
   }, [])
 
   return (
     <div
-      ref={el}
       className="relative select-none overflow-hidden mb-4 md:mb-6"
       style={{ height: '1.1667em' }}
     >
       <motion.div
+        ref={el}
         animate={controls}
         className={`marquee absolute whitespace-nowrap ${partnerRow.direction}`}
       >
         {[...Array(100)].map((e, i) => (
           <span className="iteration" key={i}>
             {partnerRow.partners.map((partner, index) => (
-              <span key={index} data-active-color-class={partner.colorClassName} className={`px-3 transition-colors duration-300 ease-in-out ${partner.fontClassName}`}>
+              <span key={index} data-active-color-class={partner.colorClassName} className={`partner-wordmark px-3 transition-colors duration-1000 ease-in-out ${partner.fontClassName}`}>
                 {partner.text}
               </span>
             ))}
