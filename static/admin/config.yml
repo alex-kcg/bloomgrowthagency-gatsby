@@ -83,7 +83,6 @@ collections:
               widget: list,
               fields:
                 [
-                  { label: iImage, name: image, widget: text },
                   { label: Heading, name: heading, widget: text },
                   { label: Text, name: text, widget: text },
                 ],
