@@ -702,14 +702,9 @@ export const IndexPageTemplate = ({
             <div className="container mx-auto px-4 py-20 md:py-0">
               <div ref={sectionTwoOrderedListWrapper} className="section-2-ol-wrapper mx-auto md:transition-all md:duration-500 md:ease-out">
                 <ol ref={sectionTwoOrderedList} className="section-2-ol font-light text-lg md:text-3xl leading-normal tracking-tighter flex flex-col items-start space-y-20 md:w-5/12 md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
-                  <OrderedListItem image="/img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_1.jpg" heading="A Design studio" text="Bloom is a product design studio, visualizing the future of products and digital ecosystems." />
-                  <OrderedListItem image="/img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_2.jpg" heading="Embedded teams" text="We take an embedded approach to our partnerships to elevate design and product maturity." />
-                  <OrderedListItem image="/img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_3.jpg" heading="Focused on quality of output" text="Our carefully crafted weekly design sprints lead to highly effective output." />
-                  {/*
                   {numberedList.map((listItem, index) => (
                     <OrderedListItem key={index} image={listItem.image} heading={listItem.heading} text={listItem.text} />
                   ))}
-                  */}
                 </ol>
               </div>
             </div>
@@ -1001,6 +996,7 @@ IndexPageTemplate.propTypes = {
   accordionHeading: PropTypes.string,
   accordionItems: PropTypes.arrayOf(
     PropTypes.shape({
+      newtype: PropTypes.bool,
       heading: PropTypes.string,
       body: PropTypes.string,
     }),
@@ -1056,11 +1052,13 @@ export const pageQuery = graphql`
           }
         }
         numberedList {
+          image
           heading
           text
         }
         accordionHeading
         accordionItems {
+          newtype
           heading
           body
         }

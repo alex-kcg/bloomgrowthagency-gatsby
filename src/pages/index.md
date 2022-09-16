@@ -92,7 +92,7 @@ partnerRows:
       fontClassName: font-serif font-light tracking-tighter
 numberedList:
   - image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_1.jpg
-    heading: A Design studio
+    heading: Embedded teams
     text: Bloom is a product design studio, visualizing the future of products and digital ecosystems.
   - image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_2.jpg
     heading: Embedded teams
@@ -104,16 +104,22 @@ accordionHeading: Building products, not projects.
 accordionItems:
   - heading: Mobile apps
     body: We design apps that cut out the clutter – creating a seamless brand experience, ensuring efficiency and learnability within your product.
+    newtype: 1
   - heading: Web apps
     body: Description text lorem ipsum dolor sit amet, consectetur adipiscing elit. At vulputate phasellus scelerisque adipiscing.
+    newtype: 1
   - heading: Digital ecosystems
     body: We rebuild and relaunch .Com marketing sites with a powerful brand presence geared towards customer interest, engagement, and conversion.
+    newtype: 0
   - heading: Design systems
     body: We take a systems approach to everything we build, so products and .coms can shift at scale, quickly and easily for design teams as they need it.
+    newtype: 0
   - heading: Growth funnels
     body: We work to identify the opportunities for growth from day one – as beginning from your .com and carrying throughout your entire product.
+    newtype: 0
   - heading: Research
     body: From user testing to user interviews, our team of UX researchers uncover every need in your customer base, then employ those insights to enhance the design.
+    newtype: 0
 partnersHeading: Powering fearless companies who value growth.
 partnersSubheading: Out of respect for our partners, our best work is under NDA. If you’d like to dive in, we’d be happy to chat.
 ---

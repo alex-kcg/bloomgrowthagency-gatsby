@@ -395,7 +395,6 @@ body {
   
     content: " ";
     border-radius: inherit;
-    animation: opacityFallbackOut .5s step-end forwards;
     clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
     transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1),
                 -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
@@ -403,8 +402,17 @@ body {
   
   .group:hover .group-bg-animate:before,
   .bg-animate:hover:before {
-    animation: opacityFallbackIn 0s step-start forwards;
     clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+  }
+
+  .group:hover .group-bg-animate-in-out,
+  .bg-animate-in-out:hover {
+    animation: bgAnimateInOutText 1s forwards;
+  }
+
+  .group:hover .group-bg-animate-in-out:before,
+  .bg-animate-in-out:hover:before {
+    animation: bgAnimateInOut 1s forwards;
   }
   
   .bg-animate-electric-lime:before {
@@ -451,6 +459,32 @@ body {
     @apply w-80;
   }
 }
+
+@keyframes bgAnimateInOut {
+  0% {
+    clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+  }
+  50% {
+    clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+    color: theme("colors.not-dark-blue");
+  }
+  100% {
+    clip-path: polygon(101% 0, 101% 0, 101% 100%, 101% 100%);
+  }
+}
+
+@keyframes bgAnimateInOutText {
+  0% {
+    color: inherit;
+  }
+  50% {
+    color: theme("colors.not-dark-blue");
+  }
+  100% {
+    color: inherit;
+  }
+}
+
 
 @tailwind components;
 

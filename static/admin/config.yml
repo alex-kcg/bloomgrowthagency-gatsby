@@ -104,6 +104,7 @@ collections:
               widget: list,
               fields:
                 [
+                  { label: New Type, name: newtype, widget: boolean },
                   { label: Heading, name: heading, widget: text },
                   { label: Body, name: body, widget: textarea },
                 ],
