@@ -665,14 +665,16 @@ export const IndexPageTemplate = ({
       <header className="navbar-container w-full z-50 py-8 text-center transition-all duration-500 ease-in-out md:pointer-events-none md:py-16">
         <Navbar />
       </header>
-      <section ref={sectionOneContainer}>
+      <section className="relative z-20" ref={sectionOneContainer}>
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
           <canvas ref={sectionOneCanvas} className="transition-opacity duration-700 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
-        <div
-          className="foreground relative z-40 w-full"
-        >
-          <div className="absolute inset-x-0 top-0 w-full h-screen max-h-full bg-contain bg-center bg-no-repeat md:hidden" style={{ backgroundImage: "url(/img/BG-SiteAnim-PlanterModel-Phase1-v9-frame_DeMain_m.jpg)" }}></div>
+        <div className="foreground relative z-40 w-full bg-not-dark-blue md:bg-transparent">
+          <div className="absolute inset-x-0 top-0 w-full h-screen max-h-full bg-contain bg-center bg-no-repeat md:hidden">
+            <video poster="/img/Phase1-v9mobile-static.png" className="absolute inset-0 w-full h-full object-contain object-top" preload="true" autoPlay loop muted>
+              <source src="/img/Phase1-v9mobile.mp4" type="video/mp4" /> 
+            </video>
+          </div>
           <div className="w-full md:min-h-[200vh]">
             <div className="sticky top-0 w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:min-h-screen md:pt-0 md:mb-60">
               <h1 className="hero-headline-wrapper leading-[1.05em] font-serif font-light tracking-tighter text-4xl md:text-10xl">
@@ -691,11 +693,11 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </section>
-      <section ref={sectionTwoContainer} className="md:-mb-[15vh] md:pointer-events-none">
+      <section ref={sectionTwoContainer} className="relative z-20 md:-mb-[15vh] md:pointer-events-none">
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
           <canvas ref={sectionTwoCanvas} className="opacity-0 transition-opacity duration-150 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
-        <div className="foreground relative z-40 w-full md:h-[300vh]">
+        <div className="foreground relative z-40 w-full bg-not-dark-blue md:bg-transparent md:h-[300vh]">
           <div className="md:fixed md:inset-x-0 md:top-1/2">
             <div className="container mx-auto px-4 py-20 md:py-0">
               <div ref={sectionTwoOrderedListWrapper} className="section-2-ol-wrapper mx-auto md:transition-all md:duration-500 md:ease-out">
@@ -714,8 +716,8 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </section>
-      <section ref={sectionThreeContainer} className="md:pointer-events-none">
-        <div ref={sectionThreeForeground} className="foreground relative z-40 w-full transition-all duration-1000 ease-out transform">
+      <section className="relative z-20 md:pointer-events-none" ref={sectionThreeContainer}>
+        <div ref={sectionThreeForeground} className="foreground relative z-40 w-full transition-all duration-1000 ease-out transform bg-not-dark-blue md:bg-transparent">
           <div className="container py-20 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
               <h2 className="font-serif font-light tracking-snug text-4xl mb-20 max-w-[37.5rem] md:text-8xl md:mb-40">
@@ -736,24 +738,30 @@ export const IndexPageTemplate = ({
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
         ref={sectionFourContainer}
-        className="md:pointer-events-none"
+        className="relative z-10 md:pointer-events-none md:z-20"
       >
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
           <canvas ref={sectionFourCanvas} className="opacity-0 transition-opacity duration-700 ease-out absolute -z-10 aspect-square min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full">
-          <div className="container py-20 md:pt-40">
-            <div className="max-w-[37.5rem]">
-              <h2 className="font-serif font-light tracking-tight text-5xl mb-14 md:text-8xl">
-                <SplitTextOnWordBoundaries text={partnersHeading} />
-              </h2>
-              <p className="font-light text-lg leading-normal tracking-tighter md:text-3xl md:leading-normal">
-                <SplitTextOnWordBoundaries text={partnersSubheading} />
-              </p>
+          <div className="relative z-10 bg-not-dark-blue md:bg-transparent">
+            <div className="container py-20 md:pt-40">
+              <div className="max-w-[37.5rem]">
+                <h2 className="font-serif font-light tracking-tight text-5xl mb-14 md:text-8xl">
+                  <SplitTextOnWordBoundaries text={partnersHeading} />
+                </h2>
+                <p className="font-light text-lg leading-normal tracking-tighter md:text-3xl md:leading-normal">
+                  <SplitTextOnWordBoundaries text={partnersSubheading} />
+                </p>
+              </div>
             </div>
           </div>
           <div className="relative py-20 md:mb-40">
-            <div className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat md:hidden" style={{ backgroundImage: "url(/img/Phase4-v9-frame_DeMain_m.jpg)" }}></div>
+            <div className="fixed -z-1 inset-0 w-full h-full bg-cover bg-center bg-no-repeat md:hidden">
+              <video poster="/img/Phase4-v9mobile-static.png" className="absolute inset-0 w-full h-full object-cover object-center" preload="true" autoPlay loop muted>
+                <source src="/img/Phase4-v9mobile.mp4" type="video/mp4" /> 
+              </video>
+            </div>
             <div className="container">
               <div className="max-w-sm mx-auto sm:max-w-none">
                 <div className="flex flex-wrap gap-y-10 -mx-4 items-stretch sm:-mx-3 sm:gap-y-6">
@@ -863,14 +871,14 @@ export const IndexPageTemplate = ({
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
         ref={sectionFiveContainer}
-        className="md:pointer-events-none"
+        className="relative z-20 md:pointer-events-none"
       >
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
           <video ref={sectionFiveVideo} className="opacity-0 transition-all duration-[1.5s] ease-out grayscale absolute -z-10 object-cover object-bottom min-w-full min-h-full" preload="true" autoPlay loop muted>
             <source src="/img/Phase6-v5.mp4" type="video/mp4" /> 
           </video>
         </div>
-        <div className="foreground relative z-40 w-full">
+        <div className="foreground relative z-40 w-full bg-not-dark-blue md:bg-transparent">
           <div className="container">
             <div className="max-w-[63.5rem] mx-auto pt-10 md:pt-20">
               <div className="py-10 md:py-20">
@@ -898,55 +906,67 @@ export const IndexPageTemplate = ({
               <hr className="border-slate mx-auto transition-all duration-500 ease-out w-0" />
               <div className="fade-in-footer opacity-0 transition-opacity duration-500 pb-6 pt-10 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:py-20">
                 <div className="w-full px-4 sm:px-3 md:ml-auto md:w-5/12">
-                  <h3 className="font-light text-3xl leading-normal tracking-tighter mb-2">
+                  <h3 className="font-light text-3xl leading-tight tracking-tighter mb-2">
                     <SplitTextOnWordBoundaries text="Zach Greenberger" /> 
                   </h3>
-                  <h4 className="text-lg font-light leading-relaxed mb-10">
+                  <h4 className="text-lg font-light leading-tighter mb-12">
                     <SplitTextOnWordBoundaries text="Head of Growth" /> 
                   </h4>
-                  <ul className="mb-10">
+                  <ul className="mb-8">
                     <li className="border-b border-slate">
-                      <a className="group flex flex-wrap justify-start items-center space-x-4 py-4" href="mailto:zach@bloomgrowthagency.com">
-                        <img src={arrowIcon} alt="Arrow icon" className="block w-8 h-8 p-2 rounded-full bg-summer-rain" />
-                        <span className="transition-color duration-500 ease-out group-hover:text-summer-rain">
+                      <a className="w-full rounded-xl flex flex-wrap justify-start items-center space-x-4 px-2 py-4 transition-color duration-500 ease-out text-cream hover:bg-black hover:text-summer-rain" href="mailto:zach@bloomgrowthagency.com">
+                        <svg className="block w-5 h-auto" width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path className="fill-current" d="M5.28924 0.907491C8.42388 0.635003 11.5763 0.635003 14.7109 0.907491L16.2211 1.03877C17.2265 1.12617 18.0876 1.72584 18.5337 2.58361C18.5908 2.69335 18.548 2.82621 18.4428 2.89132L12.1769 6.77024C10.833 7.60216 9.1385 7.61962 7.77778 6.81556L1.46995 3.0882C1.36804 3.02798 1.32126 2.90402 1.36719 2.79492C1.77535 1.82536 2.69298 1.13318 3.77901 1.03877L5.28924 0.907491Z" />
+                          <path className="fill-current" d="M1.36206 4.76676C1.20609 4.6746 1.00709 4.77377 0.988912 4.95402C0.735176 7.46965 0.796587 10.0091 1.17314 12.5132C1.37166 13.8333 2.44907 14.8454 3.77901 14.961L5.28924 15.0923C8.42388 15.3647 11.5763 15.3647 14.7109 15.0923L16.2211 14.961C17.5511 14.8454 18.6285 13.8333 18.827 12.5132C19.2145 9.93613 19.2683 7.32162 18.9882 4.73415C18.9686 4.55264 18.7662 4.45529 18.611 4.55139L12.9664 8.04564C11.1482 9.17118 8.85566 9.19479 7.01468 8.10695L1.36206 4.76676Z" />
+                        </svg>
+                        <span className="">
                           zach@bloomgrowthagency.com
                         </span>
                       </a>
                     </li>
                     <li className="border-b border-slate">
-                      <a className="group flex flex-wrap justify-start items-center space-x-4 py-4" href="tel:+14136363186">
-                        <img src={arrowIcon} alt="Arrow icon" className="block w-8 h-8 p-2 rounded-full bg-voltage" />
-                        <span className="transition-color duration-500 ease-out group-hover:text-voltage">
-                          +1 413.636.3186
+                      <a className="w-full rounded-xl flex flex-wrap justify-start items-center space-x-4 px-2 py-4 transition-color duration-500 ease-out text-cream hover:bg-black hover:text-voltage" href="tel:+14136363186">
+                        <svg className="block w-5 h-auto" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path className="fill-current" d="M1.00017 6.86053C2.91657 11.0344 6.32657 14.3529 10.5661 16.1519L11.2457 16.4547C12.8005 17.1475 14.6283 16.6212 15.5766 15.2077L16.4647 13.884C16.7534 13.4536 16.6655 12.8739 16.2622 12.5485L13.2503 10.1187C12.8079 9.76184 12.1574 9.84496 11.819 10.3016L10.8873 11.5589C8.49646 10.3795 6.55541 8.43849 5.37607 6.04768L6.63332 5.11596C7.08998 4.77754 7.17311 4.12702 6.81622 3.68464L4.38635 0.672698C4.061 0.269416 3.4815 0.181449 3.05113 0.470018L1.71829 1.36372C0.295947 2.31742 -0.227434 4.16027 0.481298 5.71922L0.999386 6.85884L1.00017 6.86053Z" />
+                        </svg>
+                        <span className="">
+                          +1 413-636-3186
                         </span>
                       </a>
                     </li>
                     <li className="border-b border-slate">
-                      <button className="group flex flex-wrap justify-start items-center space-x-4 py-4">
-                        <img src={arrowIcon} alt="Arrow icon" className="block w-8 h-8 p-2 rounded-full bg-electric-lime" />
-                        <span className="transition-color duration-500 ease-out group-hover:text-electric-lime">
+                      <span className="w-full rounded-xl flex flex-wrap justify-start items-center space-x-4 px-2 py-4 transition-color duration-500 ease-out text-cream">
+                        <svg className="block w-5 h-auto" width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path className="fill-current" fillRule="evenodd" clipRule="evenodd" d="M0.773543 7.87739C1.11718 3.70845 4.60097 0.5 8.78406 0.5H9.21599C13.3991 0.5 16.8829 3.70845 17.2265 7.87739C17.4115 10.122 16.7182 12.3508 15.2925 14.0943L10.4995 19.9561C9.72449 20.9039 8.27556 20.9039 7.50059 19.9561L2.70752 14.0943C1.28187 12.3508 0.588525 10.122 0.773543 7.87739ZM12.5303 7.53033C12.8232 7.23744 12.8232 6.76256 12.5303 6.46967C12.2374 6.17678 11.7626 6.17678 11.4697 6.46967L8.5 9.43934L7.03033 7.96967C6.73744 7.67678 6.26256 7.67678 5.96967 7.96967C5.67678 8.26256 5.67678 8.73744 5.96967 9.03033L7.96967 11.0303C8.26256 11.3232 8.73744 11.3232 9.03033 11.0303L12.5303 7.53033Z" />
+                        </svg>
+                        <span className="">
                           MA / NYC / SF
                         </span>
-                      </button>
+                      </span>
                     </li>
                   </ul>
-                  <nav className="flex flex-wrap space-x-6 text-lg font-light leading-relaxed mb-10">
-                    <button>
+                  <nav className="text-gray flex flex-wrap space-x-6 text-lg font-light leading-relaxed mb-3">
+                    <a href="#">
                       Careers
-                    </button>
-                    <button>
+                    </a>
+                    <a href="#">
                       Dribble
-                    </button>
-                    <button>
+                    </a>
+                    <a href="#">
                       LinkedIn
-                    </button>
+                    </a>
                   </nav>
-                  <p className="text-sm font-light leading-relaxed">
+                  <p className="text-gray text-sm font-light leading-relaxed">
                     Copyright © 2022 Bloom Growth Agency
                   </p>
                 </div>
               </div>
             </div>
+          </div>
+          <div className="relative -z-10 overflow-x-hidden md:hidden">
+            <video className="relative z-10 object-contain object-bottom aspect-video w-[175%] mt-[-25%] max-w-none" preload="true" autoPlay loop muted>
+              <source src="/img/Phase6-v5.mp4" type="video/mp4" /> 
+            </video>
           </div>
         </div>
       </motion.section>
