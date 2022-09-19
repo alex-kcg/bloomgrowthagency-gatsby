@@ -479,6 +479,7 @@ body {
   }
   50% {
     color: theme("colors.not-dark-blue");
+    border-color: theme("colors.not-dark-blue");
   }
   100% {
     color: inherit;
