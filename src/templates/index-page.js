@@ -671,8 +671,8 @@ export const IndexPageTemplate = ({
         </div>
         <div className="foreground relative z-40 w-full bg-not-dark-blue md:bg-transparent">
           <div className="absolute inset-x-0 top-0 w-full h-screen max-h-full bg-contain bg-center bg-no-repeat md:hidden">
-            <video poster="/img/Phase1-v9mobile-static.png" className="absolute inset-0 w-full h-full object-contain object-top" preload="true" autoPlay loop muted>
-              <source src="/img/Phase1-v9mobile.mp4" type="video/mp4" /> 
+            <video poster="/img/Phase1-v10mobile-static.png" className="absolute inset-x-0 top-0 w-full aspect-square object-contain object-top" preload="true" autoPlay muted>
+              <source src="/img/Phase1-v10mobile.mp4" type="video/mp4" /> 
             </video>
           </div>
           <div className="w-full md:min-h-[200vh]">
