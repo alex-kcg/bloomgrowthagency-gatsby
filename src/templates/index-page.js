@@ -687,7 +687,7 @@ export const IndexPageTemplate = ({
           <div className="text-6xl tracking-tight text-slate pb-20 md:text-11xl md:min-h-screen md:mb-0">
             <div>
               {partnerRows.map((row, index) => (
-                <PartnerRow key={index} animateDelay={index * 1000} partnerRow={row} />
+                <PartnerRow key={index} offsetIndex={index} partnerRow={row} />
               ))}
             </div>
           </div>
@@ -985,7 +985,6 @@ IndexPageTemplate.propTypes = {
         PropTypes.shape({
           text: PropTypes.string,
           url: PropTypes.string,
-          colorClassName: PropTypes.string,
           fontClassName: PropTypes.string,
         }),
       ),
@@ -1052,7 +1051,6 @@ export const pageQuery = graphql`
           partners {
             text
             url
-            colorClassName
             fontClassName
           }
         }

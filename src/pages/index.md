@@ -8,87 +8,67 @@ partnerRows:
     partners:
     - text: Retirable
       url: https://retirable.com/
-      colorClassName: text-electric-lime
       fontClassName: font-sans font-normal
     - text: Slice
       url: https://slicelife.com/
-      colorClassName: text-gray
       fontClassName: font-serif font-light tracking-tighter
     - text: Caribou
       url: https://www.caribou.com/
-      colorClassName: text-voltage
       fontClassName: font-sans font-normal
     - text: Chime
       url: https://www.chime.com/
-      colorClassName: text-summer-rain
       fontClassName: font-serif font-light tracking-tighter italic
     - text: Insurify
       url: https://insurify.com/
-      colorClassName: text-electric-lime
       fontClassName: font-sans font-normal
     - text: Fuse
       url: https://www.fuseignited.com/
-      colorClassName: text-gray
       fontClassName: font-serif font-light tracking-tighter
     - text: VersusGame
       url: https://versusgame.com/app/game
-      colorClassName: text-summer-rain
       fontClassName: font-serif font-light tracking-tighter italic
   - direction: rtl
     partners:
     - text: MainStreet
       url: https://www.mainstreet.com/
-      colorClassName: text-gray
       fontClassName: font-serif font-light tracking-tighter
     - text: Merge
       url: https://mergeworld.com/
-      colorClassName: text-electric-lime
       fontClassName: font-sans font-normal
     - text: One Finance
       url: https://www.one.app/
-      colorClassName: text-voltage
       fontClassName: font-serif font-light tracking-tighter italic
     - text: Clutter
       url: https://www.clutter.com/
-      colorClassName: text-summer-rain
       fontClassName: font-sans font-normal
     - text: Braintrust
       url: https://www.usebraintrust.com/
-      colorClassName: text-gray
       fontClassName: font-serif font-light tracking-tighter
     - text: Fidelity
       url: https://www.fidelity.com/
-      colorClassName: text-electric-lime
       fontClassName: font-sans font-normal
   - direction: ltr
     partners:
     - text: Caribou
       url: https://www.caribou.com/
-      colorClassName: text-voltage
       fontClassName: font-sans font-normal
     - text: Chime
       url: https://www.chime.com/
-      colorClassName: text-summer-rain
       fontClassName: font-serif font-light tracking-tighter italic
     - text: Insurify
       url: https://insurify.com/
-      colorClassName: text-electric-lime
       fontClassName: font-sans font-normal
     - text: Fuse
       url: https://www.fuseignited.com/
-      colorClassName: text-gray
       fontClassName: font-serif font-light tracking-tighter
     - text: VersusGame
       url: https://versusgame.com/app/game
-      colorClassName: text-summer-rain
       fontClassName: font-serif font-light tracking-tighter italic
     - text: Retirable
       url: https://retirable.com/
-      colorClassName: text-electric-lime
       fontClassName: font-sans font-normal
     - text: Slice
       url: https://slicelife.com/
-      colorClassName: text-gray
       fontClassName: font-serif font-light tracking-tighter
 numberedList:
   - image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_1.jpg
@@ -104,22 +84,22 @@ accordionHeading: Building products, not projects.
 accordionItems:
   - heading: Mobile apps
     body: We design apps that cut out the clutter – creating a seamless brand experience, ensuring efficiency and learnability within your product.
-    newtype: 1
+    newtype: true
   - heading: Web apps
     body: Description text lorem ipsum dolor sit amet, consectetur adipiscing elit. At vulputate phasellus scelerisque adipiscing.
-    newtype: 1
+    newtype: true
   - heading: Digital ecosystems
     body: We rebuild and relaunch .Com marketing sites with a powerful brand presence geared towards customer interest, engagement, and conversion.
-    newtype: 0
+    newtype: false
   - heading: Design systems
     body: We take a systems approach to everything we build, so products and .coms can shift at scale, quickly and easily for design teams as they need it.
-    newtype: 0
+    newtype: false
   - heading: Growth funnels
     body: We work to identify the opportunities for growth from day one – as beginning from your .com and carrying throughout your entire product.
-    newtype: 0
+    newtype: false
   - heading: Research
     body: From user testing to user interviews, our team of UX researchers uncover every need in your customer base, then employ those insights to enhance the design.
-    newtype: 0
+    newtype: false
 partnersHeading: Powering fearless companies who value growth.
 partnersSubheading: Out of respect for our partners, our best work is under NDA. If you’d like to dive in, we’d be happy to chat.
 ---

@@ -34,7 +34,6 @@ PartnerRow.propTypes = {
     PropTypes.shape({
       text: PropTypes.string,
       url: PropTypes.string,
-      colorClassName: PropTypes.string,
       fontClassName: PropTypes.string,
     })
   ),

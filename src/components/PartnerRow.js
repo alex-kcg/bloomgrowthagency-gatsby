@@ -4,7 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 
 const { useEffect, useRef } = React;
 
-const PartnerRow = ({ partnerRow, animateDelay }) => {
+const PartnerRow = ({ partnerRow, offsetIndex }) => {
   const el = useRef(null);
   const controls = useAnimation();
   const controlParams = {
@@ -21,6 +21,15 @@ const PartnerRow = ({ partnerRow, animateDelay }) => {
       }
     }
   };
+  let currentActiveColor = offsetIndex ? offsetIndex * 2 : 0;
+  const activeColors = [
+    'text-electric-lime',
+    'text-gray',
+    'text-voltage',
+    'text-summer-rain',
+    'text-gray',
+    'text-voltage'
+  ];
 
   useEffect(() => {
     controls.start(controlParams);
@@ -35,12 +44,18 @@ const PartnerRow = ({ partnerRow, animateDelay }) => {
         const allEls = el.current.querySelectorAll('.partner-wordmark');
         const activeEls = el.current.querySelectorAll('.partner-wordmark:nth-child(' + activeIndex + ')')
 
+        if (++currentActiveColor >= activeColors.length) {
+          currentActiveColor = 0;
+        }
+
         allEls.forEach((el) => {
-          el.classList.remove('active');
+          activeColors.forEach((color) => {
+            el.classList.remove(color);
+          });
         });
 
         activeEls.forEach((el) => {
-          el.classList.add('active');
+          el.classList.add(activeColors[currentActiveColor]);
         });
       }
     }
@@ -49,7 +64,7 @@ const PartnerRow = ({ partnerRow, animateDelay }) => {
 
     setTimeout(function() {
       setInterval(sequenceActiveColor, 3000);
-    }, (animateDelay ? animateDelay : 0));
+    }, (offsetIndex ? offsetIndex * 1000 : 0));
   }, [])
 
   return (
@@ -65,7 +80,7 @@ const PartnerRow = ({ partnerRow, animateDelay }) => {
         {[...Array(100)].map((e, i) => (
           <span className="iteration" key={i}>
             {partnerRow.partners.map((partner, index) => (
-              <span key={index} data-active-color-class={partner.colorClassName} className={`partner-wordmark px-3 transition-colors duration-1000 ease-in-out ${partner.fontClassName}`}>
+              <span key={index} className={`partner-wordmark px-3 transition-colors duration-1000 ease-in-out ${partner.fontClassName}`}>
                 {partner.text}
               </span>
             ))}
@@ -82,7 +97,6 @@ PartnerRow.propTypes = {
     PropTypes.shape({
       text: PropTypes.string,
       url: PropTypes.string,
-      colorClassName: PropTypes.string,
       fontClassName: PropTypes.string,
     })
   ),
