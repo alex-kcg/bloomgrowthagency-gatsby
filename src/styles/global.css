@@ -369,6 +369,19 @@ body {
   @apply opacity-100;
 }
 
+.fixed-image::before {
+  @apply absolute z-10 bottom-0 inset-x-0 top-[10%] pointer-events-none bg-not-dark-blue;
+
+  content: " ";
+}
+
+.fixed-image::after {
+  @apply absolute z-10 inset-x-0 bottom-[90%] pointer-events-none h-20;
+
+  background: linear-gradient(rgba(7, 16, 20, 0), rgba(7, 16, 20, 1));
+  content: " ";
+}
+
 @screen md {
   .navbar-container {
     @apply top-1/2 -translate-y-1/2;

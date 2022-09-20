@@ -302,6 +302,9 @@ export const IndexPageTemplate = ({
       if (isMobile()) {
         // Section Two
         const sectionTwoContainerScrollTop = window.innerHeight - sectionTwoContainer.current.getBoundingClientRect().top;
+        const sectionTwoContainerScrollBottom = sectionTwoContainer.current.getBoundingClientRect().top;
+        const sectionTwoMaxScrollTop = sectionTwoContainer.current.scrollHeight + (window.innerHeight / 2);
+        const sectionTwoScrollFraction = sectionTwoContainerScrollTop / sectionTwoMaxScrollTop;
 
         sectionTwoContainer.current.classList.remove('md:pointer-events-none');
 
@@ -310,10 +313,17 @@ export const IndexPageTemplate = ({
         } else {
           sectionTwoOrderedList.current.classList.remove('mobile-active');
         }
+
+
+        if (sectionTwoScrollFraction > 1) {
+          sectionTwoContainer.current.classList.add('opacity-0');
+        } else {
+          sectionTwoContainer.current.classList.remove('opacity-0');
+        }
         
         sectionTwoOrderedList.current.querySelectorAll('li').forEach((el) => {
           const liScrollTop = window.innerHeight - el.getBoundingClientRect().top;
-          const img = el.querySelector('img');
+          const img = el.querySelector('.fixed-image');
 
           if (liScrollTop > mobileScrollAnimationOffset) {
             if (img) {
@@ -712,7 +722,7 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </section>
-      <section ref={sectionTwoContainer} className="relative z-30 md:-mb-[15vh] md:pointer-events-none">
+      <section ref={sectionTwoContainer} className="relative z-30 md:-mb-[15vh] transition-opacity duration-300 ease-in-out md:opacity-100 md:pointer-events-none">
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
           <canvas ref={sectionTwoCanvas} className="opacity-0 transition-opacity duration-150 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
@@ -923,7 +933,7 @@ export const IndexPageTemplate = ({
                 </div>
               </div>
               <hr className="border-slate mx-auto transition-all duration-500 ease-out w-0" />
-              <div className="fade-in-footer opacity-0 transition-opacity duration-500 pb-6 pt-10 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:pt-20">
+              <div className="fade-in-footer opacity-0 transition-opacity duration-500 pb-[22.25rem] pt-10 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:pt-20 md:pb-6">
                 <div className="w-full px-4 sm:px-3 md:ml-auto md:w-5/12">
                   <h3 className="font-light text-3xl leading-tight tracking-tighter mb-2 md:text-6xl">
                     <SplitTextOnWordBoundaries text="Zach Greenberger" /> 
@@ -990,7 +1000,7 @@ export const IndexPageTemplate = ({
             </div>
           </div>
           <div className="relative -z-10 overflow-x-hidden md:hidden">
-            <video className="relative z-10 object-contain object-bottom aspect-video w-[175%] mt-[-25%] max-w-none" preload="true" autoPlay loop muted>
+            <video className="relative z-10 object-contain object-bottom aspect-video w-[175%] -ml-[25%] -mt-[25%] max-w-none" preload="true" autoPlay loop muted>
               <source src="/img/Phase6-v5.mp4" type="video/mp4" /> 
             </video>
           </div>
