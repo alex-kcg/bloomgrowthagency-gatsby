@@ -2,6 +2,11 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const { registerLocalFs } = require('netlify-cms-proxy-server/dist/middlewares')
+
+exports.onCreateDevServer = async ({ app }) => {
+  await registerLocalFs(app)
+}
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions

@@ -71,14 +71,11 @@ partnerRows:
       url: https://slicelife.com/
       fontClassName: font-serif font-light tracking-tighter
 numberedList:
-  - image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_1.jpg
-    heading: Embedded teams
+  - heading: A design studio
     text: Bloom is a product design studio, visualizing the future of products and digital ecosystems.
-  - image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_2.jpg
-    heading: Embedded teams
+  - heading: Embedded teams
     text: We take an embedded approach to our partnerships to elevate design and product maturity.
-  - image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_3.jpg
-    heading: Focused on quality of output
+  - heading: Focused on quality
     text: Our carefully crafted weekly design sprints lead to highly effective output.
 accordionHeading: We're building products, not projects.
 accordionItems:
