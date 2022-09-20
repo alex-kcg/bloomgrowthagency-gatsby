@@ -17,6 +17,9 @@ const IndexPagePreview = ({ entry, getAsset }) => {
         accordionItems={data.accordionItems || []}
         partnersHeading={data.partnersHeading}
         partnersSubheading={data.partnersSubheading}
+        partnersCards={data.partnersCards || []}
+        footerCTAHeading={data.footerCTAHeading}
+        footerCTASubheading={data.footerCTASubheading}
       />
     )
   } else {

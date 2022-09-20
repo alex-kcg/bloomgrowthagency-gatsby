@@ -9,87 +9,67 @@ partnerRows:
       - text: Retirable
         url: https://retirable.com/
         fontClassName: font-sans font-normal
-        colorClassName: text-gray
       - text: Slice
         url: https://slicelife.com/
         fontClassName: font-serif font-light tracking-tighter
-        colorClassName: text-gray
       - text: Caribou
         url: https://www.caribou.com/
         fontClassName: font-sans font-normal
-        colorClassName: text-gray
       - text: Chime
         url: https://www.chime.com/
         fontClassName: font-serif font-light tracking-tighter italic
-        colorClassName: text-gray
       - text: Insurify
         url: https://insurify.com/
         fontClassName: font-sans font-normal
-        colorClassName: text-gray
       - text: Fuse
         url: https://www.fuseignited.com/
         fontClassName: font-serif font-light tracking-tighter
-        colorClassName: text-gray
       - text: VersusGame
         url: https://versusgame.com/app/game
         fontClassName: font-serif font-light tracking-tighter italic
-        colorClassName: text-gray
   - direction: rtl
     partners:
       - text: MainStreet
         url: https://www.mainstreet.com/
         fontClassName: font-serif font-light tracking-tighter
-        colorClassName: text-gray
       - text: Merge
         url: https://mergeworld.com/
         fontClassName: font-sans font-normal
-        colorClassName: text-gray
       - text: One Finance
         url: https://www.one.app/
         fontClassName: font-serif font-light tracking-tighter italic
-        colorClassName: text-gray
       - text: Clutter
         url: https://www.clutter.com/
         fontClassName: font-sans font-normal
-        colorClassName: text-gray
       - text: Braintrust
         url: https://www.usebraintrust.com/
         fontClassName: font-serif font-light tracking-tighter
-        colorClassName: text-gray
       - text: Fidelity
         url: https://www.fidelity.com/
         fontClassName: font-sans font-normal
-        colorClassName: text-gray
   - direction: ltr
     partners:
       - text: Caribou
         url: https://www.caribou.com/
         fontClassName: font-sans font-normal
-        colorClassName: text-gray
       - text: Chime
         url: https://www.chime.com/
         fontClassName: font-serif font-light tracking-tighter italic
-        colorClassName: text-gray
       - text: Insurify
         url: https://insurify.com/
         fontClassName: font-sans font-normal
-        colorClassName: text-gray
       - text: Fuse
         url: https://www.fuseignited.com/
         fontClassName: font-serif font-light tracking-tighter
-        colorClassName: text-gray
       - text: VersusGame
         url: https://versusgame.com/app/game
         fontClassName: font-serif font-light tracking-tighter italic
-        colorClassName: text-gray
       - text: Retirable
         url: https://retirable.com/
         fontClassName: font-sans font-normal
-        colorClassName: text-gray
       - text: Slice
         url: https://slicelife.com/
         fontClassName: font-serif font-light tracking-tighter
-        colorClassName: text-gray
 numberedList:
   - heading: A design studio
     text: Bloom is a product design studio, visualizing the future of products and
@@ -133,4 +113,6 @@ accordionItems:
 partnersHeading: Powering fearless companies who value growth.
 partnersSubheading: Out of respect for our partners, our best work is under NDA.
   If you’d like to dive in, we’d be happy to chat.
+footerCTAHeading: Are you building a design team?
+footerCTASubheading: We’re helping partners build world class design organizations with our pipeline. Interested?
 ---

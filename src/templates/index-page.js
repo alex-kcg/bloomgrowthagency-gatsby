@@ -25,6 +25,9 @@ export const IndexPageTemplate = ({
   accordionItems,
   partnersHeading,
   partnersSubheading,
+  partnersCards,
+  footerCTAHeading,
+  footerCTASubheading,
 }) => {
   const sectionOneContainer = useRef(null);
   const sectionOneCanvas = useRef(null);
@@ -731,14 +734,9 @@ export const IndexPageTemplate = ({
             <div className="container mx-auto px-4 py-20 md:py-0">
               <div ref={sectionTwoOrderedListWrapper} className="section-2-ol-wrapper mx-auto md:transition-all md:duration-500 md:ease-out">
                 <ol ref={sectionTwoOrderedList} className="section-2-ol font-light text-2xl leading-10 flex flex-col items-start space-y-20 md:text-3xl md:max-w-[31rem] md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
-                  <OrderedListItem image="/img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_1.png" heading="A design studio" text="Bloom is a product design studio, visualizing the future of products and digital ecosystems." />
-                  <OrderedListItem image="/img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_2.png" heading="Embedded teams" text="We take an embedded approach to our partnerships to elevate design and product maturity." />
-                  <OrderedListItem image="/img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_3.png" heading="Focused on quality" text="Our carefully crafted weekly design sprints lead to highly effective output." />
-                  {/*
                   {numberedList.map((listItem, index) => (
                     <OrderedListItem key={index} image={listItem.image} heading={listItem.heading} text={listItem.text} />
                   ))}
-                  */}
                 </ol>
               </div>
             </div>
@@ -889,6 +887,15 @@ export const IndexPageTemplate = ({
                       description="A fully integrated partner, our teams span across consumer applications, b2b web apps, and the core product suite used by xxxx small businesses to excel their consumer experiences. "
                     />
                   </div>
+                  {/*
+                  {partnersCards.map((card, index) => (
+                    <>
+                    <div key={index} className="flex w-full px-4 sm:px-3 sm:w-1/2 md:w-1/3">
+                      <PartnerCard logo={card.logo} heading={card.heading} description={card.description} bulletColorClassName={card.bulletColorClassName} bullets={card.bullets} />
+                    </div>
+                    </>
+                  ))}
+                  */}
                 </div>
               </div>
             </div>
@@ -914,12 +921,12 @@ export const IndexPageTemplate = ({
                 <div className="flex flex-wrap justify-between -mx-4 sm:-mx-3">
                   <div className="w-full px-4 sm:px-3 md:w-1/2">
                     <h2 className="animate-words-heading font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-8xl">
-                      <SplitTextOnWordBoundaries text="Are you building a design team?" /> 
+                      <SplitTextOnWordBoundaries text={footerCTAHeading} /> 
                     </h2>
                   </div>
                   <div className="w-full px-4 sm:px-3 md:w-5/12">
                     <p className="animate-words-paragraph pb-6 text-lg leading-relaxed">
-                      <SplitTextOnWordBoundaries text="We’re helping partners build world class design organizations with our pipeline. Interested?" /> 
+                      <SplitTextOnWordBoundaries text={footerCTASubheading} /> 
                     </p>
                     <div className="fade-in opacity-0 transition-opacity duration-500 delay-500">
                       <button className="transition-color duration-500 ease-out text-electric-lime">
@@ -1043,6 +1050,17 @@ IndexPageTemplate.propTypes = {
   ),
   partnersHeading: PropTypes.string,
   partnersSubheading: PropTypes.string,
+  partnersCards: PropTypes.arrayOf(
+    PropTypes.shape({
+      logo: PropTypes.string,
+      heading: PropTypes.string,
+      description: PropTypes.string,
+      bulletColorClassName: PropTypes.string,
+      bullets: PropTypes.arrayOf(PropTypes.string),
+    }),
+  ),
+  footerCTAHeading: PropTypes.string,
+  footerCTASubheading: PropTypes.string,
 };
 
 const IndexPage = ({ data }) => {
@@ -1060,6 +1078,9 @@ const IndexPage = ({ data }) => {
         accordionItems={frontmatter.accordionItems}
         partnersHeading={frontmatter.partnersHeading}
         partnersSubheading={frontmatter.partnersSubheading}
+        partnersCards={frontmatter.partnersCards}
+        footerCTAHeading={frontmatter.footerCTAHeading}
+        footerCTASubheading={frontmatter.footerCTASubheading}
       />
     </Layout>
   );
@@ -1093,6 +1114,7 @@ export const pageQuery = graphql`
         numberedList {
           heading
           text
+          image
         }
         accordionHeading
         accordionItems {
@@ -1102,6 +1124,15 @@ export const pageQuery = graphql`
         }
         partnersHeading
         partnersSubheading
+        partnersCards {
+          logo
+          heading
+          description
+          bulletColorClassName
+          bullets
+        }
+        footerCTAHeading
+        footerCTASubheading
       }
     }
   }

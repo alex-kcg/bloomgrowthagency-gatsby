@@ -53,17 +53,6 @@ collections:
                         { label: Text, name: text, widget: text },
                         { label: URL, name: url, widget: string },
                         {
-                          label: "Hover color",
-                          name: "colorClassName",
-                          widget: "select",
-                          options: [
-                            { label: "Gray", value: "text-gray" },
-                            { label: "Voltage", value: "text-voltage" },
-                            { label: "Summer Rain", value: "text-summer-rain" },
-                            { label: "Electric Lime", value: "text-electric-lime" },
-                          ]
-                        },
-                        {
                           label: "Font style",
                           name: "fontClassName",
                           widget: "select",
@@ -81,6 +70,9 @@ collections:
               label: Numbered list,
               name: numberedList,
               widget: list,
+              allow_add: false,
+              max: 3,
+              min: 3,
               fields:
                 [
                   { label: Heading, name: heading, widget: text },
@@ -102,6 +94,33 @@ collections:
             }
           - { label: Partners heading, name: partnersHeading, widget: string }
           - { label: Partners subheading, name: partnersSubheading, widget: string }
+          - {
+              label: Partners cards,
+              name: partnersCards,
+              widget: list,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  { label: description, name: description, widget: string },
+                  {
+                    label: "Bullet color",
+                    name: "bulletColorClassName",
+                    widget: "select",
+                    options: [
+                      { label: "Summer rain", value: "bg-summer-rain" },
+                      { label: "Voltage", value: "bg-voltage" },
+                      { label: "Electric lime", value: "bg-electric-lime" },
+                    ]
+                  },
+                  {
+                    label: Bullets,
+                    name: bullets,
+                    widget: list,
+                  }
+                ]
+            }
+          - { label: Footer CTA heading, name: footerCTAHeading, widget: string }
+          - { label: Footer CTA subheading, name: footerCTASubheading, widget: string }
   - name: "settings"
     label: "Settings"
     files:
