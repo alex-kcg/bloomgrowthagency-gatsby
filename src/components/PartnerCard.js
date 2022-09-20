@@ -10,19 +10,19 @@ const PartnerCard = ({
   logo,
 }) => {
   return (
-    <div className={`block group backdrop-blur-3xl w-full px-8 py-12 rounded-3xl border border-gray border-opacity-[0.08] text-cream font-light text-lg leading-normal ${className ? className : ''}`}>
+    <div className={`block group backdrop-blur-3xl w-full px-8 z8 rounded-3xl border border-gray border-opacity-[0.08] text-cream font-light text-lg leading-normal min-h-[30rem] ${className ? className : ''}`}>
       <header className="relative">
-        <div className="h-23 flex justify-start items-center" dangerouslySetInnerHTML={{ __html: logo }} />
+        <div className="h-20 flex justify-start items-center" dangerouslySetInnerHTML={{ __html: logo }} />
         <h3 className="sr-only">
           {heading}
         </h3>
         {bullets && bullets.length > 0 &&
-          <ul className="flex flex-wrap">
+          <ul className="flex flex-wrap mt-4">
             {bullets.map((bullet, index) => (
               <li key={index}>
                 {bullet}
                 {index + 1 < bullets.length &&
-                  <span className={`inline-block align-middle h-2 w-2 rounded-full mx-4 ${bulletColorClassName ? bulletColorClassName : ''}`} />
+                  <span className={`inline-block align-middle h-1 w-1 rounded-full mx-4 ${bulletColorClassName ? bulletColorClassName : ''}`} />
                 }
               </li>
             ))}

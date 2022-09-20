@@ -456,7 +456,7 @@ body {
   .section-2-ol[data-position="1"] li:nth-child(1) hr,
   .section-2-ol[data-position="2"] li:nth-child(2) hr,
   .section-2-ol[data-position="3"] li:nth-child(3) hr {
-    @apply w-80;
+    @apply w-full;
   }
 }
 

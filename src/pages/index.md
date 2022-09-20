@@ -80,7 +80,7 @@ numberedList:
   - image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_3.jpg
     heading: Focused on quality of output
     text: Our carefully crafted weekly design sprints lead to highly effective output.
-accordionHeading: Building products, not projects.
+accordionHeading: We're building products, not projects.
 accordionItems:
   - heading: Mobile apps
     body: We design apps that cut out the clutter – creating a seamless brand experience, ensuring efficiency and learnability within your product.
