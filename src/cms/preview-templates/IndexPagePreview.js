@@ -20,6 +20,7 @@ const IndexPagePreview = ({ entry, getAsset }) => {
         partnersCards={data.partnersCards || []}
         footerCTAHeading={data.footerCTAHeading}
         footerCTASubheading={data.footerCTASubheading}
+        footerCTALink={data.footerCTALink}
       />
     )
   } else {

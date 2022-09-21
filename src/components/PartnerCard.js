@@ -7,12 +7,14 @@ const PartnerCard = ({
   bulletColorClassName,
   bullets,
   description,
-  logo,
+  image,
 }) => {
   return (
     <div className={`block group backdrop-blur-3xl w-full px-8 z8 rounded-3xl border border-gray border-opacity-[0.08] text-cream font-light text-lg leading-normal min-h-[30rem] ${className ? className : ''}`}>
       <header className="relative">
-        <div className="h-20 flex justify-start items-center" dangerouslySetInnerHTML={{ __html: logo }} />
+        <div className="h-20 flex justify-start items-center">
+          <img className="self-center max-w-full max-h-full object-contain object-center" src={image.image.publicURL} alt={image.alt} /> 
+        </div>
         <h3 className="sr-only">
           {heading}
         </h3>
@@ -42,7 +44,7 @@ PartnerCard.propTypes = {
   bulletColorClassName: PropTypes.string,
   bullets: PropTypes.arrayOf(PropTypes.string),
   description: PropTypes.string,
-  logo: PropTypes.string
+  image: PropTypes.object
 };
 
 export default PartnerCard;

@@ -96,7 +96,6 @@ PartnerRow.propTypes = {
   partners: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string,
-      url: PropTypes.string,
       fontClassName: PropTypes.string,
     })
   ),

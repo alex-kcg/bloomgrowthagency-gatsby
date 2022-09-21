@@ -77,7 +77,16 @@ collections:
                 [
                   { label: Heading, name: heading, widget: text },
                   { label: Text, name: text, widget: text },
-                  { label: image, name: image, widget: image, choose_url: true },
+                  {
+                    label: Image,
+                    name: image,
+                    widget: object,
+                    fields:
+                      [
+                        { label: image, name: image, widget: image, choose_url: true },
+                        { label: Alt, name: alt, widget: string },
+                      ],
+                  },
                 ],
             }
           - { label: Accordion heading, name: accordionHeading, widget: string }
@@ -116,11 +125,39 @@ collections:
                     label: Bullets,
                     name: bullets,
                     widget: list,
-                  }
+                  },
+                  {
+                    label: Image,
+                    name: image,
+                    widget: object,
+                    fields:
+                      [
+                        { label: image, name: image, widget: image, choose_url: true },
+                        { label: Alt, name: alt, widget: string },
+                      ],
+                  },
                 ]
             }
           - { label: Footer CTA heading, name: footerCTAHeading, widget: string }
           - { label: Footer CTA subheading, name: footerCTASubheading, widget: string }
+          - {
+              label: Footer CTA Link,
+              name: footerCTALink,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: "URL",
+                    name: "url",
+                    widget: string
+                  },
+                  {
+                    label: "Text",
+                    name: "text",
+                    widget: string
+                  }
+                ]
+            }
   - name: "settings"
     label: "Settings"
     files:
@@ -139,7 +176,7 @@ collections:
                   widget: object,
                   fields:
                     [
-                      { label: Image, name: image, widget: image },
+                      { label: image, name: image, widget: image, choose_url: true },
                       { label: Alt, name: alt, widget: string },
                     ],
                 },

@@ -74,15 +74,21 @@ numberedList:
   - heading: A design studio
     text: Bloom is a product design studio, visualizing the future of products and
       digital ecosystems.
-    image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_1.png
+    image:
+      image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_1.png
+      alt: Alt
   - heading: Embedded teams
     text: We take an embedded approach to our partnerships to elevate design and
       product maturity.
-    image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_2.png
+    image:
+      image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_2.png
+      alt: Alt
   - heading: Focused on quality
     text: Our carefully crafted weekly design sprints lead to highly effective
       output.
-    image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_3.png
+    image:
+      image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_3.png
+      alt: Alt
 accordionHeading: We're building products, not projects.
 accordionItems:
   - heading: Mobile apps
@@ -113,6 +119,64 @@ accordionItems:
 partnersHeading: Powering fearless companies who value growth.
 partnersSubheading: Out of respect for our partners, our best work is under NDA.
   If you’d like to dive in, we’d be happy to chat.
+partnersCards:
+  - image:
+      image: /img/logo-chime.svg
+      alt: Chime logo
+    heading: Chime
+    description: Strategic design across the mobile application focused on growth, retention, and money movement experienced by over xxxxx members.
+    bulletColorClassName: bg-summer-rain
+    bullets:
+      - Series G
+      - Consumer Fintech
+  - image:
+      image: /img/logo-one.svg
+      alt: One logo
+    heading: One
+    description: Standing up a core banking application and design system to supply modern banking for the underserved. Powered by the good folks at Walmart.
+    bulletColorClassName: bg-electric-lime
+    bullets:
+      - Series B
+      - Consumer Fintech
+  - image:
+      image: /img/logo-mainstreet.svg
+      alt: MainStreet logo
+    heading: MainStreet
+    description: Designing alongside a new initiative product and engineering team to validate new products for over 2,000 businesses who have saved over 100,000 on the platform.
+    bulletColorClassName: bg-voltage
+    bullets:
+      - Series A
+      - B2b Fintech
+  - image:
+      image: /img/logo-insurify.svg
+      alt: Insurify logo
+    heading: Insurify
+    description: Partnering from series A to a 125m series B, on everything from brand, web, and web app experiences to help save consumers money on their auto insurance.
+    bulletColorClassName: bg-electric-lime
+    bullets:
+      - Series B
+      - Consumer Insurtech
+  - image:
+      image: /img/logo-caribou.svg
+      alt: Caribou logo
+    heading: Caribou
+    description: After a $65M injection from JP Morgan chase, a new brand, web ecosystem, and suite of web apps hit the market.
+    bulletColorClassName: bg-voltage
+    bullets:
+      - Series B
+      - Consumer Fintech
+  - image:
+      image: /img/logo-slice.svg
+      alt: Slice logo
+    heading: Slice
+    description: A fully integrated partner, our teams span across consumer applications, b2b web apps, and the core product suite used by xxxx small businesses to excel their consumer experiences.
+    bulletColorClassName: bg-summer-rain
+    bullets:
+      - Series D
+      - Food Tech
 footerCTAHeading: Are you building a design team?
 footerCTASubheading: We’re helping partners build world class design organizations with our pipeline. Interested?
+footerCTALink:
+  url: "#"
+  text: Let’s chat pipeline
 ---
