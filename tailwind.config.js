@@ -83,7 +83,7 @@ module.exports = {
       '8xl': ['4.5rem', { lineHeight: '5rem' }],
       '9xl': ['5rem', { lineHeight: '5.5rem' }],
       '10xl': ['5.5rem', { lineHeight: '6rem' }],
-      '11xl': ['6rem', { lineHeight: '6.5rem' }],
+      '11xl': ['6rem', { lineHeight: '7rem' }],
     },
     extend: {
       spacing: {
@@ -92,6 +92,14 @@ module.exports = {
         30: '7.5rem',
       },
       letterSpacing: {
+        1: '1px',
+        2: '2px',
+        3: '3px',
+        4: '4px',
+        '-1': '-1px',
+        '-2': '-2px',
+        '-3': '-3px',
+        '-4': '-4px',
         snug: '-0.0125em',
       },
       blur: {

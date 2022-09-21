@@ -710,8 +710,8 @@ export const IndexPageTemplate = ({
           </div>
           <div className="w-full md:min-h-[200vh]">
             <div className="sticky top-0 w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:min-h-screen md:pt-0 md:mb-60">
-              <h1 className="hero-headline-wrapper leading-[1.05em] font-serif font-light tracking-tighter text-4xl md:text-10xl">
-                <span className="block max-w-xs mx-auto md:max-w-5xl">
+              <h1 className="hero-headline-wrapper font-serif font-light tracking-snug text-4xl md:text-11xl md:-tracking-4">
+                <span className="block mx-auto sm:w-5/6 md:w-full md:max-w-5xl">
                   <SplitTextOnWordBoundaries className="hero-headline overflow-hidden" text={heading} />
                 </span>
               </h1>
