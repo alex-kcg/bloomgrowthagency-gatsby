@@ -1,7 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
-import { getImage } from "gatsby-plugin-image";
 import { motion } from "framer-motion";
 import settings from "../data/settings.yml"
 import Layout from "../components/Layout";
@@ -14,8 +13,6 @@ import SplitTextOnWordBoundaries from "../components/SplitTextOnWordBoundaries";
 import arrowIcon from "../img/arrow.svg"
 
 const { useEffect, useRef } = React;
-
-const image = getImage(image) || image;
 
 // eslint-disable-next-line
 export const IndexPageTemplate = ({
