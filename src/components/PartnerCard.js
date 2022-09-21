@@ -10,7 +10,7 @@ const PartnerCard = ({
   image,
 }) => {
   return (
-    <div className={`block group backdrop-blur-3xl w-full p-8 rounded-3xl border border-gray border-opacity-[0.08] text-cream font-light text-lg leading-normal min-h-[30rem] ${className ? className : ''}`}>
+    <div className={`block group backdrop-blur-3xl w-full p-8 rounded-3xl border border-gray border-opacity-[0.08] text-cream font-light text-lg leading-8 min-h-[30rem] ${className ? className : ''}`}>
       <header className="relative">
         <div className="h-20 flex justify-start items-center">
           <img className="self-center max-w-full max-h-full object-contain object-center" src={image.image.publicURL} alt={image.alt} /> 

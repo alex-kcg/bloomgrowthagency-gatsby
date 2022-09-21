@@ -8,7 +8,7 @@ const OrderedListItem = ({ image, heading, text }) => {
       <div className="fixed-image fixed z-10 bottom-0 inset-x-0 w-full pointer-events-none transition-opacity ease-in-out duration-300 opacity-0 md:hidden">
         <img src={image.image.publicURL} alt={image.alt} className="relative z-20 block w-full max-w-sm mx-auto" />
       </div>
-      <span className="block font-serif tracking-tighter font-light text-4xl md:text-6xl">
+      <span className="block font-serif tracking-snug font-light text-4xl md:text-6xl md:-tracking-1">
         <SplitTextOnWordBoundaries text={heading} />
       </span>
       <hr className="mt-4 mb-6 border-slate max-w-full md:transition-all md:duration-500 md:ease-out md:delay-300" />

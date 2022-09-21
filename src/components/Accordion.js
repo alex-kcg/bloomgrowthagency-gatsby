@@ -10,7 +10,7 @@ const Accordion = ({ accordionItem }) => {
     <li className="border-b border-slate overflow-hidden mb-2">
       <motion.h3
         initial={false}
-        className="relative group cursor-pointer font-serif font-light tracking-snug text-3xl py-6 pr-16 md:text-5xl"
+        className="relative group cursor-pointer font-serif font-light tracking-snug text-3xl py-6 pr-16 leading-normal md:text-5xl md:-tracking-1"
         onClick={() => setExpanded(expanded ? false : true)}
       >
         <span

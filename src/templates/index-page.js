@@ -778,7 +778,7 @@ export const IndexPageTemplate = ({
                 <h2 className="font-serif font-light tracking-tight text-5xl mb-6 md:text-8xl">
                   <SplitTextOnWordBoundaries text={partnersHeading} />
                 </h2>
-                <p className="font-light text-lg leading-normal md:text-2xl md:leading-normal">
+                <p className="font-light text-lg leading-normal md:text-2xl md:leading-10">
                   <SplitTextOnWordBoundaries text={partnersSubheading} />
                 </p>
               </div>
