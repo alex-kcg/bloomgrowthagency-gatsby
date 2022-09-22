@@ -1,8 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import { motion } from "framer-motion";
-import settings from "../data/settings.yml"
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import PartnerRow from "../components/PartnerRow";
@@ -10,7 +9,6 @@ import Accordion from "../components/Accordion";
 import PartnerCard from "../components/PartnerCard";
 import OrderedListItem from "../components/OrderedListItem";
 import SplitTextOnWordBoundaries from "../components/SplitTextOnWordBoundaries";
-import arrowIcon from "../img/arrow.svg"
 
 const { useEffect, useRef } = React;
 
@@ -710,7 +708,7 @@ export const IndexPageTemplate = ({
         <div className="foreground relative z-40 w-full bg-not-dark-blue md:bg-transparent">
           <div className="absolute inset-x-0 top-0 w-full bg-no-repeat md:hidden">
             <video poster="/img/Phase1-v10mobile-static.png" className="w-full max-w-sm mx-auto aspect-square object-contain object-top" preload="true" autoPlay muted>
-              <source src="/img/Phase1-v10mobile.mp4" type="video/mp4" /> 
+              <source src="/img/Phase1-v11mobile_BG.mp4" type="video/mp4" /> 
             </video>
           </div>
           <div className="w-full md:min-h-[200vh]">
@@ -916,8 +914,8 @@ export const IndexPageTemplate = ({
             </div>
           </div>
           <div className="relative -z-10 overflow-x-hidden md:hidden">
-            <video className="relative z-10 object-contain object-bottom aspect-video w-[175%] -ml-[25%] -mt-[25%] max-w-none" preload="true" autoPlay loop muted>
-              <source src="/img/Phase6-v5.mp4" type="video/mp4" /> 
+            <video className="relative z-10 object-cover object-top w-full h-80 sm:h-auto sm:aspect-video" preload="true" autoPlay loop muted>
+              <source src="/img/Phase6-v5-Mobile.mp4" type="video/mp4" /> 
             </video>
           </div>
         </div>
