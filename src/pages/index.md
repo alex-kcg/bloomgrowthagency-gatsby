@@ -75,19 +75,19 @@ numberedList:
     text: Bloom is a product design studio, visualizing the future of products and
       digital ecosystems.
     image:
-      image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_1.png
+      image: /img/BG-SiteAnim-PlanterModel-Phase2-v11mobile1.png
       alt: Alt
   - heading: Embedded teams
     text: We take an embedded approach to our partnerships to elevate design and
       product maturity.
     image:
-      image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_2.png
+      image: /img/BG-SiteAnim-PlanterModel-Phase2-v11mobile2.png
       alt: Alt
   - heading: Focused on quality
     text: Our carefully crafted weekly design sprints lead to highly effective
       output.
     image:
-      image: /img/BG-SiteAnim-PlanterModel-Phase2-v8-frame_DeMain_m_3.png
+      image: /img/BG-SiteAnim-PlanterModel-Phase2-v11mobile3.png
       alt: Alt
 accordionHeading: We're building products, not projects.
 accordionItems:
