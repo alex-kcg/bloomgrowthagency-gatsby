@@ -215,8 +215,12 @@ export const IndexPageTemplate = ({
       }
     }
 
-    const initSectionOne = () => {
+
+    const initSectionOneBackground = () => {
       runSectionOneSequence = true;
+    }
+
+    const initSectionOneForeground = () => {
       body.classList.add('navbar-shadow');
 
       setTimeout(() => {
@@ -235,7 +239,7 @@ export const IndexPageTemplate = ({
     } else {
       setTimeout(() => {
         if (sectionOneSequencesLoaded) {
-          initSectionOne();
+          initSectionOneForeground();
         } else {
           sectionOneFirstTimeoutFailed = true;
         }
@@ -254,7 +258,7 @@ export const IndexPageTemplate = ({
       sectionOneLoopIntroSequence();
 
       if (sectionOneFirstTimeoutFailed) {
-        initSectionOne();
+        initSectionOneForeground();
       }
 
       cacheImages(imagesPhaseTwo);
@@ -449,7 +453,8 @@ export const IndexPageTemplate = ({
         const sectionOneScrollFraction = sectionOneContainerScrollTop / sectionOneMaxScrollTop;
 
         if (!runSectionOneSequence && sectionOneScrollFraction > 0.05) {
-          initSectionOne();
+          initSectionOneBackground();
+          initSectionOneForeground();
         }
 
         if (sectionOneScrollFraction >= 0 && sectionOneScrollFraction < 1.2) {
