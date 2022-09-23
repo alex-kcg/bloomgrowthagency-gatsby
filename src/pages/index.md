@@ -94,28 +94,22 @@ accordionItems:
   - heading: Mobile apps
     body: We design apps that cut out the clutter – creating a seamless brand
       experience, ensuring efficiency and learnability within your product.
-    newtype: true
   - heading: Web apps
     body: Description text lorem ipsum dolor sit amet, consectetur adipiscing elit.
       At vulputate phasellus scelerisque adipiscing.
-    newtype: true
   - heading: Digital ecosystems
     body: We rebuild and relaunch .Com marketing sites with a powerful brand
       presence geared towards customer interest, engagement, and conversion.
-    newtype: false
   - heading: Design systems
     body: We take a systems approach to everything we build, so products and .coms
       can shift at scale, quickly and easily for design teams as they need it.
-    newtype: false
   - heading: Growth funnels
     body: We work to identify the opportunities for growth from day one – as
       beginning from your .com and carrying throughout your entire product.
-    newtype: false
   - heading: Research
     body: From user testing to user interviews, our team of UX researchers uncover
       every need in your customer base, then employ those insights to enhance
       the design.
-    newtype: false
 partnersHeading: Powering fearless companies who value growth.
 partnersSubheading: Out of respect for our partners, our best work is under NDA.
   If you’d like to dive in, we’d be happy to chat.

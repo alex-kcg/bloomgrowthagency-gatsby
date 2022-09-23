@@ -949,7 +949,6 @@ IndexPageTemplate.propTypes = {
   accordionHeading: PropTypes.string,
   accordionItems: PropTypes.arrayOf(
     PropTypes.shape({
-      newtype: PropTypes.bool,
       heading: PropTypes.string,
       body: PropTypes.string,
     }),
@@ -1030,7 +1029,6 @@ export const pageQuery = graphql`
         }
         accordionHeading
         accordionItems {
-          newtype
           heading
           body
         }

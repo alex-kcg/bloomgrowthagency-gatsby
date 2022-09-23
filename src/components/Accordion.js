@@ -13,21 +13,15 @@ const Accordion = ({ accordionItem }) => {
         className="relative group cursor-pointer font-serif font-light tracking-snug text-3xl py-6 pr-16 leading-normal md:text-5xl md:-tracking-1"
         onClick={() => setExpanded(expanded ? false : true)}
       >
-        <span
-          className={`bg-animate group-bg-animate bg-animate-electric-lime ${accordionItem.newtype ? 'group-bg-animate-in-out' : 'transition-colors duration-500 md:group-hover:text-not-dark-blue'}`}
-        >
+        <span className="bg-animate group-bg-animate bg-animate-electric-lime group-bg-animate-in-out transition-colors duration-150 group-active:bg-electric-lime group-active:text-not-dark-blue md:group-active:bg-transparent">
           <span className="relative">
             {accordionItem.heading}
           </span>
         </span>
-        <button
-          className={`absolute right-0 top-1/2 h-10 w-10 transform -translate-y-1/2 text-cream border border-slate rounded-full bg-animate group-bg-animate bg-animate-electric-lime  ${accordionItem.newtype ? 'group-bg-animate-in-out' : 'md:group-hover:border-not-dark-blue md:group-hover:text-not-dark-blue'}`}
-        >
-          <svg className={`absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 h-3 w-3 origin-center transition-transform ease-out duration-500 ${expanded ? 'rotate-180' : ''}`} width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path className={`fill-current ${expanded ? '' : ''}`} d="M6.75 1C6.75 0.585786 6.41421 0.25 6 0.25C5.58579 0.25 5.25 0.585786 5.25 1V5.25H1C0.585787 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585787 6.75 1 6.75H5.25V11C5.25 11.4142 5.58579 11.75 6 11.75C6.41421 11.75 6.75 11.4142 6.75 11V6.75H11C11.4142 6.75 11.75 6.41421 11.75 6C11.75 5.58579 11.4142 5.25 11 5.25H6.75V1Z" fill="#F8F7F3"/>
-          </svg>
-          <svg className={`absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 h-3 w-3 origin-center transition-transform ease-out duration-500 ${expanded ? 'rotate-180' : '-rotate-90'}`} width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path className={`fill-current ${expanded ? '' : ''}`} d="M6.75 1C6.75 0.585786 6.41421 0.25 6 0.25C5.58579 0.25 5.25 0.585786 5.25 1V5.25H1C0.585787 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585787 6.75 1 6.75H5.25V11C5.25 11.4142 5.58579 11.75 6 11.75C6.41421 11.75 6.75 11.4142 6.75 11V6.75H11C11.4142 6.75 11.75 6.41421 11.75 6C11.75 5.58579 11.4142 5.25 11 5.25H6.75V1Z" fill="#F8F7F3"/>
+        <button className="absolute right-0 top-1/2 h-10 w-10 transform -translate-y-1/2 text-cream border border-slate rounded-full bg-animate group-bg-animate transition-colors duration-150 bg-animate-electric-lime group-active:bg-electric-lime group-active:text-not-dark-blue md:bg-transparent md:group-hover:border-not-dark-blue md:group-hover:text-not-dark-blue">
+          <svg className={`absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 h-6 w-6`} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path className={`fill-current origin-center transition-transform ease-out duration-500 ${expanded ? 'rotate-180' : ''}`} d="M11.25 11.25H7C6.58579 11.25 6.25 11.5858 6.25 12C6.25 12.4142 6.58579 12.75 7 12.75H11.25L12.75 12.75H17C17.4142 12.75 17.75 12.4142 17.75 12C17.75 11.5858 17.4142 11.25 17 11.25H12.75H11.25Z" />
+            <path className={`fill-current origin-center transition-transform ease-out duration-500 ${expanded ? 'rotate-180' : '-rotate-90'}`} d="M11.25 11.25H7C6.58579 11.25 6.25 11.5858 6.25 12C6.25 12.4142 6.58579 12.75 7 12.75H11.25L12.75 12.75H17C17.4142 12.75 17.75 12.4142 17.75 12C17.75 11.5858 17.4142 11.25 17 11.25H12.75H11.25Z" />
           </svg>
         </button>
       </motion.h3>
@@ -56,7 +50,6 @@ const Accordion = ({ accordionItem }) => {
 
 Accordion.propTypes = {
   accordionItem: PropTypes.shape({
-    newtype: PropTypes.bool,
     heading: PropTypes.string,
     body: PropTypes.string,
   }),
