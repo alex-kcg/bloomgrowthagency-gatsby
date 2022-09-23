@@ -103,12 +103,12 @@ export const IndexPageTemplate = ({
     const sectionFiveFadeIn = sectionFiveContainer.current.querySelectorAll('.fade-in');
     const sectionFiveFooter = sectionFiveContainer.current.querySelectorAll('.fade-in-footer');
     const sectionFiveHorizontalRules = sectionFiveContainer.current.querySelectorAll('hr');
-    let sectionFiveActive = false;
 
     const mobileScrollAnimationOffset = 300;
 
-    let imagesPhaseOne = {};
-    let imagesPhaseTwo = {};
+    const imagesMobile = {};
+    const imagesPhaseOne = {};
+    const imagesPhaseTwo = {};
 
     // Function to check if is mobile layout
     const isMobile = () => {
@@ -132,17 +132,6 @@ export const IndexPageTemplate = ({
 
       await Promise.all(promises);
     };
-
-    // Push phase one images to array to prepare for caching
-    for (let i = 0; i < sectionOneFrameCount; i++) {
-      imagesPhaseOne[currentFrame(sectionOneFilename, i)] = new Image();
-    }
-    for (let i = 0; i < sectionTwoFrameCount; i++) {
-      imagesPhaseTwo[currentFrame(sectionTwoFilename, i)] = new Image();
-    }
-    for (let i = 0; i < sectionFourFrameCount; i++) {
-      imagesPhaseTwo[currentFrame(sectionFourFilename, i)] = new Image();
-    }
 
     // Section One start
     const updateSectionOneImage = () => {
@@ -182,7 +171,7 @@ export const IndexPageTemplate = ({
               requestAnimationFrame(() => updateSectionOneImage())
             }
 
-            if ((index + 1) == sectionOneFrameCount) {
+            if ((index + 1) === sectionOneFrameCount) {
               sectionOneLoopOutroSequence();
             }
           }, sectionOnePlaybackSpeedInterval * (index - sectionOneLoopCount + 1))
@@ -213,6 +202,19 @@ export const IndexPageTemplate = ({
       }
     }
 
+    // Push phase images to array to prepare for caching
+    document.querySelectorAll('img.mobile-preload').forEach((img) => {
+      imagesMobile[img.src] = img;
+    });
+    for (let i = 0; i < sectionOneFrameCount; i++) {
+      imagesPhaseOne[currentFrame(sectionOneFilename, i)] = new Image();
+    }
+    for (let i = 0; i < sectionTwoFrameCount; i++) {
+      imagesPhaseTwo[currentFrame(sectionTwoFilename, i)] = new Image();
+    }
+    for (let i = 0; i < sectionFourFrameCount; i++) {
+      imagesPhaseTwo[currentFrame(sectionFourFilename, i)] = new Image();
+    }
 
     const initSectionOneBackground = () => {
       runSectionOneSequence = true;
@@ -229,12 +231,28 @@ export const IndexPageTemplate = ({
     }
 
     if (isMobile()) {
+      body.classList.remove('md:overflow-hidden');
+      sectionOneSequencesLoaded = true;
+
+      cacheImages(imagesMobile);
+
+      initSectionOneBackground();
       setTimeout(() => {
-        sectionOneAnimateWords.forEach((el) => {
-          el.classList.add('active');
-        });
-      }, 1500);
+        initSectionOneForeground();
+      }, 1000);
     } else {
+      cacheImages(imagesPhaseOne).then(() => {
+        sectionOneSequencesLoaded = true;
+        body.classList.remove('md:overflow-hidden');
+        sectionOneLoopIntroSequence();
+  
+        if (sectionOneFirstTimeoutFailed) {
+          initSectionOneForeground();
+        }
+  
+        cacheImages(imagesPhaseTwo);
+      }).catch((err) => console.error(err));
+
       setTimeout(() => {
         if (sectionOneSequencesLoaded) {
           initSectionOneForeground();
@@ -249,18 +267,6 @@ export const IndexPageTemplate = ({
     sectionOneImage.onload = function(){
       sectionOneContext.drawImage(sectionOneImage, 0, 0);
     }
-
-    cacheImages(imagesPhaseOne).then(() => {
-      sectionOneSequencesLoaded = true;
-      body.classList.remove('md:overflow-hidden');
-      sectionOneLoopIntroSequence();
-
-      if (sectionOneFirstTimeoutFailed) {
-        initSectionOneForeground();
-      }
-
-      cacheImages(imagesPhaseTwo);
-    }).catch((err) => console.error(err));
 
     // Section Two start
     const updateSectionTwoImage = index => {
@@ -308,7 +314,6 @@ export const IndexPageTemplate = ({
       if (isMobile()) {
         // Section Two
         const sectionTwoContainerScrollTop = window.innerHeight - sectionTwoContainer.current.getBoundingClientRect().top;
-        const sectionTwoContainerScrollBottom = sectionTwoContainer.current.getBoundingClientRect().top;
         const sectionTwoMaxScrollTop = sectionTwoContainer.current.scrollHeight + (window.innerHeight / 2);
         const sectionTwoScrollFraction = sectionTwoContainerScrollTop / sectionTwoMaxScrollTop;
 
@@ -388,7 +393,6 @@ export const IndexPageTemplate = ({
         // Section Five
         const sectionFiveContainerScrollTop = window.innerHeight - sectionFiveContainer.current.getBoundingClientRect().top;
 
-        sectionFiveActive = false;
         sectionFiveContainer.current.classList.remove('md:pointer-events-none');
 
         if (sectionFiveContainerScrollTop > mobileScrollAnimationOffset) {
@@ -640,8 +644,6 @@ export const IndexPageTemplate = ({
         }
 
         if (sectionFiveScrollFraction >= 0) {
-          sectionFiveActive = true;
-
           sectionFiveContainer.current.classList.remove('md:pointer-events-none');
 
           sectionFiveHorizontalRules.forEach((el) => {
@@ -666,8 +668,6 @@ export const IndexPageTemplate = ({
             el.classList.remove('opacity-0');
           });
         } else {
-          sectionFiveActive = false;
-
           sectionFiveContainer.current.classList.add('md:pointer-events-none');
 
           sectionFiveHorizontalRules.forEach((el) => {
@@ -797,11 +797,9 @@ export const IndexPageTemplate = ({
               <div className="max-w-sm mx-auto sm:max-w-none">
                 <div className="flex flex-wrap gap-y-10 -mx-4 items-stretch sm:-mx-3 sm:gap-y-6">
                   {partnersCards.map((card, index) => (
-                    <>
                     <div key={index} className="flex w-full px-4 sm:px-3 sm:w-1/2 md:w-1/3">
                       <PartnerCard image={card.image} heading={card.heading} description={card.description} bulletColorClassName={card.bulletColorClassName} bullets={card.bullets} />
                     </div>
-                    </>
                   ))}
                 </div>
               </div>
