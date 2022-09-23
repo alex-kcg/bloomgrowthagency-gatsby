@@ -941,7 +941,7 @@ IndexPageTemplate.propTypes = {
   ),
   numberedList: PropTypes.arrayOf(
     PropTypes.shape({
-      image: PropTypes.object,
+      image: PropTypes.oneOfType([PropTypes.string,PropTypes.object]),
       heading: PropTypes.string,
       text: PropTypes.string,
     }),
@@ -962,7 +962,7 @@ IndexPageTemplate.propTypes = {
       description: PropTypes.string,
       bulletColorClassName: PropTypes.string,
       bullets: PropTypes.arrayOf(PropTypes.string),
-      image: PropTypes.object,
+      image: PropTypes.oneOfType([PropTypes.string,PropTypes.object]),
     }),
   ),
   footerCTAHeading: PropTypes.string,
