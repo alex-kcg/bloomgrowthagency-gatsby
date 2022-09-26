@@ -105,6 +105,9 @@ module.exports = {
       blur: {
         '3xl': '56px',
       },
+      transitionDelay: {
+        250: '250ms',
+      },
     },
   },
   plugins: [],

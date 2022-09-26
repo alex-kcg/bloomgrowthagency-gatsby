@@ -77,7 +77,7 @@ body {
 }
 
 .navbar {
-  @apply opacity-0 transition-all duration-500 delay-1000 ease-out;
+  @apply opacity-0 transition-all duration-500 delay-250 ease-out;
 
   transform: rotateX(90deg);
 }

@@ -235,12 +235,13 @@ export const IndexPageTemplate = ({
       body.classList.remove('md:overflow-hidden');
       sectionOneSequencesLoaded = true;
 
+
       cacheImages(imagesMobile);
 
       initSectionOneBackground();
       setTimeout(() => {
         initSectionOneForeground();
-      }, 1000);
+      }, 750);
     } else {
       cacheImages(imagesPhaseOne).then(() => {
         sectionOneSequencesLoaded = true;
@@ -260,7 +261,7 @@ export const IndexPageTemplate = ({
         } else {
           sectionOneFirstTimeoutFailed = true;
         }
-      }, 3000);
+      }, 1000);
     }
 
     // Render the first frame while caching
@@ -455,7 +456,7 @@ export const IndexPageTemplate = ({
         const sectionOneMaxScrollTop = sectionOneContainer.current.scrollHeight - window.innerHeight;
         const sectionOneScrollFraction = sectionOneContainerScrollTop / sectionOneMaxScrollTop;
 
-        if (!runSectionOneSequence && sectionOneScrollFraction > 0.05) {
+        if (!runSectionOneSequence && sectionOneContainerScrollTop > 0) {
           initSectionOneBackground();
           initSectionOneForeground();
         }
