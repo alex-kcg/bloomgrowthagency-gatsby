@@ -7,7 +7,7 @@ const Accordion = ({ accordionItem }) => {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <li className="border-b border-slate overflow-hidden mb-2">
+    <li className="border-b border-slate mb-2">
       <motion.h3
         initial={false}
         className="relative group cursor-pointer font-serif font-light tracking-snug text-3xl py-6 pr-16 leading-normal md:text-5xl md:-tracking-1"
@@ -25,25 +25,27 @@ const Accordion = ({ accordionItem }) => {
           </svg>
         </button>
       </motion.h3>
-      <AnimatePresence initial={false}>
-        {expanded && (
-          <motion.div
-            key="content"
-            initial="collapsed"
-            animate="open"
-            exit="collapsed"
-            variants={{
-              open: { opacity: 1, height: "auto" },
-              collapsed: { opacity: 0, height: 0 }
-            }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-          >
-            <p className="pb-6 text-base text-gray font-light leading-relaxed max-w-[37.5rem] md:text-lg">
-              {accordionItem.body}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className="overflow-hidden">
+        <AnimatePresence initial={false}>
+          {expanded && (
+            <motion.div
+              key="content"
+              initial="collapsed"
+              animate="open"
+              exit="collapsed"
+              variants={{
+                open: { opacity: 1, height: "auto" },
+                collapsed: { opacity: 0, height: 0 }
+              }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+            >
+              <p className="pb-6 text-base text-gray font-light leading-relaxed max-w-[37.5rem] md:text-lg">
+                {accordionItem.body}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </li>
   );
 };
