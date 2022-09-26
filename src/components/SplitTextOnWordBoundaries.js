@@ -17,9 +17,11 @@ const SplitTextOnWordBoundaries = ({ className, text, link }) => {
         ))}
         {(link && link.href && link.text) && (
           <span className="animate-word-wrapper inline-block align-top overflow-hidden pb-[0.1em] -mb-[0.1em]">
-            <a href={link.href} className="animate-word inline-block transition-all ease-out duration-500 transform-gpu text-electric-lime underline">
-              {link.text}
-            </a>
+            <span className="animate-word inline-block transition-all ease-out duration-500 transform-gpu">
+              <a href={link.href} className="transition-colors duration-300 ease-out underline hover:text-electric-lime">
+                {link.text}
+              </a>
+            </span>
           </span>
         )}
       </span>

@@ -495,11 +495,11 @@ export const IndexPageTemplate = ({
         }
 
         if (sectionTwoScrollFraction > 0.5) {
-          sectionTwoCanvas.current.classList.add('duration-700');
+          sectionTwoCanvas.current.classList.add('duration-500');
           sectionTwoCanvas.current.classList.remove('duration-150');
         } else {
           sectionTwoCanvas.current.classList.add('duration-150');
-          sectionTwoCanvas.current.classList.remove('duration-700');
+          sectionTwoCanvas.current.classList.remove('duration-500');
         }
 
         if (sectionTwoScrollFraction > 1.1) {
@@ -856,22 +856,22 @@ export const IndexPageTemplate = ({
                   </h4>
                   <ul className="flex flex-col items-start space-y-1 mb-14">
                     <li>
-                      <a className="group w-full rounded-xl flex flex-wrap justify-start items-center space-x-4 px-2 py-1 text-lg leading-8 transition-color duration-500 ease-out text-cream hover:bg-opacity-[0.08] hover:bg-cream hover:text-electric-lime" href="mailto:growth@bloomgrowthagency.com">
+                      <a className="group w-full rounded-xl flex flex-wrap justify-start items-center space-x-4 px-2 py-1 text-lg leading-8 transition-color duration-300 ease-out text-cream hover:bg-opacity-[0.08] hover:bg-cream hover:text-electric-lime" href="mailto:growth@bloomgrowthagency.com">
                         <svg className="block w-5 h-auto" width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path className="fill-current" d="M5.28924 0.907491C8.42388 0.635003 11.5763 0.635003 14.7109 0.907491L16.2211 1.03877C17.2265 1.12617 18.0876 1.72584 18.5337 2.58361C18.5908 2.69335 18.548 2.82621 18.4428 2.89132L12.1769 6.77024C10.833 7.60216 9.1385 7.61962 7.77778 6.81556L1.46995 3.0882C1.36804 3.02798 1.32126 2.90402 1.36719 2.79492C1.77535 1.82536 2.69298 1.13318 3.77901 1.03877L5.28924 0.907491Z" />
                           <path className="fill-current" d="M1.36206 4.76676C1.20609 4.6746 1.00709 4.77377 0.988912 4.95402C0.735176 7.46965 0.796587 10.0091 1.17314 12.5132C1.37166 13.8333 2.44907 14.8454 3.77901 14.961L5.28924 15.0923C8.42388 15.3647 11.5763 15.3647 14.7109 15.0923L16.2211 14.961C17.5511 14.8454 18.6285 13.8333 18.827 12.5132C19.2145 9.93613 19.2683 7.32162 18.9882 4.73415C18.9686 4.55264 18.7662 4.45529 18.611 4.55139L12.9664 8.04564C11.1482 9.17118 8.85566 9.19479 7.01468 8.10695L1.36206 4.76676Z" />
                         </svg>
-                        <span className="transition-color duration-500 ease-out text-cream group-hover:text-white">
+                        <span className="transition-color duration-300 ease-out text-cream group-hover:text-white">
                           growth@bloomgrowthagency.com
                         </span>
                       </a>
                     </li>
                     <li>
-                      <a className="group w-full rounded-xl flex flex-wrap justify-start items-center space-x-4 px-2 py-1 text-lg leading-8 transition-color duration-500 ease-out text-cream hover:bg-opacity-[0.08] hover:bg-cream hover:text-electric-lime" href="tel:+14136363186">
+                      <a className="group w-full rounded-xl flex flex-wrap justify-start items-center space-x-4 px-2 py-1 text-lg leading-8 transition-color duration-300 ease-out text-cream hover:bg-opacity-[0.08] hover:bg-cream hover:text-electric-lime" href="tel:+14136363186">
                         <svg className="block w-5 h-auto" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path className="fill-current" d="M1.00017 6.86053C2.91657 11.0344 6.32657 14.3529 10.5661 16.1519L11.2457 16.4547C12.8005 17.1475 14.6283 16.6212 15.5766 15.2077L16.4647 13.884C16.7534 13.4536 16.6655 12.8739 16.2622 12.5485L13.2503 10.1187C12.8079 9.76184 12.1574 9.84496 11.819 10.3016L10.8873 11.5589C8.49646 10.3795 6.55541 8.43849 5.37607 6.04768L6.63332 5.11596C7.08998 4.77754 7.17311 4.12702 6.81622 3.68464L4.38635 0.672698C4.061 0.269416 3.4815 0.181449 3.05113 0.470018L1.71829 1.36372C0.295947 2.31742 -0.227434 4.16027 0.481298 5.71922L0.999386 6.85884L1.00017 6.86053Z" />
                         </svg>
-                        <span className="transition-color duration-500 ease-out text-cream group-hover:text-white">
+                        <span className="transition-color duration-300 ease-out text-cream group-hover:text-white">
                           +1 413-636-3186
                         </span>
                       </a>
