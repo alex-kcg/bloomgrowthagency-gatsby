@@ -553,7 +553,7 @@ export const IndexPageTemplate = ({
 
         // Section Three
         const sectionThreeContainerScrollTop = window.innerHeight - sectionThreeContainer.current.getBoundingClientRect().top;
-        const sectionThreeMaxScrollTop = (window.innerHeight / 2) + sectionThreeContainer.current.scrollHeight;
+        const sectionThreeMaxScrollTop = (window.innerHeight * 2 / 3) + sectionThreeContainer.current.scrollHeight;
         const sectionThreeScrollFraction = sectionThreeContainerScrollTop / sectionThreeMaxScrollTop;
 
         if (sectionTwoScrollFraction > 1.1 && sectionThreeScrollFraction < 1) {
@@ -748,7 +748,7 @@ export const IndexPageTemplate = ({
         </div>
       </section>
       <section className="relative z-20 md:pointer-events-none" ref={sectionThreeContainer}>
-        <div ref={sectionThreeForeground} className="foreground relative z-40 w-full transition-all duration-1000 ease-out transform bg-not-dark-blue md:bg-transparent">
+        <div ref={sectionThreeForeground} className="foreground relative z-40 w-full transition-all duration-700 ease-out transform bg-not-dark-blue md:bg-transparent md:pt-[25vh]">
           <div className="container py-20 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
               <h2 className="font-serif font-light tracking-snug text-4xl mb-20 md:text-8xl">
@@ -763,7 +763,7 @@ export const IndexPageTemplate = ({
           </div>
         </div>
       </section>
-      <div className="h-[50vh] w-full hidden md:block" />
+      <div className="h-[66.667vh] w-full hidden md:block" />
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
