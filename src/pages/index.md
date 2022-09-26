@@ -112,7 +112,10 @@ accordionItems:
       the design.
 partnersHeading: Powering fearless companies who value growth.
 partnersSubheading: Out of respect for our partners, our best work is under NDA.
-  If you’d like to dive in, we’d be happy to chat.
+  If you’d like to dive in, we’d be happy 
+partnersSubheadingLink:
+  href: "#chat"
+  text: to chat.
 partnersCards:
   - image:
       image: /img/logo-chime.svg

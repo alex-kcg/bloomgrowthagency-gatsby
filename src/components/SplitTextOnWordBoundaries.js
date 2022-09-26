@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SplitTextOnWordBoundaries = ({ className, text, delay = 0 }) => {
+const SplitTextOnWordBoundaries = ({ className, text, link }) => {
   return (
     <>
       <span className={`animate-words leading-none ${className ? className : ''}`}>
@@ -15,6 +15,13 @@ const SplitTextOnWordBoundaries = ({ className, text, delay = 0 }) => {
             {' '}
           </React.Fragment>
         ))}
+        {(link && link.href && link.text) && (
+          <span className="animate-word-wrapper inline-block align-top overflow-hidden pb-[0.1em] -mb-[0.1em]">
+            <a href={link.href} className="animate-word inline-block transition-all ease-out duration-500 transform-gpu text-electric-lime underline">
+              {link.text}
+            </a>
+          </span>
+        )}
       </span>
     </>
   );
@@ -23,7 +30,7 @@ const SplitTextOnWordBoundaries = ({ className, text, delay = 0 }) => {
 SplitTextOnWordBoundaries.propTypes = {
   className: PropTypes.string,
   text: PropTypes.string,
-  delay: PropTypes.number,
+  link: PropTypes.object,
 };
 
 export default SplitTextOnWordBoundaries;

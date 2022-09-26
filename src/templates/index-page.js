@@ -23,6 +23,7 @@ export const IndexPageTemplate = ({
   accordionItems,
   partnersHeading,
   partnersSubheading,
+  partnersSubheadingLink,
   partnersCards,
   footerCTAHeading,
   footerCTASubheading,
@@ -782,7 +783,7 @@ export const IndexPageTemplate = ({
                   <SplitTextOnWordBoundaries text={partnersHeading} />
                 </h2>
                 <p className="font-light text-lg leading-normal md:text-2xl md:leading-10">
-                  <SplitTextOnWordBoundaries text={partnersSubheading} />
+                  <SplitTextOnWordBoundaries text={partnersSubheading} link={partnersSubheadingLink} />
                 </p>
               </div>
             </div>
@@ -953,6 +954,7 @@ IndexPageTemplate.propTypes = {
   ),
   partnersHeading: PropTypes.string,
   partnersSubheading: PropTypes.string,
+  partnersSubheadingLink: PropTypes.object,
   partnersCards: PropTypes.arrayOf(
     PropTypes.shape({
       heading: PropTypes.string,
@@ -982,6 +984,7 @@ const IndexPage = ({ data }) => {
         accordionItems={frontmatter.accordionItems}
         partnersHeading={frontmatter.partnersHeading}
         partnersSubheading={frontmatter.partnersSubheading}
+        partnersSubheadingLink={frontmatter.partnersSubheadingLink}
         partnersCards={frontmatter.partnersCards}
         footerCTAHeading={frontmatter.footerCTAHeading}
         footerCTASubheading={frontmatter.footerCTASubheading}
@@ -1032,6 +1035,10 @@ export const pageQuery = graphql`
         }
         partnersHeading
         partnersSubheading
+        partnersSubheadingLink {
+          href
+          text
+        }
         partnersCards {
           image {
             alt

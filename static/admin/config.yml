@@ -103,6 +103,16 @@ collections:
           - { label: Partners heading, name: partnersHeading, widget: string }
           - { label: Partners subheading, name: partnersSubheading, widget: string }
           - {
+              label: Partners subheading link,
+              name: partnersSubheadingLink,
+              widget: object,
+              fields:
+                [
+                  { label: Link, name: href, widget: string },
+                  { label: Text, name: text, widget: string },
+                ],
+            }
+          - {
               label: Partners cards,
               name: partnersCards,
               widget: list,
