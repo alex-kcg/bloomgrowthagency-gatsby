@@ -13,7 +13,7 @@ const Accordion = ({ accordionItem }) => {
         className="relative group cursor-pointer font-serif font-light tracking-snug text-3xl py-6 pr-16 leading-normal md:text-5xl md:-tracking-1"
         onClick={() => setExpanded(expanded ? false : true)}
       >
-        <span className="bg-animate group-bg-animate bg-animate-electric-lime group-bg-animate-in-out transition-colors duration-150 group-active:bg-electric-lime group-active:text-not-dark-blue md:group-active:bg-transparent">
+        <span className="bg-animate group-bg-animate bg-animate-electric-lime group-bg-animate-in-out transition-colors duration-150">
           <span className="relative">
             {accordionItem.heading}
           </span>
