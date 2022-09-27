@@ -708,19 +708,19 @@ export const IndexPageTemplate = ({
           <canvas ref={sectionOneCanvas} className="transition-opacity duration-700 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
         </div>
         <div className="foreground relative z-40 w-full bg-not-dark-blue md:bg-transparent">
-          <div className="absolute inset-x-0 top-0 w-full bg-no-repeat md:hidden">
-            <video poster="/img/Phase1-v10mobile-static.png" className="w-full max-w-sm mx-auto aspect-square object-contain object-top" preload="true" autoPlay muted>
-              <source src="/img/Phase1-v11mobile_BG.mp4" type="video/mp4" /> 
-            </video>
-          </div>
           <div className="w-full md:min-h-[200vh]">
-            <div className="sticky top-0 w-full flex justify-center items-center px-4 text-center pt-36 mb-30 md:min-h-screen md:pt-0 md:mb-60">
+            <div className="sticky top-0 w-full flex justify-center items-center px-4 text-center pt-36 md:min-h-screen md:pt-0 md:mb-60">
               <h1 className="hero-headline-wrapper font-serif font-light tracking-snug text-4xl md:text-11xl md:-tracking-4">
                 <span className="block mx-auto sm:w-5/6 md:w-full md:max-w-5xl">
                   <SplitTextOnWordBoundaries className="hero-headline overflow-hidden" text={heading} />
                 </span>
               </h1>
             </div>
+          </div>
+          <div className="relative -z-10 overflow-x-hidden md:hidden">
+            <video poster="/img/Phase1-v10mobile-static.png" className="relative z-10 object-cover object-center w-full h-[26rem] sm:h-auto sm:aspect-video" preload="true" autoPlay muted>
+              <source src="/img/Phase1-v11mobile_BG.mp4" type="video/mp4" /> 
+            </video>
           </div>
           <div className="text-6xl tracking-tight text-slate pb-20 md:text-11xl md:min-h-screen md:mb-0">
             <div>
