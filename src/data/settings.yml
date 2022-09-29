@@ -3,11 +3,14 @@ header:
     image: /img/logotype.svg
     alt: Bloom Growth
 footer:
-  signoff: New home coming in August...
-  locations:
-    - name: BOS
-    - name: SF
-    - name: NYC
+  signoff: Copyright © 2022 Bloom Growth Agency
   socialMediaLinks:
-    - type: linkedin
+    - text: Dribble
+      url: https://dribbble.com/BloomGrowthAgency
+    - text: LinkedIn
       url: https://www.linkedin.com/company/bloom-growth
+  navLinks:
+    - text: Privacy
+      url: "#"
+    - text: Terms
+      url: "#"

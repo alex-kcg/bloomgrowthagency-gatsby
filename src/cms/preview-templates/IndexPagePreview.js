@@ -22,6 +22,10 @@ const IndexPagePreview = ({ entry, getAsset }) => {
         footerCTAHeading={data.footerCTAHeading}
         footerCTASubheading={data.footerCTASubheading}
         footerCTALink={data.footerCTALink}
+        footerContactHeading={data.footerContactHeading}
+        footerContactName={data.footerContactName}
+        footerContactTitle={data.footerContactTitle}
+        footerContactEmail={data.footerContactEmail}
       />
     )
   } else {

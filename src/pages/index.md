@@ -176,4 +176,8 @@ footerCTASubheading: We’re helping partners build world class design organizat
 footerCTALink:
   url: "#"
   text: Let’s chat pipeline
+footerContactHeading: Contact
+footerContactName: Zach Greenberger
+footerContactTitle: Head of Growth
+footerContactEmail: zach@bloomgrowthagency.com
 ---

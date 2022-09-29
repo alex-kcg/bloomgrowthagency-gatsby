@@ -2,6 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { motion } from "framer-motion";
+import settings from "../data/settings.yml"
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import PartnerRow from "../components/PartnerRow";
@@ -28,6 +29,10 @@ export const IndexPageTemplate = ({
   footerCTAHeading,
   footerCTASubheading,
   footerCTALink,
+  footerContactHeading,
+  footerContactName,
+  footerContactTitle,
+  footerContactEmail,
 }) => {
   const sectionOneContainer = useRef(null);
   const sectionOneCanvas = useRef(null);
@@ -825,19 +830,19 @@ export const IndexPageTemplate = ({
           <div className="container pt-10 md:pt-20">
             <div className="w-full">
               <div className="py-10 md:py-20">
-                <div className="flex flex-wrap justify-between -mx-4 sm:-mx-3">
+                <div className="flex flex-wrap -mx-4 sm:-mx-3">
                   <div className="w-full px-4 sm:px-3 md:w-1/2">
                     <h2 className="animate-words-heading font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-8xl">
                       <SplitTextOnWordBoundaries text={footerCTAHeading} /> 
                     </h2>
                   </div>
-                  <div className="w-full px-4 sm:px-3 md:w-5/12">
+                  <div className="w-full px-4 sm:px-3 md:w-5/12 md:ml-auto lg:w-1/3 lg:mx-auto">
                     <p className="animate-words-paragraph pb-6 text-lg leading-relaxed">
                       <SplitTextOnWordBoundaries text={footerCTASubheading} /> 
                     </p>
                     <div className="fade-in opacity-0 transition-opacity duration-500 delay-500">
-                      <a href={footerCTALink.url} className="transition-color duration-500 ease-out text-electric-lime">
-                        <svg className="inline-block mr-4" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <a href={footerCTALink.url} className="transition-color duration-500 ease-out text-electric-lime hover:underline">
+                        <svg className="inline-block mr-2" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
                         </svg>
                         {footerCTALink.text}
@@ -847,67 +852,38 @@ export const IndexPageTemplate = ({
                 </div>
               </div>
               <hr className="border-slate mx-auto transition-all duration-500 ease-out w-0" />
-              <div className="fade-in-footer opacity-0 transition-opacity duration-500 pb-[22.25rem] pt-10 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:pt-20 md:pb-6">
+              <div className="fade-in-footer text-base text-cream opacity-0 transition-opacity duration-500 pt-10 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:pt-20 md:pb-6">
                 <div className="w-full px-4 sm:px-3 md:ml-auto md:w-5/12">
-                  <h3 className="font-light text-3xl leading-tight tracking-tighter mb-2 md:text-6xl">
-                    <SplitTextOnWordBoundaries text="Zach Greenberger" /> 
+                  <h3 className="font-serif font-light tracking-tight text-4xl leading-tight mb-6">
+                    <SplitTextOnWordBoundaries text={footerContactHeading} /> 
                   </h3>
-                  <h4 className="text-lg text-gray font-light leading-tighter mb-6 md:text-2xl">
-                    <SplitTextOnWordBoundaries text="Head of Growth" /> 
+                  <h4 className="mb-1">
+                    <SplitTextOnWordBoundaries text={footerContactName} /> 
                   </h4>
-                  <ul className="flex flex-col items-start space-y-1 mb-14">
-                    <li>
-                      <a className="group w-full rounded-xl flex flex-wrap justify-start items-center space-x-4 px-2 py-1 text-lg leading-8 transition-color duration-300 ease-out text-cream hover:bg-opacity-[0.08] hover:bg-cream hover:text-electric-lime" href="mailto:growth@bloomgrowthagency.com">
-                        <svg className="block w-5 h-auto" width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path className="fill-current" d="M5.28924 0.907491C8.42388 0.635003 11.5763 0.635003 14.7109 0.907491L16.2211 1.03877C17.2265 1.12617 18.0876 1.72584 18.5337 2.58361C18.5908 2.69335 18.548 2.82621 18.4428 2.89132L12.1769 6.77024C10.833 7.60216 9.1385 7.61962 7.77778 6.81556L1.46995 3.0882C1.36804 3.02798 1.32126 2.90402 1.36719 2.79492C1.77535 1.82536 2.69298 1.13318 3.77901 1.03877L5.28924 0.907491Z" />
-                          <path className="fill-current" d="M1.36206 4.76676C1.20609 4.6746 1.00709 4.77377 0.988912 4.95402C0.735176 7.46965 0.796587 10.0091 1.17314 12.5132C1.37166 13.8333 2.44907 14.8454 3.77901 14.961L5.28924 15.0923C8.42388 15.3647 11.5763 15.3647 14.7109 15.0923L16.2211 14.961C17.5511 14.8454 18.6285 13.8333 18.827 12.5132C19.2145 9.93613 19.2683 7.32162 18.9882 4.73415C18.9686 4.55264 18.7662 4.45529 18.611 4.55139L12.9664 8.04564C11.1482 9.17118 8.85566 9.19479 7.01468 8.10695L1.36206 4.76676Z" />
-                        </svg>
-                        <span className="transition-color duration-300 ease-out text-cream group-hover:text-white">
-                          growth@bloomgrowthagency.com
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a className="group w-full rounded-xl flex flex-wrap justify-start items-center space-x-4 px-2 py-1 text-lg leading-8 transition-color duration-300 ease-out text-cream hover:bg-opacity-[0.08] hover:bg-cream hover:text-electric-lime" href="tel:+14136363186">
-                        <svg className="block w-5 h-auto" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path className="fill-current" d="M1.00017 6.86053C2.91657 11.0344 6.32657 14.3529 10.5661 16.1519L11.2457 16.4547C12.8005 17.1475 14.6283 16.6212 15.5766 15.2077L16.4647 13.884C16.7534 13.4536 16.6655 12.8739 16.2622 12.5485L13.2503 10.1187C12.8079 9.76184 12.1574 9.84496 11.819 10.3016L10.8873 11.5589C8.49646 10.3795 6.55541 8.43849 5.37607 6.04768L6.63332 5.11596C7.08998 4.77754 7.17311 4.12702 6.81622 3.68464L4.38635 0.672698C4.061 0.269416 3.4815 0.181449 3.05113 0.470018L1.71829 1.36372C0.295947 2.31742 -0.227434 4.16027 0.481298 5.71922L0.999386 6.85884L1.00017 6.86053Z" />
-                        </svg>
-                        <span className="transition-color duration-300 ease-out text-cream group-hover:text-white">
-                          +1 413-636-3186
-                        </span>
-                      </a>
-                    </li>
+                  <p className="font-light mb-1">
+                    <SplitTextOnWordBoundaries text={footerContactTitle} /> 
+                  </p>
+                  <a className="underline font-light transition-color duration-300 ease-out hover:text-electric-lime" href={`mailto:${footerContactEmail}`}>
+                    {footerContactEmail}
+                  </a>
+                  <ul className="text-electric-lime flex flex-wrap space-x-4 leading-relaxed mt-6 mb-10 md:mb-14">
+                    {settings.footer.socialMediaLinks.map((data, index) => {
+                      return <li key={`footer_social_${index}`}>
+                        <a href={data.url} className="hover:underline" target="_blank">
+                          {data.text}
+                        </a>
+                      </li>
+                    })}
                   </ul>
-                  <nav className="text-cream flex flex-wrap space-x-6 text-lg leading-relaxed mb-2">
-                    <a href="#">
-                      Dribble
-                    </a>
-                    <a href="#">
-                      LinkedIn
-                    </a>
-                    <a href="#">
-                      Facebook
-                    </a>
-                    <a href="#">
-                      Careers
-                    </a>
+                  <nav className="text-gray text-xs font-light leading-relaxed flex flex-wrap space-x-4 mb-2">
+                    {settings.footer.navLinks.map((data, index) => {
+                      return <a href={data.url} className="underline transition-color duration-300 ease-out hover:text-white" target="_blank" key={`footer_nav_${index}`}>
+                        {data.text}
+                      </a>
+                    })}
                   </nav>
-                  <ul className="text-cream flex flex-wrap space-x-6 text-lg leading-relaxed mb-14">
-                    <li>
-                      Remote first work
-                    </li>
-                    <li>
-                      BOS
-                    </li>
-                    <li>
-                      NYC
-                    </li>
-                    <li>
-                      SF
-                    </li>
-                  </ul>
-                  <p className="text-gray text-sm font-light leading-relaxed">
-                    Copyright &copy; 2022 Bloom Growth Agency
+                  <p className="text-gray text-xs font-light leading-relaxed">
+                    {settings.footer.signoff}
                   </p>
                 </div>
               </div>
@@ -968,6 +944,10 @@ IndexPageTemplate.propTypes = {
   footerCTAHeading: PropTypes.string,
   footerCTASubheading: PropTypes.string,
   footerCTALink: PropTypes.object,
+  footerContactHeading: PropTypes.string,
+  footerContactName: PropTypes.string,
+  footerContactTitle: PropTypes.string,
+  footerContactEmail: PropTypes.string,
 };
 
 const IndexPage = ({ data }) => {
@@ -990,6 +970,10 @@ const IndexPage = ({ data }) => {
         footerCTAHeading={frontmatter.footerCTAHeading}
         footerCTASubheading={frontmatter.footerCTASubheading}
         footerCTALink={frontmatter.footerCTALink}
+        footerContactHeading={frontmatter.footerContactHeading}
+        footerContactName={frontmatter.footerContactName}
+        footerContactTitle={frontmatter.footerContactTitle}
+        footerContactEmail={frontmatter.footerContactEmail}
       />
     </Layout>
   );
@@ -1058,6 +1042,10 @@ export const pageQuery = graphql`
           url
           text
         }
+        footerContactHeading
+        footerContactName
+        footerContactTitle
+        footerContactEmail
       }
     }
   }

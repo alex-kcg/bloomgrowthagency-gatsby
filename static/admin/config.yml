@@ -167,6 +167,10 @@ collections:
                   }
                 ]
             }
+          - { label: Footer contact heading, name: footerContactHeading, widget: string }
+          - { label: Footer contact name, name: footerContactName, widget: string }
+          - { label: Footer contact title, name: footerContactTitle, widget: string }
+          - { label: Footer contact email, name: footerContactEmail, widget: string }
   - name: "settings"
     label: "Settings"
     files:
@@ -216,12 +220,9 @@ collections:
                   widget: "list",
                   fields: [
                     {
-                      label: "Type",
-                      name: "type",
-                      widget: "select",
-                      options: [
-                        { label: "LinkedIn", value: "linkedin" }
-                      ]
+                      label: "Text",
+                      name: "text",
+                      widget: string
                     },
                     {
                       label: "URL",
