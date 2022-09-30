@@ -725,7 +725,7 @@ export const IndexPageTemplate = ({
             </div>
           </div>
           <div className="relative -z-10 overflow-x-hidden md:hidden">
-            <video poster="/img/Phase1-v10mobile-static.png" className="relative z-10 object-cover object-center w-full h-[26rem] sm:h-auto sm:aspect-video" preload="true" autoPlay muted playsInline>
+            <video poster="/img/Phase1-v10mobile-static.jpg" className="relative z-10 object-cover object-center w-full h-[26rem] sm:h-auto sm:aspect-video" preload="true" autoPlay muted playsInline>
               <source src="/img/Phase1-v11mobile_BG.mp4" type="video/mp4" /> 
             </video>
           </div>
@@ -798,7 +798,7 @@ export const IndexPageTemplate = ({
           </div>
           <div className="relative py-20 md:mb-40">
             <div className="fixed -z-1 inset-0 w-full h-full bg-cover bg-center bg-no-repeat md:hidden">
-              <video poster="/img/Phase4-v9mobile-static.png" className="absolute inset-0 w-full h-full object-cover object-center" preload="true" autoPlay loop muted playsInline>
+              <video poster="/img/Phase4-v9mobile-static.jpg" className="absolute inset-0 w-full h-full object-cover object-center" preload="true" autoPlay loop muted playsInline>
                 <source src="/img/Phase4-v9mobile.mp4" type="video/mp4" /> 
               </video>
             </div>
@@ -825,7 +825,7 @@ export const IndexPageTemplate = ({
           className="md:pointer-events-none"
         >
           <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-            <video ref={sectionFiveVideo} className="opacity-0 transition-all duration-[1.5s] ease-out grayscale absolute -z-10 object-cover object-bottom min-w-full min-h-full" preload="true" autoPlay loop muted playsInline>
+            <video ref={sectionFiveVideo} poster="/img/Phase6-v5_static.jpg" className="opacity-0 transition-all duration-[1.5s] ease-out grayscale absolute -z-10 object-cover object-bottom min-w-full min-h-full" preload="true" autoPlay loop muted playsInline>
               <source src="/img/Phase6-v5.mp4" type="video/mp4" /> 
             </video>
           </div>
@@ -893,7 +893,7 @@ export const IndexPageTemplate = ({
               </div>
             </div>
             <div className="relative -z-10 overflow-x-hidden md:hidden">
-              <video className="relative z-10 object-cover object-top w-full h-80 sm:h-auto sm:aspect-video" preload="true" autoPlay loop muted playsInline>
+              <video poster="/img/Phase6-v5-Mobile_static.jpg" className="relative z-10 object-cover object-top w-full h-80 sm:h-auto sm:aspect-video" preload="true" autoPlay loop muted playsInline>
                 <source src="/img/Phase6-v5-Mobile.mp4" type="video/mp4" /> 
               </video>
             </div>
