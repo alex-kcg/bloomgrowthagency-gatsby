@@ -319,14 +319,17 @@ export const IndexPageTemplate = ({
 
     window.addEventListener('scroll', () => {
       if (isMobile()) {
-        // Section Two
+        // Section Two and Three
         const sectionTwoContainerScrollTop = window.innerHeight - sectionTwoContainer.current.getBoundingClientRect().top;
         const sectionTwoMaxScrollTop = sectionTwoContainer.current.scrollHeight + (window.innerHeight / 2);
         const sectionTwoScrollFraction = sectionTwoContainerScrollTop / sectionTwoMaxScrollTop;
+        const sectionThreeContainerScrollTop = window.innerHeight - sectionThreeContainer.current.getBoundingClientRect().top;
+        const sectionThreeMaxScrollTop = (window.innerHeight / 2) + sectionThreeContainer.current.scrollHeight;
+        const sectionThreeScrollFraction = sectionThreeContainerScrollTop / sectionThreeMaxScrollTop;
 
         sectionTwoContainer.current.classList.remove('md:pointer-events-none');
 
-        if (sectionTwoContainerScrollTop > mobileScrollAnimationOffset) {
+        if (sectionTwoContainerScrollTop > mobileScrollAnimationOffset && sectionTwoScrollFraction <= 1) {
           sectionTwoOrderedList.current.classList.add('mobile-active');
         } else {
           sectionTwoOrderedList.current.classList.remove('mobile-active');
@@ -343,7 +346,7 @@ export const IndexPageTemplate = ({
               el.classList.add('active');
             });
 
-            if ((liScrollBottom - liSpacing) < mobileScrollAnimationOffset) {
+            if (((liScrollBottom - liSpacing) < mobileScrollAnimationOffset) && (sectionThreeContainerScrollTop <= mobileScrollAnimationOffset)) {
               if (img) {
                 img.classList.remove('opacity-0');
               }
@@ -362,12 +365,6 @@ export const IndexPageTemplate = ({
             });
           }
         });
-
-
-        // Section Three
-        const sectionThreeContainerScrollTop = window.innerHeight - sectionThreeContainer.current.getBoundingClientRect().top;
-        const sectionThreeMaxScrollTop = (window.innerHeight / 2) + sectionThreeContainer.current.scrollHeight;
-        const sectionThreeScrollFraction = sectionThreeContainerScrollTop / sectionThreeMaxScrollTop;
 
         sectionThreeForeground.current.classList.remove('md:scale-50');
 

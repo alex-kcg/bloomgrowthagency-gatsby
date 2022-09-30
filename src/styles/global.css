@@ -353,17 +353,15 @@ body {
   @apply opacity-100;
 }
 
-.fixed-image::before {
-  @apply absolute z-10 bottom-0 inset-x-0 top-[10%] pointer-events-none bg-not-dark-blue;
+.section-2-ol-wrapper::after {
+  @apply fixed z-10 inset-x-0 bottom-0 h-40 opacity-0 pointer-events-none transition-opacity duration-500 ease-out;
 
   content: " ";
+  background: linear-gradient(rgb(3, 14, 18, 0), rgb(3, 14, 18, 0.75), rgb(3, 14, 18, 1))
 }
 
-.fixed-image::after {
-  @apply absolute z-10 inset-x-0 bottom-[90%] pointer-events-none h-20;
-
-  background: linear-gradient(rgba(7, 16, 20, 0), rgba(7, 16, 20, 1));
-  content: " ";
+.section-2-ol-wrapper.mobile-active::after {
+  @apply opacity-100;
 }
 
 @screen md {
@@ -418,6 +416,10 @@ body {
   
   .bg-animate-voltage:before {
     @apply bg-voltage;
+  }
+
+  .section-2-ol-wrapper::after {
+    @apply hidden;
   }
 
   .section-2-ol-wrapper.scrolled-past {
