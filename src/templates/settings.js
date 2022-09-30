@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 
 // eslint-disable-next-line
 export const SettingsTemplate = ({}) => {
@@ -11,7 +10,6 @@ export const SettingsTemplate = ({}) => {
       <div className="fixed z-50 top-0 left-1/2 transform -translate-x-1/2 py-8 text-center md:py-16">
         <Navbar />
       </div>
-      <Footer />
     </div>
   );
 };
