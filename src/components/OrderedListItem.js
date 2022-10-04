@@ -11,7 +11,7 @@ const OrderedListItem = ({ image, heading, text }) => {
       <span className="block font-serif tracking-snug font-light text-4xl md:text-6xl md:-tracking-1">
         <SplitTextOnWordBoundaries text={heading} />
       </span>
-      <hr className="mt-4 mb-6 border-slate max-w-full md:transition-all md:duration-500 md:ease-out md:delay-300" />
+      <hr className="mt-4 mb-6 border-slate max-w-full transition-all duration-500 ease-out delay-300" />
       <SplitTextOnWordBoundaries text={text} />
     </li>
   );

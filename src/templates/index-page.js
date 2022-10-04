@@ -36,6 +36,7 @@ export const IndexPageTemplate = ({
 }) => {
   const sectionOneContainer = useRef(null);
   const sectionOneCanvas = useRef(null);
+  const sectionOneVideo = useRef(null);
 
   const sectionTwoContainer = useRef(null);
   const sectionTwoCanvas = useRef(null);
@@ -240,8 +241,11 @@ export const IndexPageTemplate = ({
       body.classList.remove('md:overflow-hidden');
       sectionOneSequencesLoaded = true;
 
-
       cacheImages(imagesMobile);
+
+      sectionOneVideo.current.addEventListener('loadeddata', function() {
+        sectionOneVideo.current.classList.remove('opacity-0');
+      }, false);
 
       initSectionOneBackground();
       setTimeout(() => {
@@ -336,27 +340,35 @@ export const IndexPageTemplate = ({
         }
 
         sectionTwoOrderedList.current.querySelectorAll('li').forEach((el) => {
+          const hr = el.querySelector('hr');
           const liScrollTop = window.innerHeight - el.getBoundingClientRect().top;
           const liScrollBottom = window.innerHeight - el.getBoundingClientRect().bottom;
           const liSpacing = 160;
           const img = el.querySelector('.fixed-image');
 
           if (liScrollTop > mobileScrollAnimationOffset) {
+            hr.classList.remove('w-0');
+
             el.querySelectorAll('.animate-words').forEach((el) => {
               el.classList.add('active');
             });
 
             if (((liScrollBottom - liSpacing) < mobileScrollAnimationOffset) && (sectionThreeContainerScrollTop <= mobileScrollAnimationOffset)) {
               if (img) {
+                img.classList.remove('delay-300');
                 img.classList.remove('opacity-0');
               }
             } else {
               if (img) {
+                img.classList.add('delay-300');
                 img.classList.add('opacity-0');
               }
             }
           } else {
+            hr.classList.add('w-0');
+
             if (img) {
+              img.classList.add('delay-300');
               img.classList.add('opacity-0');
             }
 
@@ -722,7 +734,7 @@ export const IndexPageTemplate = ({
             </div>
           </div>
           <div className="relative -z-10 overflow-x-hidden md:hidden">
-            <video poster="/img/Phase1-v10mobile-static.jpg" className="relative z-10 object-cover object-center w-full h-[26rem] sm:h-auto sm:aspect-video" preload="true" autoPlay muted playsInline>
+            <video ref={sectionOneVideo} poster="/img/Phase1-v10mobile-static.jpg" className="relative z-10 object-cover object-center w-full h-[26rem] opacity-0 transition-opacity duration-300 ease-in-out sm:h-auto sm:aspect-video" preload="true" autoPlay muted playsInline>
               <source src="/img/Phase1-v11mobile_BG.mp4" type="video/mp4" /> 
             </video>
           </div>

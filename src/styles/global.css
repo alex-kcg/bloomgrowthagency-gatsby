@@ -353,14 +353,14 @@ body {
   @apply opacity-100;
 }
 
-.section-2-ol-wrapper::after {
+.section-2-ol::after {
   @apply fixed z-10 inset-x-0 bottom-0 h-40 opacity-0 pointer-events-none transition-opacity duration-500 ease-out;
 
   content: " ";
   background: linear-gradient(rgb(3, 14, 18, 0), rgb(3, 14, 18, 0.75), rgb(3, 14, 18, 1))
 }
 
-.section-2-ol-wrapper.mobile-active::after {
+.section-2-ol.mobile-active::after {
   @apply opacity-100;
 }
 
@@ -418,7 +418,7 @@ body {
     @apply bg-voltage;
   }
 
-  .section-2-ol-wrapper::after {
+  .section-2-ol::after {
     @apply hidden;
   }
 
