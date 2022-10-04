@@ -741,7 +741,7 @@ export const IndexPageTemplate = ({
         </div>
         <div className="foreground relative z-40 w-full bg-not-dark-blue md:bg-transparent md:h-[300vh]">
           <div className="md:fixed md:inset-x-0 md:top-1/2">
-            <div className="container mx-auto px-4 py-20 md:py-0">
+            <div className="container mx-auto px-4 pt-20 pb-30 md:py-0">
               <div ref={sectionTwoOrderedListWrapper} className="section-2-ol-wrapper mx-auto md:transition-all md:duration-500 md:ease-out">
                 <ol ref={sectionTwoOrderedList} className="section-2-ol font-light text-2xl leading-10 flex flex-col items-start space-y-40 md:text-3xl md:max-w-[31rem] md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
                   {numberedList.map((listItem, index) => (
@@ -755,7 +755,7 @@ export const IndexPageTemplate = ({
       </section>
       <section className="relative z-20 md:pointer-events-none" ref={sectionThreeContainer}>
         <div ref={sectionThreeForeground} className="foreground relative z-40 w-full transition-all duration-700 ease-out transform bg-not-dark-blue md:bg-transparent md:pt-[25vh]">
-          <div className="container py-20 md:py-0">
+          <div className="container pb-20 pt-30 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
               <h2 className="font-serif font-light tracking-snug text-4xl mb-20 md:text-8xl">
                 <SplitTextOnWordBoundaries text={accordionHeading} />
