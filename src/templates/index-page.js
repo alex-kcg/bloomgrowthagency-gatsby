@@ -829,62 +829,72 @@ export const IndexPageTemplate = ({
           <div className="foreground relative z-40 w-full">
             <div className="container pt-10 md:pt-20">
               <div className="w-full">
-                <div className="py-10 md:py-20">
-                  <div className="flex flex-wrap -mx-4 sm:-mx-3">
-                    <div className="w-full px-4 sm:px-3 md:w-1/2">
-                      <h2 className="animate-words-heading font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-8xl">
-                        <SplitTextOnWordBoundaries text={footerCTAHeading} /> 
-                      </h2>
-                    </div>
-                    <div className="w-full px-4 sm:px-3 md:w-5/12 md:ml-auto lg:w-1/3 lg:mx-auto">
-                      <p className="animate-words-paragraph pb-6 text-lg leading-relaxed">
-                        <SplitTextOnWordBoundaries text={footerCTASubheading} /> 
-                      </p>
-                      <div className="fade-in opacity-0 transition-opacity duration-500 delay-500">
-                        <a href={footerCTALink.url} className="transition-color duration-500 ease-out text-electric-lime hover:underline">
-                          <svg className="inline-block mr-2" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
-                          </svg>
-                          {footerCTALink.text}
-                        </a>
+                <div className="py-10 md:py-20 lg:flex lg:justify-center lg:-mx-3">
+                  <div className="lg:w-5/6 lg:px-3">
+                    <div className="flex flex-wrap items-center md:justify-between -mx-4 sm:-mx-3">
+                      <div className="w-full px-4 sm:px-3 md:w-1/2 lg:w-3/5">
+                        <h2 className="animate-words-heading font-serif font-light tracking-tight text-4xl mb-10 md:mb-0 md:text-8xl">
+                          <SplitTextOnWordBoundaries text={footerCTAHeading} /> 
+                        </h2>
+                      </div>
+                      <div className="w-full px-4 sm:px-3 md:w-5/12 lg:w-2/5">
+                        <p className="animate-words-paragraph pb-6 text-lg font-light leading-8">
+                          <SplitTextOnWordBoundaries text={footerCTASubheading} /> 
+                        </p>
+                        <div className="fade-in opacity-0 transition-opacity duration-500 delay-500">
+                          <a href={footerCTALink.url} className="transition-color duration-500 ease-out text-electric-lime hover:underline">
+                            <svg className="inline-block mr-2" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
+                            </svg>
+                            {footerCTALink.text}
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <hr className="border-slate mx-auto transition-all duration-500 ease-out w-0" />
-                <div className="fade-in-footer text-base text-cream opacity-0 transition-opacity duration-500 pt-10 flex flex-wrap justify-between -mx-4 sm:-mx-3 md:pt-20 md:pb-6">
-                  <div className="w-full px-4 sm:px-3 md:ml-auto md:w-5/12">
-                    <h3 className="font-serif font-light tracking-tight text-4xl leading-tight mb-6">
-                      <SplitTextOnWordBoundaries text={footerContactHeading} /> 
-                    </h3>
-                    <h4 className="mb-1">
-                      <SplitTextOnWordBoundaries text={footerContactName} /> 
-                    </h4>
-                    <p className="font-light mb-1">
-                      <SplitTextOnWordBoundaries text={footerContactTitle} /> 
-                    </p>
-                    <a className="underline font-light transition-color duration-300 ease-out hover:text-electric-lime" href={`mailto:${footerContactEmail}`}>
-                      {footerContactEmail}
-                    </a>
-                    <ul className="text-electric-lime flex flex-wrap space-x-4 leading-relaxed mt-6 mb-10 md:mb-14">
-                      {settings.footer.socialMediaLinks.map((data, index) => {
-                        return <li key={`footer_social_${index}`}>
-                          <a href={data.url} className="hover:underline" target="_blank">
-                            {data.text}
-                          </a>
-                        </li>
-                      })}
-                    </ul>
-                    <nav className="text-gray text-xs font-light leading-relaxed flex flex-wrap space-x-4 mb-2">
-                      {settings.footer.navLinks.map((data, index) => {
-                        return <a href={data.url} className="underline transition-color duration-300 ease-out hover:text-white" target="_blank" key={`footer_nav_${index}`}>
-                          {data.text}
-                        </a>
-                      })}
-                    </nav>
-                    <p className="text-gray text-xs font-light leading-relaxed">
-                      {settings.footer.signoff}
-                    </p>
+                <div className="fade-in-footer text-base text-cream opacity-0 transition-opacity duration-500 pt-10 md:pt-20 md:pb-10">
+                  <div className="w-full">
+                    <div className="lg:flex lg:justify-center lg:-mx-3">
+                      <div className="lg:w-5/6 lg:px-3">
+                        <div className="md:flex md:justify-end -mx-4 sm:-mx-3">
+                          <div className="w-full md:px-3 md:w-5/12 lg:w-2/5">
+                            <h3 className="font-serif font-light tracking-tight text-4xl mb-6">
+                              <SplitTextOnWordBoundaries text={footerContactHeading} /> 
+                            </h3>
+                            <h4 className="mb-1">
+                              <SplitTextOnWordBoundaries text={footerContactName} /> 
+                            </h4>
+                            <p className="font-light mb-1">
+                              <SplitTextOnWordBoundaries text={footerContactTitle} /> 
+                            </p>
+                            <a className="underline font-light transition-color duration-300 ease-out hover:text-electric-lime" href={`mailto:${footerContactEmail}`}>
+                              {footerContactEmail}
+                            </a>
+                            <ul className="text-electric-lime flex flex-wrap space-x-4 leading-relaxed mt-6 mb-10 md:mb-14">
+                              {settings.footer.socialMediaLinks.map((data, index) => {
+                                return <li key={`footer_social_${index}`}>
+                                  <a href={data.url} className="hover:underline" target="_blank">
+                                    {data.text}
+                                  </a>
+                                </li>
+                              })}
+                            </ul>
+                            <nav className="text-gray text-xs font-light flex flex-wrap space-x-4 mb-2">
+                              {settings.footer.navLinks.map((data, index) => {
+                                return <a href={data.url} className="underline transition-color duration-300 ease-out hover:text-white" target="_blank" key={`footer_nav_${index}`}>
+                                  {data.text}
+                                </a>
+                              })}
+                            </nav>
+                            <p className="text-gray text-xs font-light">
+                              {settings.footer.signoff}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
