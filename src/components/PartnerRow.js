@@ -35,7 +35,7 @@ const PartnerRow = ({ partnerRow, offsetIndex }) => {
     controls.start(controlParams);
 
     function sequenceActiveColor () {
-      const avgWidth = window.innerWidth < 1000 ? 200 : 380;
+      // const avgWidth = window.innerWidth < 1000 ? 200 : 380;
       // const allVisible = window.innerWidth >= avgWidth * partnerRow.partners.length;
       const allVisible = true;
 

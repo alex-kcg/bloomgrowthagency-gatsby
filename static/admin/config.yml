@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: BRANCH_PLACEHOLDER
+  branch: develop
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
     update: "Update {{collection}} “{{slug}}”"
@@ -28,11 +28,17 @@ collections:
             }
           - { label: Title, name: title, widget: string }
           - { label: Description, name: description, widget: text }
-          - { label: Heading, name: heading, widget: string }
+          - {
+              label: Heading,
+              name: heading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
           - {
               label: Partner rows,
               name: partnerRows,
               widget: list,
+              summary: 'Expand to edit partners',
               fields:
                 [
                   {
@@ -48,6 +54,7 @@ collections:
                     label: Partners,
                     name: partners,
                     widget: list,
+                    min: 1,
                     fields:
                       [
                         { label: Text, name: text, widget: text },
@@ -73,10 +80,21 @@ collections:
               allow_add: false,
               max: 3,
               min: 3,
+              summary: '{{fields.heading}}',
               fields:
                 [
-                  { label: Heading, name: heading, widget: text },
-                  { label: Text, name: text, widget: text },
+                  {
+                    label: Heading,
+                    name: heading,
+                    widget: text,
+                    pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+                  },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: text,
+                    pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+                  },
                   {
                     label: Image,
                     name: image,
@@ -89,7 +107,12 @@ collections:
                   },
                 ],
             }
-          - { label: Accordion heading, name: accordionHeading, widget: string }
+          - {
+              label: Accordion heading,
+              name: accordionHeading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
           - {
               label: Accordion items,
               name: accordionItems,
@@ -100,8 +123,18 @@ collections:
                   { label: Body, name: body, widget: textarea },
                 ],
             }
-          - { label: Partners heading, name: partnersHeading, widget: string }
-          - { label: Partners subheading, name: partnersSubheading, widget: string }
+          - {
+              label: Partners heading,
+              name: partnersHeading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
+          - {
+              label: Partners subheading,
+              name: partnersSubheading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
           - {
               label: Partners subheading link,
               name: partnersSubheadingLink,
@@ -147,8 +180,18 @@ collections:
                   },
                 ]
             }
-          - { label: Footer CTA heading, name: footerCTAHeading, widget: string }
-          - { label: Footer CTA subheading, name: footerCTASubheading, widget: string }
+          - {
+              label: Footer CTA heading,
+              name: footerCTAHeading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
+          - {
+              label: Footer CTA subheading,
+              name: footerCTASubheading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
           - {
               label: Footer CTA Link,
               name: footerCTALink,
@@ -167,10 +210,29 @@ collections:
                   }
                 ]
             }
-          - { label: Footer contact heading, name: footerContactHeading, widget: string }
-          - { label: Footer contact name, name: footerContactName, widget: string }
-          - { label: Footer contact title, name: footerContactTitle, widget: string }
-          - { label: Footer contact email, name: footerContactEmail, widget: string }
+          - {
+              label: Footer contact heading,
+              name: footerContactHeading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
+          - {
+              label: Footer contact name,
+              name: footerContactName,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
+          - {
+              label: Footer contact title,
+              name: footerContactTitle,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
+          - {
+              label: Footer contact email,
+              name: footerContactEmail,
+              widget: string
+            }
   - name: "settings"
     label: "Settings"
     files:

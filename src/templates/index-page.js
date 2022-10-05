@@ -15,6 +15,7 @@ const { useEffect, useRef } = React;
 
 // eslint-disable-next-line
 export const IndexPageTemplate = ({
+  cmsPreview,
   title,
   description,
   heading,
@@ -715,13 +716,13 @@ export const IndexPageTemplate = ({
   });
 
   return (
-    <main>
+    <main className={`${cmsPreview && 'cms-preview'}`}>
       <header className="navbar-container w-full z-50 py-8 text-center transition-all duration-500 ease-in-out md:pointer-events-none md:py-16">
         <Navbar />
       </header>
       <section className="relative z-20" ref={sectionOneContainer}>
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas ref={sectionOneCanvas} className="transition-opacity duration-700 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
+          <canvas ref={sectionOneCanvas} className={`transition-opacity duration-700 ease-out absolute -z-10 aspect-video min-w-full min-h-full`} />
         </div>
         <div className="foreground relative z-40 w-full bg-not-dark-blue md:bg-transparent">
           <div className="w-full md:min-h-[200vh]">
@@ -749,10 +750,10 @@ export const IndexPageTemplate = ({
       </section>
       <section ref={sectionTwoContainer} className="relative z-30 md:-mb-[15vh] transition-opacity duration-300 ease-in-out md:opacity-100 md:pointer-events-none">
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas ref={sectionTwoCanvas} className="opacity-0 transition-opacity duration-150 ease-out absolute -z-10 aspect-video min-w-full min-h-full" />
+          <canvas ref={sectionTwoCanvas} className={`opacity-0 transition-opacity duration-150 ease-out absolute -z-10 aspect-video min-w-full min-h-full`} />
         </div>
         <div className="foreground relative z-40 w-full bg-not-dark-blue md:bg-transparent md:h-[300vh]">
-          <div className="md:fixed md:inset-x-0 md:top-1/2">
+          <div className="section-2-outer-wrapper md:fixed md:inset-x-0 md:top-1/2">
             <div className="container mx-auto px-4 pt-20 pb-30 md:py-0">
               <div ref={sectionTwoOrderedListWrapper} className="section-2-ol-wrapper mx-auto md:transition-all md:duration-500 md:ease-out">
                 <ol ref={sectionTwoOrderedList} className="section-2-ol font-light text-2xl leading-10 flex flex-col items-start space-y-40 md:text-3xl md:max-w-[31rem] md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
@@ -790,7 +791,7 @@ export const IndexPageTemplate = ({
         className="relative z-10 md:pointer-events-none md:z-20"
       >
         <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-          <canvas ref={sectionFourCanvas} className="opacity-0 transition-opacity duration-700 ease-out absolute -z-10 aspect-square min-w-full min-h-full" />
+          <canvas ref={sectionFourCanvas} className={`opacity-0 transition-opacity duration-700 ease-out absolute -z-10 aspect-square min-w-full min-h-full`} />
         </div>
         <div className="foreground relative z-40 w-full">
           <div className="relative z-10 bg-not-dark-blue md:bg-transparent">
@@ -924,6 +925,7 @@ export const IndexPageTemplate = ({
 };
 
 IndexPageTemplate.propTypes = {
+  cmsPreview: PropTypes.bool,
   title: PropTypes.string,
   description: PropTypes.string,
   heading: PropTypes.string,
@@ -979,6 +981,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <IndexPageTemplate
+        cmsPreview={false}
         title={frontmatter.title}
         description={frontmatter.description}
         heading={frontmatter.heading}

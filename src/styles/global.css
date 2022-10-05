@@ -82,7 +82,8 @@ body {
   transform: rotateX(90deg);
 }
 
-.loaded .navbar {
+.loaded .navbar,
+.cms-preview .navbar {
   @apply opacity-100;
 
   transform: rotateX(0deg);
@@ -349,6 +350,7 @@ body {
   transition-delay: 3100ms;
 }
 
+.cms-preview .navbar-container::after,
 .navbar-shadow .navbar-container::after {
   @apply opacity-100;
 }
@@ -369,6 +371,7 @@ body {
     @apply top-1/2 -translate-y-1/2;
   }
 
+  .cms-preview .navbar-container,
   .navbar-shadow .navbar-container {
     @apply top-0 translate-y-0;
   }
@@ -485,7 +488,6 @@ body {
   }
 }
 
-
 @tailwind components;
 
 .hero-headline > span:last-child > span:first-child {
@@ -493,3 +495,36 @@ body {
 }
 
 @tailwind utilities;
+
+.cms-preview video,
+.cms-preview canvas {
+  display: none !important;
+}
+
+.cms-preview .animate-words .animate-word {
+  opacity: 100% !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.cms-preview .section-2-outer-wrapper {
+  position: static !important;
+}
+
+.cms-preview .section-2-ol {
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.cms-preview .section-2-ol li {
+  opacity: 1 !important;
+}
+
+.cms-preview .section-2-ol hr {
+  width: 100% !important;
+}
+
+.cms-preview .opacity-0,
+.cms-preview .sm\:opacity-0,
+.cms-preview .md\:opacity-0,
+.cms-preview .lg\:opacity-0 {
+  opacity: 1 !important;
+}

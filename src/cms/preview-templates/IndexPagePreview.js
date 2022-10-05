@@ -8,6 +8,7 @@ const IndexPagePreview = ({ entry, getAsset }) => {
   if (data) {
     return (
       <IndexPageTemplate
+        cmsPreview={true}
         title={data.title}
         description={data.description}
         heading={data.heading}
