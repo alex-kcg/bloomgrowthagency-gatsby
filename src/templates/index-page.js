@@ -244,9 +244,20 @@ export const IndexPageTemplate = ({
 
       cacheImages(imagesMobile);
 
-      sectionOneVideo.current.addEventListener('loadeddata', function() {
+      const promise = sectionOneVideo.current.play();
+
+      if (promise !== undefined) {
+        promise.then(() => {
+          // Autoplay started
+        }).catch((error) => {
+          // Autoplay not allowed
+          sectionOneVideo.current.setAttribute('poster', '/img/Phase1-v10mobile-static.jpg');
+        });
+      }
+
+      setTimeout(() => {
         sectionOneVideo.current.classList.remove('opacity-0');
-      }, false);
+      }, 150);
 
       initSectionOneBackground();
       setTimeout(() => {
@@ -737,7 +748,7 @@ export const IndexPageTemplate = ({
             </div>
           </div>
           <div className="relative -z-10 overflow-x-hidden md:hidden">
-            <video ref={sectionOneVideo} poster="/img/Phase1-v10mobile-static.jpg" className="relative z-10 object-cover object-center w-full h-[26rem] opacity-0 transition-opacity duration-300 ease-in-out sm:h-auto sm:aspect-video" preload="true" autoPlay muted playsInline>
+            <video ref={sectionOneVideo} className="relative z-10 object-cover object-center w-full h-[26rem] opacity-0 transition-opacity duration-300 ease-in-out sm:h-auto sm:aspect-video" preload="true" autoPlay muted playsInline>
               <source src="/img/Phase1-v11mobile_BG.mp4" type="video/mp4" /> 
             </video>
           </div>
