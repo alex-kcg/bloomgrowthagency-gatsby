@@ -839,8 +839,8 @@ export const IndexPageTemplate = ({
               <source src="/img/Phase6-v5.mp4" type="video/mp4" /> 
             </video>
           </div>
-          <div className="foreground relative z-40 w-full">
-            <div className="container pt-10 md:pt-20">
+          <div className="foreground relative z-40 w-full md:min-h-screen md:flex md:flex-col md:justify-center md:items-center">
+            <div className="container pt-10 md:py-0">
               <div className="w-full">
                 <div className="py-10 md:py-20 lg:flex lg:justify-center lg:-mx-3">
                   <div className="lg:w-5/6 lg:px-3">
@@ -867,7 +867,7 @@ export const IndexPageTemplate = ({
                   </div>
                 </div>
                 <hr className="border-slate mx-auto transition-all duration-500 ease-out w-0" />
-                <div className="fade-in-footer text-base text-cream opacity-0 transition-opacity duration-500 pt-10 md:pt-20 md:pb-10">
+                <div className="fade-in-footer text-base text-cream opacity-0 transition-opacity duration-500 pt-10 md:py-20">
                   <div className="w-full">
                     <div className="lg:flex lg:justify-center lg:-mx-3">
                       <div className="lg:w-5/6 lg:px-3">
