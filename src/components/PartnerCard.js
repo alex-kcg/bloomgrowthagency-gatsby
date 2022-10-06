@@ -9,7 +9,6 @@ const PartnerCard = ({
   description,
   image,
 }) => {
-  console.log(image);
   return (
     <div className={`block group backdrop-blur-3xl w-full p-8 rounded-3xl border border-gray border-opacity-[0.08] text-cream font-light text-lg leading-8 min-h-[30rem] ${className ? className : ''}`}>
       <header className="relative">
