@@ -36,7 +36,7 @@ const LegalPage = ({ data }) => {
   const { frontmatter, html } = data.markdownRemark
 
   return (
-    <Layout>
+    <Layout pageTitle={frontmatter.title} pageTitleOverride={false} pageDescription={frontmatter.description}>
       <LegalPageTemplate
         cmsPreview={false}
         title={frontmatter.title}

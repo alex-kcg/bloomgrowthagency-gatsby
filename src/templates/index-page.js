@@ -979,7 +979,7 @@ const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout>
+    <Layout pageTitle={frontmatter.title} pageTitleOverride={true} pageDescription={frontmatter.description}>
       <IndexPageTemplate
         cmsPreview={false}
         title={frontmatter.title}

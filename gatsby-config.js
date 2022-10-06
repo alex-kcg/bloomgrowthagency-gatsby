@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Bloom Growth Agency",
-    description: "A product design studio for fast moving companies",
+    siteTitle: "Bloom Growth Agency",
+    siteDescription: "A product design studio for fast moving companies",
   },
   plugins: [
     {

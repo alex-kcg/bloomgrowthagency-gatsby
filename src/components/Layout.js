@@ -3,18 +3,18 @@ import { Helmet } from "react-helmet";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
 
-const TemplateWrapper = ({ children }) => {
-  const { title, description } = useSiteMetadata();
+const TemplateWrapper = ({ pageTitle, pageTitleOverride, pageDescription, children }) => {
+  const { siteTitle, siteDescription } = useSiteMetadata();
   return (
     <div className="min-h-screen flex flex-col items-stretch">
       <Helmet>
         <html lang="en" />
-        <title>{title}</title>
-        <meta name="description" content={description} />
+        <title>{pageTitleOverride ? pageTitle : `${pageTitle} - ${siteTitle}`}</title>
+        <meta name="description" content={pageDescription ? pageDescription : siteDescription} />
         <meta name="theme-color" content="#061014" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
+        <meta property="og:title" content={pageTitleOverride ? pageTitle : `${pageTitle} - ${siteTitle}`} />
+        <meta property="og:description" content={pageDescription ? pageDescription : siteDescription} />
         <meta property="og:url" content={`${withPrefix("/")}`} />
         <meta property="og:image" content={`${withPrefix("/")}img/og-image.jpg`} />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
