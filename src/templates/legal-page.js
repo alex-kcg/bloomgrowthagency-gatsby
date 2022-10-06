@@ -9,14 +9,14 @@ export const LegalPageTemplate = ({
   cmsPreview,
   title,
   description,
-  body
+  html
 }) => {
   return (
     <main className={`legal-template ${cmsPreview && 'cms-preview'}`}>
-      <header className="navbar-container w-full z-50 py-8 text-center transition-all duration-500 ease-in-out md:py-16">
+      <header className="navbar-container z-50 w-full">
         <Navbar useLink={true} />
       </header>
-      <section className="relative z-20 container mx-auto px-4 py-30 md:py-48" dangerouslySetInnerHTML={{ __html: body}} />
+      <section className="relative z-20 container mx-auto px-4 py-30 md:py-48" dangerouslySetInnerHTML={{ __html: html }} />
     </main>
   );
 };
@@ -28,7 +28,7 @@ LegalPageTemplate.propTypes = {
 };
 
 const LegalPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
+  const { frontmatter, html } = data.markdownRemark
 
   return (
     <Layout>
@@ -36,7 +36,7 @@ const LegalPage = ({ data }) => {
         cmsPreview={false}
         title={frontmatter.title}
         description={frontmatter.description}
-        body={frontmatter.body}
+        html={html}
       />
     </Layout>
   );
@@ -59,7 +59,6 @@ export const pageQuery = graphql`
       frontmatter {
         title
         description
-        body
       }
     }
   }

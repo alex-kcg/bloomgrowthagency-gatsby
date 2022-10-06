@@ -8,7 +8,7 @@ const Navbar = ({ useLink }) => {
 
   return (
     <nav
-      className="navbar pointer-events-none"
+      className="navbar pointer-events-none py-8 text-center md:py-16"
       role="navigation"
       aria-label="main-navigation"
     >

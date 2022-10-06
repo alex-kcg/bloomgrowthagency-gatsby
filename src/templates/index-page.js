@@ -717,7 +717,7 @@ export const IndexPageTemplate = ({
 
   return (
     <main className={`index-template ${cmsPreview && 'cms-preview'}`}>
-      <header className="navbar-container w-full z-50 py-8 text-center transition-all duration-500 ease-in-out md:pointer-events-none md:py-16">
+      <header className="navbar-container z-50 w-full transition-all duration-500 ease-in-out md:pointer-events-none">
         <Navbar />
       </header>
       <section className="relative z-20" ref={sectionOneContainer}>

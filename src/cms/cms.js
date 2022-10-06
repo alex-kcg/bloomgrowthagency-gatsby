@@ -10,5 +10,6 @@ CMS.registerMediaLibrary(uploadcare)
 CMS.registerMediaLibrary(cloudinary)
 
 CMS.registerPreviewTemplate('index', IndexPagePreview)
-CMS.registerPreviewTemplate('legal', LegalPagePreview)
+CMS.registerPreviewTemplate('privacy', LegalPagePreview)
+CMS.registerPreviewTemplate('terms', LegalPagePreview)
 CMS.registerPreviewTemplate('settings', SettingsPreview)
