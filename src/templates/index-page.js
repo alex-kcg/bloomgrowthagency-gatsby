@@ -244,9 +244,9 @@ export const IndexPageTemplate = ({
 
       cacheImages(imagesMobile);
 
-      setTimeout(() => {
+      sectionOneVideo.current.addEventListener('loadeddata', function() {
         sectionOneVideo.current.classList.remove('opacity-0');
-      }, 500);
+      }, false);
 
       initSectionOneBackground();
       setTimeout(() => {
