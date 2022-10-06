@@ -3,9 +3,6 @@ templateKey: legal-page
 title: Privacy
 description: Description
 ---
-Privacy Policy
-==============
-
 Last revised on [DATE]
 
 ### The Gist
