@@ -1,7 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import settings from "../data/settings.yml"
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 
