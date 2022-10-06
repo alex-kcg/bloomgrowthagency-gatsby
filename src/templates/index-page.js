@@ -716,7 +716,7 @@ export const IndexPageTemplate = ({
   });
 
   return (
-    <main className={`${cmsPreview && 'cms-preview'}`}>
+    <main className={`index-template ${cmsPreview && 'cms-preview'}`}>
       <header className="navbar-container w-full z-50 py-8 text-center transition-all duration-500 ease-in-out md:pointer-events-none md:py-16">
         <Navbar />
       </header>
@@ -896,7 +896,7 @@ export const IndexPageTemplate = ({
                             </ul>
                             <nav className="text-gray text-xs font-light flex flex-wrap space-x-4 mb-2">
                               {settings.footer.navLinks.map((data, index) => {
-                                return <a href={data.url} className="underline transition-color duration-300 ease-out hover:text-white" target="_blank" key={`footer_nav_${index}`}>
+                                return <a href={data.url} className="underline transition-color duration-300 ease-out hover:text-white" key={`footer_nav_${index}`}>
                                   {data.text}
                                 </a>
                               })}

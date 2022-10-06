@@ -11,6 +11,6 @@ footer:
       url: https://www.linkedin.com/company/bloom-growth
   navLinks:
     - text: Privacy
-      url: "#"
+      url: "/privacy/"
     - text: Terms
-      url: "#"
+      url: "/terms/"

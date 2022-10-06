@@ -13,11 +13,11 @@ export const LegalPageTemplate = ({
   body
 }) => {
   return (
-    <main className={`${cmsPreview && 'cms-preview'}`}>
-      <header className="navbar-container w-full z-50 py-8 text-center transition-all duration-500 ease-in-out md:pointer-events-none md:py-16">
-        <Navbar />
+    <main className={`legal-template ${cmsPreview && 'cms-preview'}`}>
+      <header className="navbar-container w-full z-50 py-8 text-center transition-all duration-500 ease-in-out md:py-16">
+        <Navbar useLink={true} />
       </header>
-      <section className="relative z-20" dangerouslySetInnerHTML={{ __html: body}} />
+      <section className="relative z-20 container mx-auto px-4 py-30 md:py-48" dangerouslySetInnerHTML={{ __html: body}} />
     </main>
   );
 };
