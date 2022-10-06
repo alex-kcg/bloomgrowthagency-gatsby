@@ -806,7 +806,7 @@ export const IndexPageTemplate = ({
               </div>
             </div>
           </div>
-          <div className="relative py-20 md:mb-40">
+          <div className="section-4-inner relative py-40">
             <div className="fixed -z-1 inset-0 w-full h-full bg-cover bg-center bg-no-repeat md:hidden">
               <video poster="/img/Phase4-v9mobile-static.jpg" className="absolute inset-0 w-full h-full object-cover object-center" preload="true" autoPlay loop muted playsInline>
                 <source src="/img/Phase4-v9mobile.mp4" type="video/mp4" /> 

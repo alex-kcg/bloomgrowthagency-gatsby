@@ -364,6 +364,25 @@ body {
   @apply opacity-100;
 }
 
+.section-4-inner::before,
+.section-4-inner::after {
+  @apply absolute z-10 inset-x-0 pointer-events-none h-30;
+
+  content: " ";
+}
+
+.section-4-inner::before {
+  @apply top-0;
+
+  background: linear-gradient(rgb(3, 14, 18, 1), rgb(3, 14, 18, 0.75), rgb(3, 14, 18, 0))
+}
+
+.section-4-inner::after {
+  @apply bottom-0;
+
+  background: linear-gradient(rgb(3, 14, 18, 0), rgb(3, 14, 18, 0.75), rgb(3, 14, 18, 1))
+}
+
 @screen md {
   .index-template .navbar-container {
     @apply top-1/2 -translate-y-1/2;
@@ -456,6 +475,12 @@ body {
   .section-2-ol[data-position="2"] li:nth-child(2) hr,
   .section-2-ol[data-position="3"] li:nth-child(3) hr {
     @apply w-full;
+  }
+
+
+  .section-4-inner::before,
+  .section-4-inner::after {
+    @apply hidden;
   }
 }
 
