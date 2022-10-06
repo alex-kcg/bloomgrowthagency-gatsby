@@ -244,9 +244,9 @@ export const IndexPageTemplate = ({
 
       cacheImages(imagesMobile);
 
-      sectionOneVideo.current.addEventListener('loadeddata', function() {
+      setTimeout(() => {
         sectionOneVideo.current.classList.remove('opacity-0');
-      }, false);
+      }, 500);
 
       initSectionOneBackground();
       setTimeout(() => {
@@ -349,6 +349,7 @@ export const IndexPageTemplate = ({
 
           if (liScrollTop > mobileScrollAnimationOffset) {
             hr.classList.remove('w-0');
+            hr.classList.add('w-full');
 
             el.querySelectorAll('.animate-words').forEach((el) => {
               el.classList.add('active');
@@ -367,6 +368,7 @@ export const IndexPageTemplate = ({
             }
           } else {
             hr.classList.add('w-0');
+            hr.classList.remove('w-full');
 
             if (img) {
               img.classList.add('delay-300');
