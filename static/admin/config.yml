@@ -121,7 +121,7 @@ collections:
               fields:
                 [
                   { label: Heading, name: heading, widget: text },
-                  { label: Body, name: body, widget: textarea },
+                  { label: Body, name: body, widget: text },
                 ],
             }
           - {
