@@ -430,6 +430,7 @@ body {
                 -webkit-clip-path .3s cubic-bezier(.165, 0.84, 0.44, 1);
   }
 
+  .group:hover .group-underline-animate:before,
   .underline-animate:hover:before {
     @apply scale-x-100;
 
