@@ -54,6 +54,9 @@ export const IndexPageTemplate = ({
   const sectionFiveVideo = useRef(null);
 
   useEffect(() => {
+    // Scroll to top
+    window.scrollTo(0, 0);
+
     const body = document.body;
     let sectionOneSequencesLoaded = false;
     let runSectionOneSequence = false;
@@ -62,11 +65,6 @@ export const IndexPageTemplate = ({
     // Prevent scrolling until images are done caching
     body.classList.add('loaded');
     body.classList.add('md:overflow-hidden');
-
-    window.onbeforeunload = function () {
-      // Scroll to the top
-      window.scrollTo(0, 0);
-    }
 
     // Function to setup canvas 
     const setupCanvasContext = (canvas, canvasWidth, canvasHeight) => {
