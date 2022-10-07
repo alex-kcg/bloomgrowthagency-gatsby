@@ -349,6 +349,25 @@ body {
   transition-delay: 3100ms;
 }
 
+.mobile-video-blend-top::before,
+.mobile-video-blend-bottom::after {
+  @apply absolute z-10 inset-x-0 pointer-events-none h-[10%];
+
+  content: " ";
+}
+
+.mobile-video-blend-top::before {
+  @apply top-0;
+
+  background: linear-gradient(rgb(7, 16, 20, 1), rgb(7, 16, 20, 0.75), rgb(7, 16, 20, 0))
+}
+
+.mobile-video-blend-bottom::after {
+  @apply bottom-0;
+
+  background: linear-gradient(rgb(7, 16, 20, 0), rgb(7, 16, 20, 0.75), rgb(7, 16, 20, 1))
+}
+
 .navbar-shadow .index-template .navbar-container::after {
   @apply opacity-100;
 }
@@ -384,6 +403,11 @@ body {
 }
 
 @screen md {
+  .mobile-video-blend-top::before,
+  .mobile-video-blend-bottom::after {
+    @apply hidden;
+  }
+
   .index-template .navbar-container {
     @apply top-1/2 -translate-y-1/2;
   }

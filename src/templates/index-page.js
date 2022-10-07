@@ -747,7 +747,7 @@ export const IndexPageTemplate = ({
               </h1>
             </div>
           </div>
-          <div className="relative -z-10 overflow-x-hidden md:hidden">
+          <div className="mobile-video-blend-top mobile-video-blend-bottom relative -z-10 overflow-x-hidden md:hidden">
             <video ref={sectionOneVideo} className="relative z-10 object-cover object-center w-full h-[26rem] opacity-0 transition-opacity duration-300 ease-in-out sm:h-auto sm:aspect-video" preload="true" autoPlay muted playsInline>
               <source src="/img/Phase1-v11mobile_BG.mp4" type="video/mp4" /> 
             </video>
@@ -925,7 +925,7 @@ export const IndexPageTemplate = ({
                 </div>
               </div>
             </div>
-            <div className="relative -z-10 overflow-x-hidden md:hidden">
+            <div className="mobile-video-blend-top relative -z-10 overflow-x-hidden md:hidden">
               <video poster="/img/Phase6-v5-Mobile_static.jpg" className="relative z-10 object-cover object-top w-full h-80 sm:h-auto sm:aspect-video" preload="true" autoPlay loop muted playsInline>
                 <source src="/img/Phase6-v5-Mobile.mp4" type="video/mp4" /> 
               </video>
