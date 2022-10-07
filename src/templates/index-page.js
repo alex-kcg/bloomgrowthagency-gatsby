@@ -747,14 +747,14 @@ export const IndexPageTemplate = ({
               </h1>
             </div>
           </div>
-          <div className="mobile-video-blend-top mobile-video-blend-bottom relative -z-10 overflow-x-hidden md:hidden">
+          <div className="mobile-video-blend-top mobile-video-blend-bottom relative h-[26rem] -z-10 overflow-x-hidden md:hidden">
             <video ref={sectionOneVideo} className="relative z-10 object-cover object-center w-full h-[26rem] opacity-0 transition-opacity duration-300 ease-in-out sm:h-auto sm:aspect-video" preload="true" autoPlay muted playsInline>
               <source src="/img/Phase1-v11mobile_BG.mp4" type="video/mp4" /> 
             </video>
           </div>
           <div className="text-6xl tracking-tight text-slate pb-20 md:text-11xl md:min-h-screen md:mb-0">
             <div>
-              {partnerRows.map((row, index) => (
+              {partnerRows && partnerRows.length > 0 && partnerRows.map((row, index) => (
                 <PartnerRow key={index} offsetIndex={index} partnerRow={row} />
               ))}
             </div>
@@ -770,7 +770,7 @@ export const IndexPageTemplate = ({
             <div className="container mx-auto px-4 pt-20 pb-30 md:py-0">
               <div ref={sectionTwoOrderedListWrapper} className="section-2-ol-wrapper mx-auto md:transition-all md:duration-500 md:ease-out">
                 <ol ref={sectionTwoOrderedList} className="section-2-ol font-light text-2xl leading-10 flex flex-col items-start space-y-40 md:text-3xl md:max-w-[31rem] md:space-y-0 md:transition-all md:duration-500 md:ease-out md:opacity-0">
-                  {numberedList.map((listItem, index) => (
+                  {numberedList && numberedList.length > 0 && numberedList.map((listItem, index) => (
                     <OrderedListItem key={index} image={listItem.image} heading={listItem.heading} text={listItem.text} />
                   ))}
                 </ol>
@@ -788,7 +788,7 @@ export const IndexPageTemplate = ({
               </h2>
             </div>
             <ul className="accordion-container max-w-[50.5rem] mx-auto md:opacity-0 md:transition-opacity md:duration-300 md:delay-300">
-              {accordionItems.map((item, index) => (
+              {accordionItems && accordionItems.length > 0 && accordionItems.map((item, index) => (
                 <Accordion key={index} accordionItem={item} />
               ))}
             </ul>
@@ -899,7 +899,7 @@ export const IndexPageTemplate = ({
                               {footerContactEmail}
                             </a>
                             <ul className="text-electric-lime flex flex-wrap space-x-4 leading-relaxed mt-6 mb-10 md:mb-14">
-                              {settings.footer.socialMediaLinks.map((data, index) => {
+                              {settings.footer.socialMediaLinks && settings.footer.socialMediaLinks.length > 0 && settings.footer.socialMediaLinks.map((data, index) => {
                                 return <li key={`footer_social_${index}`}>
                                   <a href={data.url} className="underline-animate" target="_blank">
                                     {data.text}
@@ -908,7 +908,7 @@ export const IndexPageTemplate = ({
                               })}
                             </ul>
                             <nav className="text-gray text-xs font-light flex flex-wrap space-x-4 mb-2">
-                              {settings.footer.navLinks.map((data, index) => {
+                              {settings.footer.navLinks && settings.footer.navLinks.length > 0 && settings.footer.navLinks.map((data, index) => {
                                 return <a href={data.url} className="underline transition-color duration-300 ease-out hover:text-white" key={`footer_nav_${index}`}>
                                   {data.text}
                                 </a>

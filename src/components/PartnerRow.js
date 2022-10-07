@@ -79,7 +79,7 @@ const PartnerRow = ({ partnerRow, offsetIndex }) => {
       >
         {[...Array(100)].map((e, i) => (
           <span className="iteration" key={i}>
-            {partnerRow.partners.map((partner, index) => (
+            {partnerRow.partners && partnerRow.partners.length > 0 && partnerRow.partners.map((partner, index) => (
               <span key={index} className={`partner-wordmark px-3 transition-colors duration-1000 ease-in-out ${partner.fontClassName}`}>
                 {partner.text}
               </span>
