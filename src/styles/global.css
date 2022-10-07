@@ -562,6 +562,7 @@ body {
 
 @tailwind utilities;
 
+.cms-preview .fixed-image,
 .cms-preview video,
 .cms-preview canvas {
   display: none !important;
