@@ -392,6 +392,26 @@ body {
     @apply top-0 translate-y-0;
   }
 
+  .underline-animate {
+    @apply relative;
+  }
+  
+  .underline-animate:before {
+    @apply absolute bg-current inset-0 transform -scale-x-100;
+  
+    content: " ";
+    border-radius: inherit;
+    clip-path: polygon(0% 92%, 0% 100%, 0% 100%, 0% 92%);
+    transition: clip-path .3s cubic-bezier(.165, 0.84, 0.44, 1),
+                -webkit-clip-path .3s cubic-bezier(.165, 0.84, 0.44, 1);
+  }
+
+  .underline-animate:hover:before {
+    @apply scale-x-100;
+
+    clip-path: polygon(100% 92%, 100% 100%, 0% 100%, 0% 92%);
+  }
+
   .bg-animate {
     @apply relative;
   }
