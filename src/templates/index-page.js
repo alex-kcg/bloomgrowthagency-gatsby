@@ -852,7 +852,7 @@ export const IndexPageTemplate = ({
               <source src="/img/Phase6-v5.mp4" type="video/mp4" /> 
             </video>
           </div>
-          <div className="foreground relative z-40 w-full md:min-h-screen md:flex md:flex-col md:justify-center md:items-center">
+          <div className="foreground relative z-40 w-full md:min-h-screen md:flex md:flex-col md:justify-center md:items-center md:pt-44">
             <div className="container pt-10 md:py-0">
               <div className="w-full">
                 <div className="py-10 md:py-20 lg:flex lg:justify-center lg:-mx-3">
