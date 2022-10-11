@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 // eslint-disable-next-line
 export const LegalPageTemplate = ({
@@ -16,12 +17,13 @@ export const LegalPageTemplate = ({
       <header className="navbar-container z-50 w-full">
         <Navbar useLink={true} />
       </header>
-      <section className="relative z-20 container mx-auto px-4 py-30 md:py-48">
+      <section className="relative z-20 container mx-auto px-4 pt-30 pb-20 md:pt-48">
         <h1 className="font-serif font-light tracking-snug text-4xl mb-20 md:text-8xl">
           {title}
         </h1>
         <div className="prose prose-cream max-w-full" dangerouslySetInnerHTML={{ __html: html }} />
       </section>
+      <Footer className="container mx-auto px-4 pb-20" />
     </main>
   );
 };

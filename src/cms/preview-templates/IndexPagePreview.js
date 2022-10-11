@@ -26,7 +26,7 @@ const IndexPagePreview = ({ entry, getAsset }) => {
         footerContactHeading={data.footerContactHeading}
         footerContactName={data.footerContactName}
         footerContactTitle={data.footerContactTitle}
-        footerContactEmail={data.footerContactEmail}
+        footerContactLink={data.footerContactLink}
       />
     )
   } else {

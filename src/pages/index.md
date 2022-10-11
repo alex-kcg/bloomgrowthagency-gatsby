@@ -114,8 +114,9 @@ partnersHeading: Powering fearless companies who value growth.
 partnersSubheading: Out of respect for our partners, our best work is under NDA.
   If you’d like to dive in, we’d be happy
 partnersSubheadingLink:
-  href: https://calendly.com/d/ckh-sxp-zhv/meet-bloom
+  url: https://calendly.com/d/ckh-sxp-zhv/meet-bloom
   text: to chat.
+  target_blank: true
 partnersCards:
   - image:
       image: /img/logo-chime.svg
@@ -186,8 +187,12 @@ footerCTASubheading: We’re helping partners build world class design
 footerCTALink:
   url: https://calendly.com/d/ckh-sxp-zhv/meet-bloom
   text: Let’s chat pipeline
+  target_blank: true
 footerContactHeading: Contact
 footerContactName: Zach Greenberger
 footerContactTitle: Head of Growth
-footerContactEmail: zach@bloomgrowthagency.com
+footerContactLink:
+  url: mailto:zach@bloomgrowthagency.com
+  text: zach@bloomgrowthagency.com
+  target_blank: false
 ---

@@ -208,6 +208,11 @@ collections:
                     label: "Text",
                     name: "text",
                     widget: string
+                  },
+                  {
+                    label: "Open link in new tab",
+                    name: "target_blank",
+                    widget: "boolean"
                   }
                 ]
             }
@@ -230,9 +235,27 @@ collections:
               pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
             }
           - {
-              label: Footer contact email,
-              name: footerContactEmail,
-              widget: string
+              label: Footer Contact Link,
+              name: footerContactLink,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: "URL",
+                    name: "url",
+                    widget: string
+                  },
+                  {
+                    label: "Text",
+                    name: "text",
+                    widget: string
+                  },
+                  {
+                    label: "Open link in new tab",
+                    name: "target_blank",
+                    widget: "boolean"
+                  }
+                ]
             }
       - file: "src/pages/privacy.md"
         label: "Privacy"
@@ -249,10 +272,10 @@ collections:
           - { label: Description, name: description, widget: text }
           - { label: Body, name: body, widget: markdown }
   - name: "settings"
-    label: "Settings"
+    label: "Header/Footer"
     files:
       - file: "src/data/settings.yml"
-        label: "Settings"
+        label: "Header/Footer"
         name: "settings"
         fields:
           - label: Header
@@ -305,6 +328,11 @@ collections:
                       label: "URL",
                       name: "url",
                       widget: string
+                    },
+                    {
+                      label: "Open link in new tab",
+                      name: "target_blank",
+                      widget: "boolean"
                     }
                   ]
                 }

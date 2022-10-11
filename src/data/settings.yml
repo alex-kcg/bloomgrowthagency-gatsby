@@ -7,10 +7,14 @@ footer:
   socialMediaLinks:
     - text: Dribble
       url: https://dribbble.com/BloomGrowthAgency
+      target_blank: true
     - text: LinkedIn
       url: https://www.linkedin.com/company/bloom-growth
+      target_blank: true
   navLinks:
     - text: Privacy
       url: "/privacy/"
+      target_blank: false
     - text: Terms
       url: "/terms/"
+      target_blank: false
