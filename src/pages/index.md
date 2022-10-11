@@ -112,16 +112,17 @@ accordionItems:
       the design.
 partnersHeading: Powering fearless companies who value growth.
 partnersSubheading: Out of respect for our partners, our best work is under NDA.
-  If you’d like to dive in, we’d be happy 
+  If you’d like to dive in, we’d be happy
 partnersSubheadingLink:
-  href: "mailto:growth@bloomgrowthagency.com"
+  href: https://calendly.com/d/ckh-sxp-zhv/meet-bloom
   text: to chat.
 partnersCards:
   - image:
       image: /img/logo-chime.svg
       alt: Chime logo
     heading: Chime
-    description: Strategic design across the mobile application focused on growth, retention, and money movement experienced by over xxxxx members.
+    description: Strategic design across the mobile application focused on growth,
+      retention, and money movement experienced by over xxxxx members.
     bulletColorClassName: bg-summer-rain
     bullets:
       - Series G
@@ -130,7 +131,8 @@ partnersCards:
       image: /img/logo-one.svg
       alt: One logo
     heading: One
-    description: Standing up a core banking application and design system to supply modern banking for the underserved. Powered by the good folks at Walmart.
+    description: Standing up a core banking application and design system to supply
+      modern banking for the underserved. Powered by the good folks at Walmart.
     bulletColorClassName: bg-electric-lime
     bullets:
       - Series B
@@ -139,7 +141,9 @@ partnersCards:
       image: /img/logo-mainstreet.svg
       alt: MainStreet logo
     heading: MainStreet
-    description: Designing alongside a new initiative product and engineering team to validate new products for over 2,000 businesses who have saved over 100,000 on the platform.
+    description: Designing alongside a new initiative product and engineering team
+      to validate new products for over 2,000 businesses who have saved over
+      100,000 on the platform.
     bulletColorClassName: bg-voltage
     bullets:
       - Series A
@@ -148,7 +152,9 @@ partnersCards:
       image: /img/logo-insurify.svg
       alt: Insurify logo
     heading: Insurify
-    description: Partnering from series A to a 125m series B, on everything from brand, web, and web app experiences to help save consumers money on their auto insurance.
+    description: Partnering from series A to a 125m series B, on everything from
+      brand, web, and web app experiences to help save consumers money on their
+      auto insurance.
     bulletColorClassName: bg-electric-lime
     bullets:
       - Series B
@@ -157,7 +163,8 @@ partnersCards:
       image: /img/logo-caribou.svg
       alt: Caribou logo
     heading: Caribou
-    description: After a $65M injection from JP Morgan chase, a new brand, web ecosystem, and suite of web apps hit the market.
+    description: After a $65M injection from JP Morgan chase, a new brand, web
+      ecosystem, and suite of web apps hit the market.
     bulletColorClassName: bg-voltage
     bullets:
       - Series B
@@ -166,15 +173,18 @@ partnersCards:
       image: /img/logo-slice.svg
       alt: Slice logo
     heading: Slice
-    description: A fully integrated partner, our teams span across consumer applications, b2b web apps, and the core product suite used by xxxx small businesses to excel their consumer experiences.
+    description: A fully integrated partner, our teams span across consumer
+      applications, b2b web apps, and the core product suite used by xxxx small
+      businesses to excel their consumer experiences.
     bulletColorClassName: bg-summer-rain
     bullets:
       - Series D
       - Food Tech
 footerCTAHeading: Are you building a design team?
-footerCTASubheading: We’re helping partners build world class design organizations with our pipeline. Interested?
+footerCTASubheading: We’re helping partners build world class design
+  organizations with our pipeline. Interested?
 footerCTALink:
-  url: "mailto:growth@bloomgrowthagency.com"
+  url: mailto:growth@bloomgrowthagency.com
   text: Let’s chat pipeline
 footerContactHeading: Contact
 footerContactName: Zach Greenberger
