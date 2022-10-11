@@ -142,8 +142,9 @@ collections:
               widget: object,
               fields:
                 [
-                  { label: Link, name: href, widget: string },
+                  { label: URL, name: url, widget: string },
                   { label: Text, name: text, widget: string },
+                  { label: "Open link in new tab", name: "target_blank", widget: "boolean" }
                 ],
             }
           - {
