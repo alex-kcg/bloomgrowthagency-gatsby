@@ -187,7 +187,7 @@ footerCTASubheading: We’re helping partners build world class design
 footerCTALink:
   url: https://calendly.com/d/ckh-sxp-zhv/meet-bloom
   text: Let’s chat pipeline
-  target_blank: true
+  target_blank: false
 footerContactHeading: Contact
 footerContactName: Zach Greenberger
 footerContactTitle: Head of Growth
