@@ -351,7 +351,7 @@ body {
 
 .mobile-video-blend-top::before,
 .mobile-video-blend-bottom::after {
-  @apply absolute z-10 inset-x-0 pointer-events-none h-[10%];
+  @apply absolute z-20 inset-x-0 pointer-events-none h-[10%];
 
   content: " ";
 }
