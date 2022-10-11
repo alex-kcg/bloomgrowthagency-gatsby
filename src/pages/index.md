@@ -184,7 +184,7 @@ footerCTAHeading: Are you building a design team?
 footerCTASubheading: We’re helping partners build world class design
   organizations with our pipeline. Interested?
 footerCTALink:
-  url: mailto:growth@bloomgrowthagency.com
+  url: https://calendly.com/d/ckh-sxp-zhv/meet-bloom
   text: Let’s chat pipeline
 footerContactHeading: Contact
 footerContactName: Zach Greenberger
