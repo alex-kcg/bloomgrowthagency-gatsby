@@ -71,21 +71,18 @@ partnerRows:
         url: https://slicelife.com/
         fontClassName: font-serif font-light tracking-tighter
 numberedList:
-  - heading: A design studio
-    text: Bloom is a product design studio, visualizing the future of products and
-      digital ecosystems.
+  - heading: Growth minded
+    text: Bloom is a studio of growth minded product designers.
     image:
       image: /img/BG-SiteAnim-PlanterModel-Phase2-v11mobile1.png
       alt: Alt
   - heading: Embedded teams
-    text: We take an embedded approach to our partnerships to elevate design and
-      product maturity.
+    text: You'll find we like to embed, so we can learn and grow together.
     image:
       image: /img/BG-SiteAnim-PlanterModel-Phase2-v11mobile2.png
       alt: Alt
   - heading: Focused on quality
-    text: Our carefully crafted weekly design sprints lead to highly effective
-      output.
+    text: Together we'll build your org towards design maturity.
     image:
       image: /img/BG-SiteAnim-PlanterModel-Phase2-v11mobile3.png
       alt: Alt
