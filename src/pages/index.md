@@ -71,7 +71,7 @@ partnerRows:
         url: https://slicelife.com/
         fontClassName: font-serif font-light tracking-tighter
 numberedList:
-  - heading: Growth minded
+  - heading: Growth design
     text: Bloom is a studio of growth minded product designers.
     image:
       image: /img/BG-SiteAnim-PlanterModel-Phase2-v11mobile1.png
