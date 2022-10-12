@@ -847,7 +847,7 @@ export const IndexPageTemplate = ({
           className="md:pointer-events-none"
         >
           <div className="background fixed z-0 inset-0 justify-center items-center overflow-hidden hidden md:flex">
-            <video ref={sectionFiveVideo} poster="/img/Phase6-v5_static.jpg" className="opacity-0 transition-all duration-[1.5s] ease-out grayscale absolute -z-10 object-cover object-bottom min-w-full min-h-full" preload="true" autoPlay loop muted playsInline>
+            <video ref={sectionFiveVideo} poster="/img/Phase6-v5_static.jpg" className="opacity-0 transition-all duration-500 ease-out grayscale absolute -z-10 object-cover object-bottom min-w-full min-h-full" preload="true" autoPlay loop muted playsInline>
               <source src="/img/Phase6-v5.mp4" type="video/mp4" /> 
             </video>
           </div>
