@@ -1,10 +1,16 @@
 import CMS from 'netlify-cms-app'
 import uploadcare from 'netlify-cms-media-library-uploadcare'
 import cloudinary from 'netlify-cms-media-library-cloudinary'
+import "../styles/netlify.css";
 
 import IndexPagePreview from './preview-templates/IndexPagePreview'
 import LegalPagePreview from './preview-templates/LegalPagePreview'
 import SettingsPreview from './preview-templates/SettingsPreview'
+
+const markdownWidget = CMS.getWidget('markdown')
+if (markdownWidget) {
+    CMS.getWidget('markdown').globalStyles = '[data-slate-editor] { -webkit-user-modify: read-write !important; }'
+}
 
 CMS.registerMediaLibrary(uploadcare)
 CMS.registerMediaLibrary(cloudinary)
