@@ -1,7 +1,6 @@
 import CMS from 'netlify-cms-app'
 import uploadcare from 'netlify-cms-media-library-uploadcare'
 import cloudinary from 'netlify-cms-media-library-cloudinary'
-import "../styles/netlify.css";
 
 import IndexPagePreview from './preview-templates/IndexPagePreview'
 import LegalPagePreview from './preview-templates/LegalPagePreview'
