@@ -121,12 +121,13 @@ partnersCards:
       image: /img/logo-chime.svg
       alt: Chime logo
     heading: Chime
-    description: Strategic design across the mobile application focused on growth,
-      retention, and money movement experienced by over xxxxx members.
+    description: Strategic design across the mobile application – our team focused
+      on growth, retention, and money movement. Our design was experienced by
+      over 12 million users.
     bulletColorClassName: bg-summer-rain
     bullets:
       - Series G
-      - Consumer Fintech
+      - Consumer FinTech
   - image:
       image: /img/logo-one.svg
       alt: One logo
@@ -136,7 +137,7 @@ partnersCards:
     bulletColorClassName: bg-electric-lime
     bullets:
       - Series B
-      - Consumer Fintech
+      - Consumer FinTech
   - image:
       image: /img/logo-mainstreet.svg
       alt: MainStreet logo
@@ -147,7 +148,7 @@ partnersCards:
     bulletColorClassName: bg-voltage
     bullets:
       - Series A
-      - B2b Fintech
+      - B2B FinTech
   - image:
       image: /img/logo-insurify.svg
       alt: Insurify logo
@@ -158,7 +159,7 @@ partnersCards:
     bulletColorClassName: bg-electric-lime
     bullets:
       - Series B
-      - Consumer Insurtech
+      - Consumer InsurTech
   - image:
       image: /img/logo-caribou.svg
       alt: Caribou logo
@@ -168,7 +169,7 @@ partnersCards:
     bulletColorClassName: bg-voltage
     bullets:
       - Series B
-      - Consumer Fintech
+      - Consumer FinTech
   - image:
       image: /img/logo-slice.svg
       alt: Slice logo
@@ -179,7 +180,7 @@ partnersCards:
     bulletColorClassName: bg-summer-rain
     bullets:
       - Series D
-      - Food Tech
+      - FoodTech
 footerCTAHeading: Are you building a design team?
 footerCTASubheading: We’re helping partners build world class design
   organizations with our pipeline. Interested?
