@@ -1,13 +1,13 @@
 ---
 templateKey: legal-page
-title: Privacy
-description: Description
+title: Privacy Policy
+description: Bloom's privacy policy.
 ---
 Last revised on October 12, 2022
 
 ### The Gist
 
-Bloom Growth will collect certain non-personally identify information about you as you use our sites. We may use this data to better understand our users. We can also publish this data, but the data will be about a large group of users, not individuals.
+Bloom Growth will collect certain non-personally identifying information about you as you use our site. We may use this data to better understand our users. We can also publish this data, but the data will be about a large group of users, not individuals.
 
 We will also ask you to provide personal information, but you'll always be able to opt out. If you give us personal information, we won't do anything evil with it.
 
