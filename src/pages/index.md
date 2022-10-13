@@ -121,9 +121,9 @@ partnersCards:
       image: /img/logo-chime.svg
       alt: Chime logo
     heading: Chime
-    description: Strategic design across the mobile application – our team focused
-      on growth, retention, and money movement experienced by over 12 million
-      users.
+    description: Strategic design across the native mobile application, Bloom’s
+      focus was on growth, retention, and money movement experienced by over 12
+      million users.
     bulletColorClassName: bg-summer-rain
     bullets:
       - Series G
@@ -165,8 +165,10 @@ partnersCards:
       image: /img/logo-caribou.svg
       alt: Caribou logo
     heading: Caribou
-    description: After a $65M injection from JP Morgan chase, a new brand, web
-      ecosystem, and suite of web apps hit the market.
+    description: After a $50M raise from Goldman Sachs, a new brand name, brand
+      identity, web CMS, and web app were in the works by Bloom. Our partnership
+      relaunched and introduced the company as Caribou with full-stack design
+      efforts, from back-to-front of house.
     bulletColorClassName: bg-voltage
     bullets:
       - Series B
