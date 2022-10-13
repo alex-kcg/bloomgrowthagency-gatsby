@@ -185,8 +185,7 @@ partnersCards:
       - Series A
       - B2B FinTech
 footerCTAHeading: Are you building a design team?
-footerCTASubheading: We’re helping partners build world class design
-  organizations with our pipeline. Interested?
+footerCTASubheading: "We’re helping partners build world class design organizations. Interested? "
 footerCTALink:
   url: https://calendly.com/d/drg-hpd-cnw/meet-with-james-and-jordan
   text: Let’s chat pipeline
