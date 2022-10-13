@@ -122,8 +122,8 @@ partnersCards:
       alt: Chime logo
     heading: Chime
     description: Strategic design across the mobile application – our team focused
-      on growth, retention, and money movement. Our design was experienced by
-      over 12 million users.
+      on growth, retention, and money movement experienced by over 12 million
+      users.
     bulletColorClassName: bg-summer-rain
     bullets:
       - Series G
