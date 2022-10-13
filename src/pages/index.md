@@ -129,6 +129,41 @@ partnersCards:
       - Series G
       - Consumer FinTech
   - image:
+      image: /img/logo-caribou.svg
+      alt: Caribou logo
+    heading: Caribou
+    description: After a $50M raise from Goldman Sachs, a new brand name, brand
+      identity, web CMS, and web app were quickly  in the works by Bloom. Our
+      partnership relaunched and reintroduced the company as Caribou.
+    bulletColorClassName: bg-voltage
+    bullets:
+      - Series B
+      - Consumer FinTech
+  - image:
+      image: /img/logo-insurify.svg
+      alt: Insurify logo
+    heading: Insurify
+    description: Partnering from Series A into a $100M Series B, Bloom designed
+      everything from branding identity, social ads and landing pages, to the
+      entire web application experience, helping millions of customers save an
+      average of $489 a year on their car insurance.
+    bulletColorClassName: bg-electric-lime
+    bullets:
+      - Series B
+      - Consumer InsurTech
+  - image:
+      image: /img/logo-slice.svg
+      alt: Slice logo
+    heading: Slice
+    description: A fully integrated partner within 4 product pods. Our team spans
+      across consumer native and web applications, B2B web portals, design
+      systems, and the core product suite used by 5M small businesses and
+      customers.
+    bulletColorClassName: bg-summer-rain
+    bullets:
+      - Series D
+      - FoodTech
+  - image:
       image: /img/logo-one.svg
       alt: One logo
     heading: One
@@ -149,42 +184,6 @@ partnersCards:
     bullets:
       - Series A
       - B2B FinTech
-  - image:
-      image: /img/logo-insurify.svg
-      alt: Insurify logo
-    heading: Insurify
-    description: Partnering from Series A into a $100M Series B, Bloom designed
-      everything from branding identity, social ads and landing pages, to the
-      entire web application experience, helping millions of customers save an
-      average of $489 a year on their car insurance.
-    bulletColorClassName: bg-electric-lime
-    bullets:
-      - Series B
-      - Consumer InsurTech
-  - image:
-      image: /img/logo-caribou.svg
-      alt: Caribou logo
-    heading: Caribou
-    description: After a $50M raise from Goldman Sachs, a new brand name, brand
-      identity, web CMS, and web app were in the works by Bloom. Our partnership
-      relaunched and introduced the company as Caribou with full-stack design
-      efforts, from back-to-front of house.
-    bulletColorClassName: bg-voltage
-    bullets:
-      - Series B
-      - Consumer FinTech
-  - image:
-      image: /img/logo-slice.svg
-      alt: Slice logo
-    heading: Slice
-    description: A fully integrated partner within 4 product pods. Our team spans
-      across consumer native and web applications, B2B web portals, design
-      systems, and the core product suite used by 5M small businesses and
-      customers.
-    bulletColorClassName: bg-summer-rain
-    bullets:
-      - Series D
-      - FoodTech
 footerCTAHeading: Are you building a design team?
 footerCTASubheading: We’re helping partners build world class design
   organizations with our pipeline. Interested?
