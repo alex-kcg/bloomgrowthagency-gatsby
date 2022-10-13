@@ -140,18 +140,6 @@ partnersCards:
       - Series B
       - Consumer FinTech
   - image:
-      image: /img/logo-insurify.svg
-      alt: Insurify logo
-    heading: Insurify
-    description: Partnering from Series A into a $100M Series B, Bloom designed
-      everything from branding identity, social ads and landing pages, to the
-      entire web application experience, helping millions of customers save an
-      average of $489 a year on car insurance.
-    bulletColorClassName: bg-electric-lime
-    bullets:
-      - Series B
-      - Consumer InsurTech
-  - image:
       image: /img/logo-slice.svg
       alt: Slice logo
     heading: Slice
@@ -163,6 +151,18 @@ partnersCards:
     bullets:
       - Series D
       - FoodTech
+  - image:
+      image: /img/logo-insurify.svg
+      alt: Insurify logo
+    heading: Insurify
+    description: Partnering from Series A into a $100M Series B, Bloom designed
+      everything from branding identity, social ads and landing pages, to the
+      entire web application experience, helping millions of customers save an
+      average of $489 a year on car insurance.
+    bulletColorClassName: bg-electric-lime
+    bullets:
+      - Series B
+      - Consumer InsurTech
   - image:
       image: /img/logo-one.svg
       alt: One logo
