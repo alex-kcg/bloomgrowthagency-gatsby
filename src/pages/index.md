@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
 title: Bloom Growth Agency
-description: A product design studio for fast moving companies
+description: A product design studio for fast moving companies.
 heading: We use product design to fuel fast moving companies into hypergrowth.
 partnerRows:
   - direction: ltr
@@ -86,27 +86,29 @@ numberedList:
     image:
       image: /img/BG-SiteAnim-PlanterModel-Phase2-v11mobile3.png
       alt: Alt
-accordionHeading: We're building products, not projects.
+accordionHeading: We build products, not projects.
 accordionItems:
-  - heading: Mobile apps
+  - heading: Mobile Apps
     body: We design apps that cut out the clutter – creating a seamless brand
-      experience, ensuring efficiency and learnability within your product.
-  - heading: Web apps
-    body: "We follow a mobile-first responsive framework for all web applications,
-      ensuring design quality and performance from every device. "
-  - heading: Digital ecosystems
-    body: We rebuild and relaunch .Com marketing sites with a powerful brand
-      presence geared towards customer interest, engagement, and conversion.
-  - heading: Design systems
-    body: We take a systems approach to everything we build, so products and .coms
-      can shift at scale, quickly and easily for design teams as they need it.
-  - heading: Growth funnels
-    body: We work to identify the opportunities for growth from day one – as
-      beginning from your .com and carrying throughout your entire product.
-  - heading: Research
-    body: From user testing to user interviews, our team of UX researchers uncover
-      every need in your customer base, then employ those insights to enhance
-      the design.
+      experience with efficiency and learnability built right into your product.
+  - heading: Web Apps
+    body: "Our team follows a responsive framework for all web applications,
+      ensuring design quality and high performance from every device. "
+  - heading: Digital Ecosystems
+    body: "Rebuilding and relaunching .com marketing sites can be daunting – we
+      start simple by baking conversion into the initial touchpoint, and setting
+      up CMS for future customer shifts. "
+  - heading: Design Systems
+    body: "Our team takes a systems approach to everything we build, so products and
+      .coms can change at scale, quickly and easily as users demand it. "
+  - heading: Growth Funnels
+    body: We work to identify the opportunities for growth from day one – beginning
+      in your .com, social, and advertising, then carrying throughout your
+      entire product.
+  - heading: UX Research
+    body: From usability testing to moderated interviews, our UXR team uncovers
+      every need in your customer base, then employ those insights into
+      actionable design changes.
 partnersHeading: Powering fearless companies who value growth.
 partnersSubheading: Out of respect for our partners, our best work is under NDA.
   If you’d like to dive in, we’d be happy
