@@ -146,7 +146,7 @@ partnersCards:
     description: Partnering from Series A into a $100M Series B, Bloom designed
       everything from branding identity, social ads and landing pages, to the
       entire web application experience, helping millions of customers save an
-      average of $489 a year on their car insurance.
+      average of $489 a year on car insurance.
     bulletColorClassName: bg-electric-lime
     bullets:
       - Series B
