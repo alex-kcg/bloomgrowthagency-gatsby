@@ -155,8 +155,8 @@ partnersCards:
       image: /img/logo-slice.svg
       alt: Slice logo
     heading: Slice
-    description: A fully integrated partner within 4 product pods. Our team spans
-      across consumer native and web applications, B2B web portals, design
+    description: Bloom is a fully integrated partner within four product pods. Our
+      team spans consumer native and web applications, B2B web portals, design
       systems, and the core product suite used by 5M small businesses and
       customers.
     bulletColorClassName: bg-summer-rain
