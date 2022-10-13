@@ -107,14 +107,14 @@ accordionItems:
       entire product.
   - heading: UX Research
     body: From usability testing to moderated interviews, our UXR team uncovers
-      every need in your customer base, then employ those insights into
-      actionable design changes.
+      every insight in your customer base, then deploys into actionable design
+      changes.
 partnersHeading: Powering fearless companies who value growth.
 partnersSubheading: Out of respect for our partners, our best work is under NDA.
   If you’d like to dive in, we’d be happy
 partnersSubheadingLink:
   url: https://calendly.com/d/drg-hpd-cnw/meet-with-james-and-jordan
-  text: to chat.
+  text: to connect.
   target_blank: true
 partnersCards:
   - image:
