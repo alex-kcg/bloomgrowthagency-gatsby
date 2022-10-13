@@ -143,8 +143,8 @@ partnersCards:
       alt: MainStreet logo
     heading: MainStreet
     description: Designing alongside a new initiative product and engineering team
-      to validate new products for over 2,000 businesses who have saved over
-      100,000 on the platform.
+      to help validate the latest products for 2,000+ private businesses who
+      have saved over $100k on the platform.
     bulletColorClassName: bg-voltage
     bullets:
       - Series A
@@ -153,9 +153,10 @@ partnersCards:
       image: /img/logo-insurify.svg
       alt: Insurify logo
     heading: Insurify
-    description: Partnering from series A to a 125m series B, on everything from
-      brand, web, and web app experiences to help save consumers money on their
-      auto insurance.
+    description: Partnering from Series A into a $100M Series B, Bloom designed
+      everything from branding identity, social ads and landing pages, to the
+      entire web application experience, helping millions of customers save an
+      average of $489 a year on their car insurance.
     bulletColorClassName: bg-electric-lime
     bullets:
       - Series B
@@ -174,9 +175,10 @@ partnersCards:
       image: /img/logo-slice.svg
       alt: Slice logo
     heading: Slice
-    description: A fully integrated partner, our teams span across consumer
-      applications, b2b web apps, and the core product suite used by xxxx small
-      businesses to excel their consumer experiences.
+    description: A fully integrated partner within 4 product pods. Our team spans
+      across consumer native and web applications, B2B web portals, design
+      systems, and the core product suite used by 5M small businesses and
+      customers.
     bulletColorClassName: bg-summer-rain
     bullets:
       - Series D
