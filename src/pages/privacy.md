@@ -227,85 +227,69 @@ Please note that the categories and examples provided in the list below are thos
 
 * **Category A: Identifiers.**
 
-  ```
-  	 Examples: A real name, alias, postal address, unique personal identifier, online identifier, Internet Protocol address, email address, account name, driver's license number, passport number, or other similar identifiers.
-   
-  	 Collected: Yes.
-  ```
+Examples: A real name, alias, postal address, unique personal identifier, online identifier, Internet Protocol address, email address, account name, driver's license number, passport number, or other similar identifiers.
+
+Collected: Yes.
+
 * **Category B: Personal information categories listed in the California Customer Records statute (Cal. Civ. Code § 1798.80(e)).**
 
-  ```
-  	 Examples: A name, signature, Social Security number, physical characteristics or description, address, telephone number, passport number, driver's license or state identification card number, insurance policy number, education, employment, employment history, bank account number, credit card number, debit card number, or any other financial information, medical information, or health insurance information. Some personal information included in this category may overlap with other categories. 
-   
-  	 Collected: Yes.
-  ```
+Examples: A name, signature, Social Security number, physical characteristics or description, address, telephone number, passport number, driver's license or state identification card number, insurance policy number, education, employment, employment history, bank account number, credit card number, debit card number, or any other financial information, medical information, or health insurance information. Some personal information included in this category may overlap with other categories. 
+
+Collected: Yes.
+
 * **Category C: Protected classification characteristics under California or federal law.**
 
-  ```
-  	 Examples: Age (40 years or older), race, color, ancestry, national origin, citizenship, religion or creed, marital status, medical condition, physical or mental disability, sex (including gender, gender identity, gender expression, pregnancy or childbirth and related medical conditions), sexual orientation, veteran or military status, genetic information (including familial genetic information).
-   
-  	 Collected: No.
-  ```
+Examples: Age (40 years or older), race, color, ancestry, national origin, citizenship, religion or creed, marital status, medical condition, physical or mental disability, sex (including gender, gender identity, gender expression, pregnancy or childbirth and related medical conditions), sexual orientation, veteran or military status, genetic information (including familial genetic information).
+
+Collected: No.
+
 * **Category D: Commercial information.**
 
-  ```
-  	 Examples: Records and history of products or services purchased or considered.
-   
-   
-  	 Collected: No.
-   
-  ```
+Examples: Records and history of products or services purchased or considered.
+
+Collected: No.
+
 * **Category E: Biometric information.**
 
-  ```
-  	 Examples: Genetic, physiological, behavioral, and biological characteristics, or activity patterns used to extract a template or other identifier or identifying information, such as, fingerprints, faceprints, and voiceprints, iris or retina scans, keystroke, gait, or other physical patterns, and sleep, health, or exercise data. 
-   
-  	 Collected: No.
-  ```
+Examples: Genetic, physiological, behavioral, and biological characteristics, or activity patterns used to extract a template or other identifier or identifying information, such as, fingerprints, faceprints, and voiceprints, iris or retina scans, keystroke, gait, or other physical patterns, and sleep, health, or exercise data. 
+
+Collected: No.
+
 * **Category F: Internet or other similar network activity.**
 
-  ```
-  	 Examples: Interaction with our Service or advertisement.
-   
-  	 Collected: Yes.
-  ```
+Examples: Interaction with our Service or advertisement.
+
+Collected: Yes.
+
 * **Category G: Geolocation data.**
 
-  ```
-  	 Examples: Approximate physical location.
-   
-   
-  	 Collected: No.
-   
-  ```
+Examples: Approximate physical location.
+
+Collected: No.
+
 * **Category H: Sensory data.**
 
-  ```
-  	 Examples: Audio, electronic, visual, thermal, olfactory, or similar information. 
-   
-  	 Collected: No.
-  ```
+Examples: Audio, electronic, visual, thermal, olfactory, or similar information. 
+
+Collected: No.
+
 * **Category I: Professional or employment-related information.**
 
-  ```
-  	 Examples: Current or past job history or performance evaluations. 
-   
-  	 Collected: No.
-  ```
+Examples: Current or past job history or performance evaluations. 
+
+Collected: No.
+
 * **Category J: Non-public education information (per the Family Educational Rights and Privacy Act (20 U.S.C. Section 1232g, 34 C.F.R. Part 99)).**
 
-  ```
-  	 Examples: Education records directly related to a student maintained by an educational institution or party acting on its behalf, such as grades, transcripts, class lists, student schedules, student identification codes, student financial information, or student disciplinary records. 
-   
-  	 Collected: No.
-  ```
+Examples: Education records directly related to a student maintained by an educational institution or party acting on its behalf, such as grades, transcripts, class lists, student schedules, student identification codes, student financial information, or student disciplinary records. 
+
+Collected: No.
+
 * **Category K: Inferences drawn from other personal information.**
 
-  ```
-  	 Examples: Profile reflecting a person's preferences, characteristics, psychological trends, predispositions, behavior, attitudes, intelligence, abilities, and aptitudes. 
+Examples: Profile reflecting a person's preferences, characteristics, psychological trends, predispositions, behavior, attitudes, intelligence, abilities, and aptitudes. 
    
-  	 Collected: No.
-  ```
+Collected: No.
 
 Under CCPA, personal information does not include: 
 
