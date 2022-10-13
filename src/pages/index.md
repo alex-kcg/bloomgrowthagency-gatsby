@@ -81,7 +81,7 @@ numberedList:
     image:
       image: /img/BG-SiteAnim-PlanterModel-Phase2-v11mobile2.png
       alt: Alt
-  - heading: Focused on quality
+  - heading: Focused on scale
     text: Together we'll build your org towards design maturity.
     image:
       image: /img/BG-SiteAnim-PlanterModel-Phase2-v11mobile3.png
