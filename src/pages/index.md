@@ -92,8 +92,8 @@ accordionItems:
     body: We design apps that cut out the clutter – creating a seamless brand
       experience, ensuring efficiency and learnability within your product.
   - heading: Web apps
-    body: "We design in a mobile-first responsive framework for all web
-      applications, ensuring design quality and performance from every device. "
+    body: "We follow a mobile-first responsive framework for all web applications,
+      ensuring design quality and performance from every device. "
   - heading: Digital ecosystems
     body: We rebuild and relaunch .Com marketing sites with a powerful brand
       presence geared towards customer interest, engagement, and conversion.
