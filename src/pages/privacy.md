@@ -28,7 +28,7 @@ For the purposes of this Privacy Policy:
 
 - __Company__ (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Bloom Growth Agency LLC, 615 Franklin Street, Duxbury, MA 02332.
 
-	For the purpose of the GDPR, the Company is the Data Controller.
+For the purpose of the GDPR, the Company is the Data Controller.
 
 
 - __Consumer__, for the purpose of the CCPA (California Consumer Privacy Act), means a natural person who is a California resident. A resident, as defined in the law, includes (1) every individual who is in the USA for other than a temporary or transitory purpose, and (2) every individual who is domiciled in the USA who is outside the USA for a temporary or transitory purpose.
