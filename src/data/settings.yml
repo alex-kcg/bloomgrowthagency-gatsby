@@ -13,8 +13,5 @@ footer:
       target_blank: true
   navLinks:
     - text: Privacy
-      url: "/privacy/"
-      target_blank: false
-    - text: Terms
-      url: "/terms/"
+      url: /privacy/
       target_blank: false
