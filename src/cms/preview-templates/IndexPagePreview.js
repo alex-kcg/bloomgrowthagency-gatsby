@@ -12,11 +12,14 @@ const IndexPagePreview = ({ entry, getAsset }) => {
         title={data.title}
         description={data.description}
         heading={data.heading}
+        headingAlignment={data.headingAlignment}
         partnerRows={data.partnerRows || []}
         numberedList={data.numberedList || []}
         accordionHeading={data.accordionHeading}
+        accordionHeadingAlignment={data.accordionHeadingAlignment}
         accordionItems={data.accordionItems || []}
         partnersHeading={data.partnersHeading}
+        partnersHeadingAlignment={data.partnersHeadingAlignment}
         partnersSubheading={data.partnersSubheading}
         partnersSubheadingLink={data.partnersSubheadingLink}
         partnersCards={data.partnersCards || []}
