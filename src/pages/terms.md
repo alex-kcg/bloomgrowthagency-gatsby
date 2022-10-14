@@ -1,6 +1,6 @@
 ---
 templateKey: legal-page
-published: true
+published: false
 title: Terms
 description: Description
 ---
