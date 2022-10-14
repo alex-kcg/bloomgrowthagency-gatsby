@@ -4,12 +4,14 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Content from "../components/Content";
 
 // eslint-disable-next-line
 export const LegalPageTemplate = ({
   cmsPreview,
   title,
   description,
+  markdown,
   html
 }) => {
   return (
@@ -21,6 +23,7 @@ export const LegalPageTemplate = ({
         <h1 className="font-serif font-light tracking-snug text-4xl mb-20 md:text-8xl">
           {title}
         </h1>
+        <Content className="prose prose-cream max-w-full" source={markdown} />
         <div className="prose prose-cream max-w-full" dangerouslySetInnerHTML={{ __html: html }} />
       </section>
       <Footer className="container mx-auto px-4 pb-20" />

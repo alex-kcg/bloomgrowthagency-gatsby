@@ -1,19 +1,31 @@
-import * as React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import ReactMarkdown from 'react-markdown'
+import PropTypes from 'prop-types'
 
-export const HTMLContent = ({ content, className }) => (
-  <div className={className} dangerouslySetInnerHTML={{ __html: content }} />
-);
+const encodeMarkdownURIs = (source = '') => {
+  const markdownLinkRegex = /\[(.+)\]\((.+)(".+)\)/g
+  return source.replace(markdownLinkRegex, (match, linkURI) => {
+    if (!linkURI) return match
+    const replaced = match.replace(linkURI, encodeURI(linkURI))
+    return replaced
+  })
+}
 
-const Content = ({ content, className }) => (
-  <div className={className}>{content}</div>
-);
+const Content = ({ source, src, className = '' }) => {
+  // accepts either html or markdown
+  source = source || src || ''
+
+  return (
+    <ReactMarkdown className={className}>
+      {encodeMarkdownURIs(source)}
+    </ReactMarkdown>
+  )
+}
 
 Content.propTypes = {
-  content: PropTypes.node,
-  className: PropTypes.string,
-};
+  source: PropTypes.string,
+  src: PropTypes.string,
+  className: PropTypes.string
+}
 
-HTMLContent.propTypes = Content.propTypes;
-
-export default Content;
+export default Content

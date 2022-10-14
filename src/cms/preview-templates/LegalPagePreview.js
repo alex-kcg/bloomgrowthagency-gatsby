@@ -11,7 +11,7 @@ const LegalPagePreview = ({ entry, getAsset }) => {
         cmsPreview={true}
         title={data.title}
         description={data.description}
-        // html={data.body}
+        markdown={data.body}
       />
     )
   } else {
