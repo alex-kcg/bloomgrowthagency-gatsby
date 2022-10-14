@@ -1,5 +1,6 @@
 ---
 templateKey: legal-page
+published: true
 title: Privacy Policy
 description: Bloom's privacy policy.
 ---
