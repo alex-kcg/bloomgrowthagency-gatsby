@@ -36,6 +36,16 @@ collections:
               pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
             }
           - {
+              label: "Heading alignment",
+              name: "headingAlignment",
+              widget: "select",
+              options: [
+                { label: "Left", value: "text-left" },
+                { label: "Center", value: "text-center" },
+                { label: "Right", value: "text-right" },
+              ]
+            }
+          - {
               label: Partner rows,
               name: partnerRows,
               widget: list,
@@ -115,6 +125,16 @@ collections:
               pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
             }
           - {
+              label: "Accordion heading alignment",
+              name: "accordionHeadingAlignment",
+              widget: "select",
+              options: [
+                { label: "Left", value: "text-left" },
+                { label: "Center", value: "text-center" },
+                { label: "Right", value: "text-right" },
+              ]
+            }
+          - {
               label: Accordion items,
               name: accordionItems,
               widget: list,
@@ -131,6 +151,16 @@ collections:
               pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
             }
           - {
+              label: "Partners heading alignment",
+              name: "partnersHeadingAlignment",
+              widget: "select",
+              options: [
+                { label: "Left", value: "text-left" },
+                { label: "Center", value: "text-center" },
+                { label: "Right", value: "text-right" },
+              ]
+            }
+          - {
               label: Partners subheading,
               name: partnersSubheading,
               widget: string,
@@ -144,7 +174,7 @@ collections:
                 [
                   { label: URL, name: url, widget: string },
                   { label: Text, name: text, widget: string },
-                  { label: "Open link in new tab", name: "target_blank", widget: "boolean" }
+                  { label: "Open link in new tab", name: "targetBlank", widget: "boolean" }
                 ],
             }
           - {
@@ -212,7 +242,7 @@ collections:
                   },
                   {
                     label: "Open link in new tab",
-                    name: "target_blank",
+                    name: "targetBlank",
                     widget: "boolean"
                   }
                 ]
@@ -253,7 +283,7 @@ collections:
                   },
                   {
                     label: "Open link in new tab",
-                    name: "target_blank",
+                    name: "targetBlank",
                     widget: "boolean"
                   }
                 ]
@@ -325,7 +355,7 @@ collections:
                     },
                     {
                       label: "Open link in new tab",
-                      name: "target_blank",
+                      name: "targetBlank",
                       widget: "boolean"
                     }
                   ]
@@ -348,7 +378,7 @@ collections:
                     },
                     {
                       label: "Open link in new tab",
-                      name: "target_blank",
+                      name: "targetBlank",
                       widget: "boolean"
                     }
                   ]

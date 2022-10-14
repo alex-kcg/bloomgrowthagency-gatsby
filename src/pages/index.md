@@ -4,6 +4,7 @@ published: true
 title: Bloom Growth Agency
 description: A product design studio for fast moving companies.
 heading: We use product design to fuel fast moving companies into hypergrowth.
+headingAlignment: text-center
 partnerRows:
   - direction: ltr
     partners:
@@ -88,6 +89,7 @@ numberedList:
       image: /img/BG-SiteAnim-PlanterModel-Phase2-v11mobile3.png
       alt: Alt
 accordionHeading: We build products, not projects.
+accordionHeadingAlignment: text-left
 accordionItems:
   - heading: Mobile Apps
     body: We design apps that cut out the clutter – creating a seamless brand
@@ -111,12 +113,13 @@ accordionItems:
       every insight in your customer base, then deploys into actionable design
       changes.
 partnersHeading: Powering fearless companies who value growth.
+partnersHeadingAlignment: text-left
 partnersSubheading: Out of respect for our partners, our best work is under NDA.
   If you’d like to dive in, we’d be happy
 partnersSubheadingLink:
   url: https://calendly.com/d/drg-hpd-cnw/meet-with-james-and-jordan
   text: to connect.
-  target_blank: true
+  targetBlank: true
 partnersCards:
   - image:
       image: /img/logo-chime.svg
@@ -190,12 +193,12 @@ footerCTASubheading: "We’re helping partners build world class design organiza
 footerCTALink:
   url: https://calendly.com/d/drg-hpd-cnw/meet-with-james-and-jordan
   text: Let’s chat pipeline
-  target_blank: true
+  targetBlank: true
 footerContactHeading: Contact
 footerContactName: Zach Greenberger
 footerContactTitle: Head of Growth
 footerContactLink:
   url: mailto:zach@bloomgrowthagency.com
   text: zach@bloomgrowthagency.com
-  target_blank: false
+  targetBlank: false
 ---
