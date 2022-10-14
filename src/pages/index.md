@@ -1,5 +1,6 @@
 ---
 templateKey: index-page
+published: true
 title: Bloom Growth Agency
 description: A product design studio for fast moving companies.
 heading: We use product design to fuel fast moving companies into hypergrowth.

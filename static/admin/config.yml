@@ -262,6 +262,7 @@ collections:
         label: "Privacy"
         name: "privacy"
         fields:
+          - { label: "Publish page", name: "published", widget: "boolean" }
           - { label: Title, name: title, widget: string }
           - { label: Description, name: description, widget: text }
           - { label: Body, name: body, widget: markdown }
@@ -269,6 +270,7 @@ collections:
         label: "Terms"
         name: "terms"
         fields:
+          - { label: "Publish page", name: "published", widget: "boolean" }
           - { label: Title, name: title, widget: string }
           - { label: Description, name: description, widget: text }
           - { label: Body, name: body, widget: markdown }
