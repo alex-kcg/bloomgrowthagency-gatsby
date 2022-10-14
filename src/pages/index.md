@@ -1,6 +1,5 @@
 ---
 templateKey: index-page
-published: true
 title: Bloom Growth Agency
 description: A product design studio for fast moving companies.
 heading: We use product design to fuel fast moving companies into hypergrowth.
@@ -89,7 +88,7 @@ numberedList:
       image: /img/BG-SiteAnim-PlanterModel-Phase2-v11mobile3.png
       alt: Alt
 accordionHeading: We build products, not projects.
-accordionHeadingAlignment: text-left
+accordionHeadingAlignment: text-center
 accordionItems:
   - heading: Mobile Apps
     body: We design apps that cut out the clutter – creating a seamless brand
@@ -189,6 +188,7 @@ partnersCards:
       - Series A
       - B2B FinTech
 footerCTAHeading: Are you building a design team?
+published: true
 footerCTASubheading: "We’re helping partners build world class design organizations. Interested? "
 footerCTALink:
   url: https://calendly.com/d/drg-hpd-cnw/meet-with-james-and-jordan
