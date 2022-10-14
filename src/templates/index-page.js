@@ -20,11 +20,14 @@ export const IndexPageTemplate = ({
   title,
   description,
   heading,
+  headingAlignment,
   partnerRows,
   numberedList,
   accordionHeading,
+  accordionHeadingAlignment,
   accordionItems,
   partnersHeading,
+  partnersHeadingAlignment,
   partnersSubheading,
   partnersSubheadingLink,
   partnersCards,
@@ -738,7 +741,7 @@ export const IndexPageTemplate = ({
         </div>
         <div className="foreground relative z-40 w-full bg-not-dark-blue md:bg-transparent">
           <div className="w-full md:min-h-[200vh]">
-            <div className="sticky top-0 w-full flex justify-center items-center px-4 text-center pt-36 md:min-h-screen md:pt-0 md:mb-60">
+            <div className={`sticky top-0 w-full flex justify-center items-center px-4 pt-36 md:min-h-screen md:pt-0 md:mb-60 ${headingAlignment}`}>
               <h1 className="hero-headline-wrapper font-serif font-light tracking-snug text-4xl md:text-11xl md:-tracking-4">
                 <span className="block mx-auto sm:w-5/6 md:w-full md:max-w-5xl">
                   <SplitTextOnWordBoundaries className="hero-headline overflow-hidden" text={heading} />
@@ -782,7 +785,7 @@ export const IndexPageTemplate = ({
         <div ref={sectionThreeForeground} className="foreground relative z-40 w-full transition-all duration-700 ease-out transform bg-not-dark-blue md:bg-transparent md:pt-[25vh]">
           <div className="container pb-20 pt-30 md:py-0">
             <div className="max-w-[63.5rem] mx-auto">
-              <h2 className="font-serif font-light tracking-snug text-4xl mb-20 md:text-8xl">
+              <h2 className={`font-serif font-light tracking-snug text-4xl mb-20 md:text-8xl ${accordionHeadingAlignment}`}>
                 <SplitTextOnWordBoundaries text={accordionHeading} />
               </h2>
             </div>
@@ -809,7 +812,7 @@ export const IndexPageTemplate = ({
           <div className="relative z-10 bg-not-dark-blue md:bg-transparent">
             <div className="container py-20 md:pt-40 md:pb-0">
               <div className="max-w-[50.5rem]">
-                <h2 className="font-serif font-light tracking-tight text-5xl mb-6 md:text-8xl">
+                <h2 className={`font-serif font-light tracking-tight text-5xl mb-6 md:text-8xl ${partnersHeadingAlignment}`}>
                   <SplitTextOnWordBoundaries text={partnersHeading} />
                 </h2>
                 <p className="font-light text-lg leading-normal md:text-2xl md:leading-10">
@@ -867,7 +870,7 @@ export const IndexPageTemplate = ({
                           <SplitTextOnWordBoundaries text={footerCTASubheading} /> 
                         </p>
                         <div className="fade-in opacity-0 transition-opacity duration-500 delay-500">
-                          <a href={footerCTALink.url} target={footerCTALink.target_blank && '_blank'} className="transition-color duration-500 ease-out text-electric-lime group">
+                          <a href={footerCTALink.url} target={footerCTALink.targetBlank && '_blank'} className="transition-color duration-500 ease-out text-electric-lime group">
                             <svg className="inline-block mr-2" width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path className="fill-current" d="M1 5.50374C0.723858 5.50374 0.5 5.27988 0.5 5.00374C0.5 4.72759 0.723858 4.50374 1 4.50374L1 5.50374ZM8.42212 9.59843C8.22685 9.79369 7.91027 9.79369 7.71501 9.59843C7.51975 9.40316 7.51975 9.08658 7.71501 8.89132L8.42212 9.59843ZM11.9635 4.64285C12.1587 4.44757 12.4753 4.44755 12.6706 4.6428C12.8659 4.83805 12.8659 5.15463 12.6706 5.34991L11.9635 4.64285ZM7.71501 1.1088C7.51975 0.913534 7.51975 0.596951 7.71501 0.401689C7.91027 0.206427 8.22685 0.206427 8.42212 0.401689L7.71501 1.1088ZM12.6706 4.65018C12.8659 4.84544 12.8659 5.16203 12.6706 5.35729C12.4753 5.55255 12.1588 5.55255 11.9635 5.35729L12.6706 4.65018ZM1 4.50374L12.3097 4.50373V5.50373L1 5.50374L1 4.50374ZM7.71501 8.89132L11.9561 4.65018L12.6633 5.35729L8.42212 9.59843L7.71501 8.89132ZM11.9563 4.65007L11.9599 4.64639L12.6668 5.35373L12.6631 5.3574L11.9563 4.65007ZM11.9598 4.64653L11.9635 4.64285L12.6706 5.34991L12.667 5.35359L11.9598 4.64653ZM8.42212 0.401689L12.6669 4.6465L11.9598 5.35361L7.71501 1.1088L8.42212 0.401689ZM12.6669 4.6465L12.6706 4.65018L11.9635 5.35729L11.9598 5.35361L12.6669 4.6465Z"/>
                             </svg>
@@ -897,7 +900,7 @@ export const IndexPageTemplate = ({
                               <SplitTextOnWordBoundaries text={footerContactTitle} /> 
                             </p>
 
-                            <a href={footerContactLink.url} target={footerContactLink.target_blank && '_blank'} className="underline font-light transition-color duration-300 ease-out hover:text-electric-lime">
+                            <a href={footerContactLink.url} target={footerContactLink.targetBlank && '_blank'} className="underline font-light transition-color duration-300 ease-out hover:text-electric-lime">
                               {footerContactLink.text}
                             </a>
                             
@@ -927,6 +930,7 @@ IndexPageTemplate.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   heading: PropTypes.string,
+  headingAlignment: PropTypes.string,
   partnerRows: PropTypes.arrayOf(
     PropTypes.shape({
       direction: PropTypes.string,
@@ -946,6 +950,7 @@ IndexPageTemplate.propTypes = {
     }),
   ),
   accordionHeading: PropTypes.string,
+  accordionHeadingAlignment: PropTypes.string,
   accordionItems: PropTypes.arrayOf(
     PropTypes.shape({
       heading: PropTypes.string,
@@ -953,6 +958,7 @@ IndexPageTemplate.propTypes = {
     }),
   ),
   partnersHeading: PropTypes.string,
+  partnersHeadingAlignment: PropTypes.string,
   partnersSubheading: PropTypes.string,
   partnersSubheadingLink: PropTypes.object,
   partnersCards: PropTypes.arrayOf(
@@ -983,11 +989,14 @@ const IndexPage = ({ data }) => {
         title={frontmatter.title}
         description={frontmatter.description}
         heading={frontmatter.heading}
+        headingAlignment={frontmatter.headingAlignment}
         partnerRows={frontmatter.partnerRows}
         numberedList={frontmatter.numberedList}
         accordionHeading={frontmatter.accordionHeading}
+        accordionHeadingAlignment={frontmatter.accordionHeadingAlignment}
         accordionItems={frontmatter.accordionItems}
         partnersHeading={frontmatter.partnersHeading}
+        partnersHeadingAlignment={frontmatter.partnersHeadingAlignment}
         partnersSubheading={frontmatter.partnersSubheading}
         partnersSubheadingLink={frontmatter.partnersSubheadingLink}
         partnersCards={frontmatter.partnersCards}
@@ -1020,6 +1029,7 @@ export const pageQuery = graphql`
         title
         description
         heading
+        headingAlignment
         partnerRows {
           direction
           partners {
@@ -1038,16 +1048,18 @@ export const pageQuery = graphql`
           }
         }
         accordionHeading
+        accordionHeadingAlignment
         accordionItems {
           heading
           body
         }
         partnersHeading
+        partnersHeadingAlignment
         partnersSubheading
         partnersSubheadingLink {
           url
           text,
-          target_blank
+          targetBlank
         }
         partnersCards {
           image {
@@ -1066,7 +1078,7 @@ export const pageQuery = graphql`
         footerCTALink {
           url
           text,
-          target_blank
+          targetBlank
         }
         footerContactHeading
         footerContactName
@@ -1074,7 +1086,7 @@ export const pageQuery = graphql`
         footerContactLink {
           url
           text,
-          target_blank
+          targetBlank
         }
       }
     }
