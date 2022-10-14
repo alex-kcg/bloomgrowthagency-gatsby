@@ -1,29 +1,31 @@
 import React from "react";
-import { Link } from "gatsby";
+import PropTypes from "prop-types";
 import settings from "../data/settings.yml"
-import { motion } from "framer-motion";
+import { Link } from "gatsby"
 
-const Navbar = class extends React.Component {
-  render() {
-    return (
-      <nav
-        className="navbar top-0 inset-x-0 bg-not-dark-blue w-full"
-        role="navigation"
-        aria-label="main-navigation"
-      >
-        <motion.div
-          animate={{ rotateX: 0, opacity: 1 }}
-          initial={{ rotateX: 90, opacity: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="container mx-auto px-4 py-8 md:py-16"
-        >
-          <Link to="/" title="Logo">
-            <img src={settings.header.logo.image} alt={settings.header.logo.alt} className="block mx-auto" style={{ width: "118px", height: "48px" }} />
-          </Link>
-        </motion.div>
-      </nav>
-    );
-  }
+const Navbar = ({ useLink }) => {
+  const imageClasses = 'block h-12 w-auto mx-auto pointer-events-auto';
+
+  return (
+    <nav
+      className="navbar pointer-events-none py-8 text-center md:py-16"
+      role="navigation"
+      aria-label="main-navigation"
+    >
+      {useLink && (
+        <Link to="/">
+          <img src={settings.header.logo.image} alt={settings.header.logo.alt} className={imageClasses} />
+        </Link>
+      )}
+      {!useLink && (
+        <img src={settings.header.logo.image} alt={settings.header.logo.alt} className={imageClasses} />
+      )}
+    </nav>
+  );
+};
+
+Navbar.propTypes = {
+  useLink: PropTypes.bool
 };
 
 export default Navbar;

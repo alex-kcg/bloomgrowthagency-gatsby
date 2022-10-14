@@ -7,8 +7,10 @@ import Footer from "../components/Footer";
 export const SettingsTemplate = ({}) => {
   return (
     <div className="min-h-screen flex flex-col justify-between items-stretch">
-      <Navbar />
-      <Footer />
+      <header className="navbar-container z-50 w-full">
+        <Navbar />
+      </header>
+      <Footer className="container mx-auto px-4 pb-20 mt-auto" />
     </div>
   );
 };
@@ -16,8 +18,6 @@ export const SettingsTemplate = ({}) => {
 SettingsTemplate.propTypes = {};
 
 const Settings = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
-
   return (
     <SettingsTemplate />
   );

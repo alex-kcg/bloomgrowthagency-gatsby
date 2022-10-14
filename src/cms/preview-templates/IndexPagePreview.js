@@ -8,11 +8,25 @@ const IndexPagePreview = ({ entry, getAsset }) => {
   if (data) {
     return (
       <IndexPageTemplate
+        cmsPreview={true}
         title={data.title}
         description={data.description}
         heading={data.heading}
-        button={data.button || {}}
         partnerRows={data.partnerRows || []}
+        numberedList={data.numberedList || []}
+        accordionHeading={data.accordionHeading}
+        accordionItems={data.accordionItems || []}
+        partnersHeading={data.partnersHeading}
+        partnersSubheading={data.partnersSubheading}
+        partnersSubheadingLink={data.partnersSubheadingLink}
+        partnersCards={data.partnersCards || []}
+        footerCTAHeading={data.footerCTAHeading}
+        footerCTASubheading={data.footerCTASubheading}
+        footerCTALink={data.footerCTALink}
+        footerContactHeading={data.footerContactHeading}
+        footerContactName={data.footerContactName}
+        footerContactTitle={data.footerContactTitle}
+        footerContactLink={data.footerContactLink}
       />
     )
   } else {

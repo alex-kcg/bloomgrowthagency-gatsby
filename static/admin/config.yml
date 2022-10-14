@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
-  branch: main
+  # branch: develop
+  branch: BRANCH_PLACEHOLDER
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
     update: "Update {{collection}} “{{slug}}”"
@@ -28,21 +29,17 @@ collections:
             }
           - { label: Title, name: title, widget: string }
           - { label: Description, name: description, widget: text }
-          - { label: Heading, name: heading, widget: string }
           - {
-              label: Button,
-              name: button,
-              widget: object,
-              fields:
-                [
-                  { label: Text, name: text, widget: string },
-                  { label: URL, name: url, widget: string },
-                ],
+              label: Heading,
+              name: heading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
             }
           - {
               label: Partner rows,
               name: partnerRows,
               widget: list,
+              summary: 'Expand to edit partners',
               fields:
                 [
                   {
@@ -58,41 +55,230 @@ collections:
                     label: Partners,
                     name: partners,
                     widget: list,
+                    min: 1,
                     fields:
                       [
                         { label: Text, name: text, widget: text },
                         { label: URL, name: url, widget: string },
-                        {
-                          label: "Hover color",
-                          name: "colorClassName",
-                          widget: "select",
-                          options: [
-                            { label: "Gray", value: "hover:text-gray" },
-                            { label: "Voltage", value: "hover:text-voltage" },
-                            { label: "Summer Rain", value: "hover:text-summer-rain" },
-                            { label: "Electric Lime", value: "hover:text-electric-lime" },
-                          ]
-                        },
                         {
                           label: "Font style",
                           name: "fontClassName",
                           widget: "select",
                           options: [
                             { label: "Sans normal", value: "font-sans font-normal" },
-                            { label: "Serif normal", value: "font-serif font-normal" },
-                            { label: "Serif light", value: "font-serif font-light" },
-                            { label: "Serif light italic", value: "font-serif font-light italic" },
+                            { label: "Serif light", value: "font-serif font-light tracking-tighter" },
+                            { label: "Serif light italic", value: "font-serif font-light tracking-tighter italic" },
                           ]
                         },
                       ],
                   },
                 ],
             }
+          - {
+              label: Numbered list,
+              name: numberedList,
+              widget: list,
+              allow_add: false,
+              max: 3,
+              min: 3,
+              summary: '{{fields.heading}}',
+              fields:
+                [
+                  {
+                    label: Heading,
+                    name: heading,
+                    widget: text,
+                    pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+                  },
+                  {
+                    label: Text,
+                    name: text,
+                    widget: text,
+                    pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+                  },
+                  {
+                    label: Image,
+                    name: image,
+                    widget: object,
+                    fields:
+                      [
+                        { label: image, name: image, widget: image, choose_url: true },
+                        { label: Alt, name: alt, widget: string },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: Accordion heading,
+              name: accordionHeading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
+          - {
+              label: Accordion items,
+              name: accordionItems,
+              widget: list,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: text },
+                  { label: Body, name: body, widget: text },
+                ],
+            }
+          - {
+              label: Partners heading,
+              name: partnersHeading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
+          - {
+              label: Partners subheading,
+              name: partnersSubheading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
+          - {
+              label: Partners subheading link,
+              name: partnersSubheadingLink,
+              widget: object,
+              fields:
+                [
+                  { label: URL, name: url, widget: string },
+                  { label: Text, name: text, widget: string },
+                  { label: "Open link in new tab", name: "target_blank", widget: "boolean" }
+                ],
+            }
+          - {
+              label: Partners cards,
+              name: partnersCards,
+              widget: list,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  { label: description, name: description, widget: string },
+                  {
+                    label: "Bullet color",
+                    name: "bulletColorClassName",
+                    widget: "select",
+                    options: [
+                      { label: "Summer rain", value: "bg-summer-rain" },
+                      { label: "Voltage", value: "bg-voltage" },
+                      { label: "Electric lime", value: "bg-electric-lime" },
+                    ]
+                  },
+                  {
+                    label: Bullets,
+                    name: bullets,
+                    widget: list,
+                  },
+                  {
+                    label: Image,
+                    name: image,
+                    widget: object,
+                    fields:
+                      [
+                        { label: image, name: image, widget: image, choose_url: true },
+                        { label: Alt, name: alt, widget: string },
+                      ],
+                  },
+                ]
+            }
+          - {
+              label: Footer CTA heading,
+              name: footerCTAHeading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
+          - {
+              label: Footer CTA subheading,
+              name: footerCTASubheading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
+          - {
+              label: Footer CTA Link,
+              name: footerCTALink,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: "URL",
+                    name: "url",
+                    widget: string
+                  },
+                  {
+                    label: "Text",
+                    name: "text",
+                    widget: string
+                  },
+                  {
+                    label: "Open link in new tab",
+                    name: "target_blank",
+                    widget: "boolean"
+                  }
+                ]
+            }
+          - {
+              label: Footer contact heading,
+              name: footerContactHeading,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
+          - {
+              label: Footer contact name,
+              name: footerContactName,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
+          - {
+              label: Footer contact title,
+              name: footerContactTitle,
+              widget: string,
+              pattern: ['^.{0,100}$', "Must be 100 or fewer characters"]
+            }
+          - {
+              label: Footer Contact Link,
+              name: footerContactLink,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: "URL",
+                    name: "url",
+                    widget: string
+                  },
+                  {
+                    label: "Text",
+                    name: "text",
+                    widget: string
+                  },
+                  {
+                    label: "Open link in new tab",
+                    name: "target_blank",
+                    widget: "boolean"
+                  }
+                ]
+            }
+      - file: "src/pages/privacy.md"
+        label: "Privacy"
+        name: "privacy"
+        fields:
+          - { label: "Publish page", name: "published", widget: "boolean" }
+          - { label: Title, name: title, widget: string }
+          - { label: Description, name: description, widget: text }
+          - { label: Body, name: body, widget: markdown }
+      - file: "src/pages/terms.md"
+        label: "Terms"
+        name: "terms"
+        fields:
+          - { label: "Publish page", name: "published", widget: "boolean" }
+          - { label: Title, name: title, widget: string }
+          - { label: Description, name: description, widget: text }
+          - { label: Body, name: body, widget: markdown }
   - name: "settings"
-    label: "Settings"
+    label: "Header/Footer"
     files:
       - file: "src/data/settings.yml"
-        label: "Settings"
+        label: "Header/Footer"
         name: "settings"
         fields:
           - label: Header
@@ -106,7 +292,7 @@ collections:
                   widget: object,
                   fields:
                     [
-                      { label: Image, name: image, widget: image },
+                      { label: image, name: image, widget: image, choose_url: true },
                       { label: Alt, name: alt, widget: string },
                     ],
                 },
@@ -122,32 +308,48 @@ collections:
                   widget: "string"
                 },
                 {
-                  label: "Locations",
-                  label_singular: "Location",
-                  name: "locations",
-                  widget: "list",
-                  fields: [
-                    { label: "Name", name: "name", widget: string }
-                  ]
-                },
-                {
                   label: "Social media links",
                   label_singular: "Social media link",
                   name: "socialMediaLinks",
                   widget: "list",
                   fields: [
                     {
-                      label: "Type",
-                      name: "type",
-                      widget: "select",
-                      options: [
-                        { label: "LinkedIn", value: "linkedin" }
-                      ]
+                      label: "Text",
+                      name: "text",
+                      widget: string
                     },
                     {
                       label: "URL",
                       name: "url",
                       widget: string
+                    },
+                    {
+                      label: "Open link in new tab",
+                      name: "target_blank",
+                      widget: "boolean"
+                    }
+                  ]
+                },
+                                {
+                  label: "Navigation links",
+                  label_singular: "Navigation link",
+                  name: "navLinks",
+                  widget: "list",
+                  fields: [
+                    {
+                      label: "Text",
+                      name: "text",
+                      widget: string
+                    },
+                    {
+                      label: "URL",
+                      name: "url",
+                      widget: string
+                    },
+                    {
+                      label: "Open link in new tab",
+                      name: "target_blank",
+                      widget: "boolean"
                     }
                   ]
                 }
