@@ -306,18 +306,32 @@ collections:
                   widget: "string"
                 },
                 {
-                  label: "Locations",
-                  label_singular: "Location",
-                  name: "locations",
-                  widget: "list",
-                  fields: [
-                    { label: "Name", name: "name", widget: string }
-                  ]
-                },
-                {
                   label: "Social media links",
                   label_singular: "Social media link",
                   name: "socialMediaLinks",
+                  widget: "list",
+                  fields: [
+                    {
+                      label: "Text",
+                      name: "text",
+                      widget: string
+                    },
+                    {
+                      label: "URL",
+                      name: "url",
+                      widget: string
+                    },
+                    {
+                      label: "Open link in new tab",
+                      name: "target_blank",
+                      widget: "boolean"
+                    }
+                  ]
+                },
+                                {
+                  label: "Navigation links",
+                  label_singular: "Navigation link",
+                  name: "navLinks",
                   widget: "list",
                   fields: [
                     {
