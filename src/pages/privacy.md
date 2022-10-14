@@ -1,13 +1,7 @@
 ---
 templateKey: legal-page
-<<<<<<< HEAD
 title: Privacy Policy
 description: Bloom's privacy policy.
-=======
-published: true
-title: Privacy
-description: Description
->>>>>>> 8f739d3 (add toggle for published status)
 ---
 # Privacy Policy
 
