@@ -3,11 +3,8 @@ header:
     image: /img/logotype.svg
     alt: Bloom Growth
 footer:
-  signoff: Copyright © 2023 Bloom Growth Agency
+  signoff: Copyright © 2024 Bloom Growth Agency
   socialMediaLinks:
-    - text: Dribbble
-      url: https://dribbble.com/BloomGrowthAgency
-      targetBlank: true
     - text: LinkedIn
       url: https://www.linkedin.com/company/bloom-growth
       targetBlank: true
