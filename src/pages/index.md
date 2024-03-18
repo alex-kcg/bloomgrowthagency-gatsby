@@ -198,7 +198,7 @@ footerContactHeading: Contact
 footerContactName: James Moriarty
 footerContactTitle: Founder
 footerContactLink:
-  url: mailto:zach@bloomgrowthagency.com
-  text: zach@bloomgrowthagency.com
+  url: mailto:james@bloomgrowthagency.com
+  text: james@bloomgrowthagency.com
   targetBlank: false
 ---
