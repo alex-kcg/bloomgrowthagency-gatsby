@@ -195,8 +195,8 @@ footerCTALink:
   text: Let’s chat pipeline
   targetBlank: true
 footerContactHeading: Contact
-footerContactName: Zach Greenberger
-footerContactTitle: Head of Growth
+footerContactName: James Moriarty
+footerContactTitle: Founder
 footerContactLink:
   url: mailto:zach@bloomgrowthagency.com
   text: zach@bloomgrowthagency.com
